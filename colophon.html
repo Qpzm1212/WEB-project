@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Colophon and site creation details for the Meat Point Astana project.">
+    <meta name="author" content="Madiyar Akylbek">
+    <title>About Site Creation | Meat Point</title>
+</head>
+<!-- Author: Madiyar Akylbek -->
+
+<body>
+    <header>
+        <h1>Colophon: How We Built the Site</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contacts.html">Contact</a></li>
+                <li><a href="colophon.html">About site</a></li>
+                <li><a href="menu.html">Dish menu</a></li>
+                <li><a href="events.html">Events list</a></li>
+                <li><a href="booking.html">Booking</a></li>
+                <li><a href="feedback.html">Reviews</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- I used a section here to group the technical details logically, separating them from the development experience below. -->
+        <section>
+            <h2>Technical Stack and Tools</h2>
+            <p>The Meat Point Astana website was built as a collaborative university project by a team of three
+                students. We focused strictly on semantic HTML without the use of Cascading Style Sheets (CSS) or
+                JavaScript (JS). This approach ensures the content is natively accessible, lightweight, and
+                well-structured for screen readers and search engines.</p>
+            <p>During the development process, we utilized Git for version control. When running the local development
+                environment or checking files, you might need to use specific terminal commands. For example, to test
+                the project locally, you would typically type <kbd>python -m http.server</kbd> or <kbd>npm start</kbd>
+                in your command-line interface.</p>
+        </section>
+
+        <section>
+            <h2>Code Examples and Validation</h2>
+            <p>Throughout the project, we used standard HTML5 tags. A common block of code used across all pages is the
+                main navigation structure. Here is a raw example of how we implemented the semantic navigation markup:
+            </p>
+
+            <pre><code>
+&lt;nav&gt;
+    &lt;ul&gt;
+        &lt;li&gt;&lt;a href="index.html"&gt;Home&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="about.html"&gt;About&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/nav&gt;
+            </code></pre>
+
+            <p>We rigorously tested our pages using the W3C Validator to achieve zero errors. If you make a mistake, the
+                validator system might output an error message. A typical error output looks like this: <samp>Error:
+                    Stray end tag nav.</samp> Catching these errors early helped us maintain high code quality.</p>
+            <p>We also paid special attention to HTML entities. For instance, we used the less-than sign (&lt;) and
+                greater-than sign (&gt;) to display code snippets, along with the ampersand (&amp;) and the copyright
+                symbol (&copy;) in our footer section.</p>
+        </section>
+
+        <!-- I am using an article tag here because the learning experience is a self-contained piece of content that could theoretically be read independently as a blog post. -->
+        <article>
+            <h2>Our Development Experience</h2>
+            <p>Building this restaurant website taught us how to collaborate effectively using Git branches and commits.
+                Resolving merge conflicts and ensuring everyone made their required commits on different days was a
+                practical challenge. By sticking strictly to semantic elements instead of generic containers, we learned
+                how the browser natively renders different elements. Working as a team of three required clear
+                communication to divide the eight pages and ensure all checklist requirements were met.</p>
+        </article>
+    </main>
+
+    <footer>
+        <h2>Contact Information</h2>
+        <p>Address: Uly Dala street 45, Astana</p>
+        <p>Phone number: <a href="tel:+77784221100">+7 (778) 422-11-00</a></p>
+        <p>Email: <a href="mailto:info@meatpoint.kz">info@meatpoint.kz</a></p>
+        <p>&copy; 2026 Meat Point. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>
