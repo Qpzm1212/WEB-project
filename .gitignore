@@ -22,3 +22,9 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+.idea/
+node_modules/
+*.js
+*.css
+package.json
+package-lock.json

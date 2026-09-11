@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contact Meat Point Astana. Make a reservation, check our working hours, or leave your feedback.">
+    <meta name="author" content="Kamza Asset">
+    <title>Contact Us | Meat Point Restaurant</title>
+</head>
+<body>
+<!-- Author: Kamza Asset -->
+
+<header>
+    <h1>Contact Meat Point</h1>
+    <nav>
+        <ul>
+            <li><a href="node_modules/index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contacts.html">Contact</a></li>
+            <li><a href="colophon.html">About site</a></li>
+            <li><a href="menu.html">Dish menu</a></li>
+            <li><a href="events.html">Events list</a></li>
+            <li><a href="booking.html">Booking</a></li>
+            <li><a href="feedback.html">Reviews</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <article>
+        <h2>Get in Touch with Us</h2>
+        <p>Getting in touch with Meat Point Astana is incredibly easy and convenient for all our beloved guests. Whether you want to ask a question about our menu, clarify the availability of our summer terrace, or simply leave your <i>valuable feedback</i>, we are always here to help. You can use the form below to submit a reservation request or send us a direct message. Our administration team checks the inbox regularly and strives to reply to every inquiry as quickly as possible.</p>
+
+        <p>If you are planning to visit us in person, finding our building is very straightforward. We are located in the modern <b>EXPO district</b>. Please refer to the table below for our exact working hours, although we proudly operate <mark>around the clock</mark>. Your comfort is our top priority! Please note that during the weekends, the tables are booked very fast, so it is <em>highly recommended</em> to reserve your spot in advance.</p>
+        <p><small>Note: Special conditions apply for booking large corporate banquets and birthdays.</small></p>
+    </article>
+
+    <section id="hours-and-location">
+        <h2>Working Hours & Location</h2>
+
+        <!-- tABLE -->
+        <table>
+            <caption>Meat Point Official Schedule</caption>
+            <thead>
+            <tr>
+                <th scope="col">Days of the Week</th>
+                <th scope="col">Opening Hours</th>
+                <th scope="col">Kitchen Status</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <th scope="row">Monday - Sunday</th>
+                <td>24/7 (Round the clock)</td>
+                <td>Fully Operational</td>
+            </tr>
+            <tr>
+                <th scope="row">Business Lunch</th>
+                <td>12:00 - 15:00 (Weekdays)</td>
+                <td>Special Menu</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <h3>How to Reach Us</h3>
+
+        <ul>
+            <li>By Public Transport:
+                <ul>
+                    <li>Bus route 47 (Stop: Uly Dala)</li>
+                    <li>Bus route 54 (Stop: Botanical Garden)</li>
+                </ul>
+            </li>
+            <li>By Car: We offer a spacious free parking lot right in front of the main entrance.</li>
+        </ul>
+
+        <figure>
+            <img src="images/meatloc.png" alt="Map showing the location of Meat Point restaurant on Uly Dala Avenue in Astana">
+            <figcaption>Our location on Uly Dala Avenue</figcaption>
+        </figure>
+    </section>
+
+    <section id="reservation">
+        <h2>Reservation & Feedback Form</h2>
+        <!--Form -->
+        <form action="submit_handler.php" method="POST">
+            <!-- The form does not send anything yet -->
+
+            <fieldset>
+                <legend>Your Details and Preferences</legend>
+
+                <p>
+                    <label for="client_name">Full Name:</label>
+                    <input type="text" id="client_name" name="client_name" required placeholder="e.g. Kamza Asset">
+                </p>
+
+                <p>
+                    <label for="client_email">Email Address:</label>
+                    <input type="email" id="client_email" name="client_email" required placeholder="mail@example.com">
+                </p>
+
+                <p>
+                    <label for="client_phone">Phone Number:</label>
+                    <input type="tel" id="client_phone" name="client_phone" required placeholder="+7 778 000 00 00">
+                </p>
+
+                <p>
+                    <label for="guest_count">Number of Guests:</label>
+                    <input type="number" id="guest_count" name="guest_count" min="1" max="50">
+                </p>
+
+                <p>
+                    <label for="visit_date">Date of Visit:</label>
+                    <input type="date" id="visit_date" name="visit_date" required>
+                </p>
+
+                <p>Seating Preference:</p>
+                <!-- Группа Radio кнопок -->
+                <p>
+                    <input type="radio" id="seat_indoor" name="seating" value="indoor" checked>
+                    <label for="seat_indoor">Indoor Hall</label>
+
+                    <input type="radio" id="seat_terrace" name="seating" value="terrace">
+                    <label for="seat_terrace">Summer Terrace</label>
+                </p>
+
+                <p>
+                    <label for="visit_reason">Occasion:</label>
+                    <select id="visit_reason" name="visit_reason">
+                        <option value="casual">Casual Dining</option>
+                        <option value="birthday">Birthday Party</option>
+                        <option value="business">Business Meeting</option>
+                        <option value="date">Romantic Dinner</option>
+                    </select>
+                </p>
+
+                <p>
+                    <label for="client_message">Special Requests or Message:</label><br>
+                    <textarea id="client_message" name="client_message" rows="4" cols="40" placeholder="Let us know if you have any allergies..."></textarea>
+                </p>
+
+                <p>
+                    <input type="checkbox" id="newsletter" name="newsletter">
+                    <label for="newsletter">Subscribe to our monthly newsletter for discounts.</label>
+                </p>
+
+                <p>
+                    <button type="submit">Submit Request</button>
+                    <button type="reset">Reset Form</button>
+                </p>
+            </fieldset>
+        </form>
+    </section>
+</main>
+
+<footer>
+    <h2>Contact Info</h2>
+    <p>Address: Uly Dala street 45, Astana</p>
+    <p>Phone number: <a href="tel:+77784221100">+7 (778) 422-11-00</a></p>
+    <p>Email: <a href="mailto:info@meatpoint.kz">info@meatpoint.kz</a></p>
+    <p>&copy; 2026 Meat Point. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
