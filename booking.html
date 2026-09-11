@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Table booking at the halal restaurant Meat Point in Astana.">
+    <meta name="author" content="Tangzharyk">
+    <title>Table Booking | Meat Point</title>
+</head>
+<body>
+    <header>
+        <h1>Meat Point - Booking</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contacts.html">Contacts</a></li>
+                <li><a href="colophon.html">About the Site</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="booking.html">Booking</a></li>
+                <li><a href="feedback.html">Reviews</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <h2>Welcome to Meat Point</h2>
+            <p>Welcome to the booking page of the halal restaurant Meat Point in Astana. We are proud to offer our guests authentic Turkish cuisine prepared according to traditional recipes. Whether you are planning a business lunch, a romantic dinner, or a large family celebration, we have the perfect table for you. Our cozy interior and attentive staff will ensure your maximum comfort.</p>
+            
+            <p>Please carefully read our booking rules. <strong>We strongly recommend</strong> booking tables for the weekend at least a day in advance, as we have live music and the number of available seats is <em>strictly limited</em>.</p>
+        </section>
+
+        <section>
+            <h2>Booking Rules</h2>
+            <ol reversed>
+                <li>Confirmation of the reservation by a manager via phone.</li>
+                <li>Data processing.</li>
+                <li>Filling out the form below.</li>
+            </ol>
+
+            <ul>
+                <li>Conditions for large groups:
+                    <ul>
+                        <li>Deposit for groups of 10 or more people.</li>
+                        <li>Pre-order at least 24 hours in advance.</li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+
+        <!-- I use a div here to wrap the table because semantic tags like section or article do not fit the context, but a container is needed to logically separate the block. -->
+        <div>
+            <h2>Hall Information</h2>
+            <table>
+                <caption>Hall capacity and conditions</caption>
+                <thead>
+                    <tr>
+                        <th scope="col">Hall</th>
+                        <th scope="col">Capacity</th>
+                        <th scope="col">Deposit</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">Main</th>
+                        <td>80 people</td>
+                        <td>Not required</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">VIP Room</th>
+                        <td>15 people</td>
+                        <td>Required</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <section>
+            <h2>Application Form</h2>
+            <!-- This form doesn't send anything yet, as we don't have a backend and server to process requests. -->
+            <form action="#" method="POST">
+                <fieldset>
+                    <legend>Enter your details</legend>
+
+                    <label for="client-name">Your Name:</label>
+                    <input type="text" id="client-name" name="name" required placeholder="Enter your name">
+                    <br>
+
+                    <label for="client-email">Email Address:</label>
+                    <input type="email" id="client-email" name="email" required placeholder="example@mail.com">
+                    <br>
+
+                    <label for="client-phone">Phone:</label>
+                    <input type="tel" id="client-phone" name="phone" required placeholder="+7 778 422 11 00">
+                    <br>
+
+                    <label for="guest-count">Number of Guests:</label>
+                    <input type="number" id="guest-count" name="guests" min="1" max="50">
+                    <br>
+
+                    <label for="booking-date">Visit Date:</label>
+                    <input type="date" id="booking-date" name="date" required>
+                    <br>
+
+                    <p>Select Hall:</p>
+                    <input type="radio" id="hall-main" name="hall" value="main" checked>
+                    <label for="hall-main">Main Hall</label>
+                    <br>
+                    <input type="radio" id="hall-vip" name="hall" value="vip">
+                    <label for="hall-vip">VIP Hall</label>
+                    <br>
+
+                    <label for="special-requests">Special Requests:</label>
+                    <select id="special-requests" name="requests">
+                        <option value="none">None</option>
+                        <option value="window">Table by the window</option>
+                        <option value="music">Closer to live music</option>
+                    </select>
+                    <br>
+
+                    <input type="checkbox" id="terms" name="terms" required>
+                    <label for="terms">I agree to the restaurant's rules</label>
+                    <br>
+
+                    <label for="comments">Booking Comments:</label>
+                    <br>
+                    <textarea id="comments" name="comments" rows="4" placeholder="Write here..."></textarea>
+                    <br>
+
+                    <button type="submit">Book Now</button>
+                    <button type="reset">Clear Form</button>
+                </fieldset>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>Address: 45 Uly Dala Avenue, Astana.</p>
+        <p>&copy; 2026 Meat Point. All rights reserved.</p>
+    </footer>
+</body>
+</html>
