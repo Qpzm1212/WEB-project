@@ -8,6 +8,8 @@
     <title>Table Booking | Meat Point</title>
 </head>
 <body>
+<!-- Author: Tangzharyk -->
+
     <header>
         <h1>Meat Point - Booking</h1>
         <nav>
@@ -27,49 +29,54 @@
     <main>
         <section>
             <h2>Welcome to Meat Point</h2>
-            <p>Welcome to the booking page of the halal restaurant Meat Point in Astana. We are proud to offer our guests authentic Turkish cuisine prepared according to traditional recipes. Whether you are planning a business lunch, a romantic dinner, or a large family celebration, we have the perfect table for you. Our cozy interior and attentive staff will ensure your maximum comfort.</p>
+            <p>Welcome to the official booking page of the halal restaurant Meat Point in Astana. We are proud to offer our guests authentic Turkish cuisine prepared according to traditional family recipes. Whether you are planning a fast business lunch, a romantic evening, or a large family celebration, we have the perfect table for you. Our cozy interior and attentive staff will ensure your maximum comfort. As our chef always says, <q>Hospitality is the soul of every meal</q>.</p>
             
-            <p>Please carefully read our booking rules. <strong>We strongly recommend</strong> booking tables for the weekend at least a day in advance, as we have live music and the number of available seats is <em>strictly limited</em>.</p>
+            <p>Please carefully read our booking rules below. <mark>We strongly recommend</mark> booking tables for the weekend at least 24 hours in advance, as we host live acoustic music and the number of available seats is <em>strictly limited</em>. All our drinks are served with pure H<sub>2</sub>O filtered water for premium quality.</p>
         </section>
 
         <section>
-            <h2>Booking Rules</h2>
+            <h2>Booking Rules & Guidelines</h2>
             <ol reversed>
-                <li>Confirmation of the reservation by a manager via phone.</li>
-                <li>Data processing.</li>
-                <li>Filling out the form below.</li>
+                <li>Confirmation of the reservation by a manager via direct phone call.</li>
+                <li>System processing of your table preferences and guest details.</li>
+                <li>Filling out and submitting the online application form below.</li>
             </ol>
 
             <ul>
-                <li>Conditions for large groups:
+                <li>Conditions for large groups and banquets:
                     <ul>
-                        <li>Deposit for groups of 10 or more people.</li>
-                        <li>Pre-order at least 24 hours in advance.</li>
+                        <li>Advance deposit requirement for groups of 10 or more people.</li>
+                        <li>Dish pre-order must be placed at least 24 hours in advance.</li>
                     </ul>
                 </li>
             </ul>
+
+            <figure>
+                <img src="images/meathall.png" alt="Cozy dining area inside Meat Point restaurant in Astana">
+                <figcaption>Interior view of our main hall arranged for evening reservations</figcaption>
+            </figure>
         </section>
 
         <!-- I use a div here to wrap the table because semantic tags like section or article do not fit the context, but a container is needed to logically separate the block. -->
         <div>
             <h2>Hall Information</h2>
             <table>
-                <caption>Hall capacity and conditions</caption>
+                <caption>Hall capacity and deposit requirements</caption>
                 <thead>
                     <tr>
-                        <th scope="col">Hall</th>
+                        <th scope="col">Hall Type</th>
                         <th scope="col">Capacity</th>
                         <th scope="col">Deposit</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <th scope="row">Main</th>
+                        <th scope="row">Main Hall</th>
                         <td>80 people</td>
                         <td>Not required</td>
                     </tr>
                     <tr>
-                        <th scope="row">VIP Room</th>
+                        <th scope="row"><abbr title="Very Important Person">VIP</abbr> Room</th>
                         <td>15 people</td>
                         <td>Required</td>
                     </tr>
@@ -84,60 +91,74 @@
                 <fieldset>
                     <legend>Enter your details</legend>
 
-                    <label for="client-name">Your Name:</label>
-                    <input type="text" id="client-name" name="name" required placeholder="Enter your name">
-                    <br>
+                    <p>
+                        <label for="client-name">Your Name:</label>
+                        <input type="text" id="client-name" name="name" required placeholder="e.g. Tangzharyk Asset">
+                    </p>
 
-                    <label for="client-email">Email Address:</label>
-                    <input type="email" id="client-email" name="email" required placeholder="example@mail.com">
-                    <br>
+                    <p>
+                        <label for="client-email">Email Address:</label>
+                        <input type="email" id="client-email" name="email" required placeholder="example@mail.com">
+                    </p>
 
-                    <label for="client-phone">Phone:</label>
-                    <input type="tel" id="client-phone" name="phone" required placeholder="+7 778 422 11 00">
-                    <br>
+                    <p>
+                        <label for="client-phone">Phone Number:</label>
+                        <input type="tel" id="client-phone" name="phone" required placeholder="+7 778 422 11 00">
+                    </p>
 
-                    <label for="guest-count">Number of Guests:</label>
-                    <input type="number" id="guest-count" name="guests" min="1" max="50">
-                    <br>
+                    <p>
+                        <label for="guest-count">Number of Guests:</label>
+                        <input type="number" id="guest-count" name="guests" min="1" max="50" placeholder="2">
+                    </p>
 
-                    <label for="booking-date">Visit Date:</label>
-                    <input type="date" id="booking-date" name="date" required>
-                    <br>
+                    <p>
+                        <label for="booking-date">Visit Date:</label>
+                        <input type="date" id="booking-date" name="date" required>
+                    </p>
 
                     <p>Select Hall:</p>
-                    <input type="radio" id="hall-main" name="hall" value="main" checked>
-                    <label for="hall-main">Main Hall</label>
-                    <br>
-                    <input type="radio" id="hall-vip" name="hall" value="vip">
-                    <label for="hall-vip">VIP Hall</label>
-                    <br>
+                    <p>
+                        <input type="radio" id="hall-main" name="hall" value="main" checked>
+                        <label for="hall-main">Main Hall</label>
 
-                    <label for="special-requests">Special Requests:</label>
-                    <select id="special-requests" name="requests">
-                        <option value="none">None</option>
-                        <option value="window">Table by the window</option>
-                        <option value="music">Closer to live music</option>
-                    </select>
-                    <br>
+                        <input type="radio" id="hall-vip" name="hall" value="vip">
+                        <label for="hall-vip">VIP Hall</label>
+                    </p>
 
-                    <input type="checkbox" id="terms" name="terms" required>
-                    <label for="terms">I agree to the restaurant's rules</label>
-                    <br>
+                    <p>
+                        <label for="special-requests">Special Requests:</label>
+                        <select id="special-requests" name="requests">
+                            <option value="none">None</option>
+                            <option value="window">Table by the window</option>
+                            <option value="music">Closer to live music</option>
+                        </select>
+                    </p>
 
-                    <label for="comments">Booking Comments:</label>
-                    <br>
-                    <textarea id="comments" name="comments" rows="4" placeholder="Write here..."></textarea>
-                    <br>
+                    <p>
+                        <input type="checkbox" id="terms" name="terms" required>
+                        <!-- I used a span here because the restaurant name doesn't require semantic emphasis like strong or em, but needs a generic inline container for logical grouping. -->
+                        <label for="terms">I agree to the <span>Meat Point</span> booking rules</label>
+                    </p>
 
-                    <button type="submit">Book Now</button>
-                    <button type="reset">Clear Form</button>
+                    <p>
+                        <label for="comments">Booking Comments:</label><br>
+                        <textarea id="comments" name="comments" rows="4" cols="40" placeholder="Write any additional preferences here..."></textarea>
+                    </p>
+
+                    <p>
+                        <button type="submit">Book Now</button>
+                        <button type="reset">Clear Form</button>
+                    </p>
                 </fieldset>
             </form>
         </section>
     </main>
 
     <footer>
-        <p>Address: 45 Uly Dala Avenue, Astana.</p>
+        <h2>Contact Information</h2>
+        <p>Address: 45 Uly Dala Avenue, Astana</p>
+        <p>Phone number: <a href="tel:+77784221100">+7 (778) 422-11-00</a></p>
+        <p>Email: <a href="mailto:info@meatpoint.kz">info@meatpoint.kz</a></p>
         <p>&copy; 2026 Meat Point. All rights reserved.</p>
     </footer>
 </body>
