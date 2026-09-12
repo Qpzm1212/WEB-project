@@ -8,9 +8,10 @@
     <meta name="author" content="Madiyar Akylbek">
     <title>About Site Creation | Meat Point</title>
 </head>
-<!-- Author: Madiyar Akylbek -->
 
 <body>
+    <!-- Author: Madiyar Akylbek -->
+
     <header>
         <h1>Colophon: How We Built the Site</h1>
         <nav>
@@ -32,20 +33,20 @@
         <section>
             <h2>Technical Stack and Tools</h2>
             <p>The Meat Point Astana website was built as a collaborative university project by a team of three
-                students. We focused strictly on semantic HTML without the use of Cascading Style Sheets (CSS) or
-                JavaScript (JS). This approach ensures the content is natively accessible, lightweight, and
-                well-structured for screen readers and search engines.</p>
-            <p>During the development process, we utilized Git for version control. When running the local development
-                environment or checking files, you might need to use specific terminal commands. For example, to test
-                the project locally, you would typically type <kbd>python -m http.server</kbd> or <kbd>npm start</kbd>
-                in your command-line interface.</p>
+                students. We focused strictly on semantic <abbr title="HyperText Markup Language">HTML5</abbr> without
+                using <mark>Cascading Style Sheets</mark> (CSS) or JavaScript (JS). As stated in <cite>Web Standards
+                    Guide</cite>, <q>Clean structure precedes layout</q>. This approach ensures our code remains
+                lightweight and natively accessible for screen readers.</p>
+
+            <p>During development, we utilized Git for version control. To run the local development server on port
+                8000, you can type <kbd>python -m http.server</kbd> in your terminal interface. All our markup uses
+                standard <small>UTF-8</small> encoding and pure H<sub>2</sub>O logical structures.</p>
         </section>
 
-        <section>
+        <!-- I use a div here because I need a generic container to group the code example and output snippet without creating a new content section -->
+        <div>
             <h2>Code Examples and Validation</h2>
-            <p>Throughout the project, we used standard HTML5 tags. A common block of code used across all pages is the
-                main navigation structure. Here is a raw example of how we implemented the semantic navigation markup:
-            </p>
+            <p>A common block of code across all pages is the navigation bar. Below is a raw code snippet:</p>
 
             <pre><code>
 &lt;nav&gt;
@@ -56,22 +57,26 @@
 &lt;/nav&gt;
             </code></pre>
 
-            <p>We rigorously tested our pages using the W3C Validator to achieve zero errors. If you make a mistake, the
-                validator system might output an error message. A typical error output looks like this: <samp>Error:
-                    Stray end tag nav.</samp> Catching these errors early helped us maintain high code quality.</p>
-            <p>We also paid special attention to HTML entities. For instance, we used the less-than sign (&lt;) and
-                greater-than sign (&gt;) to display code snippets, along with the ampersand (&amp;) and the copyright
-                symbol (&copy;) in our footer section.</p>
-        </section>
+            <p>We tested all pages using the W3C Validator to guarantee 0 errors. A typical error output during testing
+                looked like this: <samp>Error: Stray end tag nav.</samp> We also used entities like &amp;lt;, &amp;gt;,
+                &amp;amp;, and &copy; throughout the project.</p>
+        </div>
 
+        <figure>
+            <img src="images/meatpoint-interior.jpg"
+                alt="Team members working on the HTML layout structure for Meat Point project">
+            <figcaption>Layout design and structural planning phase of the project</figcaption>
+        </figure>
         <!-- I am using an article tag here because the learning experience is a self-contained piece of content that could theoretically be read independently as a blog post. -->
         <article>
             <h2>Our Development Experience</h2>
-            <p>Building this restaurant website taught us how to collaborate effectively using Git branches and commits.
-                Resolving merge conflicts and ensuring everyone made their required commits on different days was a
-                practical challenge. By sticking strictly to semantic elements instead of generic containers, we learned
-                how the browser natively renders different elements. Working as a team of three required clear
-                communication to divide the eight pages and ensure all checklist requirements were met.</p>
+            <p>Building this restaurant platform taught us how to collaborate effectively using Git branches and daily
+                commits. Resolving merge conflicts was a practical challenge. By sticking strictly to semantic elements,
+                <strong>Madiyar Akylbek</strong> and the
+                <!-- I used a span here to highlight the brand name specifically for potential styling -->
+                <span>Meat Point</span> team learned how browsers render raw markup natively. Working in a team of three
+                required clear communication to divide the eight pages and satisfy all checklist items.
+            </p>
         </article>
     </main>
 
