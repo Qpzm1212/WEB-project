@@ -29,16 +29,16 @@
 <main>
     <article>
         <h2>Get in Touch with Us</h2>
-        <p>Getting in touch with Meat Point Astana is incredibly easy and convenient for all our beloved guests. Whether you want to ask a question about our menu, clarify the availability of our summer terrace, or simply leave your <i>valuable feedback</i>, we are always here to help. You can use the form below to submit a reservation request or send us a direct message. Our administration team checks the inbox regularly and strives to reply to every inquiry as quickly as possible.</p>
+        <p>Getting in touch with <span>Meat Point Astana </span> is incredibly easy and convenient for all our beloved guests. Whether you want to ask a question about our menu, clarify the availability of our summer terrace, or simply leave your <em>valuable feedback</em>, we are always here to help. You can use the form below to submit a reservation request or send us a direct message. Our administration team checks the inbox regularly and strives to reply to every inquiry as quickly as possible.</p>
 
-        <p>If you are planning to visit us in person, finding our building is very straightforward. We are located in the modern <b>EXPO district</b>. Please refer to the table below for our exact working hours, although we proudly operate <mark>around the clock</mark>. Your comfort is our top priority! Please note that during the weekends, the tables are booked very fast, so it is <em>highly recommended</em> to reserve your spot in advance.</p>
+        <p>If you are planning to visit us in person, finding our building is very straightforward. We are located in the modern <strong>EXPO district</strong>. Please refer to the table below for our exact working hours, although we proudly operate <mark>around the clock</mark>. Your comfort is our top priority! Please note that during the weekends, the tables are booked very fast, so it is <em>highly recommended</em> to reserve your spot in advance.</p>
         <p><small>Note: Special conditions apply for booking large corporate banquets and birthdays.</small></p>
     </article>
 
     <section id="hours-and-location">
         <h2>Working Hours & Location</h2>
 
-        <!-- tABLE -->
+        <!-- A table was used instead of a list, since the operating schedule and kitchen status are tabular data for comparison by rows and columns -->
         <table>
             <caption>Meat Point Official Schedule</caption>
             <thead>
@@ -61,8 +61,11 @@
             </tr>
             </tbody>
         </table>
+        <!-- A div is used to group the route list and the map into a single visual block — a separate section/article is redundant here; this is a subsection of an already existing section -->
 
+        <div>
         <h3>How to Reach Us</h3>
+            
 
         <ul>
             <li>By Public Transport:
@@ -78,11 +81,12 @@
             <img src="images/meatloc.png" alt="Map showing the location of Meat Point restaurant on Uly Dala Avenue in Astana">
             <figcaption>Our location on Uly Dala Avenue</figcaption>
         </figure>
+        </div>
     </section>
 
     <section id="reservation">
-        <h2>Reservation & Feedback Form</h2>
-        <!--Form -->
+       <h2>Reservation &amp; Feedback Form</h2>
+       <!-- A form was used instead of a mailto link, as the booking requires structured, verifiable fields, not free‑form email text. -->
         <form action="submit_handler.php" method="POST">
             <!-- The form does not send anything yet -->
 
@@ -115,7 +119,7 @@
                 </p>
 
                 <p>Seating Preference:</p>
-                <!-- Группа Radio кнопок -->
+               <!-- Radio buttons are used because the seating arrangement option is the only choice among the options, unlike checkboxes -->
                 <p>
                     <input type="radio" id="seat_indoor" name="seating" value="indoor" checked>
                     <label for="seat_indoor">Indoor Hall</label>
