@@ -28,12 +28,7 @@
     </header>
 
     <main>
-        <nav>
-            <p>Jump to section: <a href="#intro-menu">Cuisine Introduction</a> | <a href="#menu-table">Dish Prices</a>
-            </p>
-        </nav>
-
-        <article id="intro-menu">
+        <section>
             <h2>Authentic Turkish Cuisine</h2>
             <p>Welcome to the culinary heart of Meat Point Astana. Our menu is carefully crafted to bring you the
                 authentic taste of Turkish cuisine, right here in the capital. We pride ourselves on using only the
@@ -47,31 +42,23 @@
                 favorite dish. We constantly update our seasonal offerings, so be sure to ask our friendly staff about
                 the chef's daily specials when you visit.</p>
 
+            <!-- I removed the percentage-based width attribute because the HTML width attribute only accepts a pixel integer, not a percentage; without CSS, plain stacked images validate correctly -->
             <figure>
-                <!-- Using percentage width inline to align images horizontally without CSS, as external styling is prohibited by project rules. -->
-                <img src="images/menu1.jpg" alt="Delicious Adana Kebab served on a wooden board" width="32%">
-                <img src="images/menu2.jpg" alt="Juicy Chicken Shish skewered and grilled" width="32%">
-                <img src="images/menu3.jpg" alt="Traditional Turkish Pide with melted cheese" width="32%">
+                <img src="images/menu1.jpg" alt="Delicious Adana Kebab">
+                <img src="images/menu2.jpg" alt="Juicy Chicken Shish">
+                <img src="images/menu3.jpg" alt="Traditional Turkish Pide">
                 <figcaption>Our signature Turkish dishes prepared on an open fire</figcaption>
             </figure>
+        </section>
 
-            <h3>Dietary Information</h3>
-            <dl>
-                <dt>Halal</dt>
-                <dd>All our meat is 100% certified Halal according to local standards.</dd>
-                <dt>Vegetarian</dt>
-                <dd>Dishes marked with a leaf symbol contain no meat ingredients.</dd>
-            </dl>
-        </article>
-
-        <div id="menu-table">
-            <!-- I used a generic div here to wrap the heading and table because sectioning content like <section> implies a distinct thematic grouping that alters the document outline, whereas this is merely a structural layout container. -->
-            <h2>Main Dishes &amp; Prices</h2>
+        <!-- Wrapped in a div because there is no specific semantic tag for a table container. -->
+        <div>
+            <h2>Main Dishes & Prices</h2>
             <table>
-                <caption>Our Signature Dishes and Prices</caption>
+                <caption>Our Signature Dishes and Prices (in KZT)</caption>
                 <thead>
                     <tr>
-                        <!-- Explicitly defining scope="col" provides critical structural context for screen reader software to associate data cells with the correct column header for visually impaired users. -->
+                        <!-- Added scope="col" to define column headers for screen readers. -->
                         <th scope="col">Category</th>
                         <th scope="col">Dish Name</th>
                         <th scope="col">Description</th>
@@ -80,32 +67,48 @@
                 </thead>
                 <tbody>
                     <tr>
+                        <!-- Added scope="row" to define the row header. -->
                         <th scope="row">Kebabs</th>
                         <td>Adana Kebab</td>
                         <td>Spicy minced meat grilled on a skewer, served with bulgur.</td>
-                        <td>4500 &#8376;</td>
+                        <td>4500</td>
                     </tr>
                     <tr>
                         <th scope="row">Kebabs</th>
                         <td>Chicken Shish</td>
                         <td>Tender marinated chicken breast cubes, grilled to perfection.</td>
-                        <td>3800 &#8376;</td>
+                        <td>3800</td>
                     </tr>
                     <tr>
                         <th scope="row">Pide (Turkish Pizza)</th>
                         <td>Kasarli Pide</td>
                         <td>Traditional boat-shaped flatbread baked with melted cheese.</td>
-                        <td>3200 &#8376;</td>
+                        <td>3200</td>
                     </tr>
                     <tr>
                         <th scope="row">Steaks</th>
                         <td>Beef Ribeye</td>
                         <td>Premium local beef, aged for 21 days and fire-grilled.</td>
-                        <td>8500 &#8376;</td>
+                        <td>8500</td>
                     </tr>
                 </tbody>
             </table>
         </div>
+
+        <!-- I used a section here because the spice guide is a distinct, self-contained topic separate from the price table above -->
+        <section id="spice-guide">
+            <h2>Spice Level Guide</h2>
+            <p>Every dish at <span>Meat Point</span> can be adjusted to taste &mdash; just tell your waiter the code, for example <code>SPC-2</code> for medium.</p>
+
+            <dl>
+                <dt>Mild</dt>
+                <dd>Little to no chili, good for children.</dd>
+                <dt>Medium</dt>
+                <dd>A balanced pepper kick for most guests.</dd>
+                <dt>Hot</dt>
+                <dd>Extra chili for those who love real &quot;fire&quot;.</dd>
+            </dl>
+        </section>
     </main>
 
     <footer>
