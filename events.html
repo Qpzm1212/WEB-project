@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Register for live music events and weekend specials at Meat Point Astana.">
+    <meta name="author" content="Madiyar Akylbek">
+    <title>Events & Live Music | Meat Point</title>
+</head>
+
+<body>
+    <!-- Author: Madiyar Akylbek -->
+    <header>
+        <h1>Events & Live Music</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contacts.html">Contact</a></li>
+                <li><a href="colophon.html">About site</a></li>
+                <li><a href="menu.html">Dish menu</a></li>
+                <li><a href="events.html">Events list</a></li>
+                <li><a href="booking.html">Booking</a></li>
+                <li><a href="feedback.html">Reviews</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <h2>Weekend Entertainment</h2>
+            <figure>
+                <img src="images/event.jpg" alt="Live music band performing at Meat Point restaurant">
+                <figcaption>Live music atmosphere on weekends</figcaption>
+            </figure>
+
+            <p>Join us at Meat Point Astana for an unforgettable evening of live entertainment and exceptional dining.
+                Every weekend, our restaurant transforms into a vibrant venue featuring the best local musicians. We
+                offer a variety of performances:</p>
+
+            <ul>
+                <li>Friday Nights
+                    <ul>
+                        <li>Smooth Jazz</li>
+                        <li>Acoustic Pop</li>
+                    </ul>
+                </li>
+                <li>Saturday Nights
+                    <ul>
+                        <li>Traditional Turkish Tunes</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <p>Because these evenings are <strong>incredibly popular</strong> among our guests, tables fill up
+                <mark>quickly</mark>. We highly recommend registering in advance. Listen to what our guests have to say:
+            </p>
+
+            <blockquote>
+                "The live music on Saturday was absolutely fantastic! It perfectly complemented the delicious steaks and
+                created a magical atmosphere for our anniversary dinner." &mdash; Aibek S.
+            </blockquote>
+
+            <p>Check out our past event highlights on our <a href="https://www.instagram.com/sen_men_sat/"
+                    target="_blank" rel="noopener noreferrer">Official Instagram page</a>.</p>
+
+            <p>Don't miss the <span>Special Guest</span> performance this month!
+                <!-- I used a span here to allow potential isolation of the text "Special Guest" for targeted JavaScript analytics tracking in the future without changing the semantic meaning of the sentence. -->
+            </p>
+        </section>
+
+        <aside>
+            <!-- I wrapped this notice in an <aside> because the holiday schedule exception is tangential to the main registration flow and acts as a supplementary warning rather than core content. -->
+            <h3>Important Note</h3>
+            <p>The live music schedule is subject to change during national holidays. Please confirm your registration
+                with our manager.</p>
+        </aside>
+
+        <section>
+            <h2>Event Registration Form</h2>
+            <!-- The form currently does not send anything as we lack a backend server to process the POST request. -->
+            <form action="#" method="POST">
+                <!-- The fieldset is used here specifically to provide a large clickable hit area for assistive technologies to read the entire group of related inputs as a single conceptual form block. -->
+                <fieldset>
+                    <legend>Reserve Your Spot</legend>
+
+                    <label for="event-name">Full Name:</label>
+                    <input type="text" id="event-name" name="name" placeholder="Enter your full name" required>
+                    <br>
+
+                    <label for="event-email">Email Address:</label>
+                    <input type="email" id="event-email" name="email" placeholder="mail@example.com" required>
+                    <br>
+
+                    <label for="event-phone">Phone Number:</label>
+                    <input type="tel" id="event-phone" name="phone" placeholder="+7 700 000 0000" required>
+                    <br>
+
+                    <label for="event-guests">Number of Guests:</label>
+                    <input type="number" id="event-guests" name="guests" min="1" max="20" required>
+                    <br>
+
+                    <label for="event-book-date">Preferred Date:</label>
+                    <input type="date" id="event-book-date" name="book_date" required>
+                    <br>
+
+                    <p>Seating Preference:</p>
+                    <input type="radio" id="seat-stage" name="seating" value="stage" required>
+                    <label for="seat-stage">Near the Stage</label>
+                    <input type="radio" id="seat-far" name="seating" value="far">
+                    <label for="seat-far">Quiet Corner</label>
+                    <br>
+
+                    <label for="event-select">Select Event Type:</label>
+                    <select id="event-select" name="event_type" required>
+                        <option value="">--Choose an option--</option>
+                        <option value="friday">Smooth Jazz Friday</option>
+                        <option value="saturday">Turkish Tunes Saturday</option>
+                    </select>
+                    <br>
+
+                    <label for="event-requests">Special Requests:</label><br>
+                    <textarea id="event-requests" name="requests" rows="4"
+                        placeholder="Any allergies or celebrations?"></textarea>
+                    <br>
+
+                    <input type="checkbox" id="event-terms" name="terms" required>
+                    <label for="event-terms">I agree to the reservation rules and conditions</label>
+                    <br><br>
+
+                    <button type="submit">Register Now</button>
+                    <button type="reset">Clear Form</button>
+                </fieldset>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <h2>Contact Information</h2>
+        <p>Address: Uly Dala street 45, Astana</p>
+        <p>Phone number: <a href="tel:+77784221100">+7 (778) 422-11-00</a></p>
+        <p>Email: <a href="mailto:info@meatpoint.kz">info@meatpoint.kz</a></p>
+        <p>&copy; 2026 Meat Point. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>

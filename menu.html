@@ -28,7 +28,12 @@
     </header>
 
     <main>
-        <section>
+        <nav>
+            <p>Jump to section: <a href="#intro-menu">Cuisine Introduction</a> | <a href="#menu-table">Dish Prices</a>
+            </p>
+        </nav>
+
+        <article id="intro-menu">
             <h2>Authentic Turkish Cuisine</h2>
             <p>Welcome to the culinary heart of Meat Point Astana. Our menu is carefully crafted to bring you the
                 authentic taste of Turkish cuisine, right here in the capital. We pride ourselves on using only the
@@ -41,16 +46,32 @@
                 ensure that distinct, smoky flavor. Take a look at our detailed menu table below to find your next
                 favorite dish. We constantly update our seasonal offerings, so be sure to ask our friendly staff about
                 the chef's daily specials when you visit.</p>
-        </section>
 
-        <!-- Wrapped in a div because there is no specific semantic tag for a table container. -->
-        <div>
-            <h2>Main Dishes & Prices</h2>
+            <figure>
+                <!-- Using percentage width inline to align images horizontally without CSS, as external styling is prohibited by project rules. -->
+                <img src="images/menu1.jpg" alt="Delicious Adana Kebab served on a wooden board" width="32%">
+                <img src="images/menu2.jpg" alt="Juicy Chicken Shish skewered and grilled" width="32%">
+                <img src="images/menu3.jpg" alt="Traditional Turkish Pide with melted cheese" width="32%">
+                <figcaption>Our signature Turkish dishes prepared on an open fire</figcaption>
+            </figure>
+
+            <h3>Dietary Information</h3>
+            <dl>
+                <dt>Halal</dt>
+                <dd>All our meat is 100% certified Halal according to local standards.</dd>
+                <dt>Vegetarian</dt>
+                <dd>Dishes marked with a leaf symbol contain no meat ingredients.</dd>
+            </dl>
+        </article>
+
+        <div id="menu-table">
+            <!-- I used a generic div here to wrap the heading and table because sectioning content like <section> implies a distinct thematic grouping that alters the document outline, whereas this is merely a structural layout container. -->
+            <h2>Main Dishes &amp; Prices</h2>
             <table>
-                <caption>Our Signature Dishes and Prices (in KZT)</caption>
+                <caption>Our Signature Dishes and Prices</caption>
                 <thead>
                     <tr>
-                        <!-- Added scope="col" to define column headers for screen readers. -->
+                        <!-- Explicitly defining scope="col" provides critical structural context for screen reader software to associate data cells with the correct column header for visually impaired users. -->
                         <th scope="col">Category</th>
                         <th scope="col">Dish Name</th>
                         <th scope="col">Description</th>
@@ -59,29 +80,28 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <!-- Added scope="row" to define the row header. -->
                         <th scope="row">Kebabs</th>
                         <td>Adana Kebab</td>
                         <td>Spicy minced meat grilled on a skewer, served with bulgur.</td>
-                        <td>4500</td>
+                        <td>4500 &#8376;</td>
                     </tr>
                     <tr>
                         <th scope="row">Kebabs</th>
                         <td>Chicken Shish</td>
                         <td>Tender marinated chicken breast cubes, grilled to perfection.</td>
-                        <td>3800</td>
+                        <td>3800 &#8376;</td>
                     </tr>
                     <tr>
                         <th scope="row">Pide (Turkish Pizza)</th>
                         <td>Kasarli Pide</td>
                         <td>Traditional boat-shaped flatbread baked with melted cheese.</td>
-                        <td>3200</td>
+                        <td>3200 &#8376;</td>
                     </tr>
                     <tr>
                         <th scope="row">Steaks</th>
                         <td>Beef Ribeye</td>
                         <td>Premium local beef, aged for 21 days and fire-grilled.</td>
-                        <td>8500</td>
+                        <td>8500 &#8376;</td>
                     </tr>
                 </tbody>
             </table>

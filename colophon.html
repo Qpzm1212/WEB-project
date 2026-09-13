@@ -11,7 +11,6 @@
 
 <body>
     <!-- Author: Madiyar Akylbek -->
-
     <header>
         <h1>Colophon: How We Built the Site</h1>
         <nav>
@@ -29,54 +28,57 @@
     </header>
 
     <main>
-        <!-- I used a section here to group the technical details logically, separating them from the development experience below. -->
         <section>
             <h2>Technical Stack and Tools</h2>
+            <figure>
+                <img src="images/colophon-team.jpg" alt="Our team discussing the website structure and code">
+                <figcaption>Working on the project together</figcaption>
+            </figure>
             <p>The Meat Point Astana website was built as a collaborative university project by a team of three
-                students. We focused strictly on semantic <abbr title="HyperText Markup Language">HTML5</abbr> without
-                using <mark>Cascading Style Sheets</mark> (CSS) or JavaScript (JS). As stated in <cite>Web Standards
-                    Guide</cite>, <q>Clean structure precedes layout</q>. This approach ensures our code remains
-                lightweight and natively accessible for screen readers.</p>
+                students. We focused strictly on semantic HTML without the use of Cascading Style Sheets (CSS) or
+                JavaScript (JS). This approach ensures the content is natively accessible, lightweight, and
+                well-structured for screen readers and search engines.</p>
+            <p>During the development process, we utilized Git for version control. When running the local development
+                environment or checking files, you might need to use specific terminal commands. For example, to test
+                the project locally, you would typically type <kbd>python -m http.server</kbd> or <kbd>npm start</kbd>
+                in your command-line interface.</p>
 
-            <p>During development, we utilized Git for version control. To run the local development server on port
-                8000, you can type <kbd>python -m http.server</kbd> in your terminal interface. All our markup uses
-                standard <small>UTF-8</small> encoding and pure H<sub>2</sub>O logical structures.</p>
+            <h3>Development Milestones</h3>
+            <ol reversed>
+                <li>Final Quality Assurance and deployment.</li>
+                <li>Form implementation and cross-page testing.</li>
+                <li>Semantic markup of all written content.</li>
+                <li>Initial GitHub repository setup.</li>
+            </ol>
         </section>
 
-        <!-- I use a div here because I need a generic container to group the code example and output snippet without creating a new content section -->
-        <div>
+        <section>
             <h2>Code Examples and Validation</h2>
-            <p>A common block of code across all pages is the navigation bar. Below is a raw code snippet:</p>
+            <p>Throughout the project, we used standard HTML5 tags. A common block of code used across all pages is the
+                main navigation structure. Here is a raw example of how we implemented the semantic navigation markup:
+            </p>
 
             <pre><code>
 &lt;nav&gt;
     &lt;ul&gt;
-        &lt;li&gt;&lt;a href="index.html"&gt;Home&lt;/a&gt;&lt;/li&gt;
-        &lt;li&gt;&lt;a href="about.html"&gt;About&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;index.html&quot;&gt;Home&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
 &lt;/nav&gt;
             </code></pre>
 
-            <p>We tested all pages using the W3C Validator to guarantee 0 errors. A typical error output during testing
-                looked like this: <samp>Error: Stray end tag nav.</samp> We also used entities like &amp;lt;, &amp;gt;,
-                &amp;amp;, and &copy; throughout the project.</p>
-        </div>
+            <p>We rigorously tested our pages using the W3C Validator to achieve zero errors. If you make a mistake, the
+                validator system might output an error message. A typical error output looks like this: <samp>Error:
+                    Stray end tag nav.</samp> Catching these errors early helped us maintain high code quality.</p>
+        </section>
 
-        <figure>
-            <img src="images/meatpoint-interior.jpg"
-                alt="Team members working on the HTML layout structure for Meat Point project">
-            <figcaption>Layout design and structural planning phase of the project</figcaption>
-        </figure>
-        <!-- I am using an article tag here because the learning experience is a self-contained piece of content that could theoretically be read independently as a blog post. -->
+        <!-- I selected the article tag here instead of a generic section because this personal team reflection forms an independent narrative that could theoretically be syndicated or removed without breaking the flow of the technical documentation. -->
         <article>
             <h2>Our Development Experience</h2>
-            <p>Building this restaurant platform taught us how to collaborate effectively using Git branches and daily
-                commits. Resolving merge conflicts was a practical challenge. By sticking strictly to semantic elements,
-                <strong>Madiyar Akylbek</strong> and the
-                <!-- I used a span here to highlight the brand name specifically for potential styling -->
-                <span>Meat Point</span> team learned how browsers render raw markup natively. Working in a team of three
-                required clear communication to divide the eight pages and satisfy all checklist items.
-            </p>
+            <p>Building this restaurant website taught us how to collaborate effectively using Git branches and commits.
+                Resolving merge conflicts and ensuring everyone made their required commits on different days was a
+                practical challenge. By sticking strictly to semantic elements instead of generic containers, we learned
+                how the browser natively renders different elements. Working as a team of three required clear
+                communication to divide the eight pages and ensure all checklist requirements were met.</p>
         </article>
     </main>
 
