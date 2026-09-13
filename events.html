@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Register for live music events and weekend specials at Meat Point Astana.">
+    <meta name="author" content="Madiyar Akylbek">
+    <title>Events & Live Music | Meat Point</title>
+</head>
+
+<body>
+    <!-- Author: Madiyar Akylbek -->
+    <header>
+        <h1>Events & Live Music</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contacts.html">Contact</a></li>
+                <li><a href="colophon.html">About site</a></li>
+                <li><a href="menu.html">Dish menu</a></li>
+                <li><a href="events.html">Events list</a></li>
+                <li><a href="booking.html">Booking</a></li>
+                <li><a href="feedback.html">Reviews</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <h2>Weekend Entertainment</h2>
+            <p>Join us at Meat Point Astana for an unforgettable evening of live entertainment and exceptional dining.
+                Every weekend, our restaurant transforms into a vibrant venue featuring the best local musicians and
+                special guest performances. Whether you are looking to unwind after a long week with smooth jazz or
+                celebrate a special occasion with upbeat traditional Turkish tunes, our events are designed to create
+                lasting memories.</p>
+            <p>Our live music nights run every Friday and Saturday from 8:00 PM to 11:00 PM. Because these evenings are
+                incredibly popular among our guests, tables fill up quickly. We highly recommend registering in advance
+                to secure your spot. Enjoy our signature halal steaks and kebabs while listening to fantastic live
+                music. Please note that special conditions may apply for large groups, and a small deposit might be
+                required to hold your reservation on busy nights. Fill out the registration form below to book your
+                attendance for our upcoming weekend events. We look forward to welcoming you!</p>
+        </section>
+
+        <aside>
+            <!-- Used <aside> for related info. -->
+            <h3>Important Note</h3>
+            <p>The live music schedule is subject to change during national holidays. Please confirm your registration
+                with our manager.</p>
+        </aside>
+
+        <section>
+            <h2>Event Registration Form</h2>
+            <!-- The form currently does not send anything as there is no backend. -->
+            <form action="#" method="POST">
+                <!-- Grouped inputs to connect registration data. -->
+                <fieldset>
+                    <legend>Reserve Your Spot</legend>
+
+                    <label for="event-name">Full Name:</label>
+                    <input type="text" id="event-name" name="name" placeholder="Enter your full name" required>
+                    <br>
+
+                    <label for="event-email">Email Address:</label>
+                    <input type="email" id="event-email" name="email" placeholder="mail@example.com" required>
+                    <br>
+
+                    <label for="event-select">Select Event Date:</label>
+                    <select id="event-select" name="event_date" required>
+                        <option value="">--Please choose an option--</option>
+                        <option value="friday">This Friday - Smooth Jazz</option>
+                        <option value="saturday">This Saturday - Turkish Tunes</option>
+                    </select>
+                    <br>
+
+                    <input type="checkbox" id="event-terms" name="terms" required>
+                    <label for="event-terms">I agree to the reservation rules and conditions</label>
+                    <br><br>
+
+                    <button type="submit">Register Now</button>
+                    <button type="reset">Clear Form</button>
+                </fieldset>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <h2>Contact Information</h2>
+        <p>Address: Uly Dala street 45, Astana</p>
+        <p>Phone number: <a href="tel:+77784221100">+7 (778) 422-11-00</a></p>
+        <p>Email: <a href="mailto:info@meatpoint.kz">info@meatpoint.kz</a></p>
+        <p>&copy; 2026 Meat Point. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>
