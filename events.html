@@ -34,21 +34,44 @@
                 <img src="images/event.jpg" alt="Live music band performing at Meat Point restaurant">
                 <figcaption>Live music atmosphere on weekends</figcaption>
             </figure>
+
             <p>Join us at Meat Point Astana for an unforgettable evening of live entertainment and exceptional dining.
-                Every weekend, our restaurant transforms into a vibrant venue featuring the best local musicians and
-                special guest performances. Whether you are looking to unwind after a long week with smooth jazz or
-                celebrate a special occasion with upbeat traditional Turkish tunes, our events are designed to create
-                lasting memories.</p>
-            <p>Our live music nights run every Friday and Saturday from 8:00 PM to 11:00 PM. Because these evenings are
-                incredibly popular among our guests, tables fill up quickly. We highly recommend registering in advance
-                to secure your spot. Enjoy our signature halal steaks and kebabs while listening to fantastic live
-                music. Please note that special conditions may apply for large groups, and a small deposit might be
-                required to hold your reservation on busy nights. Fill out the registration form below to book your
-                attendance for our upcoming weekend events. We look forward to welcoming you!</p>
+                Every weekend, our restaurant transforms into a vibrant venue featuring the best local musicians. We
+                offer a variety of performances:</p>
+
+            <ul>
+                <li>Friday Nights
+                    <ul>
+                        <li>Smooth Jazz</li>
+                        <li>Acoustic Pop</li>
+                    </ul>
+                </li>
+                <li>Saturday Nights
+                    <ul>
+                        <li>Traditional Turkish Tunes</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <p>Because these evenings are <strong>incredibly popular</strong> among our guests, tables fill up
+                <mark>quickly</mark>. We highly recommend registering in advance. Listen to what our guests have to say:
+            </p>
+
+            <blockquote>
+                "The live music on Saturday was absolutely fantastic! It perfectly complemented the delicious steaks and
+                created a magical atmosphere for our anniversary dinner." &mdash; Aibek S.
+            </blockquote>
+
+            <p>Check out our past event highlights on our <a href="https://www.instagram.com/sen_men_sat/"
+                    target="_blank" rel="noopener noreferrer">Official Instagram page</a>.</p>
+
+            <p>Don't miss the <span>Special Guest</span> performance this month!
+                <!-- I used a span here to allow potential isolation of the text "Special Guest" for targeted JavaScript analytics tracking in the future without changing the semantic meaning of the sentence. -->
+            </p>
         </section>
 
         <aside>
-            <!-- Used <aside> for related info. -->
+            <!-- I wrapped this notice in an <aside> because the holiday schedule exception is tangential to the main registration flow and acts as a supplementary warning rather than core content. -->
             <h3>Important Note</h3>
             <p>The live music schedule is subject to change during national holidays. Please confirm your registration
                 with our manager.</p>
@@ -56,9 +79,9 @@
 
         <section>
             <h2>Event Registration Form</h2>
-            <!-- The form currently does not send anything as there is no backend. -->
+            <!-- The form currently does not send anything as we lack a backend server to process the POST request. -->
             <form action="#" method="POST">
-                <!-- Grouped inputs to connect registration data. -->
+                <!-- The fieldset is used here specifically to provide a large clickable hit area for assistive technologies to read the entire group of related inputs as a single conceptual form block. -->
                 <fieldset>
                     <legend>Reserve Your Spot</legend>
 
@@ -70,12 +93,36 @@
                     <input type="email" id="event-email" name="email" placeholder="mail@example.com" required>
                     <br>
 
-                    <label for="event-select">Select Event Date:</label>
-                    <select id="event-select" name="event_date" required>
-                        <option value="">--Please choose an option--</option>
-                        <option value="friday">This Friday - Smooth Jazz</option>
-                        <option value="saturday">This Saturday - Turkish Tunes</option>
+                    <label for="event-phone">Phone Number:</label>
+                    <input type="tel" id="event-phone" name="phone" placeholder="+7 700 000 0000" required>
+                    <br>
+
+                    <label for="event-guests">Number of Guests:</label>
+                    <input type="number" id="event-guests" name="guests" min="1" max="20" required>
+                    <br>
+
+                    <label for="event-book-date">Preferred Date:</label>
+                    <input type="date" id="event-book-date" name="book_date" required>
+                    <br>
+
+                    <p>Seating Preference:</p>
+                    <input type="radio" id="seat-stage" name="seating" value="stage" required>
+                    <label for="seat-stage">Near the Stage</label>
+                    <input type="radio" id="seat-far" name="seating" value="far">
+                    <label for="seat-far">Quiet Corner</label>
+                    <br>
+
+                    <label for="event-select">Select Event Type:</label>
+                    <select id="event-select" name="event_type" required>
+                        <option value="">--Choose an option--</option>
+                        <option value="friday">Smooth Jazz Friday</option>
+                        <option value="saturday">Turkish Tunes Saturday</option>
                     </select>
+                    <br>
+
+                    <label for="event-requests">Special Requests:</label><br>
+                    <textarea id="event-requests" name="requests" rows="4"
+                        placeholder="Any allergies or celebrations?"></textarea>
                     <br>
 
                     <input type="checkbox" id="event-terms" name="terms" required>
