@@ -9,16 +9,18 @@
   <meta name="author" content="Kamza Asset">
 
   <title>Main | Meat Point Restaurant</title>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/zongs.css">
 </head>
 
 <body>
   <!-- Author: Kamza Asset -->
 
-  <header>
+  <header class="site-header">
     <h1>Meat Point Astana</h1>
     <!-- I used the nav here because main navigation provides site-wide access to all main pages -->
-    <nav>
-      <ul>
+    <nav class="main-nav">
+      <ul class="nav-list">
         <li><a href="index.html">Home</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="contacts.html">Contact</a></li>
@@ -31,9 +33,9 @@
     </nav>
   </header>
 
-  <main>
-    <article>
-      <h2>Welcome to Meat Point Astana</h2>
+  <main class="main-content">
+    <article class="hero-section" id="home-hero">
+      <h2 class="section-title">Welcome to Meat Point Astana</h2>
       <p>
         <!-- I used a span here to target the brand name specifically for potential inline styling -->
         <span>Meat Point</span> is a cozy Turkish restaurant in Astana, located at 45 Uly Dala Avenue, near the
@@ -55,9 +57,10 @@
       <p><small>Note: Delivery and takeout options are available 24 hours a day across Astana.</small></p>
     </article>
 
-    <section id="atmosphere">
+    <!-- ID #atmosphere is appropriate here because it uniquely identifies this specific section for anchor linking and targeted styling on this page -->
+    <section id="atmosphere" class="atmosphere-section">
       <h2>Atmosphere</h2>
-      <figure>
+      <figure class="gallery-figure">
         <img src="images/meatpointhall.png"
           alt="The cozy interior of the Meat Point restaurant features warm lighting and wooden tables." width="600"
           height="696" loading="lazy">
@@ -73,7 +76,7 @@
     <!-- I used a div here as a logical wrapper to isolate the supplemental callout box from the main article section -->
     <div>
       <!-- I put this in an aside because it contains complementary schedule information related to the page content -->
-      <aside>
+      <aside class="notice-aside">
         <h3>Quick Notice</h3>
         <p>We are open <strong>24/7</strong> and always ready to offer you <abbr title="Business Lunch">BL</abbr> menus
           on weekdays from 12:00 to 15:00.</p>
@@ -82,7 +85,7 @@
     </div>
   </main>
 
-  <footer>
+  <footer class="site-footer">
     <h2>Contact Us</h2>
     <p>Address: Uly Dala street 45, Astana</p>
     <p>Phone number: <a href="tel:+77784221100">+7 (778) 422-11-00</a></p>
