@@ -6,14 +6,22 @@
     <meta name="description" content="Learn about the history, values, and the team behind Meat Point Astana restaurant.">
     <meta name="author" content="Kamza Asset">
     <title>About Us | Meat Point Restaurant</title>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/zongs.css">
+  <style>
+    /* Demonstration of cascade: this internal rule overrides external CSS due to source order if placed after, but here it's before external css? Wait, I should place it AFTER external CSS to override it, or BEFORE to be overridden. Let's place it after. */
+    .highlight-text {
+      color: darkred; /* Overrides base.css .highlight-text color */
+    }
+  </style>
 </head>
 <body>
 <!-- Author: Kamza Asset -->
 
-<header>
+<header class="site-header">
     <h1>About Meat Point</h1>
-    <nav>
-        <ul>
+    <nav class="main-nav">
+        <ul class="nav-list">
             <li><a href="index.html">Home</a></li>
             <li><a href="about.html">About</a></li>
             <li><a href="contacts.html">Contact</a></li>
@@ -26,27 +34,29 @@
     </nav>
 </header>
 
-<main>
-    <nav>
+<main class="main-content">
+    <nav class="page-nav">
         <p>Jump to: <a href="#history">Our History</a> | <a href="#values">Our Values</a></p>
     </nav>
 
-    <section id="history">
-        <h2>Our Story</h2>
-        <p>Welcome to the heart of Meat Point. The story of Meat Point began with the idea of creating a place in Astana where one could experience authentic Turkish cuisine in a cozy and welcoming atmosphere. The restaurant’s founders sought to combine traditional recipes, high‑quality products, and a modern approach to restaurant service so that every guest could feel the character of Turkish cuisine. Spanning over 400 m<sup>2</sup>, our establishment offers an unforgettable dining area.</p>
+    <!-- ID #history is appropriate here as there is only one history section on this page, and we use it as a fragment identifier for "Jump to" links -->
+    <section id="history" class="history-section">
+        <div class="history-badge">Since 2024</div>
+        <h2 class="section-title">Our Story</h2>
+        <p class="highlight-text" style="font-style: italic;">Welcome to the heart of Meat Point. The story of Meat Point began with the idea of creating a place in Astana where one could experience authentic Turkish cuisine in a cozy and welcoming atmosphere. The restaurant’s founders sought to combine traditional recipes, high‑quality products, and a modern approach to restaurant service so that every guest could feel the character of Turkish cuisine. Spanning over 400 m<sup>2</sup>, our establishment offers an unforgettable dining area. <!-- Inline style demonstrates cascade: overrides any external/internal font-style for this specific element --></p>
 
         <p>Our head chef always reminds our team, <q>True flavor is born from patience and fire</q>. This philosophy guides our daily work. We use premium local beef and lamb, but our secret ingredient lies in the spices, which are exclusively imported. Cleanliness is our priority; even our cooking water is double-filtered H<sub>2</sub>O to ensure the perfect taste of our traditional black tea.</p>
 
         <!-- I used a div here because I needed a generic container to group the image and company milestones together -->
-        <div>
-            <figure>
-                <img src="images/meatpointout.png" alt="The outside view of Meat Point restaurant">
+        <div class="card-grid">
+            <figure class="gallery-figure">
+                <img src="images/meatpointout.png" alt="The outside view of Meat Point restaurant" class="float-image">
                 <figcaption>Exterior view of Meat Point Astana</figcaption>
             </figure>
 
-            <h3>Company Milestones</h3>
+            <h3 class="clear-float">Company Milestones</h3>
 
-            <ol reversed>
+            <ol reversed class="milestones-list">
                 <li><strong>2026:</strong> Opened our beautiful summer terrace.</li>
                 <li><strong>2025:</strong> Reached our ten thousandth guest.</li>
                 <li><strong>2024:</strong> Founded the restaurant.</li>
@@ -54,14 +64,15 @@
         </div>
     </section>
 
-    <section id="values">
-        <h2>Core Principles</h2>
+    <!-- ID #values is appropriate here for the same reason: uniquely identifying the core principles section for navigation and styling -->
+    <section id="values" class="values-section">
+        <h2 class="section-title">Core Principles</h2>
         <p>Our core principles remain unchanged since day one:</p>
 
-        <dl>
-            <dt>Quality</dt>
+        <dl class="values-list">
+            <dt class="value-term">Quality</dt>
             <dd>Only the freshest ingredients are allowed in our kitchen.</dd>
-            <dt>Hospitality</dt>
+            <dt class="value-term">Hospitality</dt>
             <dd>Treating every visitor like a dear family member.</dd>
         </dl>
 
@@ -71,7 +82,9 @@
     </section>
 </main>
 
-<footer>
+<a href="#" class="scroll-to-top">Top</a>
+
+<footer class="site-footer">
     <h2>Contact us</h2>
     <p>Address: Uly Dala street 45, Astana</p>
     <p>Phone number: <a href="tel:+77784221100">+7 (778) 422-11-00</a></p>
