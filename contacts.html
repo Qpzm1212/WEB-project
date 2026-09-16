@@ -18,7 +18,8 @@
         <ul class="nav-list">
             <li><a href="index.html">Home</a></li>
             <li><a href="about.html">About</a></li>
-            <li><a href="contacts.html">Contact</a></li>
+            <!-- class="active" marks the current page; triggers .main-nav a.active !important rule -->
+            <li><a href="contacts.html" class="active">Contact</a></li>
             <li><a href="colophon.html">About site</a></li>
             <li><a href="menu.html">Dish menu</a></li>
             <li><a href="events.html">Events list</a></li>
@@ -66,9 +67,10 @@
             </tr>
             </tbody>
         </table>
-        <!-- A div is used to group the route list and the map into a single visual block — a separate section/article is redundant here; this is a subsection of an already existing section -->
-
-        <div>
+        <!-- .location-block applies a two-column Grid layout: transport list left,
+             map figure right. The div is justified: the Grid cannot be placed on
+             the semantic <ul> or <figure> directly without losing their roles. -->
+        <div class="location-block">
         <h3>How to Reach Us</h3>
             
 
@@ -89,10 +91,13 @@
         </div>
     </section>
 
+    <!-- ID #reservation is appropriate here: there is exactly one reservation form
+         on this page; the ID enables direct linking (e.g. contacts.html#reservation)
+         and scoped CSS targeting without affecting other pages. -->
     <section id="reservation" class="contact-form-section">
        <h2 class="section-title">Reservation &amp; Feedback Form</h2>
-       <!-- A form was used instead of a mailto link, as the booking requires structured, verifiable fields, not free‑form email text. -->
-        кк<form action="submit_handler.php" method="POST">
+       <!-- A form was used instead of a mailto link, as the booking requires structured, verifiable fields, not free-form email text. -->
+        <form action="submit_handler.php" method="POST">
             <!-- The form does not send anything yet -->
 
             <fieldset>

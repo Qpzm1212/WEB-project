@@ -9,9 +9,17 @@
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/kamza.css">
   <style>
-    /* Demonstration of cascade: this internal rule overrides external CSS due to source order if placed after, but here it's before external css? Wait, I should place it AFTER external CSS to override it, or BEFORE to be overridden. Let's place it after. */
+    /*
+      INTERNAL STYLE — CASCADE DEMONSTRATION:
+      This block is placed AFTER the external <link> tags, so it overrides
+      the kamza.css rule ".highlight-text { color: teal; }" (which itself
+      is the final winner among the external rules) due to later source order.
+      The inline style on the <p> element then overrides this internal rule
+      for the font-style property, because inline styles have the highest
+      specificity: (1, 0, 0, 0) vs. any stylesheet selector.
+    */
     .highlight-text {
-      color: darkred; /* Overrides base.css .highlight-text color */
+      color: darkred; /* Overrides teal from kamza.css — same specificity, later source */
     }
   </style>
 </head>
@@ -23,7 +31,8 @@
     <nav class="main-nav">
         <ul class="nav-list">
             <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
+            <!-- class="active" marks this page's link; triggers .main-nav a.active { !important } rule -->
+            <li><a href="about.html" class="active">About</a></li>
             <li><a href="contacts.html">Contact</a></li>
             <li><a href="colophon.html">About site</a></li>
             <li><a href="menu.html">Dish menu</a></li>
@@ -48,8 +57,13 @@
 
         <p class="clear-float">Our head chef always reminds our team, <q>True flavor is born from patience and fire</q>. This philosophy guides our daily work. We use premium local beef and lamb, but our secret ingredient lies in the spices, which are exclusively imported. Cleanliness is our priority; even our cooking water is double-filtered H<sub>2</sub>O to ensure the perfect taste of our traditional black tea.</p>
 
-        <!-- I used a div here because I needed a generic container to group the image and company milestones together -->
+        <!-- .card-grid has position:relative, making it the containing block
+             for the .centered-absolute-box below (Centering Technique 3) -->
         <div class="card-grid">
+            <!-- Centering Technique 3: absolute + transform. The span is removed
+                 from grid flow (position:absolute) and centred within .card-grid
+                 using top/left 50% offset + translate(-50%,-50%). -->
+            <span class="centered-absolute-box">✦ Est. 2024</span>
             <figure class="gallery-figure">
                 <img src="images/meatpointout.png" alt="The outside view of Meat Point restaurant">
                 <figcaption>Exterior view of Meat Point Astana</figcaption>
