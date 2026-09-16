@@ -12,10 +12,10 @@
 <body>
 <!-- Author: Kamza Asset -->
 
-<header>
+<header class="site-header">
     <h1>Contact Meat Point</h1>
-    <nav>
-        <ul>
+    <nav class="main-nav">
+        <ul class="nav-list">
             <li><a href="index.html">Home</a></li>
             <li><a href="about.html">About</a></li>
             <li><a href="contacts.html">Contact</a></li>
@@ -28,9 +28,10 @@
     </nav>
 </header>
 
-<main>
-    <article>
-        <h2>Get in Touch with Us</h2>
+<main class="main-content">
+    <article class="hero-section" id="contact-intro">
+        <!-- ID #contact-intro is appropriate here: uniquely identifies the introductory article on this page for anchor targeting and specific styling -->
+        <h2 class="section-title">Get in Touch with Us</h2>
         <!-- span was used to highlight the brand name — there is no semantic tag for this -->
         <p>Getting in touch with <span>Meat Point Astana </span> is incredibly easy and convenient for all our beloved guests. Whether you want to ask a question about our menu, clarify the availability of our summer terrace, or simply leave your <em>valuable feedback</em>, we are always here to help. You can use the form below to submit a reservation request or send us a direct message. Our administration team checks the inbox regularly and strives to reply to every inquiry as quickly as possible.</p>
 
@@ -38,8 +39,9 @@
         <p><small>Note: Special conditions apply for booking large corporate banquets and birthdays.</small></p>
     </article>
 
-    <section id="hours-and-location">
-        <h2>Working Hours &amp; Location</h2>
+    <!-- ID #hours-and-location is appropriate here: a unique section on the page targeted by in-page navigation -->
+    <section id="hours-and-location" class="schedule-section">
+        <h2 class="section-title">Working Hours &amp; Location</h2>
 
         <!-- A table was used instead of a list, since the operating schedule and kitchen status are tabular data for comparison by rows and columns -->
         <table>
@@ -87,8 +89,8 @@
         </div>
     </section>
 
-    <section id="reservation">
-       <h2>Reservation &amp; Feedback Form</h2>
+    <section id="reservation" class="contact-form-section">
+       <h2 class="section-title">Reservation &amp; Feedback Form</h2>
        <!-- A form was used instead of a mailto link, as the booking requires structured, verifiable fields, not free‑form email text. -->
         кк<form action="submit_handler.php" method="POST">
             <!-- The form does not send anything yet -->
@@ -160,7 +162,7 @@
     </section>
 </main>
 
-<footer>
+<footer class="site-footer">
     <h2>Contact Info</h2>
     <p>Address: Uly Dala street 45, Astana</p>
     <p>Phone number: <a href="tel:+77784221100">+7 (778) 422-11-00</a></p>
