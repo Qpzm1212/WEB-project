@@ -1,0 +1,98 @@
+/* 
+  Color Palette:
+  1. #2c3e50 (HEX) - Primary text color for high readability.
+  2. rgb(231, 76, 60) (RGB) - Accent color for highlights and important buttons.
+  3. rgba(236, 240, 241, 0.8) (RGBA) - Light background color with slight transparency for sections.
+  4. darkcyan (Named) - Secondary accent color for links to create visual interest.
+  5. #ffffff (HEX) - Pure white for card and header backgrounds.
+*/
+
+:root {
+  --text-primary: #2c3e50;
+  --accent: rgb(231, 76, 60);
+  --bg-light: rgba(236, 240, 241, 0.8);
+  --link-color: darkcyan;
+  --bg-white: #ffffff;
+  --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  --font-heading: 'Georgia', 'Times New Roman', Times, serif;
+}
+
+/* Universal box-sizing reset */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  /* Typography */
+  font-family: var(--font-main);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.6;
+  letter-spacing: 0.5px;
+  
+  color: var(--text-primary);
+  background-color: var(--bg-light); /* stays within the declared 5-color palette (was an undeclared #f9f9f9) */
+  
+  /* Box model */
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--accent);
+  /* 
+    Margin collapse demonstration:
+    The bottom margin of a heading might collapse with the top margin of the following paragraph.
+    For example, if h2 has margin-bottom: 20px and p has margin-top: 15px, the space between 
+    them will be 20px, not 35px.
+  */
+  margin-top: 1em;
+  margin-bottom: 0.5em;
+}
+
+.site-header {
+  background-color: var(--bg-white);
+  padding: 20px;
+  border-bottom: 3px solid var(--accent);
+  text-align: center; /* Alignment technique 1: text-align */
+}
+
+/* Flexbox for main navigation */
+.main-nav .nav-list {
+  display: flex;
+  flex-direction: row; /* explicitly defining direction */
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-link, .main-nav a {
+  text-decoration: none;
+  color: var(--link-color);
+  font-weight: bold;
+}
+
+.main-content {
+  padding: 20px;
+  max-width: 1200px;
+  /* Centering technique 1: margin auto */
+  /* This centers the main content block horizontally on the page */
+  margin: 0 auto; 
+}
+
+.site-footer {
+  background-color: var(--text-primary);
+  color: var(--bg-white);
+  text-align: center;
+  padding: 30px;
+  margin-top: 40px;
+}
+
+.site-footer a {
+  color: var(--bg-light);
+}
