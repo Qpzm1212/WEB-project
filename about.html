@@ -11,15 +11,20 @@
   <style>
     /*
       INTERNAL STYLE — CASCADE DEMONSTRATION:
-      This block is placed AFTER the external <link> tags, so it overrides
-      the kamza.css rule ".highlight-text { color: teal; }" (which itself
-      is the final winner among the external rules) due to later source order.
-      The inline style on the <p> element then overrides this internal rule
-      for the font-style property, because inline styles have the highest
-      specificity: (1, 0, 0, 0) vs. any stylesheet selector.
+      This selector is written with the SAME specificity (0, 1, 1, 4) as the
+      final winning rule in kamza.css:
+        body main section#history p.highlight-text { color: teal; }
+      Because specificity is tied, the cascade falls back to SOURCE ORDER —
+      and this <style> block is placed after the external <link> tags, so
+      this rule is the later one and wins, turning the text darkred instead
+      of teal. This is a clean demonstration of "equal specificity → last
+      one in source order wins".
+      The inline style on the <p> element (font-style: italic) then overrides
+      THIS rule's font-style property regardless of specificity, because
+      inline styles have the highest possible specificity: (1, 0, 0, 0).
     */
-    .highlight-text {
-      color: darkred; /* Overrides teal from kamza.css — same specificity, later source */
+    body main section#history p.highlight-text {
+      color: darkred; /* Wins over teal from kamza.css: equal specificity, later source order */
     }
   </style>
 </head>
