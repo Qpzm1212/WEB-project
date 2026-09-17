@@ -22,11 +22,14 @@
   box-sizing: border-box;
 }
 
+<<<<<<< HEAD
 img {
   max-width: 100%;
   height: auto;
 }
 
+=======
+>>>>>>> 6463569adca6a37177200f0529bee50984892d9c
 body {
   /* Typography */
   font-family: var(--font-main);
