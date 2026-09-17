@@ -9,20 +9,15 @@
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/kamza.css">
   <style>
-    /*
-      INTERNAL STYLE — CASCADE DEMONSTRATION:
-      This selector is written with the SAME specificity (0, 1, 1, 4) as the
-      final winning rule in kamza.css:
-        body main section#history p.highlight-text { color: teal; }
-      Because specificity is tied, the cascade falls back to SOURCE ORDER —
-      and this <style> block is placed after the external <link> tags, so
-      this rule is the later one and wins, turning the text darkred instead
-      of teal. This is a clean demonstration of "equal specificity → last
-      one in source order wins".
-      The inline style on the <p> element (font-style: italic) then overrides
-      THIS rule's font-style property regardless of specificity, because
-      inline styles have the highest possible specificity: (1, 0, 0, 0).
-    */
+      /*
+        INTERNAL STYLE & CASCADE DEMO:
+        This rule has the same specificity (0, 1, 1, 4) as the rule in kamza.css.
+        Because specificity is tied, SOURCE ORDER wins. This <style> block comes
+        after the <link> tags, so it applies the darkred color.
+
+        The inline style on the <p> element still overrides font-style,
+        as inline styles always have the highest specificity (1, 0, 0, 0).
+      */
     body main section#history p.highlight-text {
       color: darkred; /* Wins over teal from kamza.css: equal specificity, later source order */
     }
@@ -74,7 +69,7 @@
                 <figcaption>Exterior view of Meat Point Astana</figcaption>
             </figure>
 
-            <h3>Company Milestones</h3>
+            <h3 class="milestones-title">Company Milestones</h3>
 
             <ol reversed class="milestones-list">
                 <li><strong>2026:</strong> Opened our beautiful summer terrace.</li>
