@@ -1,11 +1,10 @@
-/* =========================================
+/* 
    Kamza Asset Personal Stylesheet (kamza.css)
-   ========================================= */
+   */
 
-/* =========================================
-   Task A: Specificity Conflict Demonstration
-   All rules target p.highlight-text in about.html
-   ========================================= */
+/* 
+   Task A
+    */
 
 /* Rule 1: Class selector only. Specificity: (0, 0, 1, 0) */
 .highlight-text {
@@ -46,9 +45,9 @@ body main section#history p.highlight-text {
   color: var(--accent) !important;
 }
 
-/* =========================================
-   Selectors Demonstration
-   ========================================= */
+/* 
+   Selectors
+    */
 
 /* Universal selector — resets browser default outline on all elements */
 * {
@@ -103,13 +102,13 @@ h2 + p {
   color: var(--accent);
 }
 
-/* =========================================
+/* 
    Grid Layout (.card-grid in about.html)
    Grid is used here instead of Flexbox because we need precise two-dimensional
    control: the figure must span multiple columns (grid-column: span 2), and
    items should align to fixed column tracks. Flexbox only controls one axis at
    a time and does not support item spanning across columns.
-   ========================================= */
+   */
 .card-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -122,9 +121,9 @@ h2 + p {
   grid-column: span 2; /* Spans 2 columns, demonstrating grid item spanning */
 }
 
-/* =========================================
+/* 
    Flexbox Layout (.values-list in about.html)
-   ========================================= */
+    */
 .values-list {
   display: flex;
   flex-wrap: wrap; /* Items wrap to next line when space runs out */
@@ -142,9 +141,9 @@ h2 + p {
   margin: 0;
 }
 
-/* =========================================
+/* 
    Positioning Demonstration
-   ========================================= */
+  = */
 
 /* position: static — the default. Explicitly declared here to show awareness.
    The aside does not need any offset and sits in normal document flow. */
@@ -188,9 +187,9 @@ h2 + p {
   font-weight: bold;
 }
 
-/* =========================================
+/* 
    Float and Clear
-   ========================================= */
+ */
 .float-image {
   float: left;
   margin-right: 20px;
@@ -206,9 +205,9 @@ h2 + p {
   clear: both;
 }
 
-/* =========================================
+/*
    Centering Techniques
-   ========================================= */
+   */
 
 /* Technique 1: margin: auto (in base.css on .main-content)
    Best for block-level elements with a known max-width. */
@@ -241,9 +240,9 @@ h2 + p {
   pointer-events: none; /* decorative only */
 }
 
-/* =========================================
+/* 
    Contacts page sections
-   ========================================= */
+ */
 
 /* Schedule table section — distinct background to visually separate
    the hours/location block from surrounding content */
@@ -273,9 +272,9 @@ h2 + p {
   margin-top: 30px;
 }
 
-/* =========================================
+/* 
    Callout and Location wrappers
-   ========================================= */
+  */
 
 /* Centering Technique 1 (second example): margin: auto applied directly to
    the semantic <aside> in index.html. No wrapper div is needed here — unlike
