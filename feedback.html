@@ -5,87 +5,217 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Guest reviews of the halal restaurant Meat Point in Astana.">
     <meta name="author" content="Tangzharyk">
+
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/tangzharyk.css">
+
+    <style>
+        /* Specificity experiment:
+           main p = (0-0-2)
+           .review-note = (0-1-0)
+           The class selector wins because it has higher specificity. */
+        main p {
+            letter-spacing: 0.5px;
+        }
+
+        .review-note {
+            letter-spacing: 1.2px;
+        }
+    </style>
+
     <title>Reviews | Meat Point</title>
 </head>
+
 <body>
+
 <!-- Author: Tangzharyk -->
 
-    <header>
-        <h1>Guest Reviews of Meat Point</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About Us</a></li>
-                <li><a href="contacts.html">Contacts</a></li>
-                <li><a href="colophon.html">About the Site</a></li>
-                <li><a href="menu.html">Menu</a></li>
-                <li><a href="events.html">Events</a></li>
-                <li><a href="booking.html">Booking</a></li>
-                <li><a href="feedback.html">Reviews</a></li>
-            </ul>
-        </nav>
-    </header>
+<header class="site-header">
 
-    <main>
-        <!-- I used a nav-like paragraph here with internal links to allow quick jumping to the specific sections on this exact page. -->
-        <p>Page navigation: <a href="#real-reviews">Read reviews</a> | <a href="#faq-section">FAQ</a></p>
+    <h1>Guest Reviews of Meat Point</h1>
 
-        <!-- I used article here because this block represents a self-contained composition of reviews that could be independently distributed. -->
-        <article id="real-reviews">
-            <h2>Visitor Impressions</h2>
-            <p>We are proud to be located at 45 Uly Dala Avenue and operate 24/7 for your convenience. For many years, our Meat Point restaurant has been delighting residents and guests of Astana with delicious steaks, juicy kebabs, and traditional Turkish sweets. Every review is carefully studied by our team.</p>
-            
-            <p>If you didn't like something — let us know, and we will fix it as soon as possible. If you were satisfied, your warm words will be the best reward for our chefs and waiters. Read the opinions of other visitors, share your impressions, and help us create the perfect place to relax!</p>
-            
-            <figure>
-                <img src="images/interior.png" alt="Cozy interior of the Meat Point restaurant in Astana">
-                <img src="images/kebab.png" alt="Serving of Turkish kebab with grilled vegetables">
-                <img src="images/tea.png" alt="Traditional Turkish tea in armudu glasses">
-                <figcaption>Atmosphere and authentic dishes in our establishment.</figcaption>
-            </figure>
+    <nav class="main-nav">
+        <ul class="nav-list">
+            <li><a class="nav-link" href="index.html">Home</a></li>
+            <li><a class="nav-link" href="about.html">About Us</a></li>
+            <li><a class="nav-link" href="contacts.html">Contacts</a></li>
+            <li><a class="nav-link" href="colophon.html">About the Site</a></li>
+            <li><a class="nav-link" href="menu.html">Menu</a></li>
+            <li><a class="nav-link" href="events.html">Events</a></li>
+            <li><a class="nav-link" href="booking.html">Booking</a></li>
+            <li><a class="nav-link" href="feedback.html">Reviews</a></li>
+        </ul>
+    </nav>
 
-            <blockquote cite="https://2gis.kz/astana/firm/70000001027751110">
-                Very attentive, polite, and friendly. Always nearby, helped with the choice, and created a pleasant atmosphere. I would also like to mention the Turkish cuisine; all dishes were incredibly tasty, fresh, and beautifully served. The atmosphere in the restaurant is cozy, warm, and conducive to a pleasant rest.
-            </blockquote>
-            <p>&mdash; <cite>Real review from 2GIS</cite> (September 2026)</p>
+</header>
 
-            <p>As our guests often say, we have <q>the best steaks in the city</q>.</p>
+<main class="main-content">
 
-            <p><small>All reviews are manually moderated.</small></p>
-            
-            <p>Ideal meat cooking temperature: 250<sup title="degrees">o</sup>C, and our level of care for cleanliness is comparable to the formula H<sub>2</sub>O. We use <mark>only fresh</mark> ingredients <b>every day</b>. Your <i>smiles</i> are our ultimate goal!</p>
+    <p class="page-navigation">
+        Page navigation:
+        <a href="#real-reviews">Read reviews</a> |
+        <a href="#faq-section">FAQ</a>
+    </p>
 
-            <hr>
-            <p>Our restaurant operates according to strict <abbr title="Halal">Hal</abbr> and <abbr title="Quality Control">QC</abbr> standards.</p>
+    <article id="real-reviews">
 
-            <p>Your discount code looks like this: <code>DISCOUNT26</code>.</p>
-           
-        </article>
+        <h2>Visitor Impressions</h2>
 
-        <aside>
-            <h2>Contact Us</h2>
-            <p>If you have any complaints, write to: <a href="mailto:info@meat-point.kz">info@meat-point.kz</a></p>
-            <p>Or call directly: <a href="tel:+77784221100">+7 (778) 422-11-00</a></p>
-            <p>Find us on the map: <a href="https://go.2gis.com/gWULd" target="_blank" rel="noopener noreferrer">2GIS Astana</a></p>
-        </aside>
+        <p>
+            We are proud to be located at 45 Uly Dala Avenue and operate 24/7
+            for your convenience. For many years, our Meat Point restaurant has
+            been delighting residents and guests of Astana with delicious steaks,
+            juicy kebabs, and traditional Turkish sweets. Every review is carefully
+            studied by our team.
+        </p>
 
-        <section id="faq-section">
-            <h2>Frequently Asked Questions</h2>
-            <!-- I used a definition list (dl) for the FAQ section because the questions and answers naturally form term-description pairs. -->
-            <dl>
-                <dt>How to leave a review?</dt>
-                <!-- I used a span here because the words need logical grouping for the text block, but no existing semantic tag like strong or em is appropriate. -->
-                <dd>Email us or leave a comment on <span>social media</span>.</dd>
-                
-                <dt>Is food delivery available?</dt>
-                <dd>Yes, we deliver food 24/7.</dd>
-            </dl>
-        </section>
-    </main>
+        <p class="review-note">
+            If you didn't like something — let us know, and we will fix it as soon
+            as possible. If you were satisfied, your warm words will be the best
+            reward for our chefs and waiters. Read the opinions of other visitors,
+            share your impressions, and help us create the perfect place to relax!
+        </p>
 
-    <footer>
-        <p>Success formula: delicious food &amp; good service.</p>
-       
-    </footer>
+        <!-- Flex-wrap requirement -->
+        <figure class="review-gallery">
+
+            <img src="images/interior.png"
+                 alt="Cozy interior of the Meat Point restaurant in Astana">
+
+            <img src="images/kebab.png"
+                 alt="Serving of Turkish kebab with grilled vegetables">
+
+            <img src="images/tea.png"
+                 alt="Traditional Turkish tea in armudu glasses">
+
+            <figcaption>
+                Atmosphere and authentic dishes in our establishment.
+            </figcaption>
+
+        </figure>
+
+        <blockquote cite="https://2gis.kz/astana/firm/70000001027751110">
+
+            Very attentive, polite, and friendly. Always nearby, helped with the
+            choice, and created a pleasant atmosphere. I would also like to mention
+            the Turkish cuisine; all dishes were incredibly tasty, fresh, and
+            beautifully served. The atmosphere in the restaurant is cozy, warm,
+            and conducive to a pleasant rest.
+
+        </blockquote>
+
+        <p>
+            &mdash; <cite>Real review from 2GIS</cite> (September 2026)
+        </p>
+
+        <p>
+            As our guests often say, we have
+            <q>the best steaks in the city</q>.
+        </p>
+
+        <p>
+            <small>All reviews are manually moderated.</small>
+        </p>
+
+        <p>
+            Ideal meat cooking temperature:
+            250<sup title="degrees">o</sup>C,
+            and our level of care for cleanliness is comparable to the formula
+            H<sub>2</sub>O.
+
+            We use <mark>only fresh</mark> ingredients
+            <b>every day</b>.
+
+            Your <i>smiles</i> are our ultimate goal!
+        </p>
+
+        <!-- Float requirement -->
+        <p class="float-example">
+
+            <img src="images/tea.png" alt="Traditional Turkish tea">
+
+            Our tea service is inspired by traditional Turkish hospitality.
+
+        </p>
+
+        <!-- Clear requirement -->
+        <hr class="clear-float">
+
+        <p>
+            Our restaurant operates according to strict
+            <abbr title="Halal">Hal</abbr> and
+            <abbr title="Quality Control">QC</abbr> standards.
+        </p>
+
+        <p>
+            Your discount code looks like this:
+            <code>DISCOUNT26</code>.
+        </p>
+
+    </article>
+
+    <!-- Fixed element -->
+    <aside class="contact-aside">
+
+        <h2>Contact Us</h2>
+
+        <p>
+            If you have any complaints, write to:
+            <a href="mailto:info@meat-point.kz">
+                info@meat-point.kz
+            </a>
+        </p>
+
+        <p>
+            Or call directly:
+            <a href="tel:+77784221100">
+                +7 (778) 422-11-00
+            </a>
+        </p>
+
+        <p>
+            Find us on the map:
+            <a href="https://go.2gis.com/gWULd"
+               target="_blank"
+               rel="noopener noreferrer">
+                2GIS Astana
+            </a>
+        </p>
+
+    </aside>
+
+    <section id="faq-section">
+
+        <h2>Frequently Asked Questions</h2>
+
+        <dl>
+
+            <dt>How to leave a review?</dt>
+
+            <dd>
+                Email us or leave a comment on
+                <span>social media</span>.
+            </dd>
+
+            <dt>Is food delivery available?</dt>
+
+            <dd>
+                Yes, we deliver food 24/7.
+            </dd>
+
+        </dl>
+
+    </section>
+
+</main>
+
+<footer class="site-footer">
+
+    <p>
+        Success formula: delicious food &amp; good service.
+    </p>
+
+</footer>
+
 </body>
 </html>
