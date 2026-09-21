@@ -143,7 +143,7 @@ textarea:focus {
     outline: 2px solid var(--accent);
 }
 
-/* static — значение position по умолчанию */
+/* static — value of position by default */
 .hall-info {
     position: static;
     margin: 24px 0;
@@ -161,11 +161,11 @@ td {
     text-align: left;
 }
 
-/* Специфичность:
+/* Specification:
    main p = (0-0-2)
    .review-note = (0-1-0)
-   .review-note имеет большую специфичность.
-   !important не используется.
+   .review-note has large specificity.
+   !important not used.
 */
 .review-note {
     letter-spacing: 1.2px;
