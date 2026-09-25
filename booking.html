@@ -1,428 +1,143 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
-
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
-
-    <meta name="description"
-          content="Table booking at the halal restaurant Meat Point in Astana.">
-
-    <meta name="author"
-          content="Tangzharyk">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Table booking at the halal restaurant Meat Point in Astana.">
+    <meta name="author" content="Tangzharyk">
+    
+    <!-- Using Bootstrap v5.3.3 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/tangzharyk.css">
-
     <title>Table Booking | Meat Point</title>
-
 </head>
-
 <body>
 
-<!-- Author: Tangzharyk -->
-
 <header class="site-header">
-
-    <h1>Meat Point - Booking</h1>
-
-    <nav class="main-nav">
-
-        <ul class="nav-list">
-
-            <li><a class="nav-link" href="index.html">Home</a></li>
-            <li><a class="nav-link" href="about.html">About Us</a></li>
-            <li><a class="nav-link" href="contacts.html">Contacts</a></li>
-            <li><a class="nav-link" href="colophon.html">About the Site</a></li>
-            <li><a class="nav-link" href="menu.html">Menu</a></li>
-            <li><a class="nav-link" href="events.html">Events</a></li>
-            <li><a class="nav-link" href="booking.html">Booking</a></li>
-            <li><a class="nav-link" href="feedback.html">Reviews</a></li>
-
-        </ul>
-
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">Meat Point</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="booking.html">Booking</a></li>
+                    <li class="nav-item"><a class="nav-link" href="feedback.html">Reviews</a></li>
+                </ul>
+            </div>
+        </div>
     </nav>
-
 </header>
 
-<main class="main-content">
+<main class="main-content mt-5">
+    <!-- Chose "container" here because it provides a responsive, fixed-width layout that keeps the text and form neatly centered on large desktop screens. -->
+    <div class="container">
+        
+        <section class="booking-section text-center mb-5">
+            <h2 class="display-5 text-danger mb-3">Welcome to Meat Point</h2>
+            <p class="lead">
+                Welcome to the official booking page of the halal restaurant Meat Point in Astana.
+                <!-- Responsive utility: text is hidden on small screens and visible on medium and larger screens -->
+                <span class="d-none d-md-inline">We have the perfect table for you.</span> 
+            </p>
+            <p class="text-muted small">
+                We strongly recommend booking tables for the weekend at least 24 hours in advance.
+            </p>
+        </section>
 
-    <section class="booking-section">
+        <!-- Nested Grid Example: Placing a row inside a col-lg-10 column -->
+        <div class="row justify-content-center mb-5">
+            <div class="col-lg-10">
+                <div class="row align-items-center bg-light p-4 rounded shadow-sm">
+                    <div class="col-md-6">
+                        <h3 class="h4">Booking Rules</h3>
+                        <ul class="list-unstyled">
+                            <li>✔️ Confirmation via phone call</li>
+                            <li>✔️ Advance deposit for 10+ people</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6 text-center">
+                        <img src="images/meatpointhall.png" class="img-fluid rounded border" alt="Main hall">
+                    </div>
+                </div>
+            </div>
+        </div>
 
-        <h2>Welcome to Meat Point</h2>
+        <div class="hall-info mb-5">
+            <h2 class="text-center mb-4">Hall Information</h2>
+            <div class="table-responsive">
+                <table class="table table-striped table-bordered table-hover">
+                    <thead class="table-dark">
+                        <tr>
+                            <th scope="col">Hall Type</th>
+                            <th scope="col">Capacity</th>
+                            <th scope="col">Deposit</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">Main Hall</th>
+                            <td>80 people</td>
+                            <td>Not required</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">VIP Room</th>
+                            <td>15 people</td>
+                            <td>Required</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
 
-        <p>
-            Welcome to the official booking page of the halal restaurant
-            Meat Point in Astana. We are proud to offer our guests authentic
-            Turkish cuisine prepared according to traditional family recipes.
-            Whether you are planning a fast business lunch, a romantic evening,
-            or a large family celebration, we have the perfect table for you.
-            Our cozy interior and attentive staff will ensure your maximum
-            comfort. As our chef always says,
-            <q>Hospitality is the soul of every meal</q>.
-        </p>
-
-        <p>
-            Please carefully read our booking rules below.
-            <mark>We strongly recommend</mark>
-            booking tables for the weekend at least 24 hours in advance,
-            as we host live acoustic music and the number of available seats
-            is <em>strictly limited</em>.
-
-            All our drinks are served with pure
-            H<sub>2</sub>O filtered water for premium quality.
-        </p>
-
-    </section>
-
-
-    <section class="booking-section">
-
-        <h2>Booking Rules &amp; Guidelines</h2>
-
-        <ol reversed>
-
-            <li>
-                Confirmation of the reservation by a manager via direct phone call.
-            </li>
-
-            <li>
-                System processing of your table preferences and guest details.
-            </li>
-
-            <li>
-                Filling out and submitting the online application form below.
-            </li>
-
-        </ol>
-
-
-        <ul>
-
-            <li>
-                Conditions for large groups and banquets:
-
-                <ul>
-
-                    <li>
-                        Advance deposit requirement for groups of 10 or more people.
-                    </li>
-
-                    <li>
-                        Dish pre-order must be placed at least 24 hours in advance.
-                    </li>
-
-                </ul>
-
-            </li>
-
-        </ul>
-
-
-        <figure>
-
-            <img src="images/meatpointhall.png"
-                 alt="Cozy dining area inside Meat Point restaurant in Astana">
-
-            <figcaption>
-                Interior view of our main hall arranged for evening reservations
-            </figcaption>
-
-        </figure>
-
-    </section>
-
-
-    <div class="hall-info">
-
-        <h2>Hall Information</h2>
-
-        <table>
-
-            <caption>
-                Hall capacity and deposit requirements
-            </caption>
-
-            <thead>
-
-                <tr>
-
-                    <th scope="col">Hall Type</th>
-                    <th scope="col">Capacity</th>
-                    <th scope="col">Deposit</th>
-
-                </tr>
-
-            </thead>
-
-            <tbody>
-
-                <tr>
-
-                    <th scope="row">
-                        Main Hall
-                    </th>
-
-                    <td>
-                        80 people
-                    </td>
-
-                    <td>
-                        Not required
-                    </td>
-
-                </tr>
-
-                <tr>
-
-                    <th scope="row">
-                        <abbr title="Very Important Person">
-                            VIP
-                        </abbr>
-                        Room
-                    </th>
-
-                    <td>
-                        15 people
-                    </td>
-
-                    <td>
-                        Required
-                    </td>
-
-                </tr>
-
-            </tbody>
-
-        </table>
-
+        <section class="booking-section">
+            <h2 class="text-center mb-4">Application Form</h2>
+            <form action="#" method="POST" class="booking-form bg-light p-4 rounded shadow-sm border">
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label for="client-name" class="form-label">Your Name:</label>
+                        <input type="text" class="form-control" id="client-name" required placeholder="e.g. Tangzharyk Asset">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="client-phone" class="form-label">Phone Number:</label>
+                        <input type="tel" class="form-control" id="client-phone" required placeholder="+7 778 422 11 00">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="guest-count" class="form-label">Number of Guests:</label>
+                        <input type="number" class="form-control" id="guest-count" min="1" max="50" placeholder="2">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="booking-date" class="form-label">Visit Date:</label>
+                        <input type="date" class="form-control" id="booking-date" required>
+                    </div>
+                    <div class="col-12 text-center my-3">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="hall" id="hall-main" value="main" checked>
+                            <label class="form-check-label" for="hall-main">Main Hall</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="hall" id="hall-vip" value="vip">
+                            <label class="form-check-label" for="hall-vip">VIP Hall</label>
+                        </div>
+                    </div>
+                    <div class="col-12 text-center mt-4">
+                        <!-- Demonstrating 4 button classes: primary, outline style, size variant (btn-lg), and disabled state -->
+                        <button type="submit" class="btn btn-primary btn-lg">Book Now</button>
+                        <button type="reset" class="btn btn-outline-secondary">Clear Form</button>
+                        <button type="button" class="btn btn-danger" disabled>VIP Sold Out</button>
+                    </div>
+                </div>
+            </form>
+        </section>
     </div>
-
-
-    <section class="booking-section">
-
-        <h2>Application Form</h2>
-
-        <form action="#" method="POST" class="booking-form">
-
-            <fieldset>
-
-                <legend>Enter your details</legend>
-
-
-                <p>
-
-                    <label for="client-name">
-                        Your Name:
-                    </label>
-
-                    <input type="text"
-                           id="client-name"
-                           name="name"
-                           required
-                           placeholder="e.g. Tangzharyk Asset">
-
-                </p>
-
-
-                <p>
-
-                    <label for="client-email">
-                        Email Address:
-                    </label>
-
-                    <input type="email"
-                           id="client-email"
-                           name="email"
-                           required
-                           placeholder="example@mail.com">
-
-                </p>
-
-
-                <p>
-
-                    <label for="client-phone">
-                        Phone Number:
-                    </label>
-
-                    <input type="tel"
-                           id="client-phone"
-                           name="phone"
-                           required
-                           placeholder="+7 778 422 11 00">
-
-                </p>
-
-
-                <p>
-
-                    <label for="guest-count">
-                        Number of Guests:
-                    </label>
-
-                    <input type="number"
-                           id="guest-count"
-                           name="guests"
-                           min="1"
-                           max="50"
-                           placeholder="2">
-
-                </p>
-
-
-                <p>
-
-                    <label for="booking-date">
-                        Visit Date:
-                    </label>
-
-                    <input type="date"
-                           id="booking-date"
-                           name="date"
-                           required>
-
-                </p>
-
-
-                <!-- Radio buttons now belong to the same group -->
-                <fieldset class="hall-choice">
-
-                    <legend>
-                        Select Hall
-                    </legend>
-
-                    <label>
-                        <input type="radio"
-                               id="hall-main"
-                               name="hall"
-                               value="main"
-                               checked>
-                        Main Hall
-                    </label>
-
-                    <label>
-                        <input type="radio"
-                               id="hall-vip"
-                               name="hall"
-                               value="vip">
-                        VIP Hall
-                    </label>
-
-                </fieldset>
-
-
-                <p>
-
-                    <label for="special-requests">
-                        Special Requests:
-                    </label>
-
-                    <select id="special-requests"
-                            name="requests">
-
-                        <option value="none">
-                            None
-                        </option>
-
-                        <option value="window">
-                            Table by the window
-                        </option>
-
-                        <option value="music">
-                            Closer to live music
-                        </option>
-
-                    </select>
-
-                </p>
-
-
-                <p>
-
-                    <input type="checkbox"
-                           id="terms"
-                           name="terms"
-                           required>
-
-                    <label for="terms">
-                        I agree to the
-                        <span>Meat Point</span>
-                        booking rules
-                    </label>
-
-                </p>
-
-
-                <p class="form-comments">
-
-                    <label for="comments">
-                        Booking Comments:
-                    </label>
-
-                    <br>
-
-                    <textarea id="comments"
-                              name="comments"
-                              rows="4"
-                              cols="40"
-                              placeholder="Write any additional preferences here..."></textarea>
-
-                </p>
-
-
-                <p class="form-buttons"
-                   style="justify-content: center;">
-
-                    <button type="submit">
-                        Book Now
-                    </button>
-
-                    <button type="reset">
-                        Clear Form
-                    </button>
-
-                </p>
-
-            </fieldset>
-
-        </form>
-
-    </section>
-
 </main>
 
-
-<footer class="site-footer">
-
-    <h2>Contact Information</h2>
-
-    <p>
-        Address: 45 Uly Dala Avenue, Astana
-    </p>
-
-    <p>
-        Phone number:
-        <a href="tel:+77784221100">
-            +7 (778) 422-11-00
-        </a>
-    </p>
-
-    <p>
-        Email:
-        <a href="mailto:info@meatpoint.kz">
-            info@meatpoint.kz
-        </a>
-    </p>
-
-    <p>
-        &copy; 2026 Meat Point. All rights reserved.
-    </p>
-
-</footer>
-
+<!-- Bootstrap JS Bundle for toggler functionality -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
