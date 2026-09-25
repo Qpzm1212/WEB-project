@@ -29,5 +29,4 @@ a[href^="mailto"]::before {
 
 /* Fixed contact box via z-index. Layout and positioning are handled by Bootstrap utilities. */
 .contact-aside, .footer-aside {
-    z-index: 10;
-}
+    z-index: 10;}
