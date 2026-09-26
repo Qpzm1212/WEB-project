@@ -126,6 +126,10 @@ textarea:focus {
     font: inherit;
 }
 
+.redtext {
+    color : #ff0000;
+}
+
 .booking-form button {
     padding: 10px 18px;
     border: 1px solid var(--accent);

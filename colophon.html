@@ -5,60 +5,103 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Colophon and site creation details for the Meat Point Astana project.">
-    <meta name="author" content="Madiyar Akylbek">
+    <meta name="author" content="Kamza">
     <title>About Site Creation | Meat Point</title>
+
+    <!-- Linking our team's base styles first, followed by my personal stylesheet (kamza.css) to show how cascading works. -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/kamza.css">
+
+    <!-- Just adding a quick internal style block here to fulfill the cascade demonstration requirement for the assignment. -->
+    <style>
+        /*
+           Cascade demo:
+           I'm intentionally overriding the footer link color from base.css here.
+           Since this is an internal style in the <head>, it easily beats the external stylesheet!
+        */
+        .site-footer a {
+            color: #f1c40f;
+        }
+    </style>
 </head>
 
 <body>
-    <!-- Author: Madiyar Akylbek -->
-    <header>
-        <h1>Colophon: How We Built the Site</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contacts.html">Contact</a></li>
-                <li><a href="colophon.html">About site</a></li>
-                <li><a href="menu.html">Dish menu</a></li>
-                <li><a href="events.html">Events list</a></li>
-                <li><a href="booking.html">Booking</a></li>
-                <li><a href="feedback.html">Reviews</a></li>
-            </ul>
-        </nav>
-    </header>
+<!-- Reusing the header classes we set up together in base.css -->
+<header class="site-header">
+    <h1>Colophon: How We Built the Site</h1>
+    <!-- Flexbox handles our nav menu layout here -->
+    <nav class="main-nav">
+        <ul class="nav-list">
+            <li><a href="index.html" class="nav-link">Home</a></li>
+            <li><a href="about.html" class="nav-link">About</a></li>
+            <li><a href="contacts.html" class="nav-link">Contact</a></li>
+            <!-- The .active class shows off the !important rule from my css file so the current page stands out. -->
+            <li><a href="colophon.html" class="nav-link active">About site</a></li>
+            <li><a href="booking.html" class="nav-link">Booking</a></li>
+            <li><a href="feedback.html" class="nav-link">Reviews</a></li>
+        </ul>
+    </nav>
+</header>
 
-    <main>
-        <section>
-            <h2>Technical Stack and Tools</h2>
-            <figure>
-                <img src="images/validator.png" alt="Our team discussing the website structure and code">
-                <figcaption>Working on the project together</figcaption>
-            </figure>
-            <p>The Meat Point Astana website was built as a collaborative university project by a team of three
-                students. We focused strictly on semantic HTML without the use of Cascading Style Sheets (CSS) or
-                JavaScript (JS). This approach ensures the content is natively accessible, lightweight, and
-                well-structured for screen readers and search engines.</p>
-            <p>During the development process, we utilized Git for version control. When running the local development
-                environment or checking files, you might need to use specific terminal commands. For example, to test
-                the project locally, you would typically type <kbd>python -m http.server</kbd> or <kbd>npm start</kbd>
-                in your command-line interface.</p>
+<!-- The main wrapper is centered horizontally using margin: auto in our base css -->
+<main class="main-content">
 
-            <h3>Development Milestones</h3>
-            <ol reversed>
-                <li>Final Quality Assurance and deployment.</li>
-                <li>Form implementation and cross-page testing.</li>
-                <li>Semantic markup of all written content.</li>
-                <li>Initial GitHub repository setup.</li>
-            </ol>
-        </section>
+    <!-- Using the #history ID here for my specificity experiment.
+         This section is also position: relative so I can pop an absolute badge inside it. -->
+    <section id="history" class="history-section">
 
-        <section>
-            <h2>Code Examples and Validation</h2>
-            <p>Throughout the project, we used standard HTML5 tags. A common block of code used across all pages is the
-                main navigation structure. Here is a raw example of how we implemented the semantic navigation markup:
-            </p>
+        <!-- This badge uses position: absolute to stick to the top right corner of the relative #history section. -->
+        <span class="history-badge">Documentation</span>
 
-            <pre><code>
+        <h2 class="section-title">Technical Stack and Tools</h2>
+
+        <figure>
+            <!-- Floating this image to the left so the text wraps around it nicely. -->
+            <img src="images/validator.png" alt="Our team discussing the website structure and code" class="float-image">
+        </figure>
+
+        <!-- Here's the specificity experiment in action! I applied the .highlight-text class.
+             Also throwing in an inline style to check off that assignment requirement. -->
+        <p class="highlight-text" style="font-style: italic;">
+            <!--
+               Cascade demo 2:
+               I added style="font-style: italic;" directly to this tag.
+               This overrides the normal font style I set in kamza.css because inline styles
+               have the absolute highest priority.
+            -->
+            The Meat Point Astana website was built as a collaborative university project by a team of three
+            students. We focused strictly on semantic HTML without the use of Cascading Style Sheets (CSS) or
+            JavaScript (JS).
+        </p>
+
+        <!-- Using clear: both here to make sure this paragraph drops down properly
+             and doesn't awkwardly wrap around the floated image above. -->
+        <p class="clear-float">
+            During the development process, we utilized Git for version control. When running the local development
+            environment or checking files, you might need to use specific terminal commands. For example, to test
+            the project locally, you would typically type <kbd>python -m http.server</kbd> or <kbd>npm start</kbd>
+            in your command-line interface.
+        </p>
+
+        <h3>Development Milestones</h3>
+        <!-- Used the .milestones-list class so I could target the newest milestone
+             with a :first-child pseudo-class in my stylesheet. -->
+        <ol reversed class="milestones-list">
+            <li>Final Quality Assurance and deployment.</li>
+            <li>Form implementation and cross-page testing.</li>
+            <li>Semantic markup of all written content.</li>
+            <li>Initial GitHub repository setup.</li>
+        </ol>
+    </section>
+
+    <!-- This aside explicitly uses position: static (just normal document flow). -->
+    <aside class="notice-aside">
+        <h2 class="section-title">Code Examples and Validation</h2>
+        <p>Throughout the project, we used standard HTML5 tags. A common block of code used across all pages is the
+            main navigation structure. Here is a raw example of how we implemented the semantic navigation markup:
+        </p>
+
+        <pre><code>
 &lt;nav&gt;
     &lt;ul&gt;
         &lt;li&gt;&lt;a href=&quot;index.html&quot;&gt;Home&lt;/a&gt;&lt;/li&gt;
@@ -66,29 +109,35 @@
 &lt;/nav&gt;
             </code></pre>
 
-            <p>We rigorously tested our pages using the W3C Validator to achieve zero errors. If you make a mistake, the
-                validator system might output an error message. A typical error output looks like this: <samp>Error:
-                    Stray end tag nav.</samp> Catching these errors early helped us maintain high code quality.</p>
-        </section>
+        <!-- Notice the link inside—it opens in a new tab, which triggers my a[target="_blank"] attribute selector! -->
+        <p>We rigorously tested our pages using the <a href="https://validator.w3.org/" target="_blank">W3C Validator</a> to achieve zero errors. Catching these errors early helped us maintain high code quality.</p>
+    </aside>
 
-        <!-- I selected the article tag here instead of a generic section because this personal team reflection forms an independent narrative that could theoretically be syndicated or removed without breaking the flow of the technical documentation. -->
-        <article>
-            <h2>Our Development Experience</h2>
-            <p>Building this restaurant website taught us how to collaborate effectively using Git branches and commits.
-                Resolving merge conflicts and ensuring everyone made their required commits on different days was a
-                practical challenge. By sticking strictly to semantic elements instead of generic containers, we learned
-                how the browser natively renders different elements. Working as a team of three required clear
-                communication to divide the eight pages and ensure all checklist requirements were met.</p>
-        </article>
-    </main>
+    <!-- Wrapping up with an article that uses Flexbox for general centering -->
+    <article class="atmosphere-section" style="margin-top: 40px; text-align: center;">
+        <h2 class="section-title">Our Development Experience</h2>
+        <p>Building this restaurant website taught us how to collaborate effectively using Git branches and commits.
+            Resolving merge conflicts and ensuring everyone made their required commits on different days was a
+            practical challenge.</p>
 
-    <footer>
-        <h2>Contact Information</h2>
-        <p>Address: Uly Dala street 45, Astana</p>
-        <p>Phone number: <a href="tel:+77784221100">+7 (778) 422-11-00</a></p>
-        <p>Email: <a href="mailto:info@meatpoint.kz">info@meatpoint.kz</a></p>
-        <p>&copy; 2026 Meat Point. All rights reserved.</p>
-    </footer>
+        <!-- A quick grid container acting as a relative parent, letting me use technique 3
+             (absolute positioning + transform) to perfectly center the box inside it. -->
+        <div class="card-grid" style="min-height: 120px; width: 100%; margin-top: 20px;">
+            <div class="centered-absolute-box">Strictly Semantic Code</div>
+        </div>
+    </article>
+</main>
+
+<footer class="site-footer">
+    <h2>Contact Information</h2>
+    <p>Address: Uly Dala street 45, Astana</p>
+    <p>Phone number: <a href="tel:+77784221100">+7 (778) 422-11-00</a></p>
+    <p>Email: <a href="mailto:info@meatpoint.kz">info@meatpoint.kz</a></p>
+    <p>&copy; 2026 Meat Point. All rights reserved.</p>
+</footer>
+
+<!-- Our trusty position: fixed "scroll to top" button! It'll stay pinned to the bottom right of the screen. -->
+<a href="#" class="scroll-to-top">↑</a>
 </body>
 
 </html>
