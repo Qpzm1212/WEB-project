@@ -1,104 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description"
-    content="Meat Point - Authentic Halal Turkish cuisine and grilled meats in Astana EXPO district.">
+  <meta name="description" content="Meat Point - Authentic Halal Turkish cuisine and grilled meats in Astana EXPO district.">
   <meta name="author" content="Kamza Asset">
-
   <title>Main | Meat Point Restaurant</title>
+
+  <!-- Bootstrap v5.3.3 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/kamza.css">
 </head>
+<body class="bg-light">
+<!-- Author: Kamza Asset -->
 
-<body>
-  <!-- Author: Kamza Asset -->
+<!-- container-fluid for full-width header -->
+<header class="container-fluid bg-white border-bottom border-danger shadow-sm sticky-top">
+  <nav class="navbar navbar-expand-md navbar-light py-3">
+    <div class="container">
+      <a class="navbar-brand text-danger fw-bold fs-3" href="index.html">Meat Point Astana</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav gap-2">
+          <li class="nav-item"><a class="nav-link active fw-bold text-danger" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="contacts.html">Contact</a></li>
+          <li class="nav-item"><a class="nav-link" href="colophon.html">About site</a></li>
+          <li class="nav-item"><a class="nav-link" href="booking.html">Booking</a></li>
+          <li class="nav-item"><a class="nav-link" href="feedback.html">Reviews</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
 
-  <header class="site-header">
-    <h1>Meat Point Astana</h1>
-    <!-- I used the nav here because main navigation provides site-wide access to all main pages -->
-    <nav class="main-nav">
-      <ul class="nav-list">
-        <!-- class="active" marks the current page link so .main-nav a.active rule applies,
-             demonstrating !important overriding the generic link colour -->
-        <li><a href="index.html" class="active">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contacts.html">Contact</a></li>
-        <li><a href="colophon.html">About site</a></li>
-        <li><a href="menu.html">Dish menu</a></li>
-        <li><a href="events.html">Events list</a></li>
-        <li><a href="booking.html">Booking</a></li>
-        <li><a href="feedback.html">Reviews</a></li>
-      </ul>
-    </nav>
-  </header>
+<!-- container for main content -->
+<main class="container my-5">
 
-  <main class="main-content">
-    <!-- ID #home-hero is used here because there is exactly one hero section on this page.
-         It serves as a unique anchor for deep-linking and allows highly specific CSS targeting
-         without affecting article elements on other pages. -->
-    <article class="hero-section" id="home-hero">
-      <h2 class="section-title">Welcome to Meat Point Astana</h2>
-      <p>
-        <!-- I used a span here to target the brand name specifically for potential inline styling -->
-        <span>Meat Point</span> is a cozy Turkish restaurant in Astana, located at 45 Uly Dala Avenue, near the
-        Botanical Garden and the EXPO district. The establishment specializes in authentic Turkish cuisine with
-        particular emphasis on grilled meat dishes. As culinary guide <cite>Taste of East</cite> noted, <q>Traditional
-          roasting requires both patience and passion</q>.
-      </p>
+  <article class="hero-section mb-5" id="home-hero">
+    <h2 class="display-5 text-center text-md-start text-danger mb-4">
+      Welcome to Meat Point Astana
+      <span class="badge bg-danger rounded-pill fs-6 align-middle d-none d-md-inline ms-2">Top Rated</span>
+    </h2>
+    <p class="lead text-secondary">
+      <span class="fw-bold text-dark">Meat Point</span> is a cozy Turkish restaurant in Astana, located at 45 Uly Dala Avenue, near the Botanical Garden and the EXPO district. The establishment specializes in authentic Turkish cuisine with particular emphasis on grilled meat dishes. As culinary guide <cite>Taste of East</cite> noted, <q class="fst-italic">Traditional roasting requires both patience and passion</q>.
+    </p>
 
-      <p>Our restaurant is suitable for everyday lunch, meetings with friends, family dinners, and special celebrations.
-        Thanks to our <strong>24/7</strong> operating hours, you can visit us at any time — start your day with a
-        traditional breakfast or drop by for a late dinner. All non-alcoholic cold beverages are served with purified
-        H<sub>2</sub>O iced water.</p>
+    <div class="row align-items-center mt-4 g-4">
+      <div class="col-12 col-lg-8">
+        <p>Our restaurant is suitable for everyday lunch, meetings with friends, family dinners, and special celebrations. Thanks to our <strong class="text-danger">24/7</strong> operating hours, you can visit us at any time — start your day with a traditional breakfast or drop by for a late dinner. All non-alcoholic cold beverages are served with purified H<sub>2</sub>O iced water.</p>
+        <p>On weekdays from 12:00 to 15:00, guests can take advantage of our business lunch offer. Among our special dishes, the signature Meat Point assortment deserves special attention. On Fridays and Saturdays, the dining atmosphere is complemented by <em>live acoustic music</em>. <mark class="bg-warning rounded px-1">Table pre-booking</mark> is recommended on weekends.</p>
+        <p class="small text-muted">Note: Delivery and takeout options are available 24 hours a day across Astana.</p>
+      </div>
+      <div class="col-12 col-lg-4 text-center">
+        <a href="booking.html" class="btn btn-danger btn-lg shadow w-100 mb-2">Book a Table</a>
+        <a href="menu.html" class="btn btn-outline-danger w-100">View Menu</a>
+      </div>
+    </div>
+  </article>
 
-      <p>On weekdays from 12:00 to 15:00, guests can take advantage of our business lunch offer. Among our special
-        dishes, the signature Meat Point assortment deserves special attention. On Fridays and Saturdays, the dining
-        atmosphere is complemented by <em>live acoustic music</em>. <mark>Table pre-booking</mark> is recommended on
-        weekends.</p>
+  <section id="atmosphere" class="mb-5">
+    <h2 class="h2 text-danger border-bottom pb-2 mb-4">Atmosphere</h2>
+    <figure class="figure text-center w-100">
+      <img src="images/meatpointhall.png" alt="The cozy interior of the Meat Point restaurant features warm lighting and wooden tables." class="figure-img img-fluid rounded shadow-sm" loading="lazy">
+      <figcaption class="figure-caption">The interior of our main hall arranged for guests</figcaption>
+    </figure>
+    <blockquote class="blockquote bg-white p-4 rounded border-start border-4 border-danger shadow-sm mt-3">
+      <p class="mb-0 text-dark">"A very cozy place with a pleasant atmosphere. The food is incredibly delicious, everything is fresh, and it is beautifully presented."</p>
+    </blockquote>
+  </section>
 
-      <p><small>Note: Delivery and takeout options are available 24 hours a day across Astana.</small></p>
-    </article>
+  <!-- Component: Alert -->
+  <aside class="notice-aside mt-5">
+    <div class="alert alert-info shadow-sm d-flex align-items-center" role="alert">
+      <div>
+        <h4 class="alert-heading h5">Quick Notice</h4>
+        <p class="mb-1">We are open <strong>24/7</strong> and always ready to offer you <abbr title="Business Lunch" class="initialism">BL</abbr> menus on weekdays from 12:00 to 15:00.</p>
+        <hr>
+        <p class="mb-0 small">Don't forget to reserve your table in advance to enjoy live music sessions on weekends!</p>
+      </div>
+    </div>
+  </aside>
+</main>
 
-    <!-- ID #atmosphere is appropriate here because it uniquely identifies this specific section
-         for anchor linking and targeted styling on this page -->
-    <section id="atmosphere" class="atmosphere-section">
-      <h2 class="section-title">Atmosphere</h2>
-      <figure class="gallery-figure">
-        <img src="images/meatpointhall.png"
-          alt="The cozy interior of the Meat Point restaurant features warm lighting and wooden tables." width="600"
-          height="696" loading="lazy">
-        <figcaption>The interior of our main hall arranged for guests</figcaption>
-      </figure>
+<footer class="container-fluid bg-dark text-white text-center py-4 mt-5">
+  <div class="container">
+    <h2 class="h4 text-danger mb-3">Contact Us</h2>
+    <p class="mb-1">Address: Uly Dala street 45, Astana</p>
+    <p class="mb-1">Phone number: <a href="tel:+77784221100" class="text-white text-decoration-none">+7 (778) 422-11-00</a></p>
+    <p class="mb-3">Email: <a href="mailto:info@meatpoint.kz" class="text-white text-decoration-none">info@meatpoint.kz</a></p>
+    <p class="small text-white-50 mb-0">&copy; 2026 Meat Point. All rights reserved.</p>
+  </div>
+</footer>
 
-      <blockquote>
-        <p>A very cozy place with a pleasant atmosphere. The food is incredibly delicious, everything is fresh, and it
-          is beautifully presented.</p>
-      </blockquote>
-    </section>
-
-    <!-- .callout-wrapper applies max-width + margin:auto centering to this grouping.
-         The div is justified: the layout constraint cannot be applied directly to <aside>
-         without altering its semantic role or adding wrapper markup. -->
-    <!-- I put this in an aside because it contains complementary schedule information related to the page content -->
-    <aside class="notice-aside">
-      <h3>Quick Notice</h3>
-      <p>We are open <strong>24/7</strong> and always ready to offer you <abbr title="Business Lunch">BL</abbr> menus
-        on weekdays from 12:00 to 15:00.</p>
-      <p>Don't forget to reserve your table in advance to enjoy live music sessions on weekends!</p>
-    </aside>
-  </main>
-
-  <footer class="site-footer">
-    <h2>Contact Us</h2>
-    <p>Address: Uly Dala street 45, Astana</p>
-    <p>Phone number: <a href="tel:+77784221100">+7 (778) 422-11-00</a></p>
-    <p>Email: <a href="mailto:info@meatpoint.kz">info@meatpoint.kz</a></p>
-    <p>&copy; 2026 Meat Point. All rights reserved.</p>
-  </footer>
-
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmxc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
-
 </html>
