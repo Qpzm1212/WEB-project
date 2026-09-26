@@ -1,0 +1,11 @@
+Q: Which CSS rules should I delete when migrating my project to Bootstrap?
+A: Removed grid-template-columns, display: flex, float, clear, and custom media queries, since Bootstrap handles layout and responsiveness through its own classes.
+
+Q: How can I migrate my custom image gallery to the Bootstrap grid system?
+A: Use a .row container and apply .col-12 .col-md-4 column classes to each image block to ensure they stack on mobile and sit side-by-side on larger screens.
+
+Q: How do I properly adapt the Bootstrap Accordion component from the official documentation for my FAQ section?
+A: Copy the basic Accordion markup, replace the default headers with your FAQ questions, and insert your answers into the .accordion-body to replace the old <dl> list structure.
+
+Q: Which classes should I use to hide a navigation element on mobile devices but keep it visible on desktop?
+A: Use Bootstrap's display utility classes: add .d-none to hide it completely, and .d-md-block to make it visible starting from the medium breakpoint.
