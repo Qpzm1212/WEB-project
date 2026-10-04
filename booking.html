@@ -1,56 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Table booking at the halal restaurant Meat Point in Astana.">
     <meta name="author" content="Tangzharyk">
-    
+    <title>Table Booking | Meat Point</title>
+
     <!-- Using Bootstrap v5.3.3 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/tangzharyk.css">
-    <title>Table Booking | Meat Point</title>
 </head>
-<body>
+
+<body class="d-flex flex-column min-vh-100">
 
 <header class="site-header">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-            <a class="navbar-brand" href="#">Meat Point</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <a class="navbar-brand" href="index.html">Meat Point</a>
+
+            <!-- CSS-only mobile menu -->
+            <input type="checkbox" id="navbarToggle" class="navbar-toggle-checkbox">
+            <label for="navbarToggle" class="navbar-toggler">
                 <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
+            </label>
+
+            <div class="navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="booking.html">Booking</a></li>
-                    <li class="nav-item"><a class="nav-link" href="feedback.html">Reviews</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="booking.html">Booking</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="feedback.html">Reviews</a>
+                    </li>
                 </ul>
             </div>
         </div>
     </nav>
 </header>
 
-<main class="main-content mt-5">
-    <!-- Chose "container" here because it provides a responsive, fixed-width layout that keeps the text and form neatly centered on large desktop screens. -->
+<main class="main-content mt-5 mb-5 flex-grow-1">
     <div class="container">
-        
         <section class="booking-section text-center mb-5">
             <h2 class="display-5 text-danger mb-3">Welcome to Meat Point</h2>
             <p class="lead">
                 Welcome to the official booking page of the halal restaurant Meat Point in Astana.
-                <!-- Responsive utility: text is hidden on small screens and visible on medium and larger screens -->
-                <span class="d-none d-md-inline">We have the perfect table for you.</span> 
+                <span class="d-none d-md-inline">We have the perfect table for you.</span>
             </p>
             <p class="text-muted small">
                 We strongly recommend booking tables for the weekend at least 24 hours in advance.
             </p>
         </section>
 
-        <!-- Nested Grid Example: Placing a row inside a col-lg-10 column -->
         <div class="row justify-content-center mb-5">
             <div class="col-lg-10">
                 <div class="row align-items-center bg-light p-4 rounded shadow-sm">
@@ -97,7 +106,7 @@
 
         <section class="booking-section">
             <h2 class="text-center mb-4">Application Form</h2>
-            <form action="#" method="POST" class="booking-form bg-light p-4 rounded shadow-sm border">
+            <form id="restaurant-booking-form" method="POST" class="booking-form bg-light p-4 rounded shadow-sm border">
                 <div class="row g-3">
                     <div class="col-md-6">
                         <label for="client-name" class="form-label">Your Name:</label>
@@ -126,18 +135,25 @@
                         </div>
                     </div>
                     <div class="col-12 text-center mt-4">
-                        <!-- Demonstrating 4 button classes: primary, outline style, size variant (btn-lg), and disabled state -->
-                        <button type="submit" class="btn btn-primary btn-lg">Book Now</button>
-                        <button type="reset" class="btn btn-outline-secondary">Clear Form</button>
+                        <button type="submit" id="submit-booking-btn" class="btn btn-primary btn-lg">Book Now</button>
+                        <button type="reset" id="reset-booking-btn" class="btn btn-outline-secondary">Clear Form</button>
                         <button type="button" class="btn btn-danger" disabled>VIP Sold Out</button>
                     </div>
                 </div>
             </form>
+
+            <div id="booking-confirmation-message" class="mt-4 text-center"></div>
         </section>
     </div>
 </main>
 
-<!-- Bootstrap JS Bundle for toggler functionality -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Общий подвал для всех страниц -->
+<footer class="bg-dark text-white text-center py-4 mt-auto">
+    <div class="container">
+        <p class="mb-0">&copy; 2026 Meat Point. All rights reserved.</p>
+        <small class="text-muted" id="footer-status-message-booking">Midterm Project Release</small>
+    </div>
+</footer>
+
 </body>
 </html>
