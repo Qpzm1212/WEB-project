@@ -1,120 +1,145 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Explore the authentic Turkish halal menu at Meat Point Astana.">
     <meta name="author" content="Madiyar Akylbek">
     <title>Our Menu | Meat Point</title>
+    <!-- Bootstrap v5.3.3 via CDN; our own files are linked after it -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/madiyar.css">
 </head>
+<body class="d-flex flex-column min-vh-100">
 
-<body>
-    <!-- Author: Madiyar Akylbek -->
-    <header>
-        <h1>Meat Point Menu</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contacts.html">Contact</a></li>
-                <li><a href="colophon.html">About site</a></li>
-                <li><a href="menu.html">Dish menu</a></li>
-                <li><a href="events.html">Events list</a></li>
-                <li><a href="booking.html">Booking</a></li>
-                <li><a href="feedback.html">Reviews</a></li>
-            </ul>
-        </nav>
-    </header>
+<header>
+    <!-- container: the navbar content stays in a centered fixed-width column on every page -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Meat Point</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contacts.html">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="menu.html">Menu</a></li>
+                    <li class="nav-item"><a class="nav-link" href="events.html">Events</a></li>
+                    <li class="nav-item"><a class="nav-link" href="booking.html">Booking</a></li>
+                    <li class="nav-item"><a class="nav-link" href="feedback.html">Reviews</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
 
-    <main>
-        <nav>
-            <p>Jump to section: <a href="#intro-menu">Cuisine Introduction</a> | <a href="#menu-table">Dish Prices</a>
-            </p>
-        </nav>
+<main class="container my-4 flex-grow-1">
+    <h1 class="display-5 text-danger text-center mb-3">Meat Point Menu</h1>
+    <nav class="nav nav-pills justify-content-center mb-4" aria-label="Page sections">
+        <a class="nav-link" href="#intro-menu">Cuisine Introduction</a>
+        <a class="nav-link" href="#menu-table">Dish Prices</a>
+    </nav>
 
-        <article id="intro-menu">
-            <h2>Authentic Turkish Cuisine</h2>
-            <p>Welcome to the culinary heart of Meat Point Astana. Our menu is carefully crafted to bring you the
-                authentic taste of Turkish cuisine, right here in the capital. We pride ourselves on using only the
-                finest, freshest, and strictly halal ingredients sourced from trusted local farmers. Whether you are
-                craving a juicy, perfectly grilled kebab or a comforting, traditional pide, our expert chefs prepare
-                every meal with passion and dedication.</p>
-            <p>Explore our diverse selection of dishes designed to satisfy every palate. From hearty main courses that
-                feature our signature premium beef and lamb, to light, refreshing salads and traditional Turkish
-                beverages, there is something for everyone. Please note that our meat is grilled over an open fire to
-                ensure that distinct, smoky flavor. Take a look at our detailed menu table below to find your next
-                favorite dish. We constantly update our seasonal offerings, so be sure to ask our friendly staff about
-                the chef's daily specials when you visit.</p>
+    <article id="intro-menu" class="mb-5">
+        <h2 class="h3">Authentic Turkish Cuisine</h2>
+        <div class="row g-4">
+            <div class="col-12 col-lg-6">
+                <p class="lead">Welcome to the culinary heart of Meat Point Astana. Our menu brings you the authentic taste of Turkish cuisine, made from fresh, strictly halal ingredients sourced from trusted local farmers.</p>
+                <p>From hearty main courses with our signature premium beef and lamb to light salads and traditional Turkish beverages, there is something for everyone. Our meat is grilled over an open fire for that distinct smoky flavor. Ask our staff about the chef's daily specials.</p>
+                <a class="btn btn-danger btn-lg" href="booking.html">Reserve a table</a>
+            </div>
+            <div class="col-12 col-lg-6">
+                <!-- Component: Carousel (https://getbootstrap.com/docs/5.3/components/carousel/)
+                     Changes: three dish photos with alt text, captions hidden on phones (d-none d-md-block),
+                     autoplay via data-bs-ride, fixed image height through the .dish-slide class. -->
+                <div id="dishCarousel" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-indicators">
+                <button type="button" data-bs-target="#dishCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#dishCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#dishCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                    </div>
+                    <div class="carousel-inner rounded shadow">
+                <div class="carousel-item active">
+                    <img src="images/menu1.jpg" class="d-block w-100 dish-slide" alt="Delicious Adana Kebab served on a wooden board">
+                    <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded">
+                        <p class="mb-0">Adana Kebab</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="images/menu2.jpg" class="d-block w-100 dish-slide" alt="Juicy Chicken Shish skewered and grilled">
+                    <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded">
+                        <p class="mb-0">Chicken Shish</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="images/menu3.jpg" class="d-block w-100 dish-slide" alt="Traditional Turkish Pide with melted cheese">
+                    <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded">
+                        <p class="mb-0">Kasarli Pide</p>
+                    </div>
+                </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#dishCarousel" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#dishCarousel" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
+        </div>
 
-            <figure>
-                <!-- Using percentage width inline to align images horizontally without CSS, as external styling is prohibited by project rules. -->
-                <img src="images/menu1.jpg" alt="Delicious Adana Kebab served on a wooden board" width="472">
-                <img src="images/menu2.jpg" alt="Juicy Chicken Shish skewered and grilled" width="472">
-                <img src="images/menu3.jpg" alt="Traditional Turkish Pide with melted cheese" width="472">
-                <figcaption>Our signature Turkish dishes prepared on an open fire</figcaption>
-            </figure>
+        <h3 class="h4 mt-4">Dietary Information</h3>
+        <div class="row g-3">
+            <div class="col-12 col-md-6">
+                <div class="p-3 bg-light border rounded h-100">
+                    <h4 class="h6 text-danger">Halal</h4>
+                    <p class="mb-0">All our meat is 100% certified Halal according to local standards.</p>
+                </div>
+            </div>
+            <div class="col-12 col-md-6">
+                <div class="p-3 bg-light border rounded h-100">
+                    <h4 class="h6 text-danger">Vegetarian</h4>
+                    <p class="mb-0">Dishes marked with a leaf symbol contain no meat ingredients.</p>
+                </div>
+            </div>
+        </div>
+    </article>
 
-            <h3>Dietary Information</h3>
-            <dl>
-                <dt>Halal</dt>
-                <dd>All our meat is 100% certified Halal according to local standards.</dd>
-                <dt>Vegetarian</dt>
-                <dd>Dishes marked with a leaf symbol contain no meat ingredients.</dd>
-            </dl>
-        </article>
-
-        <div id="menu-table">
-            <!-- I used a generic div here to wrap the heading and table because sectioning content like <section> implies a distinct thematic grouping that alters the document outline, whereas this is merely a structural layout container. -->
-            <h2>Main Dishes &amp; Prices</h2>
-            <table>
+    <section id="menu-table" class="mb-5">
+        <h2 class="h3">Main Dishes &amp; Prices</h2>
+        <div class="table-responsive">
+            <table class="table table-striped table-hover align-middle">
                 <caption>Our Signature Dishes and Prices</caption>
-                <thead>
-                    <tr>
-                        <!-- Explicitly defining scope="col" provides critical structural context for screen reader software to associate data cells with the correct column header for visually impaired users. -->
-                        <th scope="col">Category</th>
-                        <th scope="col">Dish Name</th>
-                        <th scope="col">Description</th>
-                        <th scope="col">Price</th>
-                    </tr>
+                <thead class="table-dark">
+                    <tr><th scope="col">Category</th><th scope="col">Dish Name</th><th scope="col">Description</th><th scope="col">Price</th></tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th scope="row">Kebabs</th>
-                        <td>Adana Kebab</td>
-                        <td>Spicy minced meat grilled on a skewer, served with bulgur.</td>
-                        <td>4500 &#8376;</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Kebabs</th>
-                        <td>Chicken Shish</td>
-                        <td>Tender marinated chicken breast cubes, grilled to perfection.</td>
-                        <td>3800 &#8376;</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Pide (Turkish Pizza)</th>
-                        <td>Kasarli Pide</td>
-                        <td>Traditional boat-shaped flatbread baked with melted cheese.</td>
-                        <td>3200 &#8376;</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Steaks</th>
-                        <td>Beef Ribeye</td>
-                        <td>Premium local beef, aged for 21 days and fire-grilled.</td>
-                        <td>8500 &#8376;</td>
-                    </tr>
+                    <tr><th scope="row">Kebabs</th><td>Adana Kebab</td><td>Spicy minced meat grilled on a skewer, served with bulgur.</td><td class="text-nowrap">4500 &#8376;</td></tr>
+                    <tr><th scope="row">Kebabs</th><td>Chicken Shish</td><td>Tender marinated chicken breast cubes, grilled to perfection.</td><td class="text-nowrap">3800 &#8376;</td></tr>
+                    <tr><th scope="row">Pide (Turkish Pizza)</th><td>Kasarli Pide</td><td>Traditional boat-shaped flatbread baked with melted cheese.</td><td class="text-nowrap">3200 &#8376;</td></tr>
+                    <tr><th scope="row">Steaks</th><td>Beef Ribeye</td><td>Premium local beef, aged for 21 days and fire-grilled.</td><td class="text-nowrap">8500 &#8376;</td></tr>
                 </tbody>
             </table>
         </div>
-    </main>
+    </section>
+</main>
 
-    <footer>
-        <h2>Contact Information</h2>
-        <p>Address: Uly Dala street 45, Astana</p>
-        <p>Phone number: <a href="tel:+77784221100">+7 (778) 422-11-00</a></p>
-        <p>Email: <a href="mailto:info@meatpoint.kz">info@meatpoint.kz</a></p>
-        <p>&copy; 2026 Meat Point. All rights reserved.</p>
-    </footer>
+<footer class="bg-dark text-white text-center py-4 mt-auto">
+    <div class="container">
+        <div class="row g-2 justify-content-center align-items-center">
+            <div class="col-12 col-md-4">Uly Dala street 45, Astana</div>
+            <div class="col-12 col-md-4"><a class="link-light" href="tel:+77784221100">+7 (778) 422-11-00</a></div>
+            <div class="col-12 col-md-4"><a class="link-light" href="mailto:info@meatpoint.kz">info@meatpoint.kz</a></div>
+        </div>
+        <p class="mb-0 mt-3 small text-secondary">&copy; 2026 Meat Point. All rights reserved.</p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-
 </html>
