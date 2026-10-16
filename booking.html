@@ -77,33 +77,44 @@
 
     <section id="booking-form-section">
         <h2 class="text-center mb-4">Application Form</h2>
-        <form id="restaurant-booking-form" action="#" method="POST" class="bg-light p-4 rounded shadow-sm border">
+        <form id="restaurant-booking-form" action="#" method="POST" class="bg-light p-4 rounded shadow-sm border" novalidate>
             <div class="row g-3">
                 <div class="col-12 col-md-6">
                     <label for="client-name" class="form-label">Your Name:</label>
-                    <input type="text" class="form-control" id="client-name" name="name" required placeholder="e.g. Tangzharyk Asset">
+                    <input type="text" class="form-control" id="client-name" name="name" required aria-describedby="client-name-error" placeholder="e.g. Tangzharyk Asset">
+                    <div class="invalid-feedback" id="client-name-error">Please enter your name.</div>
                 </div>
                 <div class="col-12 col-md-6">
                     <label for="client-phone" class="form-label">Phone Number:</label>
-                    <input type="tel" class="form-control" id="client-phone" name="phone" required placeholder="+7 778 422 11 00">
+                    <input type="tel" class="form-control" id="client-phone" name="phone" required aria-describedby="client-phone-error" placeholder="+7 778 422 11 00">
+                    <div class="invalid-feedback" id="client-phone-error">Please enter your phone number.</div>
                 </div>
                 <div class="col-12 col-md-6">
                     <label for="guest-count" class="form-label">Number of Guests:</label>
-                    <input type="number" class="form-control" id="guest-count" name="guests" min="1" max="50" placeholder="2">
+                    <input type="number" class="form-control" id="guest-count" name="guests" min="1" max="80" required aria-describedby="guest-count-help guest-count-error" placeholder="2">
+                    <div class="form-text" id="guest-count-help">Main Hall accommodates up to 80 guests.</div>
+                    <div class="invalid-feedback" id="guest-count-error">Please enter a guest count.</div>
                 </div>
                 <div class="col-12 col-md-6">
                     <label for="booking-date" class="form-label">Visit Date:</label>
-                    <input type="date" class="form-control" id="booking-date" name="date" required>
+                    <input type="date" class="form-control" id="booking-date" name="date" required aria-describedby="booking-date-error">
+                    <div class="invalid-feedback" id="booking-date-error">Please choose today or a future date.</div>
+                </div>
+                <div class="col-12 col-md-6">
+                    <label for="booking-time" class="form-label">Visit Time:</label>
+                    <input type="time" class="form-control" id="booking-time" name="time" required aria-describedby="booking-time-error">
+                    <div class="invalid-feedback" id="booking-time-error">Please choose a visit time.</div>
                 </div>
                 <div class="col-12 text-center my-3">
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="hall" id="hall-main" value="main" checked>
+                        <input class="form-check-input" type="radio" name="hall" id="hall-main" value="main" checked aria-describedby="hall-error">
                         <label class="form-check-label" for="hall-main">Main Hall</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="hall" id="hall-vip" value="vip">
+                        <input class="form-check-input" type="radio" name="hall" id="hall-vip" value="vip" aria-describedby="hall-error">
                         <label class="form-check-label" for="hall-vip">VIP Hall</label>
                     </div>
+                    <div class="invalid-feedback" id="hall-error">Please choose a hall.</div>
                 </div>
                 <div class="col-12 text-center d-flex flex-wrap justify-content-center gap-2">
                     <button type="submit" class="btn btn-primary btn-lg">Book Now</button>
@@ -125,6 +136,9 @@
     </div>
 </footer>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
+<script src="js/tako.js" defer></script>
+<script src="js/main.js" defer></script>
+<script src="js/booking.js" defer></script>
 </body>
 </html>
