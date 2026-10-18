@@ -1,0 +1,16 @@
+/* =========================================
+   BOOTSTRAP CORRECTION LAYER - madiyar.css
+   Retained brand color variables and image sizing rules for menu.html and events.html.
+   ========================================= */
+
+:root {
+    --accent: #d9534f;
+    --bg-white: #ffffff;
+    --bg-light: #f8f9fa;
+    --text-primary: #2c3e50;
+}
+
+.dish-slide {
+    max-height: 420px;
+    object-fit: cover;
+}
