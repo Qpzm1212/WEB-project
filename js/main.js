@@ -197,4 +197,287 @@
 
         return matchedPages;
     }
+
+    // Reusable DOM card/row renderer for a single site search result
+    function createSearchResultItem(page) {
+        const item = createElement("li", "list-group-item d-flex justify-content-between align-items-start gap-2");
+        const textWrap = createElement("div", "me-auto");
+        const link = createElement("a", "fw-semibold text-danger text-decoration-none", page.title);
+        link.href = page.url;
+        const summary = createElement("p", "mb-0 small text-muted", page.summary);
+        const badge = createElement("span", "badge text-bg-secondary rounded-pill", page.category);
+
+        textWrap.append(link, summary);
+        item.append(textWrap, badge);
+        return item;
+    }
+
+    function renderSearchResults(query, category, status, resultList) {
+        const trimmedQuery = query.trim();
+        resultList.replaceChildren();
+
+        if (trimmedQuery === "" && category === "all") {
+            status.textContent = "Type a keyword or select a category to search all 8 pages.";
+            resultList.classList.add("d-none");
+            return;
+        }
+
+        const results = searchPages(trimmedQuery, category);
+        resultList.classList.remove("d-none");
+        status.textContent = `${results.length} of ${sitePages.length} ${results.length === 1 ? "page" : "pages"} found.`;
+
+        if (results.length === 0) {
+            const emptyItem = createElement(
+                "li",
+                "list-group-item text-muted small",
+                "No matching pages found. Try another keyword or press Clear to reset."
+            );
+            resultList.append(emptyItem);
+            return;
+        }
+
+        for (const page of results) {
+            resultList.append(createSearchResultItem(page));
+        }
+    }
+
+    // Ensure all 8 pages are linked in the navbar across all student templates via DOM
+    function ensureCompleteNavbarLinks() {
+        const navList = document.querySelector(".navbar .navbar-nav");
+        if (!navList) {
+            return;
+        }
+
+        const existingLinks = navList.querySelectorAll("a.nav-link");
+        const existingUrls = [];
+        for (let i = 0; i < existingLinks.length; i += 1) {
+            const href = existingLinks[i].getAttribute("href");
+            if (href) {
+                existingUrls.push(href.trim());
+            }
+        }
+
+        const currentFile = window.location.pathname.split("/").pop() || "index.html";
+
+        for (let i = 0; i < sitePages.length; i += 1) {
+            const page = sitePages[i];
+            if (!existingUrls.includes(page.url)) {
+                const li = createElement("li", "nav-item");
+                const link = createElement("a", "nav-link", page.title);
+                link.href = page.url;
+                if (currentFile === page.url) {
+                    link.classList.add("active");
+                    link.setAttribute("aria-current", "page");
+                }
+                li.append(link);
+                navList.append(li);
+            }
+        }
+    }
+
+    // Pure vanilla JS collapse handler for mobile navbar & FAQ accordion (using classList)
+    function initCollapsibleComponents() {
+        const toggleButtons = document.querySelectorAll('[data-bs-toggle="collapse"]');
+        for (let i = 0; i < toggleButtons.length; i += 1) {
+            const button = toggleButtons[i];
+            button.addEventListener("click", function () {
+                const targetSelector = button.getAttribute("data-bs-target");
+                if (!targetSelector) {
+                    return;
+                }
+                const target = document.querySelector(targetSelector);
+                if (!target) {
+                    return;
+                }
+                const isShown = target.classList.toggle("show");
+                button.classList.toggle("collapsed", !isShown);
+                button.setAttribute("aria-expanded", isShown ? "true" : "false");
+            });
+        }
+    }
+
+    // Global Site Search & Filter in Navbar
+    function addSiteSearch() {
+        const navbarContent = document.querySelector(".navbar .navbar-collapse, .navbar .css-collapse");
+        if (!navbarContent || navbarContent.querySelector("[data-site-search-form]")) {
+            return;
+        }
+
+        const form = createElement("form", "mt-3 mt-lg-0 ms-lg-3 position-relative");
+        form.setAttribute("role", "search");
+        form.dataset.siteSearchForm = "true";
+
+        const controls = createElement("div", "input-group input-group-sm");
+        const categorySelect = createElement("select", "form-select");
+        categorySelect.setAttribute("aria-label", "Filter pages by category");
+
+        const categories = ["all", "Information", "Dining", "Reservations", "Community"];
+        for (let i = 0; i < categories.length; i += 1) {
+            const cat = categories[i];
+            const label = cat === "all" ? "All Sections" : cat;
+            const option = createElement("option", "", label);
+            option.value = cat;
+            categorySelect.append(option);
+        }
+
+        const input = createElement("input", "form-control");
+        input.type = "search";
+        input.placeholder = "Search site...";
+        input.setAttribute("aria-label", "Search website pages");
+
+        const searchButton = createElement("button", "btn btn-danger", "Search");
+        searchButton.type = "submit";
+
+        const resetButton = createElement("button", "btn btn-outline-light", "Clear");
+        resetButton.type = "button";
+
+        const status = createElement("p", "small text-white-50 mb-1 mt-1");
+        status.setAttribute("aria-live", "polite");
+
+        const resultList = createElement("ul", "list-group mb-2 shadow d-none");
+        resultList.setAttribute("aria-label", "Website search results");
+
+        controls.append(categorySelect, input, searchButton, resetButton);
+        form.append(controls, status, resultList);
+        navbarContent.append(form);
+
+        renderSearchResults("", "all", status, resultList);
+
+        form.addEventListener("submit", function (event) {
+            event.preventDefault();
+            renderSearchResults(input.value, categorySelect.value, status, resultList);
+        });
+
+        input.addEventListener("input", function () {
+            renderSearchResults(input.value, categorySelect.value, status, resultList);
+        });
+
+        categorySelect.addEventListener("change", function () {
+            renderSearchResults(input.value, categorySelect.value, status, resultList);
+        });
+
+        input.addEventListener("keydown", function (event) {
+            if (event.key === "Escape") {
+                input.value = "";
+                categorySelect.value = "all";
+                renderSearchResults("", "all", status, resultList);
+            }
+        });
+
+        resetButton.addEventListener("click", function () {
+            input.value = "";
+            categorySelect.value = "all";
+            renderSearchResults("", "all", status, resultList);
+            input.focus();
+        });
+    }
+
+    // Calculate Business Lunch window & live operating status
+    function calculateBusinessLunchStatus(nowDate) {
+        const current = nowDate instanceof Date ? nowDate : new Date();
+        const day = current.getDay();
+        const hours = current.getHours();
+        const minutes = current.getMinutes();
+        const currentMinutes = hours * 60 + minutes;
+        const lunchStart = 12 * 60;
+        const lunchEnd = 15 * 60;
+        const isWeekday = day >= 1 && day <= 5;
+
+        let statusType = "regular";
+        let message = "";
+
+        if (isWeekday && currentMinutes >= lunchStart && currentMinutes < lunchEnd) {
+            const remainingMinutes = lunchEnd - currentMinutes;
+            statusType = "lunch-active";
+            message = `Open 24/7 · Business Lunch is ACTIVE now (${remainingMinutes} min remaining until 15:00).`;
+        } else if (isWeekday && currentMinutes < lunchStart) {
+            const waitMinutes = lunchStart - currentMinutes;
+            const waitHours = Math.floor(waitMinutes / 60);
+            const remMins = waitMinutes % 60;
+            statusType = "lunch-soon";
+            message = `Open 24/7 · Weekday Business Lunch starts in ${waitHours}h ${remMins}m (12:00–15:00).`;
+        } else if (day === 5 || day === 6) {
+            statusType = "weekend-music";
+            message = "Open 24/7 · Weekend Live Music Evening (20:00–23:00). Table pre-booking recommended!";
+        } else {
+            statusType = "regular";
+            message = "Open 24/7 · Main Grill & Halal Kitchen operating round the clock in Astana.";
+        }
+
+        return {
+            statusType: statusType,
+            message: message
+        };
+    }
+
+    // Add interactive live status bar & random promo generator to every page
+    function addLiveRestaurantBar() {
+        const mainElement = document.querySelector("main");
+        if (!mainElement || document.getElementById("mp-live-status-bar")) {
+            return;
+        }
+
+        const statusInfo = calculateBusinessLunchStatus(new Date());
+        const wrapper = createElement(
+            "div",
+            "alert alert-secondary d-flex flex-wrap justify-content-between align-items-center gap-2 py-2 px-3 mb-4 shadow-sm"
+        );
+        wrapper.id = "mp-live-status-bar";
+
+        const leftBox = createElement("div", "d-flex align-items-center gap-2 flex-wrap");
+        const badge = createElement("span", "badge text-bg-success", "LIVE 24/7");
+        const statusText = createElement("span", "small fw-semibold", statusInfo.message);
+
+        switch (statusInfo.statusType) {
+            case "lunch-active":
+                badge.classList.replace("text-bg-success", "text-bg-danger");
+                badge.textContent = "BUSINESS LUNCH";
+                break;
+            case "weekend-music":
+                badge.classList.replace("text-bg-success", "text-bg-warning");
+                badge.textContent = "LIVE MUSIC TODAY";
+                break;
+            default:
+                break;
+        }
+
+        const rightBox = createElement("div", "d-flex align-items-center gap-2 flex-wrap");
+        const promoOutput = createElement("span", "small text-danger fw-bold", "");
+        const promoButton = createElement("button", "btn btn-sm btn-outline-danger", "Get Daily Promo Code");
+        promoButton.type = "button";
+
+        promoButton.addEventListener("click", function () {
+            const randomIndex = Math.floor(Math.random() * dailyPromoOffers.length);
+            const chosenOffer = dailyPromoOffers[randomIndex];
+            const demoTicket = createDemoReference(chosenOffer.code);
+            promoOutput.textContent = `Promo ${demoTicket}: ${chosenOffer.label}`;
+            promoButton.textContent = "Try Another Code";
+        });
+
+        leftBox.append(badge, statusText);
+        rightBox.append(promoOutput, promoButton);
+        wrapper.append(leftBox, rightBox);
+        mainElement.prepend(wrapper);
+    }
+
+    window.meatPoint = Object.freeze({
+        sitePages: sitePages,
+        createElement: createElement,
+        normalizeText: normalizeText,
+        formatMoney: formatMoney,
+        calculateServiceFee: calculateServiceFee,
+        calculateOrderBreakdown: calculateOrderBreakdown,
+        createRandomDigits: createRandomDigits,
+        createDemoReference: createDemoReference,
+        getLocalDateString: getLocalDateString,
+        isValidPhone: isValidPhone,
+        isValidEmail: isValidEmail,
+        isStrongPassword: isStrongPassword,
+        searchPages: searchPages
+    });
+
+    ensureCompleteNavbarLinks();
+    initCollapsibleComponents();
+    addSiteSearch();
+    addLiveRestaurantBar();
 }());
