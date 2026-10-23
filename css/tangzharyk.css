@@ -1,6 +1,6 @@
-/* tangzharyk.css */
-/* BOOTSTRAP CORRECTION LAYER */
-/* Note: Removed old layout rules (grid, flex, float, media queries) as Bootstrap handles them now. */
+/* =========================================
+   BOOTSTRAP CORRECTION LAYER
+   ========================================= */
 
 :root {
     --accent: #d9534f;
@@ -9,24 +9,138 @@
     --text-primary: #333333;
 }
 
+
+/* =========================================
+   CUSTOM REVIEW STYLES
+   ========================================= */
+
 .review-note {
     letter-spacing: 1.2px;
 }
+
 
 q::before {
     content: "“";
     color: var(--accent);
 }
 
+
 q::after {
     content: "”";
     color: var(--accent);
 }
 
+
 a[href^="mailto"]::before {
     content: "✉ ";
 }
 
-/* Fixed contact box via z-index. Layout and positioning are handled by Bootstrap utilities. */
-.contact-aside, .footer-aside {
-    z-index: 10;}
+
+/* =========================================
+   FIXED CONTACT
+   ========================================= */
+
+.contact-aside,
+.footer-aside {
+    z-index: 10;
+}
+
+
+/* =========================================
+   CSS-ONLY NAVBAR
+   NO JAVASCRIPT
+   ========================================= */
+
+/* Hide checkbox */
+
+.navbar-toggle-checkbox {
+    display: none;
+}
+
+
+/* Desktop */
+
+@media (min-width: 992px) {
+
+    .navbar-collapse {
+        display: flex !important;
+        flex-basis: auto;
+    }
+
+    .navbar-toggler {
+        display: none !important;
+    }
+
+}
+
+
+/* Mobile */
+
+@media (max-width: 991.98px) {
+
+    .navbar-toggler {
+        display: block;
+        cursor: pointer;
+    }
+
+    .navbar-collapse {
+        display: none;
+        width: 100%;
+        flex-basis: 100%;
+    }
+
+    /*
+       When checkbox is checked,
+       the menu becomes visible.
+    */
+
+    .navbar-toggle-checkbox:checked ~ .navbar-collapse {
+        display: block;
+    }
+
+}
+
+
+/* =========================================
+   HTML DETAILS ACCORDION
+   NO JAVASCRIPT
+   ========================================= */
+
+.accordion details {
+    border: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+
+.accordion details + details {
+    border-top: 0;
+}
+
+
+.accordion summary {
+    list-style: none;
+    cursor: pointer;
+}
+
+
+.accordion summary::-webkit-details-marker {
+    display: none;
+}
+
+
+/* Arrow */
+
+.accordion summary::after {
+    content: "⌄";
+    margin-left: auto;
+    transition: transform 0.2s;
+}
+
+
+.accordion details[open] summary::after {
+    transform: rotate(180deg);
+}
+
+
+.accordion .accordion-body {
+    border-top: 1px solid rgba(0, 0, 0, 0.125);
+}

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore the authentic Turkish halal menu at Meat Point Astana.">
+    <meta name="author" content="Madiyar Akylbek">
+    <title>Our Menu | Meat Point</title>
+    <!-- Bootstrap v5.3.3 via CDN; our own files are linked after it -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/madiyar.css">
+    <style>
+.navbar-toggle-checkbox{position:absolute;opacity:0;pointer-events:none}
+.navbar-toggler{cursor:pointer}
+.navbar-toggle-checkbox:focus-visible ~ .navbar-toggler{box-shadow:0 0 0 .25rem rgba(255,255,255,.5)}
+@media (max-width:991.98px){
+.navbar-collapse{display:none}
+.navbar-toggle-checkbox:checked ~ .navbar-collapse{display:block}
+}
+.css-car-radio{position:absolute;opacity:0;pointer-events:none;width:0;height:0}
+.css-car-track{display:flex;transition:transform .5s ease}
+.css-car-slide{position:relative;flex:0 0 100%;min-width:0}
+.css-car-slide .dish-slide{width:100%;height:auto;aspect-ratio:16/10;object-fit:cover}
+#dish1:checked ~ .carousel-inner .css-car-track{transform:translateX(0)}
+#dish2:checked ~ .carousel-inner .css-car-track{transform:translateX(-100%)}
+#dish3:checked ~ .carousel-inner .css-car-track{transform:translateX(-200%)}
+.css-carousel .carousel-control-prev,.css-carousel .carousel-control-next{cursor:pointer}
+.css-carousel .carousel-indicators label{display:block;box-sizing:content-box;flex:0 1 auto;width:30px;height:3px;margin:0 3px;background:#fff;background-clip:padding-box;border-top:10px solid transparent;border-bottom:10px solid transparent;opacity:.5;cursor:pointer;transition:opacity .6s}
+#dish1:checked ~ .carousel-indicators label[for="dish1"],
+#dish2:checked ~ .carousel-indicators label[for="dish2"],
+#dish3:checked ~ .carousel-indicators label[for="dish3"]{opacity:1}
+    </style>
+</head>
+<body class="d-flex flex-column min-vh-100">
+
+<header>
+    <!-- container: the navbar content stays in a centered fixed-width column on every page -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Meat Point</a>
+            <input type="checkbox" id="navbarToggle" class="navbar-toggle-checkbox">
+            <label for="navbarToggle" class="navbar-toggler" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </label>
+            <div class="navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contacts.html">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="menu.html">Menu</a></li>
+                    <li class="nav-item"><a class="nav-link" href="events.html">Events</a></li>
+                    <li class="nav-item"><a class="nav-link" href="booking.html">Booking</a></li>
+                    <li class="nav-item"><a class="nav-link" href="feedback.html">Reviews</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<main class="container my-4 flex-grow-1">
+    <h1 class="display-5 text-danger text-center mb-3">Meat Point Menu</h1>
+    <nav class="nav nav-pills justify-content-center mb-4" aria-label="Page sections">
+        <a class="nav-link" href="#intro-menu">Cuisine Introduction</a>
+        <a class="nav-link" href="#menu-table">Dish Prices</a>
+    </nav>
+
+    <article id="intro-menu" class="mb-5">
+        <h2 class="h3">Authentic Turkish Cuisine</h2>
+        <div class="row g-4">
+            <div class="col-12 col-lg-6">
+                <p class="lead">Welcome to the culinary heart of Meat Point Astana. Our menu brings you the authentic taste of Turkish cuisine, made from fresh, strictly halal ingredients sourced from trusted local farmers.</p>
+                <p>From hearty main courses with our signature premium beef and lamb to light salads and traditional Turkish beverages, there is something for everyone. Our meat is grilled over an open fire for that distinct smoky flavor. Ask our staff about the chef's daily specials.</p>
+                <a class="btn btn-danger btn-lg" href="booking.html">Reserve a table</a>
+            </div>
+            <div class="col-12 col-lg-6">
+                <!-- Component: Carousel (https://getbootstrap.com/docs/5.3/components/carousel/)
+                     Changes: CSS-only version with radio inputs instead of Bootstrap JS, three dish photos with alt text,
+                     captions hidden on phones (d-none d-md-block), fixed image height through the .dish-slide class. -->
+                <div id="dishCarousel" class="carousel slide css-carousel">
+                    <input type="radio" name="dish" id="dish1" class="css-car-radio" checked>
+                    <input type="radio" name="dish" id="dish2" class="css-car-radio">
+                    <input type="radio" name="dish" id="dish3" class="css-car-radio">
+                    <div class="carousel-inner rounded shadow">
+                        <div class="css-car-track">
+                        <div class="css-car-slide">
+                            <img src="images/menu1.jpg" class="d-block w-100 dish-slide" alt="Delicious Adana Kebab served on a wooden board">
+                            <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded">
+                                <p class="mb-0">Adana Kebab</p>
+                            </div>
+                            <label for="dish3" class="carousel-control-prev" aria-label="Previous">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            </label>
+                            <label for="dish2" class="carousel-control-next" aria-label="Next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            </label>
+                        </div>
+                        <div class="css-car-slide">
+                            <img src="images/menu2.jpg" class="d-block w-100 dish-slide" alt="Juicy Chicken Shish skewered and grilled">
+                            <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded">
+                                <p class="mb-0">Chicken Shish</p>
+                            </div>
+                            <label for="dish1" class="carousel-control-prev" aria-label="Previous">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            </label>
+                            <label for="dish3" class="carousel-control-next" aria-label="Next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            </label>
+                        </div>
+                        <div class="css-car-slide">
+                            <img src="images/menu3.jpg" class="d-block w-100 dish-slide" alt="Traditional Turkish Pide with melted cheese">
+                            <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded">
+                                <p class="mb-0">Kasarli Pide</p>
+                            </div>
+                            <label for="dish2" class="carousel-control-prev" aria-label="Previous">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            </label>
+                            <label for="dish1" class="carousel-control-next" aria-label="Next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            </label>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="carousel-indicators">
+                        <label for="dish1" aria-label="Slide 1"></label>
+                        <label for="dish2" aria-label="Slide 2"></label>
+                        <label for="dish3" aria-label="Slide 3"></label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h3 class="h4 mt-4">Dietary Information</h3>
+        <div class="row g-3">
+            <div class="col-12 col-md-6">
+                <div class="p-3 bg-light border rounded h-100">
+                    <h4 class="h6 text-danger">Halal</h4>
+                    <p class="mb-0">All our meat is 100% certified Halal according to local standards.</p>
+                </div>
+            </div>
+            <div class="col-12 col-md-6">
+                <div class="p-3 bg-light border rounded h-100">
+                    <h4 class="h6 text-danger">Vegetarian</h4>
+                    <p class="mb-0">Dishes marked with a leaf symbol contain no meat ingredients.</p>
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <section id="menu-table" class="mb-5">
+        <h2 class="h3">Main Dishes &amp; Prices</h2>
+        <div class="table-responsive">
+            <table class="table table-striped table-hover align-middle">
+                <caption>Our Signature Dishes and Prices</caption>
+                <thead class="table-dark">
+                    <tr><th scope="col">Category</th><th scope="col">Dish Name</th><th scope="col">Description</th><th scope="col">Price</th></tr>
+                </thead>
+                <tbody>
+                    <tr><th scope="row">Kebabs</th><td>Adana Kebab</td><td>Spicy minced meat grilled on a skewer, served with bulgur.</td><td class="text-nowrap">4500 &#8376;</td></tr>
+                    <tr><th scope="row">Kebabs</th><td>Chicken Shish</td><td>Tender marinated chicken breast cubes, grilled to perfection.</td><td class="text-nowrap">3800 &#8376;</td></tr>
+                    <tr><th scope="row">Pide (Turkish Pizza)</th><td>Kasarli Pide</td><td>Traditional boat-shaped flatbread baked with melted cheese.</td><td class="text-nowrap">3200 &#8376;</td></tr>
+                    <tr><th scope="row">Steaks</th><td>Beef Ribeye</td><td>Premium local beef, aged for 21 days and fire-grilled.</td><td class="text-nowrap">8500 &#8376;</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+</main>
+
+<footer class="bg-dark text-white text-center py-4 mt-auto">
+    <div class="container">
+        <div class="row g-2 justify-content-center align-items-center">
+            <div class="col-12 col-md-4">Uly Dala street 45, Astana</div>
+            <div class="col-12 col-md-4"><a class="link-light" href="tel:+77784221100">+7 (778) 422-11-00</a></div>
+            <div class="col-12 col-md-4"><a class="link-light" href="mailto:info@meatpoint.kz">info@meatpoint.kz</a></div>
+        </div>
+        <p class="mb-0 mt-3 small text-secondary">&copy; 2026 Meat Point. All rights reserved.</p>
+    </div>
+</footer>
+<script src="js/main.js" defer></script>
+<script src="js/menu.js" defer></script>
+</body>
+</html>

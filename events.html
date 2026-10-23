@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Register for live music events and weekend specials at Meat Point Astana.">
+    <meta name="author" content="Madiyar Akylbek">
+    <title>Events & Live Music | Meat Point</title>
+    <!-- Bootstrap v5.3.3 via CDN; our own files are linked after it -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/madiyar.css">
+    <style>
+.navbar-toggle-checkbox{position:absolute;opacity:0;pointer-events:none}
+.navbar-toggler{cursor:pointer}
+.navbar-toggle-checkbox:focus-visible ~ .navbar-toggler{box-shadow:0 0 0 .25rem rgba(255,255,255,.5)}
+@media (max-width:991.98px){
+.navbar-collapse{display:none}
+.navbar-toggle-checkbox:checked ~ .navbar-collapse{display:block}
+}
+    </style>
+</head>
+<body class="d-flex flex-column min-vh-100">
+
+<header>
+    <!-- container: the navbar content stays in a centered fixed-width column on every page -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Meat Point</a>
+            <input type="checkbox" id="navbarToggle" class="navbar-toggle-checkbox">
+            <label for="navbarToggle" class="navbar-toggler" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </label>
+            <div class="navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contacts.html">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="menu.html">Menu</a></li>
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="events.html">Events</a></li>
+                    <li class="nav-item"><a class="nav-link" href="booking.html">Booking</a></li>
+                    <li class="nav-item"><a class="nav-link" href="feedback.html">Reviews</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<!-- container-fluid: wide two-column page (photo + form side by side) uses the full width with px-md-5 side padding -->
+<main class="container-fluid px-md-5 my-4 flex-grow-1">
+    <h1 class="display-5 text-danger text-center mb-4">Events &amp; Live Music</h1>
+
+    <div class="row g-4 mb-5">
+        <section class="col-12 col-lg-6">
+            <h2 class="h3">Weekend Entertainment</h2>
+            <figure class="position-relative">
+                <img src="images/event.jpg" class="img-fluid rounded shadow" alt="Live music band performing at Meat Point restaurant">
+                <span class="badge text-bg-danger position-absolute top-0 start-0 m-3">LIVE</span>
+                <figcaption class="figure-caption mt-2">Live music atmosphere on weekends</figcaption>
+            </figure>
+            <p>Join us for an unforgettable evening of live entertainment and exceptional dining. Every weekend our restaurant features the best local musicians:</p>
+            <ul class="list-group mb-3">
+                <li class="list-group-item d-flex justify-content-between align-items-center">Friday: Smooth Jazz, Acoustic Pop <span class="badge text-bg-secondary">Fri</span></li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">Saturday: Traditional Turkish Tunes <span class="badge text-bg-secondary">Sat</span></li>
+            </ul>
+            <p>These evenings are <strong>incredibly popular</strong>, so tables fill up <mark>quickly</mark>. Listen to what our guests say:</p>
+            <blockquote class="blockquote p-3 bg-light border-start border-danger border-4 rounded">
+                <p class="mb-1">The live music on Saturday was absolutely fantastic! It perfectly complemented the delicious steaks and created a magical atmosphere for our anniversary dinner.</p>
+                <footer class="blockquote-footer mb-0">Aibek S.</footer>
+            </blockquote>
+            <p>Past event highlights: <a href="https://www.instagram.com/sen_men_sat/" target="_blank" rel="noopener noreferrer">Official Instagram page</a>. Don't miss the <span class="fw-bold">Special Guest</span> performance this month!</p>
+            <aside class="alert alert-warning" role="note">
+                <h3 class="h6 alert-heading">Important Note</h3>
+                <p class="mb-0">The live music schedule is subject to change during national holidays. Please confirm your registration with our manager.</p>
+            </aside>
+        </section>
+
+        <section id="registration" class="col-12 col-lg-6">
+            <h2 class="h3">Event Registration Form</h2>
+            <form action="#" method="POST" class="p-4 bg-light border rounded shadow-sm">
+                <fieldset>
+                    <legend class="h5">Reserve Your Spot</legend>
+                    <div class="row g-3">
+                        <div class="col-12 col-md-6">
+                            <label for="event-name" class="form-label">Full Name</label>
+                            <input type="text" class="form-control" id="event-name" name="name" placeholder="Enter your full name" required>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <label for="event-email" class="form-label">Email Address</label>
+                            <input type="email" class="form-control" id="event-email" name="email" placeholder="mail@example.com" required>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <label for="event-phone" class="form-label">Phone Number</label>
+                            <input type="tel" class="form-control" id="event-phone" name="phone" placeholder="+7 700 000 0000" required>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <label for="event-guests" class="form-label">Guests</label>
+                            <input type="number" class="form-control" id="event-guests" name="guests" min="1" max="20" required>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <label for="event-book-date" class="form-label">Date</label>
+                            <input type="date" class="form-control" id="event-book-date" name="book_date" required>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <span class="form-label d-block">Seating Preference</span>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" id="seat-stage" name="seating" value="stage" required>
+                                <label class="form-check-label" for="seat-stage">Near the Stage</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" id="seat-far" name="seating" value="far">
+                                <label class="form-check-label" for="seat-far">Quiet Corner</label>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <label for="event-select" class="form-label">Event Type</label>
+                            <select class="form-select" id="event-select" name="event_type" required>
+                                <option value="">--Choose an option--</option>
+                                <option value="friday">Smooth Jazz Friday</option>
+                                <option value="saturday">Turkish Tunes Saturday</option>
+                            </select>
+                        </div>
+                        <div class="col-12">
+                            <label for="event-requests" class="form-label">Special Requests</label>
+                            <textarea class="form-control" id="event-requests" name="requests" rows="4" placeholder="Any allergies or celebrations?"></textarea>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="event-terms" name="terms" required>
+                                <label class="form-check-label" for="event-terms">I agree to the reservation rules and conditions</label>
+                            </div>
+                        </div>
+                        <div class="col-12 d-flex justify-content-center gap-2">
+                            <button type="submit" class="btn btn-danger btn-lg">Register Now</button>
+                            <button type="reset" class="btn btn-outline-secondary btn-lg">Clear Form</button>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </section>
+    </div>
+</main>
+<a href="booking.html" class="btn btn-dark rounded-pill position-fixed bottom-0 end-0 m-3 d-none d-md-inline-block">Book a table</a>
+
+<footer class="bg-dark text-white text-center py-4 mt-auto">
+    <div class="container">
+        <div class="row g-2 justify-content-center align-items-center">
+            <div class="col-12 col-md-4">Uly Dala street 45, Astana</div>
+            <div class="col-12 col-md-4"><a class="link-light" href="tel:+77784221100">+7 (778) 422-11-00</a></div>
+            <div class="col-12 col-md-4"><a class="link-light" href="mailto:info@meatpoint.kz">info@meatpoint.kz</a></div>
+        </div>
+        <p class="mb-0 mt-3 small text-secondary">&copy; 2026 Meat Point. All rights reserved.</p>
+    </div>
+</footer>
+<script src="js/main.js" defer></script>
+<script src="js/events.js" defer></script>
+</body>
+</html>

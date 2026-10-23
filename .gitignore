@@ -24,7 +24,5 @@ dist-ssr
 *.sw?
 .idea/
 node_modules/
-*.js
-*.css
 package.json
 package-lock.json
