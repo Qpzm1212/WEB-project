@@ -1,80 +1,49 @@
-(function () {
+$(function () {
     "use strict";
 
-    const form = document.getElementById("restaurant-booking-form");
-    if (!form) {
-        return;
-    }
+    const $form = $('#restaurant-booking-form');
+    if (!$form.length) return;
 
-    const nameInput = document.getElementById("client-name");
-    const phoneInput = document.getElementById("client-phone");
-    const guestsInput = document.getElementById("guest-count");
-    const dateInput = document.getElementById("booking-date");
-    const timeInput = document.getElementById("booking-time");
-    const hallInputs = Array.from(form.querySelectorAll('input[name="hall"]'));
-    const summary = window.meatPoint.createElement("section", "mt-4 p-3 bg-white border rounded");
-    const summaryTitle = window.meatPoint.createElement("h3", "h5", "Booking summary");
-    const summaryText = window.meatPoint.createElement("p", "mb-0", "Choose a date, time and guest count to see your request summary.");
-    const confirmation = window.meatPoint.createElement("div", "alert alert-success mt-3");
-
-    summary.setAttribute("aria-live", "polite");
-    confirmation.hidden = true;
-    summary.append(summaryTitle, summaryText, confirmation);
-    form.after(summary);
+    const $summaryText = $('<p>', { class: 'mb-0' });
+    const $confirmation = $('<div>', { class: 'alert alert-success mt-3' }).hide();
+    
+    $('<section>', { class: 'mt-4 p-3 bg-white border rounded' })
+        .append($('<h3>', { class: 'h5', text: 'Booking summary' }), $summaryText, $confirmation)
+        .insertAfter($form);
 
     function updateSummary() {
-        const selectedHall = form.querySelector('input[name="hall"]:checked');
-        const hallLabel = selectedHall
-            ? form.querySelector(`label[for="${selectedHall.id}"]`).textContent.trim()
-            : "No hall selected";
-        const bookingDate = dateInput.value || "Date not selected";
-        const bookingTime = timeInput.value || "Time not selected";
-        const guestCount = guestsInput.value || "Not selected";
-        summaryText.textContent =
-            `${hallLabel} · ${guestCount} guest(s) · ${bookingDate} at ${bookingTime}. ` +
-            "This is a request preview; no price is calculated for table reservations.";
+        // Обход DOM через .siblings
+        const $selectedHall = $('input[name="hall"]:checked');
+        const hallLabel = $selectedHall.length ? $selectedHall.siblings('label').text().trim() : "No hall selected";
+        
+        const date = $('#booking-date').val() || "Date not selected";
+        const time = $('#booking-time').val() || "Time not selected";
+        const guests = $('#guest-count').val() || "Not selected";
+        
+        $summaryText.text(`${hallLabel} · ${guests} guest(s) · ${date} at ${time}. Preview only.`);
     }
 
-    [nameInput, phoneInput, guestsInput, dateInput, timeInput].forEach(function (input) {
-        ["input", "change"].forEach(function (eventName) {
-            input.addEventListener(eventName, function () {
-                confirmation.hidden = true;
-                updateSummary();
-            });
-        });
+    $form.on('input change', 'input', function () {
+        $confirmation.hide();
+        updateSummary();
     });
 
-    hallInputs.forEach(function (input) {
-        input.addEventListener("change", function () {
-            confirmation.hidden = true;
+    $form.on('submit', function () {
+        if ($form.find('.is-invalid').length) return;
+
+        const hallLabel = $('input[name="hall"]:checked').siblings('label').text().trim();
+        const ref = window.meatPoint.createDemoReference("MP");
+        
+        $confirmation.text(`Success! Request ${ref} for ${$('#client-name').val()}: ${hallLabel}, ${$('#guest-count').val()} guest(s).`)
+                     .fadeIn();
+    });
+
+    $form.on('reset', function () {
+        setTimeout(() => {
+            $confirmation.hide();
             updateSummary();
-        });
-    });
-
-    form.addEventListener("submit", function (event) {
-        event.preventDefault();
-        const firstInvalidField = form.querySelector(".is-invalid");
-        if (firstInvalidField) {
-            firstInvalidField.focus();
-            confirmation.hidden = true;
-            return;
-        }
-
-        const selectedHall = form.querySelector('input[name="hall"]:checked');
-        const hallLabel = form.querySelector(`label[for="${selectedHall.id}"]`).textContent.trim();
-        confirmation.textContent =
-            `Demonstration request ${window.meatPoint.createDemoReference("MP")} prepared for ` +
-            `${nameInput.value.trim()}: ${hallLabel}, ${guestsInput.value} guest(s), ` +
-            `${dateInput.value} at ${timeInput.value}. No data was sent to a server and no real booking was created.`;
-        confirmation.hidden = false;
-    });
-
-    form.addEventListener("reset", function () {
-        window.setTimeout(function () {
-            confirmation.hidden = true;
-            updateSummary();
-        });
+        }, 10);
     });
 
     updateSummary();
-}());
+});

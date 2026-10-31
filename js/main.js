@@ -1,4 +1,6 @@
-(function () {
+// Используем jQuery 3.7.1 (из CDN). 
+// Обертка $(function() { ... }) ждет полной загрузки DOM перед выполнением скрипта.
+$(function () {
     "use strict";
 
     const sitePages = [
@@ -11,132 +13,70 @@
         { title: "Reviews", url: "feedback.html", keywords: "reviews feedback rating comments", summary: "Read and submit visitor feedback." }
     ];
 
-    function createElement(tagName, classNames, text) {
-        const element = document.createElement(tagName);
-
-        if (classNames) {
-            element.className = classNames;
-        }
-        if (text !== undefined) {
-            element.textContent = text;
-        }
-
-        return element;
-    }
-
-    function normalizeText(value) {
-        return value.trim().toLocaleLowerCase();
-    }
-
-    function searchPages(query) {
-        const normalizedQuery = normalizeText(query);
-        if (normalizedQuery === "") {
-            return [];
-        }
-
-        return sitePages.filter(function (page) {
-            return normalizeText(`${page.title} ${page.keywords} ${page.summary}`).includes(normalizedQuery);
-        });
-    }
-
-    function formatMoney(amount) {
-        return `${new Intl.NumberFormat("en-US", { maximumFractionDigits: 0 }).format(amount)} ₸`;
-    }
-
-    function createRandomDigits() {
-        return String(Math.floor(Math.random() * 900000) + 100000);
-    }
-
-    function createDemoReference(prefix) {
-        return `${prefix}-${createRandomDigits()}`;
-    }
-
-    function getLocalDateString(dateValue) {
-        const localDate = dateValue || new Date();
-        const offsetDate = new Date(localDate.getTime() - localDate.getTimezoneOffset() * 60000);
-        return offsetDate.toISOString().slice(0, 10);
-    }
-
-    function isValidPhone(value) {
-        const trimmedValue = value.trim();
-        const digitCount = trimmedValue.replace(/\D/g, "").length;
-        return /^\+?[0-9\s()-]+$/.test(trimmedValue) && digitCount >= 10 && digitCount <= 15;
-    }
-
-    function renderSearchResults(query, status, resultList) {
-        const results = searchPages(query);
-        resultList.replaceChildren();
-
-        if (query.trim() === "") {
-            status.textContent = "Type a page or topic to search the website.";
-            return;
-        }
-
-        status.textContent = `${results.length} ${results.length === 1 ? "page" : "pages"} found.`;
-
-        if (results.length === 0) {
-            resultList.append(createElement("li", "list-group-item", "No matching pages. Try another search term."));
-            return;
-        }
-
-        results.forEach(function (page) {
-            const item = createElement("li", "list-group-item");
-            const link = createElement("a", "fw-semibold", page.title);
-            link.href = page.url;
-            const summary = createElement("p", "mb-0 small text-muted", page.summary);
-            item.append(link, summary);
-            resultList.append(item);
-        });
-    }
-
-    function addSiteSearch() {
-        const navbarContent = document.querySelector(".navbar .navbar-collapse");
-        if (!navbarContent) {
-            return;
-        }
-
-        const form = createElement("form", "mt-3 mt-lg-0 ms-lg-3");
-        form.setAttribute("role", "search");
-        const controls = createElement("div", "input-group");
-        const input = createElement("input", "form-control");
-        input.type = "search";
-        input.placeholder = "Search the site";
-        input.setAttribute("aria-label", "Search website pages");
-        const searchButton = createElement("button", "btn btn-outline-light", "Search");
-        searchButton.type = "submit";
-        const resetButton = createElement("button", "btn btn-outline-light", "Clear");
-        resetButton.type = "button";
-        const status = createElement("p", "small text-white mb-1 mt-2");
-        status.setAttribute("aria-live", "polite");
-        const resultList = createElement("ul", "list-group mb-2");
-
-        controls.append(input, searchButton, resetButton);
-        form.append(controls, status, resultList);
-        navbarContent.append(form);
-        resultList.setAttribute("aria-label", "Website search results");
-        renderSearchResults("", status, resultList);
-
-        form.addEventListener("submit", function (event) {
-            event.preventDefault();
-            renderSearchResults(input.value, status, resultList);
-        });
-        input.addEventListener("input", function () {
-            renderSearchResults(input.value, status, resultList);
-        });
-        resetButton.addEventListener("click", function () {
-            input.value = "";
-            renderSearchResults("", status, resultList);
-            input.focus();
-        });
-    }
-
     window.meatPoint = Object.freeze({
-        createElement: createElement,
-        createDemoReference: createDemoReference,
-        formatMoney: formatMoney,
-        getLocalDateString: getLocalDateString,
-        isValidPhone: isValidPhone
+        createDemoReference: prefix => `${prefix}-${String(Math.floor(Math.random() * 900000) + 100000)}`
     });
 
-    addSiteSearch();
-}());
+    const $navbarContent = $('.navbar .navbar-collapse');
+    if (!$navbarContent.length) return;
+
+    // [Замена чистого JS]: Создание элементов через $("<tag>", { attributes }).
+    const $form = $('<form>', { class: 'mt-3 mt-lg-0 ms-lg-3', role: 'search' });
+    const $controls = $('<div>', { class: 'input-group' });
+    const $input = $('<input>', { class: 'form-control', type: 'search', placeholder: 'Search the site' });
+    const $searchBtn = $('<button>', { class: 'btn btn-outline-light', type: 'submit', text: 'Search' });
+    const $resetBtn = $('<button>', { class: 'btn btn-outline-light', type: 'button', text: 'Clear' });
+    const $status = $('<p>', { class: 'small text-white mb-1 mt-2', 'aria-live': 'polite' });
+    const $resultList = $('<ul>', { class: 'list-group mb-2' }).hide();
+
+    $controls.append($input, $searchBtn, $resetBtn);
+    $form.append($controls, $status, $resultList).appendTo($navbarContent);
+
+    function renderSearchResults(query) {
+        const normalizedQuery = query.trim().toLowerCase();
+        $resultList.empty();
+
+        if (!normalizedQuery) {
+            $status.text("Type a page or topic to search the website.");
+            $resultList.slideUp();
+            return;
+        }
+
+        const results = sitePages.filter(page => 
+            `${page.title} ${page.keywords} ${page.summary}`.toLowerCase().includes(normalizedQuery)
+        );
+
+        $status.text(`${results.length} ${results.length === 1 ? "page" : "pages"} found.`);
+
+        if (results.length === 0) {
+            // [Разница text/html]: .html() рендерит теги (например, <b>), а .text() вставил бы их как обычный текст.
+            $resultList.append($('<li>', { class: 'list-group-item' }).html("No matching pages. <b>Try another search.</b>")).slideDown();
+            return;
+        }
+
+        // [Построение списка из массива]: Разметка генерируется в коде, в HTML её нет.
+        $.each(results, function (index, page) {
+            // [Цепочка методов из 3+ звеньев]:
+            // 1. $('<a>') создает тег. 2. .addClass() вешает классы. 3. .attr() задает ссылку. 4. .text() задает текст.
+            const $link = $('<a>').addClass('fw-semibold').attr('href', page.url).text(page.title);
+            const $summary = $('<p>').addClass('mb-0 small text-muted').text(page.summary);
+            $('<li>').addClass('list-group-item').append($link, $summary).appendTo($resultList);
+        });
+        
+        $resultList.slideDown(300);
+    }
+
+    $form.on('submit', function (e) {
+        e.preventDefault();
+        renderSearchResults($input.val());
+    });
+
+    $input.on('input', function () {
+        renderSearchResults($input.val());
+    });
+
+    $resetBtn.on('click', function () {
+        $input.val("").trigger('focus');
+        renderSearchResults("");
+    });
+});
