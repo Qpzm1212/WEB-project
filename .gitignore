@@ -26,5 +26,11 @@ dist-ssr
 node_modules/
 *.js
 *.css
+!javascript/
+!javascript/*.js
+!js/
+!js/*.js
+!css/
+!css/*.css
 package.json
 package-lock.json
