@@ -1,7 +1,3 @@
-/* =========================================
-   BOOTSTRAP CORRECTION LAYER
-   ========================================= */
-
 :root {
     --accent: #d9534f;
     --bg-white: #ffffff;
@@ -9,56 +5,32 @@
     --text-primary: #333333;
 }
 
-
-/* =========================================
-   CUSTOM REVIEW STYLES
-   ========================================= */
-
 .review-note {
     letter-spacing: 1.2px;
 }
-
 
 q::before {
     content: "“";
     color: var(--accent);
 }
 
-
 q::after {
     content: "”";
     color: var(--accent);
 }
 
-
 a[href^="mailto"]::before {
     content: "✉ ";
 }
-
-
-/* =========================================
-   FIXED CONTACT
-   ========================================= */
 
 .contact-aside,
 .footer-aside {
     z-index: 10;
 }
 
-
-/* =========================================
-   CSS-ONLY NAVBAR
-   NO JAVASCRIPT
-   ========================================= */
-
-/* Hide checkbox */
-
 .navbar-toggle-checkbox {
     display: none;
 }
-
-
-/* Desktop */
 
 @media (min-width: 992px) {
 
@@ -73,9 +45,6 @@ a[href^="mailto"]::before {
 
 }
 
-
-/* Mobile */
-
 @media (max-width: 991.98px) {
 
     .navbar-toggler {
@@ -89,45 +58,28 @@ a[href^="mailto"]::before {
         flex-basis: 100%;
     }
 
-    /*
-       When checkbox is checked,
-       the menu becomes visible.
-    */
-
     .navbar-toggle-checkbox:checked ~ .navbar-collapse {
         display: block;
     }
 
 }
 
-
-/* =========================================
-   HTML DETAILS ACCORDION
-   NO JAVASCRIPT
-   ========================================= */
-
 .accordion details {
     border: 1px solid rgba(0, 0, 0, 0.125);
 }
 
-
 .accordion details + details {
     border-top: 0;
 }
-
 
 .accordion summary {
     list-style: none;
     cursor: pointer;
 }
 
-
 .accordion summary::-webkit-details-marker {
     display: none;
 }
-
-
-/* Arrow */
 
 .accordion summary::after {
     content: "⌄";
@@ -135,11 +87,9 @@ a[href^="mailto"]::before {
     transition: transform 0.2s;
 }
 
-
 .accordion details[open] summary::after {
     transform: rotate(180deg);
 }
-
 
 .accordion .accordion-body {
     border-top: 1px solid rgba(0, 0, 0, 0.125);

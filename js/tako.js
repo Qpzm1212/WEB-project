@@ -24,7 +24,6 @@
         dateInput.min = todayStr;
     }
 
-    // Reusable Function 1: Get max capacity based on selected hall
     function getHallMaxCapacity(hallValue) {
         if (hallValue === "vip") {
             return 15;
@@ -32,7 +31,6 @@
         return 80;
     }
 
-    // Reusable Function 2: Calculate required deposit per guest based on hall and group size
     function calculateDepositPerGuest(hallValue, guestCount) {
         const count = Number(guestCount) || 0;
         if (hallValue === "vip") {
@@ -44,7 +42,6 @@
         return 0;
     }
 
-    // Reusable Function 3: Calculate complete booking estimate (calls getHallMaxCapacity & calculateDepositPerGuest)
     function calculateBookingQuote(hallValue, guestCount) {
         const cleanGuests = Math.max(0, Math.floor(Number(guestCount) || 0));
         const maxCapacity = getHallMaxCapacity(hallValue);
@@ -68,7 +65,6 @@
         };
     }
 
-    // Reusable Function 4: Ensure error element exists and display/clear field error using classList
     function showError(input, message) {
         if (!input) {
             return;
@@ -88,7 +84,6 @@
         errorElement.textContent = message;
     }
 
-    // Reusable Function 5: Validate an individual booking input field (calls getHallMaxCapacity & showError)
     function validateInput(input) {
         if (!input) {
             return true;
@@ -160,7 +155,6 @@
         return message === "";
     }
 
-    // Reusable Function 6: Validate all booking fields using a for loop
     function validateAllBookingFields() {
         let allValid = true;
         for (let i = 0; i < fields.length; i += 1) {

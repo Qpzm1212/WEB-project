@@ -3,7 +3,6 @@
 (function () {
     "use strict";
 
-    // Array of 8 objects, each with 6 meaningful properties representing real site pages
     const sitePages = [
         {
             id: "page-home",
@@ -78,7 +77,6 @@
         { code: "FAMILY12", discountPercent: 12, label: "12% off Family Table Bookings for 6+ guests" }
     ];
 
-    // Reusable Function 1: Create DOM element safely using textContent
     function createElement(tagName, classNames, text) {
         const element = document.createElement(tagName);
 
@@ -92,7 +90,6 @@
         return element;
     }
 
-    // Reusable Function 2: Normalize text for search/comparison
     function normalizeText(value) {
         if (typeof value !== "string") {
             return "";
@@ -100,21 +97,18 @@
         return value.trim().toLocaleLowerCase();
     }
 
-    // Reusable Function 3: Format numeric amount into Tenge currency string
     function formatMoney(amount) {
         const numericAmount = Number(amount);
         const safeAmount = Number.isFinite(numericAmount) ? Math.round(numericAmount) : 0;
         return `${new Intl.NumberFormat("en-US", { maximumFractionDigits: 0 }).format(safeAmount)} ₸`;
     }
 
-    // Reusable Function 4: Calculate service charge (calls Math.round)
     function calculateServiceFee(subtotal, ratePercent) {
         const safeSubtotal = Number(subtotal) > 0 ? Number(subtotal) : 0;
         const safeRate = Number(ratePercent) >= 0 ? Number(ratePercent) : 10;
         return Math.round((safeSubtotal * safeRate) / 100);
     }
 
-    // Reusable Function 5: Calculate full order breakdown (calls calculateServiceFee and formatMoney)
     function calculateOrderBreakdown(subtotal, discountAmount, serviceRatePercent) {
         const cleanSubtotal = Math.max(0, Number(subtotal) || 0);
         const cleanDiscount = Math.min(cleanSubtotal, Math.max(0, Number(discountAmount) || 0));
@@ -131,7 +125,6 @@
         };
     }
 
-    // Reusable Function 6: Generate random digits using Math.random() and a for loop
     function createRandomDigits(length) {
         const count = Number.isInteger(length) && length > 0 ? length : 6;
         let digits = "";
@@ -142,39 +135,33 @@
         return digits;
     }
 
-    // Reusable Function 7: Generate demo reference code (calls createRandomDigits)
     function createDemoReference(prefix) {
         const cleanPrefix = prefix ? String(prefix).trim().toUpperCase() : "MP";
         return `${cleanPrefix}-${createRandomDigits(6)}`;
     }
 
-    // Reusable Function 8: Get local YYYY-MM-DD date string
     function getLocalDateString(dateValue) {
         const localDate = dateValue instanceof Date ? dateValue : new Date();
         const offsetDate = new Date(localDate.getTime() - localDate.getTimezoneOffset() * 60000);
         return offsetDate.toISOString().slice(0, 10);
     }
 
-    // Reusable Function 9: Validate phone number (10 to 15 digits)
     function isValidPhone(value) {
         const trimmedValue = String(value || "").trim();
         const digitCount = trimmedValue.replace(/\D/g, "").length;
         return /^\+?[0-9\s()-]+$/.test(trimmedValue) && digitCount >= 10 && digitCount <= 15;
     }
 
-    // Reusable Function 10: Validate email address
     function isValidEmail(value) {
         const trimmedValue = String(value || "").trim();
         return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(trimmedValue);
     }
 
-    // Reusable Function 11: Validate strong password (8+ chars, upper, lower, digit, special char)
     function isStrongPassword(value) {
         const rawValue = String(value || "");
         return /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z\d\s]).{8,}$/.test(rawValue);
     }
 
-    // Reusable Function 12: Filter sitePages using explicit for loop, normalizeText, if/else, === and &&
     function searchPages(query, category) {
         const normalizedQuery = normalizeText(query);
         const selectedCategory = category || "all";
@@ -198,7 +185,6 @@
         return matchedPages;
     }
 
-    // Reusable DOM card/row renderer for a single site search result
     function createSearchResultItem(page) {
         const item = createElement("li", "list-group-item list-group-item-action d-flex justify-content-between align-items-start gap-2 py-2 border-0 border-bottom");
         const textWrap = createElement("div", "me-auto");
@@ -241,7 +227,6 @@
         }
     }
 
-    // Ensure all 8 pages are linked in the navbar across all student templates via DOM
     function ensureCompleteNavbarLinks() {
         const navList = document.querySelector(".navbar .navbar-nav");
         if (!navList) {
@@ -275,7 +260,6 @@
         }
     }
 
-    // Pure vanilla JS collapse handler for mobile navbar & FAQ accordion (using classList)
     function initCollapsibleComponents() {
         const toggleButtons = document.querySelectorAll('[data-bs-toggle="collapse"]');
         for (let i = 0; i < toggleButtons.length; i += 1) {
@@ -296,7 +280,6 @@
         }
     }
 
-    // Global Site Search & Filter in Navbar
     function addSiteSearch() {
         const navbarContent = document.querySelector(".navbar .navbar-collapse, .navbar .css-collapse");
         if (!navbarContent || navbarContent.querySelector("[data-site-search-form]")) {
@@ -372,7 +355,6 @@
         });
     }
 
-    // Calculate Business Lunch window & live operating status
     function calculateBusinessLunchStatus(nowDate) {
         const current = nowDate instanceof Date ? nowDate : new Date();
         const day = current.getDay();
@@ -410,7 +392,6 @@
         };
     }
 
-    // Add interactive live status bar & random promo generator to every page
     function addLiveRestaurantBar() {
         const mainElement = document.querySelector("main");
         if (!mainElement || document.getElementById("mp-live-status-bar")) {

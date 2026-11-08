@@ -1,9 +1,3 @@
-/* 
-  Bootstrap Correction Layer - base.css
-  Retained only custom fonts and color variables.
-  All layout rules replaced by Bootstrap 5.
-*/
-
 :root {
   --text-primary: #2c3e50;
   --accent: rgb(234, 22, 0);
@@ -24,7 +18,6 @@ h1, h2, h3, h4, h5, h6,
   font-family: var(--font-heading);
 }
 
-/* Custom override for our brand colors without using !important */
 h1.text-danger, h2.text-danger, h3.text-danger, h4.text-danger, .navbar-brand.text-danger, .text-danger {
   color: var(--accent);
 }

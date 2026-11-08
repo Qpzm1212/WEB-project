@@ -22,7 +22,6 @@
 
     const todayStr = getLocalDateString(new Date());
 
-    // Dynamically add Category and Visit Date fields to feedback-form via DOM so it validates 5 fields
     const extraFieldsRow = createElement("div", "row g-3 mb-3");
     const categoryCol = createElement("div", "col-12 col-md-6");
     const categoryLabel = createElement("label", "form-label", "Visited Area / Category");
@@ -61,7 +60,6 @@
     extraFieldsRow.append(categoryCol, dateCol);
     ratingInput.closest(".mb-3").after(extraFieldsRow);
 
-    // Array of 7 real visitor reviews (each with 7 meaningful properties)
     const reviews = [
         {
             id: "REV-2GIS-1",
@@ -140,7 +138,6 @@
     let editingReviewId = "";
     let highlightedReviewId = "";
 
-    // Build Filter, Search, Sort & Analytics Bar via DOM
     const controlsPanel = createElement("section", "p-4 bg-white border-0 rounded-4 shadow-sm my-4");
     const statsBar = createElement("div", "d-flex flex-wrap justify-content-between align-items-center gap-2 pb-3 mb-3 border-bottom");
     const statsSummary = createElement("div", "fw-bold text-danger fs-5");
@@ -228,7 +225,6 @@
     form.after(submissionBanner);
     messageInput.setAttribute("aria-describedby", "review-character-count");
 
-    // Reusable Function 1: Calculate average rating and positive percentage using a for loop
     function calculateReviewMetrics(list) {
         if (list.length === 0) {
             return { average: "0.0", positivePercent: 0, total: 0 };
@@ -251,7 +247,6 @@
         };
     }
 
-    // Reusable Function 2: Filter and sort reviews using explicit for loop
     function getFilteredReviews() {
         const query = normalizeText(searchInput.value);
         const rFilter = ratingFilter.value;
@@ -317,7 +312,6 @@
         getErrorElement(input).textContent = message;
     }
 
-    // Reusable Function 3: Validate each field of the review form (5 fields + combined rating/length rule)
     function validateField(input) {
         let message = "";
         const value = input.value.trim();
@@ -354,7 +348,6 @@
         return message === "";
     }
 
-    // Reusable Function 4: Render a single review card via DOM
     function renderReview(review) {
         const column = createElement("article", "col-12 col-md-6 col-lg-4");
         const isHighlighted = review.id === highlightedReviewId;
@@ -476,7 +469,6 @@
         });
     }
 
-    // Filter events
     searchInput.addEventListener("input", renderReviews);
     ratingFilter.addEventListener("change", renderReviews);
     categoryFilter.addEventListener("change", renderReviews);

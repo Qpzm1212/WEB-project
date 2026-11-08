@@ -1,24 +1,8 @@
-/*
- * old-js-version.js  (Assignment 6 — NOT linked to any page)
- * ---------------------------------------------------------------------------
- * The ORIGINAL plain-JavaScript code (copied unchanged from js/kamza.js, the
- * version from Assignments 4-5) of the three features that were rewritten in
- * jQuery in js/kamza-jquery.js, so both versions can be compared side by side:
- *
- *   1. the list of cards built in code from an array   -> oldFeature1_cardList
- *   2. show / hide of a block (VIP box, show-password)  -> oldFeature2_showHide
- *   3. the contact form validation                      -> oldFeature3_formValidation
- *
- * Each feature is wrapped in a function only so the file stays valid JavaScript;
- * the variables it needs (which lived in the big enclosing function before)
- * are passed in as parameters. Nothing here is ever called.
- */
 "use strict";
 
-// ===== 1. LIST BUILT IN CODE FROM AN ARRAY (plain JS) =====
 function oldFeature1_cardList(createElement, formatMoney, filterHighlights, restaurantHighlights,
     cardsGrid, statusText, searchInput, catSelect, sortSelect, currentSpotlightId) {
-    // Reusable Function 3: Render a single highlight card via DOM
+
     function createHighlightCard(item, spotlightId) {
         const col = createElement("div", "col-12 col-md-6 col-lg-3");
         const isSpotlight = item.id === spotlightId;
@@ -75,7 +59,6 @@ function oldFeature1_cardList(createElement, formatMoney, filterHighlights, rest
     renderExplorer();
 }
 
-// ===== 2. SHOW / HIDE OF A BLOCK (plain JS) =====
 function oldFeature2_showHide(newsletterCheck, vipBox, passInput, confInput, showHideBtn) {
         if (newsletterCheck) {
             newsletterCheck.closest(".form-check").after(vipBox);
@@ -92,7 +75,6 @@ function oldFeature2_showHide(newsletterCheck, vipBox, passInput, confInput, sho
         });
 }
 
-// ===== 3. CONTACT FORM VALIDATION (plain JS) =====
 function oldFeature3_formValidation(window, form, nameInput, emailInput, phoneInput, guestsInput, dateInput,
     reasonSelect, messageInput, passInput, confInput, newsletterCheck, seatingRadios, todayStr,
     createElement, formatMoney, resultBanner, vipBox, calculateBanquetQuote) {
@@ -146,7 +128,7 @@ function oldFeature3_formValidation(window, form, nameInput, emailInput, phoneIn
                     msg = "Past dates are not accepted. Please select today or a future date.";
                 }
             } else if (input === messageInput) {
-                // Combined rule: Birthday or Business banquets for 10+ guests require special request details
+
                 const requiresDetails = (reasonSelect.value === "birthday" || reasonSelect.value === "business") && guests >= 10;
                 if (requiresDetails && val.length < 15) {
                     msg = "For Birthday or Business banquets of 10+ guests, please describe your menu/seating requests (at least 15 characters).";

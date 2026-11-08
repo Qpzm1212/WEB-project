@@ -14,7 +14,6 @@
     const normalizeText = window.meatPoint.normalizeText;
     const getLocalDateString = window.meatPoint.getLocalDateString;
 
-    // Array of 6 real weekend live music events at Meat Point, each with 8 meaningful properties
     const musicEvents = [
         {
             id: "EVT-FRI-1",
@@ -101,7 +100,6 @@
 
     let selectedEventCardId = musicEvents[0].id;
 
-    // Dynamically inject VIP Pass Password & Confirm Password + Show/Hide Password button via DOM
     const passwordRow = createElement("div", "col-12");
     const passBox = createElement("div", "p-3 bg-white border rounded");
     const passHeading = createElement("h3", "h6 text-danger mb-2", "Guest Ticket Account Password (Required)");
@@ -154,7 +152,6 @@
         togglePassBtn.classList.toggle("btn-outline-secondary", !isHidden);
     });
 
-    // Reusable Function 1: Filter music events by search query and day type using a for loop
     function filterEvents(query, dayFilter) {
         const cleanQuery = normalizeText(query);
         const cleanDay = dayFilter || "all";
@@ -173,7 +170,6 @@
         return matched;
     }
 
-    // Reusable Function 2: Calculate event ticket & seating cost
     function calculateEventCost(eventType, guestCount, seatingZone) {
         const cleanGuests = Math.max(0, Math.floor(Number(guestCount) || 0));
         const selectedCard = musicEvents.find(function (e) {
@@ -200,7 +196,6 @@
         };
     }
 
-    // Reusable Function 3: Check if a YYYY-MM-DD date string matches required Friday (5) or Saturday (6)
     function checkDateMatchesEventDay(dateString, eventType) {
         if (!dateString || !eventType) {
             return { valid: true, dayName: "" };
@@ -220,7 +215,6 @@
         return { valid: true, dayName: dayName, expected: dayName };
     }
 
-    // Reusable Function 4: Render a single event card via DOM
     function createEventCard(ev) {
         const col = createElement("div", "col-12 col-md-6");
         const isSelected = ev.id === selectedEventCardId;
@@ -270,7 +264,6 @@
         return col;
     }
 
-    // Build Interactive Event Catalog Panel inside left column
     const leftColumn = registrationSection.previousElementSibling;
     const scheduleExplorer = createElement("div", "p-4 bg-white border-0 rounded-4 shadow-sm mt-4");
     const explorerHeader = createElement("div", "d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3");
@@ -316,7 +309,6 @@
         leftColumn.append(scheduleExplorer);
     }
 
-    // Build Live Event Cost Calculator & Confirmation Panel below the form
     const calcPanel = createElement("div", "mt-4 p-4 bg-white border-0 rounded-4 shadow-sm border-start border-4 border-danger");
     const calcTitle = createElement("h3", "h6 text-danger fw-bold mb-2", "Live Event Cost & Seating Calculator");
     const calcSummary = createElement("p", "small mb-1", "");
@@ -463,7 +455,6 @@
         return msg === "";
     }
 
-    // Explorer event listeners
     searchInput.addEventListener("input", renderEventExplorer);
     daySelect.addEventListener("change", renderEventExplorer);
 

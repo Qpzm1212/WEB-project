@@ -12,7 +12,6 @@
     const formatMoney = window.meatPoint.formatMoney;
     const normalizeText = window.meatPoint.normalizeText;
 
-    // Array of 10 real Turkish Halal dishes at Meat Point, each with 8 meaningful properties
     const menuDishes = [
         {
             id: "DISH-01",
@@ -129,7 +128,6 @@
     const cartItems = [];
     let spotlightDishId = "";
 
-    // Reusable Function 1: Filter dishes by search query, category, and dietary preference using a for loop
     function filterDishes(query, category, dietary) {
         const cleanQuery = normalizeText(query);
         const cleanCategory = category || "all";
@@ -157,7 +155,6 @@
         return matched;
     }
 
-    // Reusable Function 2: Sort dishes by selected criterion
     function sortDishes(list, sortKey) {
         const sorted = list.slice();
         sorted.sort(function (a, b) {
@@ -177,7 +174,6 @@
         return sorted;
     }
 
-    // Reusable Function 3: Calculate cart totals (calls window.meatPoint.calculateOrderBreakdown)
     function calculateCartSummary(items, serviceMode) {
         let itemCount = 0;
         let totalGrams = 0;
@@ -212,7 +208,6 @@
         };
     }
 
-    // Reusable Function 4: Create a single Dish Card via DOM
     function createDishCard(dish) {
         const col = createElement("div", "col-12 col-md-6 col-lg-4");
         const isSpotlight = dish.id === spotlightDishId;
@@ -263,7 +258,6 @@
         return col;
     }
 
-    // Reusable Function 5: Create a single table row for #menu-table tbody
     function createDishTableRow(dish) {
         const tr = createElement("tr", dish.id === spotlightDishId ? "table-warning" : "");
         const th = createElement("th", "", dish.category);
@@ -275,7 +269,6 @@
         return tr;
     }
 
-    // Build Interactive Catalog Controls & Grid Section via DOM
     const catalogSection = createElement("section", "mb-5 p-4 bg-white border-0 rounded-4 shadow-sm");
     catalogSection.id = "interactive-menu-catalog";
 
@@ -354,7 +347,6 @@
     catalogSection.append(headerBar, controlsRow, catalogStatus, dishGrid);
     menuTableSection.before(catalogSection);
 
-    // Build Interactive Shopping Cart & Pre-Order Checkout Form Section via DOM
     const cartSection = createElement("section", "mb-5 p-4 bg-white border-0 rounded-4 shadow-sm");
     cartSection.id = "demo-order-cart";
 
@@ -369,7 +361,6 @@
     const cartList = createElement("ul", "list-group mb-3 shadow-sm rounded-3 overflow-hidden");
     const cartTotalsBox = createElement("div", "p-4 bg-light border-0 rounded-4 mb-4 shadow-sm border-start border-4 border-danger");
 
-    // Pre-order checkout form with 4 validated fields + combined rule
     const checkoutForm = createElement("form", "p-4 bg-light border-0 rounded-4 shadow-sm");
     checkoutForm.id = "menu-preorder-form";
     checkoutForm.noValidate = true;
@@ -602,7 +593,7 @@
             }
             setFieldError(cCutleryInput, cCutleryErr, msg);
         } else if (input === cModeSelect) {
-            // Combined rule comparing order mode and cart subtotal
+
             if (cartItems.length === 0) {
                 msg = "Please add at least one dish to your cart before placing an order.";
             } else if (cModeSelect.value === "delivery" && summary.subtotal < 5000) {
@@ -614,7 +605,6 @@
         return msg === "";
     }
 
-    // Event Listeners
     searchInput.addEventListener("input", renderCatalogAndTable);
     categorySelect.addEventListener("change", renderCatalogAndTable);
     dietSelect.addEventListener("change", renderCatalogAndTable);
@@ -741,7 +731,6 @@
         orderConfirmation.classList.remove("d-none");
     });
 
-    // Seed 2 signature dishes into initial cart so visitors immediately see live calculations
     cartItems.push({ dish: menuDishes[0], quantity: 1 });
     cartItems.push({ dish: menuDishes[2], quantity: 1 });
 

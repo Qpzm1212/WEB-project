@@ -18,7 +18,7 @@ $(function () {
     function validateInput($input) {
         let message = "";
         const id = $input.attr('id');
-        const val = $input.val().trim(); // Trim values
+        const val = $input.val().trim();
 
         if (id === "client-name" && val.length < 2) {
             message = "Please enter your name.";
@@ -28,9 +28,7 @@ $(function () {
                 message = "Enter a valid phone number.";
             }
         } else if (id === "guest-count") {
-            // [Разница .attr() и .prop()]:
-            // .attr('checked') вернет исходное состояние из HTML.
-            // .prop('checked') вернет текущее реальное состояние (выбрал ли юзер радиокнопку).
+
             const isVip = $('#hall-vip').prop('checked');
             const max = isVip ? 15 : 80;
             const count = Number(val);
@@ -47,11 +45,8 @@ $(function () {
         return message === "";
     }
 
-    // [Важное замечание]:
-    // Почему проверка в браузере никогда не заменяет проверку на сервере?
-    // Потому что клиентский код выполняется в браузере. Пользователь может отключить JS, удалить атрибут required через DevTools или отправить POST-запрос напрямую.
     $form.on('submit', function (event) {
-        // [preventDefault]: Без этого форма отправится на сервер, страница перезагрузится, и ошибки исчезнут.
+
         event.preventDefault();
         let allValid = true;
 

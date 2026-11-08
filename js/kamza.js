@@ -12,7 +12,6 @@
     const normalizeText = window.meatPoint.normalizeText;
     const getLocalDateString = window.meatPoint.getLocalDateString;
 
-    // Array of 8 real restaurant highlights, signature sets & milestones (each with 7 meaningful properties)
     const restaurantHighlights = [
         {
             id: "HL-01",
@@ -88,7 +87,6 @@
         }
     ];
 
-    // Reusable Function 1: Filter highlights by query and category using a for loop
     function filterHighlights(query, category, sortBy) {
         const cleanQuery = normalizeText(query);
         const cleanCat = category || "all";
@@ -118,7 +116,6 @@
         return matched;
     }
 
-    // Reusable Function 2: Calculate group meal or business lunch package cost
     function calculateGroupMealQuote(packagePrice, guests, isWeekdayLunch) {
         const cleanGuests = Math.max(1, Math.min(50, Math.floor(Number(guests) || 1)));
         const rawTotal = cleanGuests * packagePrice;
@@ -138,7 +135,6 @@
         };
     }
 
-    // Reusable Function 3: Render a single highlight card via DOM
     function createHighlightCard(item, spotlightId) {
         const col = createElement("div", "col-12 col-md-6 col-lg-3");
         const isSpotlight = item.id === spotlightId;
@@ -168,7 +164,6 @@
         return col;
     }
 
-    // Feature 1: Initialize Interactive Explorer & Group Meal Calculator on index.html and about.html
     function initHomeAndAboutInteractive() {
         const targetAnchor = document.getElementById("atmosphere") || document.getElementById("values");
         if (!targetAnchor) {
@@ -229,7 +224,6 @@
         statusText.setAttribute("aria-live", "polite");
         const cardsGrid = createElement("div", "row g-3 mb-4");
 
-        // Interactive Business Lunch & Group Dining Calculator
         const calcBox = createElement("div", "p-3 bg-light border rounded");
         const calcTitle = createElement("h3", "h5 text-danger mb-3", "Business Lunch & Group Dining Calculator");
         const calcControls = createElement("div", "row g-3 align-items-end");
@@ -348,7 +342,6 @@
         updateCalc();
     }
 
-    // Feature 2: Contacts Reservation & Banquet Form Validation + VIP Club Registration + Reset Button Fix
     function initContactsForm() {
         const reservationSection = document.getElementById("reservation");
         const form = reservationSection ? reservationSection.querySelector("form") : null;
@@ -372,7 +365,6 @@
             dateInput.min = todayStr;
         }
 
-        // Enable the disabled Reset button so there are zero dead buttons on contacts.html
         if (resetBtn) {
             resetBtn.classList.remove("disabled");
             resetBtn.removeAttribute("aria-disabled");
@@ -381,7 +373,6 @@
 
         form.noValidate = true;
 
-        // Dynamically inject VIP Club Password & Confirm Password + Show/Hide button when registering for discounts
         const vipBox = createElement("div", "p-3 mb-4 bg-white border rounded d-none");
         vipBox.id = "vip-club-password-box";
         const vipTitle = createElement("h3", "h6 text-danger mb-2", "VIP Club Member Password Setup");
@@ -433,7 +424,6 @@
             showHideBtn.textContent = isHidden ? "Hide Password" : "Show Password";
         });
 
-        // Live Banquet & Visit Budget Estimator Panel
         const quotePanel = createElement("div", "mt-4 p-3 bg-light border rounded");
         const quoteTitle = createElement("h3", "h5 text-danger mb-2", "Live Visit & Banquet Budget Estimator");
         const quoteText = createElement("p", "mb-0 small", "");
@@ -519,7 +509,7 @@
                     msg = "Past dates are not accepted. Please select today or a future date.";
                 }
             } else if (input === messageInput) {
-                // Combined rule: Birthday or Business banquets for 10+ guests require special request details
+
                 const requiresDetails = (reasonSelect.value === "birthday" || reasonSelect.value === "business") && guests >= 10;
                 if (requiresDetails && val.length < 15) {
                     msg = "For Birthday or Business banquets of 10+ guests, please describe your menu/seating requests (at least 15 characters).";
@@ -618,7 +608,6 @@
         calculateBanquetQuote();
     }
 
-    // Smooth scroll-to-top enhancement on colophon.html
     function initColophonFeatures() {
         const scrollTopBtn = document.querySelector(".scroll-to-top");
         if (scrollTopBtn) {
