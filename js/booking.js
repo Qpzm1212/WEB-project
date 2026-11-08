@@ -1,18 +1,13 @@
 "use strict";
-
 (function () {
     "use strict";
-
     const form = document.getElementById("restaurant-booking-form");
     if (!form || !window.meatPoint) {
         return;
     }
-
     const createElement = window.meatPoint.createElement;
     const formatMoney = window.meatPoint.formatMoney;
     const normalizeText = window.meatPoint.normalizeText;
-
-    // Array of 8 real table/zone objects in Meat Point, each with 7 meaningful properties
     const restaurantTables = [
         {
             id: "TBL-M1",
@@ -95,39 +90,30 @@
             feature: "Premium 15-seat private hall with custom banquet menu"
         }
     ];
-
     const nameInput = document.getElementById("client-name");
     const phoneInput = document.getElementById("client-phone");
     const guestsInput = document.getElementById("guest-count");
     const dateInput = document.getElementById("booking-date");
     const timeInput = document.getElementById("booking-time");
     const hallInputs = Array.from(form.querySelectorAll('input[name="hall"]'));
-
     let selectedTableId = "";
-
-    // Reusable Function 1: Filter tables by search query, hall type, and minimum guest capacity using a for loop
     function filterTables(query, hallFilter, minCapacity) {
         const cleanQuery = normalizeText(query);
         const cleanHall = hallFilter || "all";
         const requiredSeats = Number(minCapacity) > 0 ? Number(minCapacity) : 0;
         const results = [];
-
         for (let i = 0; i < restaurantTables.length; i += 1) {
             const table = restaurantTables[i];
             const searchable = normalizeText(`${table.name} ${table.hallLabel} ${table.feature}`);
             const matchesQuery = cleanQuery === "" || searchable.includes(cleanQuery);
             const matchesHall = cleanHall === "all" || table.hall === cleanHall;
             const matchesCapacity = requiredSeats === 0 || table.capacity >= requiredSeats;
-
             if (matchesQuery && matchesHall && matchesCapacity) {
                 results.push(table);
             }
         }
-
         return results;
     }
-
-    // Reusable Function 2: Sort filtered tables
     function sortTables(tablesList, sortBy) {
         const copy = tablesList.slice();
         copy.sort(function (a, b) {
@@ -144,8 +130,6 @@
         });
         return copy;
     }
-
-    // Reusable Function 3: Render a single table card via DOM methods and classList
     function createTableCard(tableItem) {
         const col = createElement("div", "col-12 col-md-6 col-lg-3");
         const isSelected = tableItem.id === selectedTableId;
@@ -153,15 +137,12 @@
         card.classList.toggle("border-danger", isSelected);
         card.classList.toggle("border-2", isSelected);
         card.classList.toggle("bg-white", isSelected);
-
         const body = createElement("div", "card-body d-flex flex-column");
-
         const topRow = createElement("div", "d-flex justify-content-between align-items-start mb-2");
         const title = createElement("h3", "h6 card-title fw-bold mb-0", tableItem.name);
         const badgeClass = tableItem.hall === "vip" ? "badge text-bg-danger" : "badge text-bg-dark";
         const badge = createElement("span", badgeClass, tableItem.hallLabel);
         topRow.append(title, badge);
-
         const featureText = createElement("p", "card-text small text-muted flex-grow-1", tableItem.feature);
         const metaList = createElement("ul", "list-unstyled small mb-3");
         const capItem = createElement("li", "", `Capacity: ${tableItem.minGuests}–${tableItem.capacity} guests`);
@@ -170,7 +151,6 @@
             : "0 ₸ (No deposit under 10 guests)";
         const depItem = createElement("li", "fw-semibold", `Deposit: ${depLabel}`);
         metaList.append(capItem, depItem);
-
         const selectBtn = createElement(
             "button",
             "btn btn-sm w-100",
@@ -179,24 +159,19 @@
         selectBtn.classList.add(isSelected ? "btn-danger" : "btn-outline-danger");
         selectBtn.type = "button";
         selectBtn.dataset.tableId = tableItem.id;
-
         body.append(topRow, featureText, metaList, selectBtn);
         card.append(body);
         col.append(card);
         return col;
     }
-
-    // Build Interactive Table Explorer Section via DOM before the booking form
     const bookingSection = document.getElementById("booking-form-section");
     const explorerSection = createElement("section", "mb-5 p-4 bg-light border rounded shadow-sm");
     explorerSection.id = "table-explorer-section";
-
     const explorerHeader = createElement("div", "d-flex flex-wrap justify-content-between align-items-center mb-3");
     const explorerTitle = createElement("h2", "h4 text-danger mb-0", "Interactive Table & Zone Explorer");
     const randomTableBtn = createElement("button", "btn btn-sm btn-outline-danger", "Recommend Random Table");
     randomTableBtn.type = "button";
     explorerHeader.append(explorerTitle, randomTableBtn);
-
     const filterRow = createElement("div", "row g-2 mb-3");
     const searchCol = createElement("div", "col-12 col-md-4");
     const searchInput = createElement("input", "form-control");
@@ -204,7 +179,6 @@
     searchInput.placeholder = "Search by zone or feature...";
     searchInput.setAttribute("aria-label", "Search tables");
     searchCol.append(searchInput);
-
     const hallCol = createElement("div", "col-6 col-md-3");
     const hallSelect = createElement("select", "form-select");
     hallSelect.setAttribute("aria-label", "Filter by hall");
@@ -218,7 +192,6 @@
         hallSelect.append(option);
     });
     hallCol.append(hallSelect);
-
     const capCol = createElement("div", "col-6 col-md-2");
     const capInput = createElement("input", "form-control");
     capInput.type = "number";
@@ -227,7 +200,6 @@
     capInput.placeholder = "Min guests";
     capInput.setAttribute("aria-label", "Minimum guest capacity");
     capCol.append(capInput);
-
     const sortCol = createElement("div", "col-6 col-md-2");
     const sortSelect = createElement("select", "form-select");
     sortSelect.setAttribute("aria-label", "Sort tables");
@@ -242,30 +214,23 @@
         sortSelect.append(option);
     });
     sortCol.append(sortSelect);
-
     const resetCol = createElement("div", "col-6 col-md-1 d-grid");
     const resetFilterBtn = createElement("button", "btn btn-outline-secondary", "Reset");
     resetFilterBtn.type = "button";
     resetCol.append(resetFilterBtn);
-
     filterRow.append(searchCol, hallCol, capCol, sortCol, resetCol);
-
     const filterStatus = createElement("p", "small text-muted mb-3");
     filterStatus.setAttribute("aria-live", "polite");
     const tableGrid = createElement("div", "row g-3");
-
     explorerSection.append(explorerHeader, filterRow, filterStatus, tableGrid);
     if (bookingSection) {
         bookingSection.before(explorerSection);
     }
-
     function renderTableExplorer() {
         const filtered = filterTables(searchInput.value, hallSelect.value, capInput.value);
         const sorted = sortTables(filtered, sortSelect.value);
         tableGrid.replaceChildren();
-
         filterStatus.textContent = `Showing ${sorted.length} of ${restaurantTables.length} tables/zones.`;
-
         if (sorted.length === 0) {
             const emptyCol = createElement("div", "col-12");
             const emptyAlert = createElement(
@@ -277,13 +242,10 @@
             tableGrid.append(emptyCol);
             return;
         }
-
         for (let i = 0; i < sorted.length; i += 1) {
             tableGrid.append(createTableCard(sorted[i]));
         }
     }
-
-    // Build Live Booking Summary & Cost Calculator panel after the form
     const summary = createElement("section", "mt-4 p-4 bg-white border rounded shadow-sm");
     const summaryTitle = createElement("h3", "h5 text-danger mb-2", "Live Booking & Deposit Calculator");
     const summaryText = createElement(
@@ -293,12 +255,9 @@
     );
     const quoteList = createElement("ul", "list-group list-group-flush mb-2 small");
     const confirmation = createElement("div", "alert alert-success mt-3 mb-0 d-none");
-
     summary.setAttribute("aria-live", "polite");
     summary.append(summaryTitle, summaryText, quoteList, confirmation);
     form.after(summary);
-
-    // Reusable Function 4: Update live booking summary and financial calculation
     function updateSummary() {
         const selectedHallInput = form.querySelector('input[name="hall"]:checked');
         const hallValue = selectedHallInput ? selectedHallInput.value : "main";
@@ -313,17 +272,14 @@
                 serviceFee: 0,
                 totalPrepayment: 0
             };
-
         const bookingDate = dateInput.value || "Date not selected";
         const bookingTime = timeInput.value || "Time not selected";
         const selectedTable = restaurantTables.find(function (item) {
             return item.id === selectedTableId;
         });
         const tableLabel = selectedTable ? ` · Table: ${selectedTable.name}` : "";
-
         summaryText.textContent =
             `${quote.hallName}${tableLabel} · ${quote.guests || "0"} guest(s) · ${bookingDate} at ${bookingTime}.`;
-
         quoteList.replaceChildren();
         const items = [
             `Estimated Tables / Suites Reserved: ${quote.tablesNeeded || 0}`,
@@ -331,7 +287,6 @@
             `Estimated 10% Service Charge on Deposit: ${formatMoney(quote.serviceFee)}`,
             `Total Advance Prepayment Due: ${formatMoney(quote.totalPrepayment)}`
         ];
-
         for (let i = 0; i < items.length; i += 1) {
             const li = createElement(
                 "li",
@@ -341,13 +296,10 @@
             quoteList.append(li);
         }
     }
-
-    // Event listeners for Table Explorer
     searchInput.addEventListener("input", renderTableExplorer);
     hallSelect.addEventListener("change", renderTableExplorer);
     capInput.addEventListener("input", renderTableExplorer);
     sortSelect.addEventListener("change", renderTableExplorer);
-
     resetFilterBtn.addEventListener("click", function () {
         searchInput.value = "";
         hallSelect.value = "all";
@@ -357,7 +309,6 @@
         renderTableExplorer();
         updateSummary();
     });
-
     randomTableBtn.addEventListener("click", function () {
         const randomIndex = Math.floor(Math.random() * restaurantTables.length);
         const chosen = restaurantTables[randomIndex];
@@ -375,7 +326,6 @@
         renderTableExplorer();
         updateSummary();
     });
-
     tableGrid.addEventListener("click", function (event) {
         const btn = event.target.closest("button[data-table-id]");
         if (!btn) {
@@ -406,7 +356,6 @@
         updateSummary();
         form.scrollIntoView({ behavior: "smooth", block: "center" });
     });
-
     [nameInput, phoneInput, guestsInput, dateInput, timeInput].forEach(function (input) {
         if (!input) {
             return;
@@ -418,20 +367,17 @@
             });
         });
     });
-
     hallInputs.forEach(function (input) {
         input.addEventListener("change", function () {
             confirmation.classList.add("d-none");
             updateSummary();
         });
     });
-
     form.addEventListener("submit", function (event) {
         event.preventDefault();
         const isValid = window.meatPointBooking
             ? window.meatPointBooking.validateAllBookingFields()
             : !form.querySelector(".is-invalid");
-
         const firstInvalidField = form.querySelector(".is-invalid");
         if (!isValid || firstInvalidField) {
             if (firstInvalidField) {
@@ -440,7 +386,6 @@
             confirmation.classList.add("d-none");
             return;
         }
-
         const selectedHallInput = form.querySelector('input[name="hall"]:checked');
         const hallValue = selectedHallInput ? selectedHallInput.value : "main";
         const quote = window.meatPointBooking.calculateBookingQuote(hallValue, guestsInput.value);
@@ -449,7 +394,6 @@
         });
         const tableNote = selectedTable ? ` (${selectedTable.name})` : "";
         const refCode = window.meatPoint.createDemoReference("MP");
-
         confirmation.textContent =
             `Demonstration booking request ${refCode} confirmed for ${nameInput.value.trim()} (${phoneInput.value.trim()}): ` +
             `${quote.hallName}${tableNote}, ${quote.guests} guest(s), ${quote.tablesNeeded} table(s), ` +
@@ -457,7 +401,6 @@
             "Note: This is a front-end demonstration and no real data was sent to a server.";
         confirmation.classList.remove("d-none");
     });
-
     form.addEventListener("reset", function () {
         window.setTimeout(function () {
             selectedTableId = "";
@@ -466,7 +409,17 @@
             updateSummary();
         }, 0);
     });
-
+    const welcomeTitle = document.querySelector("h1.text-danger");
+    if (welcomeTitle) {
+        welcomeTitle.style.cursor = "pointer";
+        welcomeTitle.style.transition = "color 0.3s ease";
+        welcomeTitle.addEventListener("mouseenter", function () {
+            welcomeTitle.style.color = "#b01221";
+        });
+        welcomeTitle.addEventListener("mouseleave", function () {
+            welcomeTitle.style.color = "";
+        });
+    }
     renderTableExplorer();
     updateSummary();
 }());

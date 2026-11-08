@@ -94,7 +94,6 @@
                     <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
                     <li class="nav-item"><a href="about.html" class="nav-link active" aria-current="page">About Us</a></li>
                     <li class="nav-item"><a href="contacts.html" class="nav-link">Contact</a></li>
-                    <li class="nav-item"><a href="colophon.html" class="nav-link">About site</a></li>
                     <li class="nav-item"><a href="booking.html" class="nav-link">Booking</a></li>
                     <li class="nav-item"><a href="feedback.html" class="nav-link">Reviews</a></li>
                 </ul>
@@ -185,7 +184,9 @@
         <p class="small text-white-50 mb-0">&copy; 2026 Meat Point. All rights reserved.</p>
     </div>
 </footer>
+<!-- jQuery 3.7.1 (CDN). Needed because js/kamza-jquery.js below calls $() — it must load first; defer keeps the order: jQuery, main.js, kamza-jquery.js -->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" defer></script>
 <script src="js/main.js" defer></script>
-<script src="js/kamza.js" defer></script>
+<script src="js/kamza-jquery.js" defer></script>
 </body>
 </html>
