@@ -141,23 +141,23 @@
     let highlightedReviewId = "";
 
     // Build Filter, Search, Sort & Analytics Bar via DOM
-    const controlsPanel = createElement("section", "p-4 bg-white border rounded shadow-sm my-4");
+    const controlsPanel = createElement("section", "p-4 bg-white border-0 rounded-4 shadow-sm my-4");
     const statsBar = createElement("div", "d-flex flex-wrap justify-content-between align-items-center gap-2 pb-3 mb-3 border-bottom");
     const statsSummary = createElement("div", "fw-bold text-danger fs-5");
-    const randomReviewBtn = createElement("button", "btn btn-sm btn-outline-danger", "Spotlight Random 5★ Review");
+    const randomReviewBtn = createElement("button", "btn btn-sm btn-outline-danger rounded-pill px-3 shadow-sm", "⭐ Spotlight Random 5★ Review");
     randomReviewBtn.type = "button";
     statsBar.append(statsSummary, randomReviewBtn);
 
     const filterRow = createElement("div", "row g-2 align-items-center");
     const searchCol = createElement("div", "col-12 col-md-4");
-    const searchInput = createElement("input", "form-control");
+    const searchInput = createElement("input", "form-control rounded-3");
     searchInput.type = "search";
     searchInput.placeholder = "Search reviews by name or dish...";
     searchInput.setAttribute("aria-label", "Search reviews");
     searchCol.append(searchInput);
 
     const ratingCol = createElement("div", "col-6 col-md-3");
-    const ratingFilter = createElement("select", "form-select");
+    const ratingFilter = createElement("select", "form-select rounded-3");
     ratingFilter.setAttribute("aria-label", "Filter reviews by rating");
     [
         { value: "all", label: "All Ratings" },
@@ -172,7 +172,7 @@
     ratingCol.append(ratingFilter);
 
     const catCol = createElement("div", "col-6 col-md-2");
-    const categoryFilter = createElement("select", "form-select");
+    const categoryFilter = createElement("select", "form-select rounded-3");
     categoryFilter.setAttribute("aria-label", "Filter reviews by category");
     [
         "all",
@@ -188,7 +188,7 @@
     catCol.append(categoryFilter);
 
     const sortCol = createElement("div", "col-6 col-md-2");
-    const sortFilter = createElement("select", "form-select");
+    const sortFilter = createElement("select", "form-select rounded-3");
     sortFilter.setAttribute("aria-label", "Sort reviews");
     [
         { value: "newest", label: "Newest First" },
@@ -202,7 +202,7 @@
     sortCol.append(sortFilter);
 
     const resetCol = createElement("div", "col-6 col-md-1 d-grid");
-    const resetFilterBtn = createElement("button", "btn btn-outline-secondary", "Reset");
+    const resetFilterBtn = createElement("button", "btn btn-outline-secondary rounded-3 shadow-sm", "Reset");
     resetFilterBtn.type = "button";
     resetCol.append(resetFilterBtn);
 
@@ -360,29 +360,39 @@
         const isHighlighted = review.id === highlightedReviewId;
         const card = createElement(
             "div",
-            `card h-100 shadow-sm ${isHighlighted ? "border-danger border-2" : ""}`
+            `card h-100 border-0 shadow-sm rounded-4 overflow-hidden ${isHighlighted ? "border-danger border-2 shadow" : ""}`
         );
-        const body = createElement("div", "card-body d-flex flex-column");
+        card.style.transition = "transform 0.25s ease, box-shadow 0.25s ease";
+        card.addEventListener("mouseenter", function () {
+            card.style.transform = "translateY(-4px)";
+            card.classList.add("shadow");
+        });
+        card.addEventListener("mouseleave", function () {
+            card.style.transform = "";
+            card.classList.remove("shadow");
+        });
+
+        const body = createElement("div", "card-body d-flex flex-column p-4");
 
         const topRow = createElement("div", "d-flex justify-content-between align-items-start gap-2 mb-2");
-        const heading = createElement("h3", "h5 card-title mb-0", review.name);
+        const heading = createElement("h3", "h5 card-title fw-bold mb-0", review.name);
         const badgeClass = review.rating >= 4
-            ? "badge text-bg-success"
+            ? "badge text-bg-success rounded-pill px-3 py-1 shadow-sm"
             : review.rating === 3
-                ? "badge text-bg-warning"
-                : "badge text-bg-danger";
+                ? "badge text-bg-warning rounded-pill px-3 py-1 shadow-sm"
+                : "badge text-bg-danger rounded-pill px-3 py-1 shadow-sm";
         const ratingBadge = createElement("span", badgeClass, `${review.rating}/5 ★`);
         topRow.append(heading, ratingBadge);
 
         const categoryTag = createElement("p", "small text-danger fw-semibold mb-2", review.category);
-        const text = createElement("p", "card-text flex-grow-1", review.text);
-        const date = createElement("p", "small text-muted mb-0 mt-2", review.dateTime);
+        const text = createElement("p", "card-text flex-grow-1 text-secondary", `“${review.text}”`);
+        const date = createElement("p", "small text-muted mb-0 mt-3 pt-2 border-top", `📅 ${review.dateTime}`);
         body.append(topRow, categoryTag, text, date);
 
         if (review.editable) {
-            const actions = createElement("div", "card-footer bg-transparent d-flex gap-2");
-            const editButton = createElement("button", "btn btn-sm btn-outline-secondary", "Edit");
-            const removeButton = createElement("button", "btn btn-sm btn-outline-danger", "Remove");
+            const actions = createElement("div", "card-footer bg-light border-0 d-flex gap-2 p-3");
+            const editButton = createElement("button", "btn btn-sm btn-outline-secondary rounded-pill px-3", "✏️ Edit");
+            const removeButton = createElement("button", "btn btn-sm btn-outline-danger rounded-pill px-3", "🗑️ Remove");
             editButton.type = "button";
             editButton.dataset.reviewAction = "edit";
             removeButton.type = "button";

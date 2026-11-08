@@ -218,32 +218,42 @@
         const isSpotlight = dish.id === spotlightDishId;
         const card = createElement(
             "div",
-            `card h-100 shadow-sm ${isSpotlight ? "border-danger border-2" : ""}`
+            `card h-100 border-0 shadow-sm rounded-4 overflow-hidden ${isSpotlight ? "border-danger border-2 shadow" : ""}`
         );
-        const body = createElement("div", "card-body d-flex flex-column");
+        card.style.transition = "transform 0.25s ease, box-shadow 0.25s ease";
+        card.addEventListener("mouseenter", function () {
+            card.style.transform = "translateY(-4px)";
+            card.classList.add("shadow");
+        });
+        card.addEventListener("mouseleave", function () {
+            card.style.transform = "";
+            card.classList.remove("shadow");
+        });
+
+        const body = createElement("div", "card-body d-flex flex-column p-4");
 
         const topRow = createElement("div", "d-flex justify-content-between align-items-start gap-2 mb-2");
-        const title = createElement("h3", "h5 card-title mb-0", dish.name);
-        const priceBadge = createElement("span", "badge text-bg-danger fs-6", formatMoney(dish.price));
+        const title = createElement("h3", "h5 card-title fw-bold mb-0", dish.name);
+        const priceBadge = createElement("span", "badge bg-danger rounded-pill fs-6 px-3 py-2 shadow-sm", formatMoney(dish.price));
         topRow.append(title, priceBadge);
 
-        const tagsRow = createElement("div", "d-flex flex-wrap gap-1 mb-2");
-        tagsRow.append(createElement("span", "badge text-bg-dark", dish.category));
+        const tagsRow = createElement("div", "d-flex flex-wrap gap-1 mb-3");
+        tagsRow.append(createElement("span", "badge text-bg-dark rounded-pill px-2 py-1", dish.category));
         tagsRow.append(
             createElement(
                 "span",
-                dish.isVegetarian ? "badge text-bg-success" : "badge text-bg-secondary",
-                dish.isVegetarian ? "Vegetarian (Leaf)" : "100% Halal Meat"
+                dish.isVegetarian ? "badge text-bg-success rounded-pill px-2 py-1" : "badge text-bg-secondary rounded-pill px-2 py-1",
+                dish.isVegetarian ? "🌿 Vegetarian" : "🥩 100% Halal"
             )
         );
-        tagsRow.append(createElement("span", "badge text-bg-light border text-dark", `${dish.prepMinutes} min · ${dish.weightGrams}g`));
+        tagsRow.append(createElement("span", "badge bg-light border text-dark rounded-pill px-2 py-1", `⏱ ${dish.prepMinutes} min · ${dish.weightGrams}g`));
         if (isSpotlight) {
-            tagsRow.append(createElement("span", "badge text-bg-warning", "Chef's Spotlight"));
+            tagsRow.append(createElement("span", "badge text-bg-warning rounded-pill px-2 py-1", "⭐ Chef's Pick"));
         }
 
         const desc = createElement("p", "card-text small text-muted flex-grow-1", dish.description);
 
-        const addButton = createElement("button", "btn btn-outline-danger w-100 mt-2", "Add to Order Cart");
+        const addButton = createElement("button", "btn btn-outline-danger rounded-pill fw-semibold w-100 mt-3 py-2 shadow-sm", "🛒 Add to Order Cart");
         addButton.type = "button";
         addButton.dataset.addDishId = dish.id;
 
@@ -266,25 +276,25 @@
     }
 
     // Build Interactive Catalog Controls & Grid Section via DOM
-    const catalogSection = createElement("section", "mb-5 p-4 bg-light border rounded shadow-sm");
+    const catalogSection = createElement("section", "mb-5 p-4 bg-white border-0 rounded-4 shadow-sm");
     catalogSection.id = "interactive-menu-catalog";
 
     const headerBar = createElement("div", "d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3");
     const catalogHeading = createElement("h2", "h3 text-danger mb-0", "Interactive Dish Catalog");
-    const randomPickBtn = createElement("button", "btn btn-sm btn-danger", "Chef's Random Recommendation");
+    const randomPickBtn = createElement("button", "btn btn-sm btn-danger rounded-pill px-3 shadow-sm", "✨ Chef's Recommendation");
     randomPickBtn.type = "button";
     headerBar.append(catalogHeading, randomPickBtn);
 
     const controlsRow = createElement("div", "row g-2 mb-3");
     const searchCol = createElement("div", "col-12 col-md-4");
-    const searchInput = createElement("input", "form-control");
+    const searchInput = createElement("input", "form-control rounded-3");
     searchInput.type = "search";
     searchInput.placeholder = "Search dishes or ingredients...";
     searchInput.setAttribute("aria-label", "Search menu dishes");
     searchCol.append(searchInput);
 
     const catCol = createElement("div", "col-6 col-md-3");
-    const categorySelect = createElement("select", "form-select");
+    const categorySelect = createElement("select", "form-select rounded-3");
     categorySelect.setAttribute("aria-label", "Filter by dish category");
     [
         "all",
@@ -315,7 +325,7 @@
     dietCol.append(dietSelect);
 
     const sortCol = createElement("div", "col-6 col-md-2");
-    const sortSelect = createElement("select", "form-select");
+    const sortSelect = createElement("select", "form-select rounded-3");
     sortSelect.setAttribute("aria-label", "Sort dishes");
     [
         { value: "default", label: "Default Order" },
@@ -331,7 +341,7 @@
     sortCol.append(sortSelect);
 
     const resetCol = createElement("div", "col-6 col-md-1 d-grid");
-    const resetCatalogBtn = createElement("button", "btn btn-outline-secondary", "Reset");
+    const resetCatalogBtn = createElement("button", "btn btn-outline-secondary rounded-3 shadow-sm", "Reset");
     resetCatalogBtn.type = "button";
     resetCol.append(resetCatalogBtn);
 
@@ -345,22 +355,22 @@
     menuTableSection.before(catalogSection);
 
     // Build Interactive Shopping Cart & Pre-Order Checkout Form Section via DOM
-    const cartSection = createElement("section", "mb-5 p-4 bg-white border rounded shadow-sm");
+    const cartSection = createElement("section", "mb-5 p-4 bg-white border-0 rounded-4 shadow-sm");
     cartSection.id = "demo-order-cart";
 
     const cartHeader = createElement("div", "d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3");
     const cartTitle = createElement("h2", "h3 text-danger mb-0", "Your Order Cart & Cost Calculator");
-    const clearCartBtn = createElement("button", "btn btn-sm btn-outline-secondary", "Clear Cart");
+    const clearCartBtn = createElement("button", "btn btn-sm btn-outline-secondary rounded-pill px-3 shadow-sm", "Clear Cart");
     clearCartBtn.type = "button";
     cartHeader.append(cartTitle, clearCartBtn);
 
     const cartStatus = createElement("p", "small text-muted mb-2");
     cartStatus.setAttribute("aria-live", "polite");
-    const cartList = createElement("ul", "list-group mb-3");
-    const cartTotalsBox = createElement("div", "p-3 bg-light border rounded mb-4");
+    const cartList = createElement("ul", "list-group mb-3 shadow-sm rounded-3 overflow-hidden");
+    const cartTotalsBox = createElement("div", "p-4 bg-light border-0 rounded-4 mb-4 shadow-sm border-start border-4 border-danger");
 
     // Pre-order checkout form with 4 validated fields + combined rule
-    const checkoutForm = createElement("form", "p-3 bg-light border rounded");
+    const checkoutForm = createElement("form", "p-4 bg-light border-0 rounded-4 shadow-sm");
     checkoutForm.id = "menu-preorder-form";
     checkoutForm.noValidate = true;
     const checkoutHeading = createElement("h3", "h5 mb-3", "Complete Pre-Order / Delivery Request");
@@ -421,7 +431,7 @@
     cCutleryCol.append(cCutleryLabel, cCutleryInput, cCutleryErr);
 
     const submitCol = createElement("div", "col-12 d-flex flex-wrap gap-2 mt-3");
-    const placeOrderBtn = createElement("button", "btn btn-danger", "Place Demo Pre-Order");
+    const placeOrderBtn = createElement("button", "btn btn-danger btn-lg rounded-pill px-4 shadow-sm", "🛍️ Place Demo Pre-Order");
     placeOrderBtn.type = "submit";
     submitCol.append(placeOrderBtn);
 

@@ -200,12 +200,12 @@
 
     // Reusable DOM card/row renderer for a single site search result
     function createSearchResultItem(page) {
-        const item = createElement("li", "list-group-item d-flex justify-content-between align-items-start gap-2");
+        const item = createElement("li", "list-group-item list-group-item-action d-flex justify-content-between align-items-start gap-2 py-2 border-0 border-bottom");
         const textWrap = createElement("div", "me-auto");
-        const link = createElement("a", "fw-semibold text-danger text-decoration-none", page.title);
+        const link = createElement("a", "fw-bold text-danger text-decoration-none d-block", page.title);
         link.href = page.url;
         const summary = createElement("p", "mb-0 small text-muted", page.summary);
-        const badge = createElement("span", "badge text-bg-secondary rounded-pill", page.category);
+        const badge = createElement("span", "badge text-bg-dark rounded-pill px-2 py-1 mt-1", page.category);
 
         textWrap.append(link, summary);
         item.append(textWrap, badge);
@@ -217,7 +217,7 @@
         resultList.replaceChildren();
 
         if (trimmedQuery === "" && category === "all") {
-            status.textContent = "Type a keyword or select a category to search all 8 pages.";
+            status.textContent = "Type a keyword or select a category to search all 7 pages.";
             resultList.classList.add("d-none");
             return;
         }
@@ -229,8 +229,8 @@
         if (results.length === 0) {
             const emptyItem = createElement(
                 "li",
-                "list-group-item text-muted small",
-                "No matching pages found. Try another keyword or press Clear to reset."
+                "list-group-item text-muted small py-3 text-center",
+                "🔍 No matching pages found. Try another keyword or press Clear."
             );
             resultList.append(emptyItem);
             return;
@@ -420,30 +420,30 @@
         const statusInfo = calculateBusinessLunchStatus(new Date());
         const wrapper = createElement(
             "div",
-            "alert alert-secondary d-flex flex-wrap justify-content-between align-items-center gap-2 py-2 px-3 mb-4 shadow-sm"
+            "card border-0 shadow-sm rounded-4 p-3 mb-4 bg-white d-flex flex-row flex-wrap justify-content-between align-items-center gap-3 border-start border-4 border-danger"
         );
         wrapper.id = "mp-live-status-bar";
 
         const leftBox = createElement("div", "d-flex align-items-center gap-2 flex-wrap");
-        const badge = createElement("span", "badge text-bg-success", "LIVE 24/7");
-        const statusText = createElement("span", "small fw-semibold", statusInfo.message);
+        const badge = createElement("span", "badge rounded-pill px-3 py-2 text-bg-success shadow-sm", "● LIVE 24/7");
+        const statusText = createElement("span", "small fw-semibold text-secondary", statusInfo.message);
 
         switch (statusInfo.statusType) {
             case "lunch-active":
                 badge.classList.replace("text-bg-success", "text-bg-danger");
-                badge.textContent = "BUSINESS LUNCH";
+                badge.textContent = "🔥 BUSINESS LUNCH";
                 break;
             case "weekend-music":
                 badge.classList.replace("text-bg-success", "text-bg-warning");
-                badge.textContent = "LIVE MUSIC TODAY";
+                badge.textContent = "🎷 LIVE MUSIC TODAY";
                 break;
             default:
                 break;
         }
 
         const rightBox = createElement("div", "d-flex align-items-center gap-2 flex-wrap");
-        const promoOutput = createElement("span", "small text-danger fw-bold", "");
-        const promoButton = createElement("button", "btn btn-sm btn-outline-danger", "Get Daily Promo Code");
+        const promoOutput = createElement("span", "badge bg-danger-subtle text-danger border border-danger-subtle rounded-pill px-3 py-2 fw-semibold", "");
+        const promoButton = createElement("button", "btn btn-sm btn-danger rounded-pill px-3 py-1 shadow-sm", "🎁 Get Daily Promo Code");
         promoButton.type = "button";
 
         promoButton.addEventListener("click", function () {

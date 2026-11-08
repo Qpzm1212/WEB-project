@@ -109,19 +109,20 @@ $(function () {
     // sets tag + classes + text + attributes at once and .append() takes many children.
     // The cards also got a hidden details block (.hide()) that opens with an effect.
     function createHighlightCard(item, spotlightId) {
-        const $card = make("div", "card h-100 shadow-sm kamza-card")
-            .attr("data-id", item.id); // attribute used by the attribute selector [data-id="..."]
+        const $card = make("div", "card h-100 shadow-sm kamza-card border-0 rounded-4")
+            .attr("data-id", item.id) // attribute used by the attribute selector [data-id="..."]
+            .css({ "transition": "transform 0.25s ease, box-shadow 0.25s ease", "cursor": "pointer" });
 
         if (item.id === spotlightId) {
-            $card.addClass("border-danger border-2");
+            $card.addClass("border-danger border-2 shadow");
         }
 
         const $body = make("div", "card-body d-flex flex-column").appendTo($card);
 
         make("div", "d-flex justify-content-between align-items-center mb-2")
             .append(
-                make("span", "badge text-bg-danger", item.category),
-                make("span", "badge text-bg-dark", String(item.year))
+                make("span", "badge text-bg-danger rounded-pill px-2 py-1 shadow-sm", item.category),
+                make("span", "badge text-bg-dark rounded-pill px-2 py-1 shadow-sm", String(item.year))
             )
             .appendTo($body);
 
@@ -138,7 +139,7 @@ $(function () {
             .hide()
             .appendTo($body);
 
-        make("p", "small text-muted mb-0 mt-auto pt-2", "Click the card for details").appendTo($body);
+        make("p", "small text-muted mb-0 mt-auto pt-2", "👆 Click card to expand").appendTo($body);
 
         // wrap the card in a grid column; the column is what gets appended to the row
         return make("div", "col-12 col-md-6 col-lg-3").append($card);
@@ -154,18 +155,18 @@ $(function () {
         let spotlightId = "";
 
         // ---- build the controls (all in code: the HTML files stay untouched) ----
-        const $random = make("button", "btn btn-sm btn-outline-danger", "Random Chef Fact / Offer")
+        const $random = make("button", "btn btn-sm btn-outline-danger rounded-pill px-3 shadow-sm", "🎲 Random Chef Fact / Offer")
             .attr({ id: "kamza-random", type: "button" });
 
-        const $search = make("input", "form-control")
+        const $search = make("input", "form-control rounded-3")
             .attr({ id: "kamza-search", type: "search", placeholder: "Search specials, milestones, or standards...", "aria-label": "Search restaurant highlights" });
 
-        const $category = make("select", "form-select").attr({ id: "kamza-category", "aria-label": "Filter by category" });
+        const $category = make("select", "form-select rounded-3").attr({ id: "kamza-category", "aria-label": "Filter by category" });
         $.each(["all", "Specials", "Milestones", "Quality"], function (_, c) {
             make("option", "", c === "all" ? "All Categories" : c).val(c).appendTo($category);
         });
 
-        const $sort = make("select", "form-select").attr({ id: "kamza-sort", "aria-label": "Sort by year" });
+        const $sort = make("select", "form-select rounded-3").attr({ id: "kamza-sort", "aria-label": "Sort by year" });
         $.each([
             { value: "default", label: "Default Order" },
             { value: "year-desc", label: "Newest First (2026 → 2024)" },
@@ -174,12 +175,12 @@ $(function () {
             make("option", "", o.label).val(o.value).appendTo($sort);
         });
 
-        const $reset = make("button", "btn btn-outline-secondary", "Reset").attr({ id: "kamza-reset", type: "button" });
+        const $reset = make("button", "btn btn-outline-secondary rounded-3 shadow-sm", "Reset").attr({ id: "kamza-reset", type: "button" });
         const $status = make("p", "small text-muted mb-3").attr({ id: "kamza-status", "aria-live": "polite" });
         const $grid = make("div", "row g-3 mb-4").attr("id", "kamza-cards");
 
         // calculator
-        const $pkg = make("select", "form-select").attr("id", "mp-calc-package");
+        const $pkg = make("select", "form-select rounded-3").attr("id", "mp-calc-package");
         $.each([
             { value: "3500", label: "Weekday Business Lunch Set (3,500 ₸ / guest)" },
             { value: "6500", label: "Signature Mixed Grill Platter (6,500 ₸ / guest)" },
@@ -188,7 +189,7 @@ $(function () {
             make("option", "", p.label).val(p.value).appendTo($pkg);
         });
 
-        const $guests = make("input", "form-control")
+        const $guests = make("input", "form-control rounded-3")
             .attr({ id: "mp-calc-guests", type: "number", min: 1, max: 50 })
             .val(4);
 
@@ -197,9 +198,9 @@ $(function () {
             .attr({ id: "mp-calc-lunch-time", type: "checkbox" })
             .prop("checked", true);
 
-        const $calcOutput = make("p", "mt-3 mb-0 fw-semibold text-dark").attr({ id: "kamza-calc-output", "aria-live": "polite" });
+        const $calcOutput = make("p", "mt-3 mb-0 fw-semibold text-dark p-3 bg-white rounded-3 border-start border-3 border-danger shadow-sm").attr({ id: "kamza-calc-output", "aria-live": "polite" });
 
-        const $calcBox = make("div", "p-3 bg-light border rounded").append(
+        const $calcBox = make("div", "p-4 bg-light border-0 rounded-4 shadow-sm").append(
             make("h3", "h5 text-danger mb-3", "Business Lunch & Group Dining Calculator"),
             make("div", "row g-3 align-items-end").append(
                 make("div", "col-12 col-md-5").append(
@@ -214,7 +215,7 @@ $(function () {
             $calcOutput
         );
 
-        const $section = make("section", "mb-5 p-4 bg-white border rounded shadow-sm")
+        const $section = make("section", "mb-5 p-4 bg-white border-0 rounded-4 shadow-sm")
             .attr("id", "kamza-interactive-explorer")
             .append(
                 make("div", "d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3").append(
@@ -312,9 +313,11 @@ $(function () {
             });
         });
 
-        // delegated too: a shadow while the mouse is over a card (event type 5: mouseenter/mouseleave)
+        // delegated too: a shadow & slight elevation while the mouse is over a card (event type 5: mouseenter/mouseleave)
         $grid.on("mouseenter mouseleave", ".kamza-card", function (event) {
-            $(this).toggleClass("shadow", event.type === "mouseenter");
+            const isHover = event.type === "mouseenter";
+            $(this).toggleClass("shadow", isHover)
+                   .css("transform", isHover ? "translateY(-4px)" : "none");
         });
 
         $random.on("click", function () {
@@ -385,14 +388,14 @@ $(function () {
             .attr({ id: "vip_password_confirm", type: "password", placeholder: "Repeat password" });
         const $showHide = make("button", "btn btn-outline-secondary", "Show Password").attr("type", "button");
 
-        const $vipBox = make("div", "p-3 mb-4 bg-white border rounded")
+        const $vipBox = make("div", "p-4 mb-4 bg-white border-0 rounded-4 shadow-sm")
             .attr("id", "vip-club-password-box")
             .append(
                 make("h3", "h6 text-danger mb-2", "VIP Club Member Password Setup"),
-                make("p", "small text-muted mb-2", "Create a password for your monthly discount account (min 8 chars, uppercase, lowercase, digit, special character)."),
-                make("div", "row g-2 align-items-start").append(
-                    make("div", "col-12 col-md-5").append(make("label", "form-label small", "Create Password").attr("for", "vip_password"), $pass),
-                    make("div", "col-12 col-md-5").append(make("label", "form-label small", "Confirm Password").attr("for", "vip_password_confirm"), $conf),
+                make("p", "small text-muted mb-3", "Create a password for your monthly discount account (min 8 chars, uppercase, lowercase, digit, special character)."),
+                make("div", "row g-3 align-items-start").append(
+                    make("div", "col-12 col-md-5").append(make("label", "form-label small fw-semibold", "Create Password").attr("for", "vip_password"), $pass),
+                    make("div", "col-12 col-md-5").append(make("label", "form-label small fw-semibold", "Confirm Password").attr("for", "vip_password_confirm"), $conf),
                     make("div", "col-12 col-md-2 d-grid").append(make("span", "form-label small d-none d-md-block", "Visibility"), $showHide)
                 )
             )
@@ -428,12 +431,12 @@ $(function () {
         });
 
         // ---- live budget estimator + success banner ----
-        const $quoteText = make("p", "mb-0 small", "");
-        const $resultBanner = make("div", "alert alert-success mt-3 mb-0")
+        const $quoteText = make("p", "mb-0 fw-semibold text-secondary", "");
+        const $resultBanner = make("div", "alert alert-success border-0 rounded-4 shadow-sm mt-3 mb-0 p-3")
             .attr({ id: "kamza-result-banner", "aria-live": "polite" })
             .hide();
 
-        make("div", "mt-4 p-3 bg-light border rounded")
+        make("div", "mt-4 p-4 bg-white border-0 rounded-4 shadow-sm border-start border-4 border-danger")
             .append(make("h3", "h5 text-danger mb-2", "Live Visit & Banquet Budget Estimator"), $quoteText, $resultBanner)
             .insertAfter($form);
 

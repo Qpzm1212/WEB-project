@@ -133,28 +133,35 @@
     function createTableCard(tableItem) {
         const col = createElement("div", "col-12 col-md-6 col-lg-3");
         const isSelected = tableItem.id === selectedTableId;
-        const card = createElement("div", "card h-100 shadow-sm");
-        card.classList.toggle("border-danger", isSelected);
-        card.classList.toggle("border-2", isSelected);
-        card.classList.toggle("bg-white", isSelected);
-        const body = createElement("div", "card-body d-flex flex-column");
+        const card = createElement("div", `card h-100 border-0 shadow-sm rounded-4 overflow-hidden ${isSelected ? "border-danger border-2 shadow" : ""}`);
+        card.style.transition = "transform 0.25s ease, box-shadow 0.25s ease";
+        card.addEventListener("mouseenter", function () {
+            card.style.transform = "translateY(-4px)";
+            card.classList.add("shadow");
+        });
+        card.addEventListener("mouseleave", function () {
+            card.style.transform = "";
+            card.classList.remove("shadow");
+        });
+
+        const body = createElement("div", "card-body d-flex flex-column p-3");
         const topRow = createElement("div", "d-flex justify-content-between align-items-start mb-2");
         const title = createElement("h3", "h6 card-title fw-bold mb-0", tableItem.name);
-        const badgeClass = tableItem.hall === "vip" ? "badge text-bg-danger" : "badge text-bg-dark";
+        const badgeClass = tableItem.hall === "vip" ? "badge text-bg-danger rounded-pill px-2 py-1 shadow-sm" : "badge text-bg-dark rounded-pill px-2 py-1 shadow-sm";
         const badge = createElement("span", badgeClass, tableItem.hallLabel);
         topRow.append(title, badge);
         const featureText = createElement("p", "card-text small text-muted flex-grow-1", tableItem.feature);
         const metaList = createElement("ul", "list-unstyled small mb-3");
-        const capItem = createElement("li", "", `Capacity: ${tableItem.minGuests}–${tableItem.capacity} guests`);
+        const capItem = createElement("li", "", `👥 Capacity: ${tableItem.minGuests}–${tableItem.capacity} guests`);
         const depLabel = tableItem.depositPerGuest > 0
             ? `${formatMoney(tableItem.depositPerGuest)} / guest`
             : "0 ₸ (No deposit under 10 guests)";
-        const depItem = createElement("li", "fw-semibold", `Deposit: ${depLabel}`);
+        const depItem = createElement("li", "fw-semibold text-danger", `💳 Deposit: ${depLabel}`);
         metaList.append(capItem, depItem);
         const selectBtn = createElement(
             "button",
-            "btn btn-sm w-100",
-            isSelected ? "Selected for Booking" : "Select This Table"
+            "btn btn-sm rounded-pill w-100 fw-semibold shadow-sm",
+            isSelected ? "✓ Selected for Booking" : "Select This Table"
         );
         selectBtn.classList.add(isSelected ? "btn-danger" : "btn-outline-danger");
         selectBtn.type = "button";
@@ -165,22 +172,22 @@
         return col;
     }
     const bookingSection = document.getElementById("booking-form-section");
-    const explorerSection = createElement("section", "mb-5 p-4 bg-light border rounded shadow-sm");
+    const explorerSection = createElement("section", "mb-5 p-4 bg-white border-0 rounded-4 shadow-sm");
     explorerSection.id = "table-explorer-section";
     const explorerHeader = createElement("div", "d-flex flex-wrap justify-content-between align-items-center mb-3");
     const explorerTitle = createElement("h2", "h4 text-danger mb-0", "Interactive Table & Zone Explorer");
-    const randomTableBtn = createElement("button", "btn btn-sm btn-outline-danger", "Recommend Random Table");
+    const randomTableBtn = createElement("button", "btn btn-sm btn-outline-danger rounded-pill px-3 shadow-sm", "🎲 Recommend Random Table");
     randomTableBtn.type = "button";
     explorerHeader.append(explorerTitle, randomTableBtn);
     const filterRow = createElement("div", "row g-2 mb-3");
     const searchCol = createElement("div", "col-12 col-md-4");
-    const searchInput = createElement("input", "form-control");
+    const searchInput = createElement("input", "form-control rounded-3");
     searchInput.type = "search";
     searchInput.placeholder = "Search by zone or feature...";
     searchInput.setAttribute("aria-label", "Search tables");
     searchCol.append(searchInput);
     const hallCol = createElement("div", "col-6 col-md-3");
-    const hallSelect = createElement("select", "form-select");
+    const hallSelect = createElement("select", "form-select rounded-3");
     hallSelect.setAttribute("aria-label", "Filter by hall");
     [
         { value: "all", label: "All Halls (Main & VIP)" },
@@ -201,7 +208,7 @@
     capInput.setAttribute("aria-label", "Minimum guest capacity");
     capCol.append(capInput);
     const sortCol = createElement("div", "col-6 col-md-2");
-    const sortSelect = createElement("select", "form-select");
+    const sortSelect = createElement("select", "form-select rounded-3");
     sortSelect.setAttribute("aria-label", "Sort tables");
     [
         { value: "default", label: "Default Order" },
@@ -215,7 +222,7 @@
     });
     sortCol.append(sortSelect);
     const resetCol = createElement("div", "col-6 col-md-1 d-grid");
-    const resetFilterBtn = createElement("button", "btn btn-outline-secondary", "Reset");
+    const resetFilterBtn = createElement("button", "btn btn-outline-secondary rounded-3 shadow-sm", "Reset");
     resetFilterBtn.type = "button";
     resetCol.append(resetFilterBtn);
     filterRow.append(searchCol, hallCol, capCol, sortCol, resetCol);
@@ -246,7 +253,7 @@
             tableGrid.append(createTableCard(sorted[i]));
         }
     }
-    const summary = createElement("section", "mt-4 p-4 bg-white border rounded shadow-sm");
+    const summary = createElement("section", "mt-4 p-4 bg-white border-0 rounded-4 shadow-sm border-start border-4 border-danger");
     const summaryTitle = createElement("h3", "h5 text-danger mb-2", "Live Booking & Deposit Calculator");
     const summaryText = createElement(
         "p",

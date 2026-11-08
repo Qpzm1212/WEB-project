@@ -226,15 +226,25 @@
         const isSelected = ev.id === selectedEventCardId;
         const card = createElement(
             "div",
-            `card h-100 shadow-sm ${isSelected ? "border-danger border-2" : ""}`
+            `card h-100 border-0 shadow-sm rounded-4 overflow-hidden ${isSelected ? "border-danger border-2 shadow" : ""}`
         );
-        const body = createElement("div", "card-body d-flex flex-column");
+        card.style.transition = "transform 0.25s ease, box-shadow 0.25s ease";
+        card.addEventListener("mouseenter", function () {
+            card.style.transform = "translateY(-4px)";
+            card.classList.add("shadow");
+        });
+        card.addEventListener("mouseleave", function () {
+            card.style.transform = "";
+            card.classList.remove("shadow");
+        });
+
+        const body = createElement("div", "card-body d-flex flex-column p-3");
 
         const topRow = createElement("div", "d-flex justify-content-between align-items-start gap-2 mb-2");
         const title = createElement("h3", "h6 card-title fw-bold mb-0", ev.title);
         const badge = createElement(
             "span",
-            ev.eventType === "friday" ? "badge text-bg-dark" : "badge text-bg-danger",
+            ev.eventType === "friday" ? "badge text-bg-dark rounded-pill px-2 py-1" : "badge text-bg-danger rounded-pill px-2 py-1",
             `${ev.dayLabel} · ${ev.genre}`
         );
         topRow.append(title, badge);
@@ -242,14 +252,14 @@
         const desc = createElement("p", "card-text small text-muted flex-grow-1", ev.description);
         const meta = createElement(
             "p",
-            "small fw-semibold mb-2",
-            `${ev.timeWindow} · Cover: ${formatMoney(ev.coverCharge)}/guest · ${ev.seatsLeft} seats left`
+            "small fw-semibold text-danger mb-2",
+            `🕒 ${ev.timeWindow} · Cover: ${formatMoney(ev.coverCharge)}/guest · ${ev.seatsLeft} seats left`
         );
 
         const chooseBtn = createElement(
             "button",
-            isSelected ? "btn btn-sm btn-danger w-100" : "btn btn-sm btn-outline-danger w-100",
-            isSelected ? "Selected for Registration" : "Select This Program"
+            isSelected ? "btn btn-sm btn-danger rounded-pill w-100 shadow-sm fw-semibold" : "btn btn-sm btn-outline-danger rounded-pill w-100 shadow-sm",
+            isSelected ? "✓ Selected for Registration" : "Select This Program"
         );
         chooseBtn.type = "button";
         chooseBtn.dataset.eventCardId = ev.id;
@@ -262,23 +272,23 @@
 
     // Build Interactive Event Catalog Panel inside left column
     const leftColumn = registrationSection.previousElementSibling;
-    const scheduleExplorer = createElement("div", "p-3 bg-light border rounded shadow-sm mt-4");
-    const explorerHeader = createElement("div", "d-flex flex-wrap justify-content-between align-items-center gap-2 mb-2");
+    const scheduleExplorer = createElement("div", "p-4 bg-white border-0 rounded-4 shadow-sm mt-4");
+    const explorerHeader = createElement("div", "d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3");
     const explorerTitle = createElement("h3", "h5 text-danger mb-0", "Interactive Weekend Lineup Explorer");
-    const randomSpotlightBtn = createElement("button", "btn btn-sm btn-outline-danger", "Random Concert Pick");
+    const randomSpotlightBtn = createElement("button", "btn btn-sm btn-outline-danger rounded-pill px-3 shadow-sm", "🎲 Random Concert Pick");
     randomSpotlightBtn.type = "button";
     explorerHeader.append(explorerTitle, randomSpotlightBtn);
 
     const filterRow = createElement("div", "row g-2 mb-2");
     const searchCol = createElement("div", "col-12 col-sm-6");
-    const searchInput = createElement("input", "form-control form-control-sm");
+    const searchInput = createElement("input", "form-control form-control-sm rounded-3");
     searchInput.type = "search";
     searchInput.placeholder = "Search artist, instrument, or genre...";
     searchInput.setAttribute("aria-label", "Search music events");
     searchCol.append(searchInput);
 
     const dayCol = createElement("div", "col-8 col-sm-4");
-    const daySelect = createElement("select", "form-select form-select-sm");
+    const daySelect = createElement("select", "form-select form-select-sm rounded-3");
     daySelect.setAttribute("aria-label", "Filter events by day");
     [
         { value: "all", label: "All Weekend Nights" },
@@ -292,7 +302,7 @@
     dayCol.append(daySelect);
 
     const resetCol = createElement("div", "col-4 col-sm-2 d-grid");
-    const resetEventsBtn = createElement("button", "btn btn-sm btn-outline-secondary", "Reset");
+    const resetEventsBtn = createElement("button", "btn btn-sm btn-outline-secondary rounded-3 shadow-sm", "Reset");
     resetEventsBtn.type = "button";
     resetCol.append(resetEventsBtn);
 
@@ -307,7 +317,7 @@
     }
 
     // Build Live Event Cost Calculator & Confirmation Panel below the form
-    const calcPanel = createElement("div", "mt-3 p-3 bg-white border rounded shadow-sm");
+    const calcPanel = createElement("div", "mt-4 p-4 bg-white border-0 rounded-4 shadow-sm border-start border-4 border-danger");
     const calcTitle = createElement("h3", "h6 text-danger fw-bold mb-2", "Live Event Cost & Seating Calculator");
     const calcSummary = createElement("p", "small mb-1", "");
     const calcTotalLine = createElement("p", "fw-bold text-danger mb-0", "");
