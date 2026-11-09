@@ -608,7 +608,7 @@
         calculateBanquetQuote();
     }
 
-    function initColophonFeatures() {
+    function initScrollTopFeature() {
         const scrollTopBtn = document.querySelector(".scroll-to-top");
         if (scrollTopBtn) {
             scrollTopBtn.addEventListener("click", function (event) {
@@ -620,5 +620,5 @@
 
     initHomeAndAboutInteractive();
     initContactsForm();
-    initColophonFeatures();
+    initScrollTopFeature();
 }());

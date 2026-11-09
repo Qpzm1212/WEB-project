@@ -28,14 +28,7 @@
             keywords: "contact phone email address hours map banquet vip club inquiry",
             summary: "Check schedule, transport routes, banquet calculator, and contact form."
         },
-        {
-            id: "page-colophon",
-            title: "About site",
-            url: "colophon.html",
-            category: "Information",
-            keywords: "colophon technical stack html css bootstrap validation git team",
-            summary: "Technical documentation, semantic architecture, and development milestones."
-        },
+
         {
             id: "page-menu",
             title: "Menu",
