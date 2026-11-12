@@ -165,6 +165,7 @@
     }
 
     function initHomeAndAboutInteractive() {
+        return;
         const targetAnchor = document.getElementById("atmosphere") || document.getElementById("values");
         if (!targetAnchor) {
             return;

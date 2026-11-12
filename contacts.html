@@ -91,8 +91,10 @@
             <div class="css-collapse">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0 nav-list d-flex justify-content-end w-100">
                     <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
-                    <li class="nav-item"><a href="about.html" class="nav-link">About Us</a></li>
+                    <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
                     <li class="nav-item"><a href="contacts.html" class="nav-link active" aria-current="page">Contact</a></li>
+                    <li class="nav-item"><a href="menu.html" class="nav-link">Menu</a></li>
+                    <li class="nav-item"><a href="events.html" class="nav-link">Events</a></li>
                     <li class="nav-item"><a href="booking.html" class="nav-link">Booking</a></li>
                     <li class="nav-item"><a href="feedback.html" class="nav-link">Reviews</a></li>
                 </ul>
@@ -166,11 +168,17 @@
     </section>
 
     <section id="reservation" class="bg-white p-4 p-md-5 rounded shadow-sm mb-5">
-        <h2 class="h2 text-danger mb-4">Reservation &amp; Feedback Form</h2>
+        <h2 class="h2 text-danger mb-3">Banquet &amp; Event Inquiries</h2>
+        <p class="lead text-secondary mb-4">Planning a private celebration, corporate dining, wedding reception, or have general inquiries? Send us your event specifications and our team will prepare a custom proposal.</p>
+
+        <div class="alert alert-info d-flex align-items-center justify-content-between flex-wrap gap-2 mb-4 p-3 rounded-3 shadow-sm">
+            <span><strong class="text-danger">Looking for everyday table reservations (1–8 guests)?</strong> Please use our dedicated table booking system.</span>
+            <a href="booking.html" class="btn btn-sm btn-danger rounded-pill px-3">Go to Table Booking &rarr;</a>
+        </div>
 
         <form action="submit_handler.php" method="POST" class="needs-validation">
             <fieldset class="border p-4 rounded bg-light">
-                <legend class="float-none w-auto px-2 h5 text-danger fw-bold">Your Details and Preferences</legend>
+                <legend class="float-none w-auto px-2 h5 text-danger fw-bold">Inquiry Details &amp; Event Preferences</legend>
 
                 <div class="row g-3 mb-3">
                     <div class="col-md-4">

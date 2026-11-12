@@ -430,3 +430,29 @@ footer.container-fluid {
   border-radius: 16px !important;
   box-shadow: var(--shadow-warm);
 }
+
+.btn-primary {
+  background: var(--warm-gradient) !important;
+  border-color: rgba(188, 57, 38, 0.4) !important;
+  color: #ffffff !important;
+  font-weight: 600 !important;
+  border-radius: 999px !important;
+  padding: 10px 26px !important;
+  box-shadow: 0 6px 18px var(--terracotta-glow) !important;
+  transition: all 0.25s ease !important;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, #b93722 0%, #8c2415 100%) !important;
+  box-shadow: 0 10px 24px rgba(188, 57, 38, 0.4) !important;
+  transform: translateY(-2px);
+}
+
+.bg-light {
+  background-color: var(--bg-surface-soft) !important;
+}
+
+.table-dark {
+  --bs-table-bg: #2a1b12 !important;
+  --bs-table-color: #fffdf8 !important;
+}

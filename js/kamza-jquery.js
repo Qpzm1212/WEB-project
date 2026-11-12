@@ -100,6 +100,7 @@ $(function () {
     }
 
     function initExplorer() {
+        return;
 
         const $anchor = $("#atmosphere, #values").first();
         if ($anchor.length === 0) {

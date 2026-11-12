@@ -77,7 +77,7 @@
     </div>
 
     <section id="booking-form-section">
-        <h2 class="text-center mb-4">Application Form</h2>
+        <h2 class="h2 text-danger text-center mb-4">Table Reservation Form</h2>
         <form id="restaurant-booking-form" action="#" method="POST" class="bg-light p-4 rounded shadow-sm border" novalidate>
             <div class="row g-3">
                 <div class="col-12 col-md-6">
@@ -106,20 +106,23 @@
                     <input type="time" class="form-control" id="booking-time" name="time" required aria-describedby="booking-time-error">
                     <div class="invalid-feedback" id="booking-time-error">Please choose a visit time.</div>
                 </div>
-                <div class="col-12 text-center my-3">
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="hall" id="hall-main" value="main" checked aria-describedby="hall-error">
-                        <label class="form-check-label" for="hall-main">Main Hall</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="hall" id="hall-vip" value="vip" aria-describedby="hall-error">
-                        <label class="form-check-label" for="hall-vip">VIP Hall</label>
+                <div class="col-12 col-md-6">
+                    <label class="form-label d-block">Select Dining Hall:</label>
+                    <div class="pt-2">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="hall" id="hall-main" value="main" checked aria-describedby="hall-error">
+                            <label class="form-check-label" for="hall-main">Main Hall</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="hall" id="hall-vip" value="vip" aria-describedby="hall-error">
+                            <label class="form-check-label" for="hall-vip">VIP Hall (Deposit required)</label>
+                        </div>
                     </div>
                     <div class="invalid-feedback" id="hall-error">Please choose a hall.</div>
                 </div>
-                <div class="col-12 text-center d-flex flex-wrap justify-content-center gap-2">
-                    <button type="submit" class="btn btn-primary btn-lg">Book Now</button>
-                    <button type="reset" class="btn btn-outline-secondary btn-lg">Clear Form</button>
+                <div class="col-12 text-center d-flex flex-wrap justify-content-center gap-2 mt-4">
+                    <button type="submit" class="btn btn-danger btn-lg rounded-pill px-4 shadow-sm">Book Now</button>
+                    <button type="reset" class="btn btn-outline-secondary btn-lg rounded-pill px-4">Clear Form</button>
                 </div>
             </div>
         </form>
