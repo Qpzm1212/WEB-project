@@ -305,9 +305,6 @@
     const eventCardsGrid = createElement("div", "row g-2");
 
     scheduleExplorer.append(explorerHeader, filterRow, explorerStatus, eventCardsGrid);
-    if (leftColumn) {
-        leftColumn.append(scheduleExplorer);
-    }
 
     const calcPanel = createElement("div", "mt-4 p-4 bg-white border-0 rounded-4 shadow-sm border-start border-4 border-danger");
     const calcTitle = createElement("h3", "h6 text-danger fw-bold mb-2", "Live Event Cost & Seating Calculator");
