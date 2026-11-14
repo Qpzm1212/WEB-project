@@ -1,193 +1,260 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Learn about the history, values, and the team behind Meat Point Astana restaurant.">
-    <meta name="author" content="Kamza Asset">
-    <title>About Us | Meat Point Restaurant</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="О ресторане Meat Point Astana. Философия анатолийского мангала, 100% Halal стандарты, сухое созревание говядины 21 день. пр. Ұлы Дала, 45.">
+  <meta name="author" content="Kamza Asset, Tangzharyk (Astana IT University, SE-2532)">
+  <title>О ресторане Meat Point Astana | Анатолийский мангал 24/7</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/base.css">
-    <link rel="stylesheet" href="css/kamza.css">
+  <!-- Google Fonts: Cormorant Garamond & Manrope -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Editorial Gastronomic Design System -->
   <link rel="stylesheet" href="css/luxury-theme.css">
-
-    <style>
-
-        .custom-navbar { background-color: #fffdf8 !important; }
-        .custom-navbar .navbar-brand { color: var(--accent, #dc3545) !important; }
-
-        #nav-toggle { display: none; }
-        .nav-toggle-label {
-            display: none;
-            cursor: pointer;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            padding: 0.25rem 0.75rem;
-            border-radius: 0.375rem;
-        }
-        .nav-toggle-label span {
-            display: block;
-            width: 1.5em;
-            height: 1.5em;
-            background: transparent url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.55%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") center/100% no-repeat;
-        }
-
-        @media (max-width: 991.98px) {
-            .nav-toggle-label { display: block; }
-            .css-collapse {
-                display: none;
-                width: 100%;
-                background-color: #fffdf8;
-                border-radius: 8px;
-                margin-top: 10px;
-            }
-            #nav-toggle:checked ~ .css-collapse { display: block; }
-
-            .navbar-nav .nav-link {
-                padding: 16px 20px !important;
-                color: #ffffff !important;
-                font-weight: 500;
-                font-size: 1.1rem;
-            }
-            .navbar-nav .nav-link:hover { background-color: rgba(255, 255, 255, 0.05); }
-            .navbar-nav .nav-link.active {
-                background-color: #c81e2b !important;
-                border-radius: 8px;
-            }
-        }
-
-        @media (min-width: 992px) {
-            .css-collapse {
-                display: flex !important;
-                flex-basis: auto;
-                flex-grow: 1;
-                align-items: center;
-            }
-            .navbar-nav { flex-direction: row; }
-            .navbar-nav .nav-link {
-                padding-right: 0.5rem;
-                padding-left: 0.5rem;
-                color: #ffffff !important;
-            }
-            .navbar-nav .nav-link.active {
-                color: var(--accent, #dc3545) !important;
-                border-bottom: 2px solid var(--accent, #dc3545) !important;
-            }
-        }
-    </style>
 </head>
-<body class="bg-light">
+<body class="theme-light">
 
-<header class="site-header sticky-top shadow-sm">
-    <nav class="navbar custom-navbar py-3">
-        <div class="container d-flex flex-wrap align-items-center justify-content-between">
-            <a class="navbar-brand fw-bold m-0" href="index.html">Meat Point</a>
+<!-- Header & Navigation -->
+<header class="sticky-top">
+  <nav class="navbar navbar-expand-lg mp-navbar py-3">
+    <div class="container d-flex align-items-center justify-content-between">
+      <a class="navbar-brand mp-brand m-0" href="index.html">
+        <span>Meat Point</span>
+        <span class="mp-brand-sub">Astana &bull; 24/7 Halal</span>
+      </a>
 
-            <input type="checkbox" id="nav-toggle">
-            <label for="nav-toggle" class="nav-toggle-label m-0">
-                <span></span>
-            </label>
+      <div class="d-flex align-items-center gap-2 d-lg-none">
+        <button type="button" class="btn btn-sm btn-editorial-outline theme-toggle-btn" aria-label="Сменить тему">
+          <span class="theme-toggle-label small">DARK THEME</span>
+        </button>
+        <button type="button" class="btn btn-sm btn-editorial-primary cart-nav-btn" aria-label="Корзина">
+          <span>КОРЗИНА</span> (<span class="cart-badge-count">0</span>)
+        </button>
+        <button class="navbar-toggler border-0 p-1" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Меню">
+          <span class="small fw-bold">MENU</span>
+        </button>
+      </div>
 
-            <div class="css-collapse">
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 nav-list d-flex justify-content-end w-100">
-                    <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
-                    <li class="nav-item"><a href="about.html" class="nav-link active" aria-current="page">About</a></li>
-                    <li class="nav-item"><a href="contacts.html" class="nav-link">Contact</a></li>
-                    <li class="nav-item"><a href="menu.html" class="nav-link">Menu</a></li>
-                    <li class="nav-item"><a href="events.html" class="nav-link">Events</a></li>
-                    <li class="nav-item"><a href="booking.html" class="nav-link">Booking</a></li>
-                    <li class="nav-item"><a href="feedback.html" class="nav-link">Reviews</a></li>
-                </ul>
-            </div>
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a href="index.html" class="nav-link mp-nav-link">Главная</a></li>
+          <li class="nav-item"><a href="menu.html" class="nav-link mp-nav-link">Меню и заказ</a></li>
+          <li class="nav-item"><a href="booking.html" class="nav-link mp-nav-link">Бронирование столика</a></li>
+          <li class="nav-item"><a href="about.html" class="nav-link mp-nav-link active" aria-current="page">О ресторане</a></li>
+          <li class="nav-item"><a href="events.html" class="nav-link mp-nav-link">Живая музыка</a></li>
+          <li class="nav-item"><a href="feedback.html" class="nav-link mp-nav-link">Отзывы 2ГИС</a></li>
+          <li class="nav-item"><a href="contacts.html" class="nav-link mp-nav-link">Контакты</a></li>
+        </ul>
+
+        <div class="d-none d-lg-flex align-items-center gap-2">
+          <button type="button" class="btn btn-editorial-outline theme-toggle-btn px-3 py-2">
+            <span class="theme-toggle-label small">DARK THEME</span>
+          </button>
+          <button type="button" class="btn btn-editorial-primary cart-trigger-btn px-3 py-2 d-flex align-items-center gap-2">
+            <span>КОРЗИНА</span>
+            <span class="cart-badge-count badge bg-dark text-light" style="display: none;">0</span>
+            <span class="cart-badge-total tabular-nums d-none d-xl-inline">0 ₸</span>
+          </button>
         </div>
-    </nav>
+      </div>
+    </div>
+  </nav>
 </header>
 
-<main class="container my-5">
-    <nav class="page-nav mb-4 bg-white p-3 rounded shadow-sm">
-        <p class="mb-0 fw-bold text-secondary">Jump to:
-            <a href="#history" class="text-danger text-decoration-none mx-2">Our History</a> |
-            <a href="#values" class="text-danger text-decoration-none mx-2">Our Values</a>
+<main class="container my-5 flex-grow-1">
+  <!-- Story Hero -->
+  <section class="mb-5 border-hairline-bottom pb-5">
+    <div class="row align-items-center g-5">
+      <div class="col-12 col-lg-6">
+        <div class="small text-uppercase letter-spacing-1 text-muted mb-2">О ресторане Meat Point Astana</div>
+        <h1 class="display-4 fw-bold mb-3">Анатолийские традиции и фермерское Halal мясо</h1>
+        <p class="lead text-muted" style="font-size: 1.05rem;">
+          Ресторан <strong>Meat Point</strong> открыт на проспекте Ұлы Дала, 45, в столичном районе EXPO и Ботанического сада. Заведение объединяет турецкие технологии открытого мангала и премиальную мраморную говядину зернового откорма.
         </p>
-    </nav>
-
-    <section id="history" class="position-relative bg-white p-4 p-md-5 rounded shadow-sm mb-5">
-        <span class="badge bg-danger position-absolute top-0 end-0 m-3 fs-6">Since 2024</span>
-        <h2 class="h1 text-danger mb-4">Our Story</h2>
-
-        <div class="clearfix mb-4">
-            <img src="images/interior.png" alt="Cozy dining interior of Meat Point" class="float-md-start me-4 mb-3 rounded shadow-sm img-fluid w-25">
-            <p class="highlight-text fst-italic lead text-dark">Welcome to the heart of Meat Point. The story of Meat Point began with the idea of creating a place in Astana where one could experience authentic Turkish cuisine in a cozy and welcoming atmosphere. The restaurant’s founders sought to combine traditional recipes, high‑quality products, and a modern approach to restaurant service so that every guest could feel the character of Turkish cuisine. Spanning over 400 m<sup>2</sup>, our establishment offers an unforgettable dining area.</p>
-            <p class="clearfix">Our head chef always reminds our team, <q class="fw-bold">True flavor is born from patience and fire</q>. This philosophy guides our daily work. We use premium local beef and lamb, but our secret ingredient lies in the spices, which are exclusively imported. Cleanliness is our priority; even our cooking water is double-filtered H<sub>2</sub>O to ensure the perfect taste of our traditional black tea.</p>
+        <p class="text-muted">
+          Главный ориентир кухни: отказ от электрических грилей и искусственных добавок. Обжарка отрубов происходит на березовом угле, сохраняя естественную текстуру и сок волокон при температуре свыше 300 градусов.
+        </p>
+        <div class="d-flex flex-wrap gap-2 mt-4">
+          <a href="booking.html" class="btn btn-editorial-primary">Забронировать стол</a>
+          <a href="menu.html" class="btn btn-editorial-outline">Смотреть меню</a>
         </div>
-
-        <div class="row align-items-center my-5">
-            <div class="col-12 col-md-6 mb-4 mb-md-0 position-relative">
-                <figure class="figure m-0">
-                    <img src="images/meatpointout.png" alt="The outside view of Meat Point restaurant" class="figure-img img-fluid rounded shadow">
-                    <figcaption class="figure-caption">Exterior view of Meat Point Astana</figcaption>
-                </figure>
-
-                <span class="badge bg-danger bg-opacity-75 position-absolute top-0 end-0 m-3 py-2 px-3 rounded-pill fs-6 shadow"> Est. 2024</span>
-            </div>
-            <div class="col-12 col-md-6 px-md-4">
-                <h3 class="h3 text-danger mb-3">Company Milestones</h3>
-                <ol reversed class="list-group list-group-numbered shadow-sm milestones-list">
-                    <li class="list-group-item"><strong>2026:</strong> Opened our beautiful summer terrace.</li>
-                    <li class="list-group-item"><strong>2025:</strong> Reached our ten thousandth guest.</li>
-                    <li class="list-group-item"><strong>2024:</strong> Founded the restaurant.</li>
-                </ol>
-            </div>
+      </div>
+      <div class="col-12 col-lg-6">
+        <div class="border border-warm p-2 bg-card">
+          <img src="images/meatpointout.png" alt="Фасад ресторана Meat Point Astana" class="img-fluid w-100 object-fit-cover" style="min-height: 360px;">
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <section id="values" class="mb-5">
-        <h2 class="h1 text-center text-danger mb-4">Core Principles</h2>
-        <p class="text-center lead text-secondary mb-5">Our core principles remain unchanged since day one:</p>
+  <!-- Editorial Split: 4 Pillars of Cuisine -->
+  <section class="py-5 border-hairline-bottom">
+    <div class="row g-5">
+      <div class="col-12 col-lg-5">
+        <div class="small text-uppercase letter-spacing-1 text-muted mb-2">Стандарты качества</div>
+        <h2 class="display-5 fw-bold mb-3">Контроль сырья и чистота процесса</h2>
+        <p class="text-muted">
+          Каждая партия говядины и ягнятины имеет государственные сертификаты Halal. Разделка, созревание и обжарка контролируются шеф-поваром ресторана.
+        </p>
+      </div>
 
-        <div class="row g-4 justify-content-center">
-            <div class="col-12 col-md-6 col-lg-4">
-                <div class="card h-100 shadow-sm border-0 border-top border-danger border-4">
-                    <div class="card-body text-center">
-                        <h4 class="card-title text-danger fw-bold value-term">Quality</h4>
-                        <p class="card-text text-muted">Only the freshest ingredients are allowed in our kitchen.</p>
-                    </div>
-                </div>
+      <div class="col-12 col-lg-7">
+        <ul class="editorial-num-list">
+          <li class="editorial-num-item">
+            <span class="editorial-num">01</span>
+            <div>
+              <h4 class="h6 text-uppercase fw-bold mb-1">100% Halal сертификация</h4>
+              <p class="small text-muted mb-0">Мясо поставляется строго от сертифицированных фермерских хозяйств с полным ветеринарным контролем.</p>
             </div>
-            <div class="col-12 col-md-6 col-lg-4">
-                <div class="card h-100 shadow-sm border-0 border-top border-danger border-4">
-                    <div class="card-body text-center">
-                        <h4 class="card-title text-danger fw-bold value-term">Hospitality</h4>
-                        <p class="card-text text-muted">Treating every visitor like a dear family member.</p>
-                    </div>
-                </div>
+          </li>
+          <li class="editorial-num-item">
+            <span class="editorial-num">02</span>
+            <div>
+              <h4 class="h6 text-uppercase fw-bold mb-1">Сухое созревание (Dry-Aging) 21 день</h4>
+              <p class="small text-muted mb-0">Специальные соляные камеры с поддержанием температуры 1–2°C и влажности 75% для глубокой ферментации отрубов.</p>
             </div>
-            <div class="col-12 col-md-6 col-lg-4">
-                <div class="card h-100 shadow-sm border-0 border-top border-danger border-4">
-                    <div class="card-body text-center">
-                        <h4 class="card-title text-danger fw-bold value-term">Atmosphere</h4>
-                        <p class="card-text text-muted">Creating a cozy, unforgettable Turkish dining experience.</p>
-                    </div>
-                </div>
+          </li>
+          <li class="editorial-num-item">
+            <span class="editorial-num">03</span>
+            <div>
+              <h4 class="h6 text-uppercase fw-bold mb-1">Кованые шампуры и ножи зирх</h4>
+              <p class="small text-muted mb-0">Ручная рубка фарша для кебабов без использования мясорубок: сохранение природной структуры волокон.</p>
             </div>
+          </li>
+          <li class="editorial-num-item">
+            <span class="editorial-num">04</span>
+            <div>
+              <h4 class="h6 text-uppercase fw-bold mb-1">Чайная традиция провинции Ризе</h4>
+              <p class="small text-muted mb-0">Двухъярусное заваривание çaydanlık, подача в стеклянных армудах к горячему Кюнефе и пахлаве.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery Section -->
+  <section class="py-5 border-hairline-bottom">
+    <div class="d-flex justify-content-between align-items-end mb-4">
+      <div>
+        <div class="small text-uppercase letter-spacing-1 text-muted">Залы и сервировка</div>
+        <h2 class="display-6 fw-bold mb-0">Интерьер ресторана</h2>
+      </div>
+      <span class="small text-muted">пр. Ұлы Дала, 45</span>
+    </div>
+
+    <div class="row g-3">
+      <div class="col-12 col-md-4">
+        <div class="border border-warm p-1 bg-card h-100">
+          <img src="images/meatpointhall.png" alt="Главный зал ресторана" class="w-100 h-100 object-fit-cover" style="min-height: 240px;">
         </div>
+      </div>
+      <div class="col-12 col-md-4">
+        <div class="border border-warm p-1 bg-card h-100">
+          <img src="images/interior.png" alt="Семейная зона отдыха" class="w-100 h-100 object-fit-cover" style="min-height: 240px;">
+        </div>
+      </div>
+      <div class="col-12 col-md-4">
+        <div class="border border-warm p-1 bg-card h-100">
+          <img src="images/tea.png" alt="Чайная церемония в армудах" class="w-100 h-100 object-fit-cover" style="min-height: 240px;">
+        </div>
+      </div>
+    </div>
+  </section>
 
-        <p class="text-center mt-5 p-4 bg-white rounded shadow-sm">We invite you to check our reviews on our official <a href="https://2gis.kz/astana/firm/70000001082291583" target="_blank" rel="noopener noreferrer" class="text-danger fw-bold">2GIS profile</a>. You can also contact our <span class="fw-bold">Meat Point</span> team anytime. Thank you for being a part of our journey!</p>
-    </section>
+  <!-- Academic Credits: AITU SE-2532 -->
+  <section class="py-5">
+    <div class="p-4 p-md-5 bg-card border-warm">
+      <div class="small text-uppercase letter-spacing-1 text-muted mb-2">Академический проект</div>
+      <h3 class="display-6 fw-bold mb-3">Команда разработчиков приложения</h3>
+      <p class="text-muted max-w-700 mb-4">
+        Финальный проект по веб-разработке студентов Astana IT University (группа <strong>SE-2532</strong>).
+      </p>
+
+      <div class="row g-4">
+        <div class="col-12 col-md-6">
+          <div class="p-3 bg-elevated border-warm h-100">
+            <strong class="d-block">Kamza Asset</strong>
+            <span class="small text-muted">Lead Frontend Architect & UI</span>
+            <p class="small text-muted mt-2 mb-0">Архитектура стилей, анти-вайбкодинг рефакторинг, геометрия и адаптивность.</p>
+          </div>
+        </div>
+        <div class="col-12 col-md-6">
+          <div class="p-3 bg-elevated border-warm h-100">
+            <strong class="d-block">Tangzharyk</strong>
+            <span class="small text-muted">Product Engineer & DeepSeek AI</span>
+            <p class="small text-muted mt-2 mb-0">Каталог меню, бронирование зон зала, клиент DeepSeek API и интеграция корзины.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 </main>
 
-<footer class="container-fluid bg-dark text-white text-center py-4">
-    <div class="container">
-        <h2 class="h4 text-danger mb-3">Contact Info</h2>
-        <p class="mb-1">Address: Uly Dala street 45, Astana</p>
-        <p class="mb-1">Phone number: <a href="tel:+77784221100" class="text-white text-decoration-none">+7 (778) 422-11-00</a></p>
-        <p class="mb-3">Email: <a href="mailto:info@meatpoint.kz" class="text-white text-decoration-none">info@meatpoint.kz</a></p>
-        <p class="small text-white-50 mb-0">&copy; 2026 Meat Point. All rights reserved.</p>
+<!-- Footer -->
+<footer class="mp-footer pt-5 pb-4 text-muted">
+  <div class="container">
+    <div class="row g-4 mb-4">
+      <div class="col-12 col-md-4">
+        <div class="mp-brand mb-2">
+          <span>Meat Point</span>
+          <span class="mp-brand-sub">Astana &bull; 24/7 Halal</span>
+        </div>
+        <p class="small mb-3">
+          Турецкий мясной ресторан и стейк-хаус на проспекте Ұлы Дала, 45.
+        </p>
+        <div class="small">
+          <div>г. Астана, проспект Ұлы Дала, 45</div>
+          <div>График: Круглосуточно (24/7, без выходных)</div>
+        </div>
+      </div>
+      <div class="col-6 col-md-2">
+        <div class="mp-footer-heading">Разделы</div>
+        <ul class="list-unstyled small mb-0 d-flex flex-column gap-2">
+          <li><a href="index.html">Главная</a></li>
+          <li><a href="menu.html">Меню</a></li>
+          <li><a href="booking.html">Бронирование</a></li>
+          <li><a href="about.html">О нас</a></li>
+          <li><a href="contacts.html">Контакты</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="mp-footer-heading">Контакты</div>
+        <ul class="list-unstyled small mb-0 d-flex flex-column gap-2">
+          <li><a href="tel:+77784221100" class="fw-bold mp-tel-link">+7 (778) 422-11-00</a></li>
+          <li><a href="tel:+77750380002">+7 (775) 038-00-02</a></li>
+          <li><a href="https://wa.me/77784221100" target="_blank">WhatsApp: +7 778 422 1100</a></li>
+        </ul>
+      </div>
+      <div class="col-12 col-md-3">
+        <div class="mp-footer-heading">Команда AITU</div>
+        <p class="small mb-2">Группа SE-2532: Kamza Asset, Tangzharyk.</p>
+        <button type="button" class="btn btn-sm btn-editorial-outline open-team-modal-btn w-100">
+          Справка о разработчиках
+        </button>
+      </div>
     </div>
+    <div class="pt-3 border-hairline-top d-flex flex-wrap justify-content-between align-items-center small">
+      <div>&copy; 2026 Meat Point Astana. 100% Halal.</div>
+      <div class="d-flex gap-3">
+        <a href="https://2gis.kz/astana/firm/70000001027751110" target="_blank">2ГИС Астана</a>
+        <a href="#" class="open-team-modal-btn">О проекте SE-2532</a>
+      </div>
+    </div>
+  </div>
 </footer>
 
-<script src="https://code.jquery.com/jquery-3.7.1.min.js" defer></script>
-<script src="js/main.js" defer></script>
-<script src="js/kamza-jquery.js" defer></script>
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/menu-data.js"></script>
+<script src="js/cart.js"></script>
+<script src="js/booking.js"></script>
+<script src="js/ai-concierge.js"></script>
+<script src="js/ui-effects.js"></script>
+<script src="js/main.js"></script>
 </body>
 </html>

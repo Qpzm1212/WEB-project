@@ -1,167 +1,493 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Meat Point - Authentic Halal Turkish cuisine and grilled meats in Astana EXPO district.">
-  <meta name="author" content="Kamza Asset">
-  <title>Main | Meat Point Restaurant</title>
+  <meta name="description" content="Meat Point Astana. Турецкий мясной ресторан и стейк-хаус. 100% Halal. Круглосуточно 24/7. пр. Ұлы Дала, 45.">
+  <meta name="author" content="Kamza Asset, Tangzharyk (Astana IT University, SE-2532)">
+  <title>Meat Point Astana | Турецкий мясной ресторан и стейк-хаус 24/7</title>
 
+  <!-- Google Fonts: Cormorant Garamond & Manrope -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
-  <link rel="stylesheet" href="css/base.css">
-  <link rel="stylesheet" href="css/kamza.css">
+  <!-- Editorial Gastronomic Design System -->
   <link rel="stylesheet" href="css/luxury-theme.css">
-
-  <style>
-
-    .custom-navbar { background-color: #fffdf8 !important; }
-    .custom-navbar .navbar-brand { color: var(--accent, #dc3545) !important; }
-
-    #nav-toggle { display: none; }
-    .nav-toggle-label {
-      display: none;
-      cursor: pointer;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      padding: 0.25rem 0.75rem;
-      border-radius: 0.375rem;
-    }
-    .nav-toggle-label span {
-      display: block;
-      width: 1.5em;
-      height: 1.5em;
-      background: transparent url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.55%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") center/100% no-repeat;
-    }
-
-    @media (max-width: 991.98px) {
-      .nav-toggle-label { display: block; }
-      .css-collapse {
-        display: none;
-        width: 100%;
-        background-color: #fffdf8;
-        border-radius: 8px;
-        margin-top: 10px;
-      }
-      #nav-toggle:checked ~ .css-collapse { display: block; }
-
-      .navbar-nav .nav-link {
-        padding: 16px 20px !important;
-        color: #ffffff !important;
-        font-weight: 500;
-        font-size: 1.1rem;
-      }
-      .navbar-nav .nav-link:hover { background-color: rgba(255, 255, 255, 0.05); }
-      .navbar-nav .nav-link.active {
-        background-color: #c81e2b !important;
-        border-radius: 8px;
-      }
-    }
-
-    @media (min-width: 992px) {
-      .css-collapse {
-        display: flex !important;
-        flex-basis: auto;
-        flex-grow: 1;
-        align-items: center;
-      }
-      .navbar-nav { flex-direction: row; }
-      .navbar-nav .nav-link {
-        padding-right: 0.5rem;
-        padding-left: 0.5rem;
-        color: #ffffff !important;
-      }
-      .navbar-nav .nav-link.active {
-        color: var(--accent, #dc3545) !important;
-        border-bottom: 2px solid var(--accent, #dc3545) !important;
-      }
-    }
-  </style>
 </head>
-<body class="bg-light">
+<body class="theme-light">
 
-<header class="site-header sticky-top shadow-sm">
-  <nav class="navbar custom-navbar py-3">
-    <div class="container d-flex flex-wrap align-items-center justify-content-between">
-      <a class="navbar-brand fw-bold m-0" href="index.html">Meat Point</a>
+<!-- Header & Navigation -->
+<header class="sticky-top">
+  <nav class="navbar navbar-expand-lg mp-navbar py-3">
+    <div class="container d-flex align-items-center justify-content-between">
+      <a class="navbar-brand mp-brand m-0" href="index.html">
+        <span>Meat Point</span>
+        <span class="mp-brand-sub">Astana &bull; 24/7 Halal</span>
+      </a>
 
-      <input type="checkbox" id="nav-toggle">
-      <label for="nav-toggle" class="nav-toggle-label m-0">
-        <span></span>
-      </label>
+      <!-- Navbar controls on mobile -->
+      <div class="d-flex align-items-center gap-2 d-lg-none">
+        <button type="button" class="btn btn-sm btn-editorial-outline theme-toggle-btn" aria-label="Сменить тему">
+          <span class="theme-toggle-label small">DARK THEME</span>
+        </button>
+        <button type="button" class="btn btn-sm btn-editorial-primary cart-nav-btn" aria-label="Корзина">
+          <span>КОРЗИНА</span> (<span class="cart-badge-count">0</span>)
+        </button>
+        <button class="navbar-toggler border-0 p-1" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Меню">
+          <span class="small fw-bold">MENU</span>
+        </button>
+      </div>
 
-      <div class="css-collapse">
-        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 nav-list d-flex justify-content-end w-100">
-          <li class="nav-item"><a href="index.html" class="nav-link active" aria-current="page">Home</a></li>
-          <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
-          <li class="nav-item"><a href="contacts.html" class="nav-link">Contact</a></li>
-          <li class="nav-item"><a href="menu.html" class="nav-link">Menu</a></li>
-          <li class="nav-item"><a href="events.html" class="nav-link">Events</a></li>
-          <li class="nav-item"><a href="booking.html" class="nav-link">Booking</a></li>
-          <li class="nav-item"><a href="feedback.html" class="nav-link">Reviews</a></li>
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a href="index.html" class="nav-link mp-nav-link active" aria-current="page">Главная</a></li>
+          <li class="nav-item"><a href="menu.html" class="nav-link mp-nav-link">Меню и заказ</a></li>
+          <li class="nav-item"><a href="booking.html" class="nav-link mp-nav-link">Бронирование столика</a></li>
+          <li class="nav-item"><a href="about.html" class="nav-link mp-nav-link">О ресторане</a></li>
+          <li class="nav-item"><a href="events.html" class="nav-link mp-nav-link">Живая музыка</a></li>
+          <li class="nav-item"><a href="feedback.html" class="nav-link mp-nav-link">Отзывы 2ГИС</a></li>
+          <li class="nav-item"><a href="contacts.html" class="nav-link mp-nav-link">Контакты</a></li>
         </ul>
+
+        <div class="d-none d-lg-flex align-items-center gap-2">
+          <button type="button" class="btn btn-editorial-outline theme-toggle-btn px-3 py-2">
+            <span class="theme-toggle-label small">DARK THEME</span>
+          </button>
+          <button type="button" class="btn btn-editorial-primary cart-trigger-btn px-3 py-2 d-flex align-items-center gap-2">
+            <span>КОРЗИНА</span>
+            <span class="cart-badge-count badge bg-dark text-light" style="display: none;">0</span>
+            <span class="cart-badge-total tabular-nums d-none d-xl-inline">0 ₸</span>
+          </button>
+        </div>
       </div>
     </div>
   </nav>
 </header>
 
-<main class="container my-5">
-  <article class="hero-section mb-5" id="home-hero">
-    <h2 class="display-5 text-center text-md-start text-danger mb-4">
-      Welcome to Meat Point Astana
-      <span class="badge bg-danger rounded-pill fs-6 align-middle d-none d-md-inline ms-2">Top Rated</span>
-    </h2>
-    <p class="lead text-secondary">
-      <span class="fw-bold text-dark">Meat Point</span> is a cozy Turkish restaurant in Astana, located at 45 Uly Dala Avenue, near the Botanical Garden and the EXPO district. The establishment specializes in authentic Turkish cuisine with particular emphasis on grilled meat dishes. As culinary guide <cite>Taste of East</cite> noted, <q class="fst-italic">Traditional roasting requires both patience and passion</q>.
-    </p>
+<main>
+  <!-- Hero Section: Editorial Split with Product Immediately in Focus -->
+  <section class="mp-hero-editorial">
+    <div class="container">
+      <div class="row g-5 align-items-center">
+        <!-- Left: Statement & Direct Actions -->
+        <div class="col-12 col-lg-7">
+          <div class="mp-hero-pretitle">
+            100% Halal &bull; Сухое вызревание 21 день &bull; пр. Ұлы Дала, 45
+          </div>
+          <h1 class="display-4 fw-bold mb-3">
+            Открытый огонь и премиальные отрубы Meat Point Astana
+          </h1>
+          <p class="lead text-muted mb-4" style="font-size: 1.05rem;">
+            Турецкий мясной ресторан и стейк-хаус рядом с Ботаническим садом и EXPO. Мраморная говядина зернового откорма, каре молодого ягненка, ручные кебабы на кованых шампурах и круглосуточная работа кухни.
+          </p>
 
-    <div class="row align-items-center mt-4 g-4">
-      <div class="col-12 col-lg-8">
-        <p>Our restaurant is suitable for everyday lunch, meetings with friends, family dinners, and special celebrations. Thanks to our <strong class="text-danger">24/7</strong> operating hours, you can visit us at any time — start your day with a traditional breakfast or drop by for a late dinner. All non-alcoholic cold beverages are served with purified H<sub>2</sub>O iced water.</p>
-        <p>On weekdays from 12:00 to 15:00, guests can take advantage of our business lunch offer. Among our special dishes, the signature Meat Point assortment deserves special attention. On Fridays and Saturdays, the dining atmosphere is complemented by <em>live acoustic music</em>. <mark class="bg-warning rounded px-1">Table pre-booking</mark> is recommended on weekends.</p>
-        <p class="small text-muted">Note: Delivery and takeout options are available 24 hours a day across Astana.</p>
-      </div>
-      <div class="col-12 col-lg-4 text-center">
-        <a href="booking.html" class="btn btn-danger btn-lg shadow w-100 mb-2">Book a Table</a>
-        <a href="menu.html" class="btn btn-outline-danger w-100">View Menu</a>
+          <div class="d-flex flex-wrap gap-2 mb-4">
+            <a href="booking.html" class="btn btn-editorial-primary">
+              Забронировать стол
+            </a>
+            <a href="menu.html" class="btn btn-editorial-outline">
+              Карта меню (₸)
+            </a>
+            <button type="button" class="btn btn-editorial-outline open-ai-sommelier-btn">
+              AI Сомелье
+            </button>
+          </div>
+
+          <div class="mp-editorial-stat-row">
+            <div class="mp-stat-item">
+              <span class="mp-stat-num tabular-nums"><span data-counter-target="4.4">4.4</span></span>
+              <span class="mp-stat-label">2ГИС (<span data-counter-target="780">780</span>+ оценок)</span>
+            </div>
+            <div class="mp-stat-item">
+              <span class="mp-stat-num">24/7</span>
+              <span class="mp-stat-label">Кухня и доставка</span>
+            </div>
+            <div class="mp-stat-item">
+              <span class="mp-stat-num tabular-nums"><span data-counter-target="4290">4 290</span> ₸</span>
+              <span class="mp-stat-label">Бизнес-ланч будни</span>
+            </div>
+            <div class="mp-stat-item">
+              <span class="mp-stat-num">100%</span>
+              <span class="mp-stat-label">Сертифицированный Halal</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Immediate Product in Focus (Quick Cuts Matrix) -->
+        <div class="col-12 col-lg-5">
+          <div class="mp-focus-strip">
+            <div class="mp-focus-strip-header">
+              <div>
+                <span class="small text-uppercase text-muted letter-spacing-1 d-block">Фирменные отрубы</span>
+                <h3 class="mp-focus-strip-title">Стейки на березовых углях</h3>
+              </div>
+              <span class="small text-muted">21 день dry-aging</span>
+            </div>
+
+            <div class="mp-focus-cuts-list mb-3">
+              <div class="mp-focus-cut-row">
+                <div class="mp-cut-meta">
+                  <span class="mp-cut-name">Рибай стейк</span>
+                  <span class="mp-cut-weight">350 г</span>
+                </div>
+                <div class="d-flex align-items-center gap-3">
+                  <span class="mp-cut-price">9 800 ₸</span>
+                  <button type="button" class="btn btn-sm btn-editorial-outline py-1 px-2" onclick="window.MeatPointCart.openSteakModal('steak-ribeye')">
+                    Выбрать
+                  </button>
+                </div>
+              </div>
+
+              <div class="mp-focus-cut-row">
+                <div class="mp-cut-meta">
+                  <span class="mp-cut-name">Тибон стейк</span>
+                  <span class="mp-cut-weight">400 г</span>
+                </div>
+                <div class="d-flex align-items-center gap-3">
+                  <span class="mp-cut-price">10 500 ₸</span>
+                  <button type="button" class="btn btn-sm btn-editorial-outline py-1 px-2" onclick="window.MeatPointCart.openSteakModal('steak-tbone')">
+                    Выбрать
+                  </button>
+                </div>
+              </div>
+
+              <div class="mp-focus-cut-row">
+                <div class="mp-cut-meta">
+                  <span class="mp-cut-name">Даллас стейк</span>
+                  <span class="mp-cut-weight">450 г</span>
+                </div>
+                <div class="d-flex align-items-center gap-3">
+                  <span class="mp-cut-price">11 900 ₸</span>
+                  <button type="button" class="btn btn-sm btn-editorial-outline py-1 px-2" onclick="window.MeatPointCart.openSteakModal('steak-dallas')">
+                    Выбрать
+                  </button>
+                </div>
+              </div>
+
+              <div class="mp-focus-cut-row">
+                <div class="mp-cut-meta">
+                  <span class="mp-cut-name">Каре ягненка</span>
+                  <span class="mp-cut-weight">360 г</span>
+                </div>
+                <div class="d-flex align-items-center gap-3">
+                  <span class="mp-cut-price">7 900 ₸</span>
+                  <button type="button" class="btn btn-sm btn-editorial-outline py-1 px-2" onclick="window.MeatPointCart.openSteakModal('steak-lamb-chops')">
+                    Выбрать
+                  </button>
+                </div>
+              </div>
+
+              <div class="mp-focus-cut-row">
+                <div class="mp-cut-meta">
+                  <span class="mp-cut-name">Филе-миньон</span>
+                  <span class="mp-cut-weight">280 г</span>
+                </div>
+                <div class="d-flex align-items-center gap-3">
+                  <span class="mp-cut-price">8 900 ₸</span>
+                  <button type="button" class="btn btn-sm btn-editorial-outline py-1 px-2" onclick="window.MeatPointCart.openSteakModal('steak-filet-mignon')">
+                    Выбрать
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="pt-2 border-top border-warm d-flex justify-content-between align-items-center small text-muted">
+              <span>Гарнир на выбор включен</span>
+              <a href="menu.html" class="text-terracotta fw-bold">Полное меню &rarr;</a>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  </article>
-
-  <section id="atmosphere" class="mb-5">
-    <h2 class="h2 text-danger border-bottom pb-2 mb-4">Atmosphere</h2>
-    <figure class="figure text-center w-100">
-      <img src="images/meatpointhall.png" alt="The cozy interior of the Meat Point restaurant features warm lighting and wooden tables." class="figure-img img-fluid rounded shadow-sm" loading="lazy">
-      <figcaption class="figure-caption">The interior of our main hall arranged for guests</figcaption>
-    </figure>
-    <blockquote class="blockquote bg-white p-4 rounded border-start border-4 border-danger shadow-sm mt-3">
-      <p class="mb-0 text-dark">"A very cozy place with a pleasant atmosphere. The food is incredibly delicious, everything is fresh, and it is beautifully presented."</p>
-    </blockquote>
   </section>
 
-  <aside class="notice-aside mt-5">
-    <div class="alert alert-info shadow-sm d-flex align-items-center" role="alert">
-      <div>
-        <h4 class="alert-heading h5">Quick Notice</h4>
-        <p class="mb-1">We are open <strong>24/7</strong> and always ready to offer you <abbr title="Business Lunch" class="initialism">BL</abbr> menus on weekdays from 12:00 to 15:00.</p>
-        <hr>
-        <p class="mb-0 small">Don't forget to reserve your table in advance to enjoy live music sessions on weekends!</p>
+  <!-- Editorial Split: Standards and Gastronomy -->
+  <section class="py-5 border-hairline-bottom">
+    <div class="container">
+      <div class="row g-5">
+        <div class="col-12 col-lg-5">
+          <div class="small text-uppercase letter-spacing-1 text-muted mb-2">Технология кухни</div>
+          <h2 class="display-5 fw-bold mb-3">Анатолийский мангал и отборные отрубы</h2>
+          <p class="text-muted mb-4">
+            В ресторане на проспекте Ұлы Дала мы соблюдаем классические гастрономические стандарты: сухое созревание говядины в течение 21 дня, естественная ферментация, обжарка на открытом огне без добавления искусственных соусов.
+          </p>
+          <div class="p-3 bg-card border-warm small">
+            <strong>Локация:</strong> г. Астана, проспект Ұлы Дала, 45<br>
+            <strong>Парковка:</strong> собственный бесплатный паркинг перед входом<br>
+            <strong>Статус:</strong> 100% сертифицированное Halal мясо
+          </div>
+        </div>
+
+        <div class="col-12 col-lg-7">
+          <ul class="editorial-num-list">
+            <li class="editorial-num-item">
+              <span class="editorial-num">01</span>
+              <div>
+                <h4 class="h6 text-uppercase fw-bold mb-1">Мраморная говядина 21 дня созревания</h4>
+                <p class="small text-muted mb-0">Камеры сухого созревания с гималайской солью для расщепления мышечных волокон и концентрированного вкуса.</p>
+              </div>
+            </li>
+            <li class="editorial-num-item">
+              <span class="editorial-num">02</span>
+              <div>
+                <h4 class="h6 text-uppercase fw-bold mb-1">Рубленое мясо для кебабов</h4>
+                <p class="small text-muted mb-0">Традиционная разделка ножами зирх: фарш не сминается, сохраняя сочность при обжарке на широких шампурах.</p>
+              </div>
+            </li>
+            <li class="editorial-num-item">
+              <span class="editorial-num">03</span>
+              <div>
+                <h4 class="h6 text-uppercase fw-bold mb-1">Древесные угли и открытый огонь</h4>
+                <p class="small text-muted mb-0">Контролируемый жар березового угля дает равномерную корочку Майяра и чистый дымный профиль.</p>
+              </div>
+            </li>
+            <li class="editorial-num-item">
+              <span class="editorial-num">04</span>
+              <div>
+                <h4 class="h6 text-uppercase fw-bold mb-1">Круглосуточный режим кухни 24/7</h4>
+                <p class="small text-muted mb-0">Полный цикл приготовления блюд меню, стейков и доставка по Астане работают без перерывов.</p>
+              </div>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
-  </aside>
+  </section>
+
+  <!-- Signature Menu Highlights Grid -->
+  <section class="py-5 bg-elevated border-hairline-bottom">
+    <div class="container">
+      <div class="d-flex flex-wrap justify-content-between align-items-end mb-4">
+        <div>
+          <span class="small text-uppercase letter-spacing-1 text-muted d-block">Карта блюд</span>
+          <h2 class="display-6 fw-bold mb-0">Популярные позиции меню</h2>
+        </div>
+        <a href="menu.html" class="btn btn-editorial-outline mt-3 mt-md-0">Смотреть все позиции</a>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-12 col-md-6 col-lg-3">
+          <article class="mp-dish-card">
+            <div class="mp-dish-thumb-wrap">
+              <img src="https://images.unsplash.com/photo-1558030006-450675393462?auto=format&fit=crop&w=800&q=80" alt="Рибай стейк" class="mp-dish-img" loading="lazy">
+              <div class="mp-dish-badges"><span class="mp-dish-badge">100% Halal</span></div>
+              <span class="mp-dish-weight">350 г</span>
+            </div>
+            <div class="mp-dish-body">
+              <h3 class="mp-dish-title">Рибай стейк</h3>
+              <p class="mp-dish-desc">Мраморная говядина 21 дня выдержки. Обжарка на открытом березовом угле с гарниром на выбор.</p>
+              <div class="mp-dish-footer">
+                <span class="mp-dish-price tabular-nums">9 800 ₸</span>
+                <button type="button" class="btn btn-editorial-primary btn-sm px-3" onclick="window.MeatPointCart.openSteakModal('steak-ribeye')">
+                  Выбрать
+                </button>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-3">
+          <article class="mp-dish-card">
+            <div class="mp-dish-thumb-wrap">
+              <img src="images/kebab.png" alt="Адана-кебаб" class="mp-dish-img" loading="lazy">
+              <div class="mp-dish-badges"><span class="mp-dish-badge">Острое</span></div>
+              <span class="mp-dish-weight">350 г</span>
+            </div>
+            <div class="mp-dish-body">
+              <h3 class="mp-dish-title">Адана-кебаб</h3>
+              <p class="mp-dish-desc">Рубленая баранина и говядина с острым кайенским перцем на широком шампуре. Булгур и томаты гриль.</p>
+              <div class="mp-dish-footer">
+                <span class="mp-dish-price tabular-nums">4 400 ₸</span>
+                <button type="button" class="btn btn-editorial-primary btn-sm px-3" onclick="window.MeatPointCart.addItem('kebab-adana')">
+                  В корзину
+                </button>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-3">
+          <article class="mp-dish-card">
+            <div class="mp-dish-thumb-wrap">
+              <img src="images/menu2.jpg" alt="Бейти-кебаб" class="mp-dish-img" loading="lazy">
+              <span class="mp-dish-weight">400 г</span>
+            </div>
+            <div class="mp-dish-body">
+              <h3 class="mp-dish-title">Бейти-кебаб в лаваше</h3>
+              <p class="mp-dish-desc">Кебаб с мангала в тонком лаваше с пряным томатным соусом, сливочным маслом и турецким сюзьме-йогуртом.</p>
+              <div class="mp-dish-footer">
+                <span class="mp-dish-price tabular-nums">5 200 ₸</span>
+                <button type="button" class="btn btn-editorial-primary btn-sm px-3" onclick="window.MeatPointCart.addItem('kebab-beyti')">
+                  В корзину
+                </button>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-3">
+          <article class="mp-dish-card">
+            <div class="mp-dish-thumb-wrap">
+              <img src="https://images.unsplash.com/photo-1579954115545-a95591f28bfc?auto=format&fit=crop&w=800&q=80" alt="Горячий Кюнефе" class="mp-dish-img" loading="lazy">
+              <span class="mp-dish-weight">220 г</span>
+            </div>
+            <div class="mp-dish-body">
+              <h3 class="mp-dish-title">Горячий Кюнефе</h3>
+              <p class="mp-dish-desc">Кадаифское тесто, несоленый хатайский сыр в сиропе, тертые антепские фисташки.</p>
+              <div class="mp-dish-footer">
+                <span class="mp-dish-price tabular-nums">3 400 ₸</span>
+                <button type="button" class="btn btn-editorial-primary btn-sm px-3" onclick="window.MeatPointCart.addItem('dessert-kunefe')">
+                  В корзину
+                </button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Dining Halls: Editorial Split -->
+  <section class="py-5 border-hairline-bottom">
+    <div class="container">
+      <div class="row g-5 align-items-center">
+        <div class="col-12 col-lg-6">
+          <div class="small text-uppercase letter-spacing-1 text-muted mb-2">Пространство ресторана</div>
+          <h2 class="display-5 fw-bold mb-3">Четыре зоны зала</h2>
+          <p class="text-muted mb-4">
+            Пространство Meat Point на Ұлы Дала разделено на функциональные локации: основной зал у открытого мангала, тихая семейная зона, изолированная VIP-кабинка и столы вдоль панорамных окон.
+          </p>
+          <div class="d-flex flex-column gap-3 mb-4">
+            <div class="border-hairline-bottom pb-2">
+              <strong class="d-block">01. Основной зал у открытого мангала (до 80 персон)</strong>
+              <span class="small text-muted">Вид на жаровню, аромат древесных углей, живая музыка в пятницу и субботу.</span>
+            </div>
+            <div class="border-hairline-bottom pb-2">
+              <strong class="d-block">02. Уютная семейная зона (до 30 персон)</strong>
+              <span class="small text-muted">Диваны, приглушенное освещение, комфорт для детей и спокойных встреч.</span>
+            </div>
+            <div class="border-hairline-bottom pb-2">
+              <strong class="d-block">03. VIP-кабинка (до 15 персон)</strong>
+              <span class="small text-muted">Шумоизоляция, персональный официант, депозит 50 000 ₸.</span>
+            </div>
+            <div class="pb-2">
+              <strong class="d-block">04. Панорамные столы у окна (до 20 персон)</strong>
+              <span class="small text-muted">Вид на проспект Ұлы Дала и архитектурный комплекс EXPO.</span>
+            </div>
+          </div>
+          <a href="booking.html" class="btn btn-editorial-primary">Перейти к бронированию</a>
+        </div>
+        <div class="col-12 col-lg-6">
+          <div class="border-warm border p-2 bg-card">
+            <img src="images/meatpointhall.png" alt="Главный зал Meat Point Astana" class="img-fluid w-100 object-fit-cover" style="min-height: 380px;">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DeepSeek AI Meat Sommelier Callout -->
+  <section class="py-5 bg-elevated">
+    <div class="container">
+      <div class="p-4 p-lg-5 bg-card border-warm">
+        <div class="row align-items-center g-4">
+          <div class="col-12 col-lg-8">
+            <div class="small text-uppercase letter-spacing-1 text-muted mb-2">Технология DeepSeek API</div>
+            <h3 class="display-6 fw-bold mb-2">AI Стейк-Сомелье Meat Point</h3>
+            <p class="text-muted mb-4">
+              Интеллектуальный ассистент анализирует прожарки, рассчитывает заказ на компанию под конкретный бюджет в тенге (₸) и добавляет позиции прямо в корзину. Подключен к модели deepseek-chat с возможностью настройки ключа.
+            </p>
+            <div class="d-flex flex-wrap gap-2">
+              <button type="button" class="btn btn-editorial-primary open-ai-sommelier-btn">
+                Открыть диалог с AI
+              </button>
+              <a href="menu.html" class="btn btn-editorial-outline">
+                Перейти в меню
+              </a>
+            </div>
+          </div>
+          <div class="col-12 col-lg-4 text-center border-start-lg border-warm">
+            <div class="small text-uppercase text-muted mb-1">Режим работы</div>
+            <div class="fs-4 fw-bold mb-2">Онлайн 24/7</div>
+            <p class="small text-muted mb-0">Содержит полный каталог блюд, актуальные цены и синхронизирован с вашей корзиной в реальном времени.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 </main>
 
-<footer class="container-fluid bg-dark text-white text-center py-4 mt-5">
+<!-- Footer -->
+<footer class="mp-footer pt-5 pb-4 text-muted">
   <div class="container">
-    <h2 class="h4 text-danger mb-3">Contact Us</h2>
-    <p class="mb-1">Address: Uly Dala street 45, Astana</p>
-    <p class="mb-1">Phone number: <a href="tel:+77784221100" class="text-white text-decoration-none">+7 (778) 422-11-00</a></p>
-    <p class="mb-3">Email: <a href="mailto:info@meatpoint.kz" class="text-white text-decoration-none">info@meatpoint.kz</a></p>
-    <p class="small text-white-50 mb-0">&copy; 2026 Meat Point. All rights reserved.</p>
+    <div class="row g-4 mb-4">
+      <div class="col-12 col-md-4">
+        <div class="mp-brand mb-2">
+          <span>Meat Point</span>
+          <span class="mp-brand-sub">Astana &bull; 24/7 Halal</span>
+        </div>
+        <p class="small mb-3">
+          Турецкий мясной ресторан и стейк-хаус. Березовые угли, отборная мраморная говядина, выдержка 21 день.
+        </p>
+        <div class="small">
+          <div>г. Астана, проспект Ұлы Дала, 45</div>
+          <div>График: Круглосуточно (24/7, без выходных)</div>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-2">
+        <div class="mp-footer-heading">Карта сайта</div>
+        <ul class="list-unstyled small mb-0 d-flex flex-column gap-2">
+          <li><a href="menu.html">Меню ресторана</a></li>
+          <li><a href="booking.html">Бронирование столика</a></li>
+          <li><a href="about.html">О ресторане</a></li>
+          <li><a href="events.html">Живая музыка</a></li>
+          <li><a href="feedback.html">Отзывы 2ГИС</a></li>
+          <li><a href="contacts.html">Контакты</a></li>
+        </ul>
+      </div>
+
+      <div class="col-6 col-md-3">
+        <div class="mp-footer-heading">Контакты</div>
+        <ul class="list-unstyled small mb-0 d-flex flex-column gap-2">
+          <li><a href="tel:+77784221100" class="fw-bold mp-tel-link">+7 (778) 422-11-00</a></li>
+          <li><a href="tel:+77750380002">+7 (775) 038-00-02</a></li>
+          <li><a href="https://wa.me/77784221100" target="_blank">WhatsApp: +7 778 422 1100</a></li>
+          <li><a href="https://instagram.com/meatpoint.astana" target="_blank">@meatpoint.astana</a></li>
+        </ul>
+      </div>
+
+      <div class="col-12 col-md-3">
+        <div class="mp-footer-heading">Проект AITU SE-2532</div>
+        <p class="small mb-2">
+          Astana IT University. Команда: Kamza Asset, Tangzharyk.
+        </p>
+        <button type="button" class="btn btn-sm btn-editorial-outline open-team-modal-btn w-100 mb-2">
+          Справка о разработчиках
+        </button>
+      </div>
+    </div>
+
+    <div class="pt-3 border-hairline-top d-flex flex-wrap justify-content-between align-items-center small">
+      <div>&copy; 2026 Meat Point Astana. 100% Halal.</div>
+      <div class="d-flex gap-3">
+        <a href="https://2gis.kz/astana/firm/70000001027751110" target="_blank">2ГИС Астана</a>
+        <a href="https://meat-point.kamiqr.com/menu/basic" target="_blank">Онлайн-меню</a>
+        <a href="#" class="open-team-modal-btn">О проекте SE-2532</a>
+      </div>
+    </div>
   </div>
 </footer>
 
-<script src="https://code.jquery.com/jquery-3.7.1.min.js" defer></script>
-<script src="js/main.js" defer></script>
-<script src="js/kamza-jquery.js" defer></script>
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/menu-data.js"></script>
+<script src="js/cart.js"></script>
+<script src="js/booking.js"></script>
+<script src="js/ai-concierge.js"></script>
+<script src="js/ui-effects.js"></script>
+<script src="js/main.js"></script>
 </body>
 </html>
