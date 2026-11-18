@@ -1,146 +1,106 @@
-# Meat Point Astana — Halal Turkish Restaurant Website
+# Meat Point Astana — Финальная версия ресторанного веб-приложения
 
-> **Endterm Project — Front-End Web Development (Weeks 6–10)**  
-> **Course:** Web Development / Client-Side Scripting  
-> **Git Tag:** `endterm`  
-> **Repository:** [https://github.com/Qpzm1212/WEB-project](https://github.com/Qpzm1212/WEB-project)
-
----
-
-## 1. Project Overview
-
-**Meat Point** is a comprehensive, production-ready website for an authentic halal Turkish restaurant located in Astana, Kazakhstan (Uly Dala Ave 45, EXPO / Botanical Garden district). 
-
-This project represents the culmination of the semester coursework (Weeks 1–10), evolving from static markup and modern responsive Bootstrap 5 styling into a fully interactive single-page and multi-page web application powered by **Plain JavaScript (ES6+)** and **jQuery 3.7.1**.
-
-### Core Constraints & Quality Standards
-- **The CSS Freeze Rule:** In strict accordance with course regulations, zero hand-written HTML markup or CSS rules were introduced after the `midterm` baseline tag (`git diff midterm -- css/` is completely clean). All dynamic components, visual state changes, and interactive elements are built dynamically via JavaScript and styled utilizing existing Bootstrap 5 utility classes and standard DOM element style properties.
-- **Strict Separation of Technologies:** Plain JavaScript (Weeks 6–8) and jQuery (Weeks 9–10) are decoupled into dedicated script files. No single feature mixes Plain JavaScript DOM methods and jQuery APIs.
-- **Complete End-to-End Logic:** Every visitor interaction finishes completely: filters update counters, calculators compute totals with transparent service fees and discounts, forms validate fields with contextual feedback, and submissions display formatted demo receipts with simulated order references.
-- **Zero Console Errors:** All scripts execute cleanly across all pages with zero runtime errors, broken references, or dead links.
+> **Astana IT University (AITU) — Группа SE-2532**  
+> **Команда проекта:**  
+> - **Kamza Asset** — Lead Frontend Architect & UI Lead  
+> - **Tangzharyk** — Interactive Systems & DeepSeek AI Sommelier  
+>  
+> **Заведение:** [Meat Point Astana](https://2gis.kz/astana/firm/70000001027751110) — Турецкий мясной ресторан и стейк-хаус (100% Halal).  
+> **Адрес:** г. Астана, проспект Ұлы Дала, 45 (район EXPO и Ботанического сада).  
+> **График:** Круглосуточно (24/7, без выходных).  
+> **Телефоны / WhatsApp:** +7 (778) 422-11-00, +7 (775) 038-00-02.  
+> **Рейтинг 2ГИС:** 4.4 / 5 (более 780 реальных отзывов).
 
 ---
 
-## 2. Project Team & Responsibilities
+## 1. Концепция и дизайн-система «Warm Ember & Roasted Wood»
 
-| Student | Assigned Pages | Script Modules & Technologies | Primary Responsibilities |
-| :--- | :--- | :--- | :--- |
-| **Kamza Asset** | `index.html`<br>`about.html`<br>`contacts.html` | `js/main.js`<br>`js/kamza-jquery.js` | Shared utility framework, global live search bar, real-time working status panel, dynamic promo generator, jQuery highlight explorer, and contacts inquiry calculator. |
-| **Madiyar Akylbek** | `menu.html`<br>`events.html` | `js/menu.js`<br>`js/events.js` | Menu category filters, dietary preference selectors, interactive order cart, stage surcharge calculator, and live concert ticket reservation with date constraints. |
-| **Tangzharyk Asset** | `booking.html`<br>`feedback.html` | `js/booking.js`<br>`js/feedback.js` | Dining table capacity explorer, table reservation form with deposit calculations, verified review registry, live ratings metric calculator, and inline review editor. |
+Интерфейс спроектирован в теплой премиальной гастрономической палитре без резкого черного или холодного белого:
+- `--bg-primary: #16110E` (глубокий теплый эспрессо / темное дерево)
+- `--bg-elevated: #211915` (карточки блюд, панели)
+- `--bg-glass: rgba(33, 25, 21, 0.82)` с `backdrop-filter: blur(18px)` для шапки и виджетов
+- `--accent-amber: #D97736` (янтарный огонь мангала)
+- `--accent-terracotta: #B84A27` (пряная терракота)
+- `--accent-gold: #E6B35A` (золото для цен в ₸, звезд рейтинга и акцентов)
+- `--text-cream: #F7EFE6` (мягкий сливочный пергамент для комфортного чтения)
+- `--text-warm-muted: #B8A696` (песочно-кофейный для описаний и граммовок)
+- `--border-warm: rgba(230, 179, 90, 0.16)` (тонкие золотисто-медные контуры)
 
----
+### Поддержка теплой светлой темы («Warm Cream & Terracotta»)
+В шапку всех страниц выведена кнопка переключения темы (🌙 / ☀️). Светлая тема оформлена на тонах топленого молока (`#FAF4EC`), фарфоровых карточек (`#FFFDF9`) и кофейного текста (`#2A1E17`). Состояние темы автоматически сохраняется в `localStorage`.
 
-## 3. Technology Architecture: Plain JavaScript vs. jQuery
-
-In compliance with the project specification, the front-end logic strictly separates native DOM programming from jQuery library capabilities.
-
-| Aspect | Plain JavaScript (Weeks 6–8) | jQuery (Weeks 9–10) |
-| :--- | :--- | :--- |
-| **Files** | `js/main.js`, `js/menu.js`, `js/events.js`, `js/booking.js`, `js/feedback.js` | `js/kamza-jquery.js` |
-| **Scope** | Site-wide utilities, Menu, Events, Booking, Feedback | Home, About Us, Contacts |
-| **DOM Creation** | `document.createElement()`, `element.append()`, `element.replaceChildren()` | `$('<tag>', { ... })`, `.html()`, `.appendTo()` |
-| **Traversal** | `element.closest()`, `element.querySelector()`, `element.nextElementSibling` | `.closest()`, `.find()`, `.siblings()`, `.parent()` |
-| **Event Handling** | `addEventListener()` on parents for delegated click/input | `.on('click', selector, handler)` with chaining |
-| **Animations / Effects** | CSS transitions applied via JS `.style` and Bootstrap classes (`classList.toggle`) | `.slideDown()`, `.slideUp()`, `.slideToggle()`, `.fadeIn()`, `.fadeOut()` |
-| **Data Collections** | Native ES6 arrays, `.filter()`, `.find()`, `.reduce()`, `.map()`, `.some()` | jQuery collections with method chaining |
+### 60 FPS Анимации
+- **Ember Canvas Particles**: легкие частицы теплых искр мангала на Canvas (оптимизированы с авто-паузой через `IntersectionObserver`).
+- **Scroll-Triggered Reveal**: плавное всплытие карточек и блоков (`translateY(24px) -> 0`, `opacity: 0 -> 1`).
+- **Тактильные карточки блюд**: мягкий подъем при наведении (`transform: translateY(-6px)`), теплое янтарное свечение рамки и плавный zoom фотографий внутри `overflow: hidden`.
+- **Fly-to-cart**: пульсация счетчика корзины и анимированное добавление блюд.
 
 ---
 
-## 4. Comprehensive Feature Inventory
+## 2. Архитектура JavaScript-модулей (Чистый код)
 
-### 4.1 Global Site-Wide Features (Plain JavaScript — `js/main.js`)
-- **Real-Time Restaurant Status Panel:** Calculates live operating hours (24/7 kitchen availability, business lunch hours 12:00–15:00, and evening live music starting at 19:00) using the client system time (`new Date()`).
-- **Interactive Daily Promo Code Generator:** Generates a randomized Turkish cuisine discount code (`MEAT-SAVE-XX%`) with calculated expiry timestamps.
-- **Global Search Engine:** Instant keyword search across menu categories, table bookings, live concert programs, and restaurant stories with dynamic dropdown results and `Escape` key listeners.
-- **Shared Validation & Utilities:** Reusable helper methods for phone format verification, email validation, currency formatting (`formatMoney()`), and unique transaction reference generation.
+1. **`js/menu-data.js`**
+   - Единая база данных заведения с реальными ценами в тенге (₸), граммовками, калорийностью, тегами (Хит, Выбор шефа, 100% Halal, Острое) и параметрами стейков.
+   - Стейки: Рибай (9 800 ₸), Тибон (10 500 ₸), Даллас на кости (11 900 ₸), Каре ягненка (7 900 ₸), Филе-миньон (8 900 ₸).
+   - Кебабы: Адана-кебаб (4 400 ₸), Урфа-кебаб (4 400 ₸), Бейти-кебаб (5 200 ₸), Искендер-кебаб (5 400 ₸), Мезе Гриль на 4 персоны (22 900 ₸).
+   - Бургеры и горячее: Бургер Meat Point (3 900 ₸), Локум из телятины (7 400 ₸), Бизнес-ланч дня (4 290 ₸).
+   - Супы и Мезе: Мерджимек (1 800 ₸), Хумус (2 100 ₸), Салат Чобан (2 400 ₸), Пуф-экмек (900 ₸).
+   - Десерты и чай: Кюнефе (3 400 ₸), Пахлава с мороженым Мараш (3 200 ₸), Айран с мятой (950 ₸), Турецкий чай в армудах (1 600 ₸), Лимонад манго-маракуйя (2 200 ₸).
 
-### 4.2 Menu Page & Cart Pre-Order (Plain JavaScript — `js/menu.js`)
-- **Dynamic Dish Registry:** Renders 10 authentic Turkish dishes with prices, spice levels, calorie counts, and preparation times.
-- **Category & Dietary Filtering:** Filters dishes by category (Steaks, Kebabs, Desserts, Beverages) and dietary tags (`100% Halal`, `Vegetarian`).
-- **Interactive Cart & Order Calculator:** Live calculation of subtotal, 10% restaurant service fee, and automated 15% discount for orders exceeding 15,000 KZT.
-- **Pre-Order Form Validation:** Validates customer name, phone number, guest count, and pickup/dine-in time with inline feedback and demo confirmation receipts.
+2. **`js/cart.js`**
+   - Интерактивный выдвижной Drawer корзины.
+   - Модальное окно настройки стейка: выбор степени прожарки (Rare, Medium Rare, Medium, Medium Well, Well Done) с температурным гидом и выбор гарнира (картофель с розмарином, овощи-гриль, рис шехрие, фри).
+   - Переключение режимов: Доставка по Астане (бесплатно от 10 000 ₸), Самовывоз (скидка -10%), Предзаказ к столику.
+   - Формирование структурированного чека и отправка в 1 клик в WhatsApp ресторана `+77784221100`.
+   - Оформление на сайте с мгновенным модальным окном подтверждения, номером заказа `MP-XXXXXX` и анимированным таймером статуса приготовления (35 минут).
 
-### 4.3 Events Page & Live Music Reservations (Plain JavaScript — `js/events.js`)
-- **Weekend Music Lineup Explorer:** Filter live concerts by genre (Acoustic Guitar, Traditional Turkish Saz, Jazz Quartet).
-- **Stage Zone Ticket Calculator:** Computes ticket prices based on seat location (VIP Stage Front, Balcony, Main Hall) with real-time seat availability tracking.
-- **Reservation Date Restriction:** Validates event booking dates to ensure selection strictly matches valid weekend concert days (Friday through Sunday).
-- **VIP Code Validation:** Unlocks exclusive backstage passes when a valid VIP access code is supplied.
+3. **`js/booking.js`**
+   - Интерактивный конфигуратор бронирования:
+     * Выбор зоны зала: Основной зал у мангала, Семейная зона, VIP-кабинка, Столы у панорамного окна.
+     * Дата и 24/7 слоты времени (шаг 30 минут).
+     * Чипсы количества персон (1–20+).
+     * Опция «Прикрепить предзаказ блюд из корзины» для сервировки к приходу.
+   - Компактный виджет «Мои активные бронирования» с чтением/записью в `localStorage`, отменой брони и подтверждением через WhatsApp.
 
-### 4.4 Booking Page & Table Reservation (Plain JavaScript — `js/booking.js`)
-- **Restaurant Hall Table Explorer:** Dynamic visual map displaying 8 tables categorized by hall section (Terrace, Main Hall, Private VIP Room, Family Booth).
-- **Capacity Filtering:** Instant filter to display tables accommodating solo diners (1–2), families (3–6), or banquet parties (8–15).
-- **Deposit Calculator:** Computes mandatory advance booking deposits (5,000 KZT per guest for parties exceeding 6 people).
-- **Dynamic Hall Policy Reminders:** Displays conditional banquet warnings and decoration rules depending on selected party size and hall zone.
+4. **`js/ai-concierge.js`**
+   - Плавающий виджет «Meat Point AI Стейк-Сомелье» в правом нижнем углу и быстрый вызов по кнопкам сайта.
+   - Интеграция с **DeepSeek Chat Completions API**:
+     * Endpoint: `POST https://api.deepseek.com/chat/completions`
+     * Headers: `Content-Type: application/json, Authorization: Bearer ${apiKey}`
+     * Model: `deepseek-chat`
+   - Иконка шестеренки ⚙️ прямо в шапке чата для ввода или смены API-ключа за 2 секунды во время защиты проекта (сохранение в `localStorage` по ключу `MEAT_POINT_DEEPSEEK_KEY`).
+   - Автономный интеллектуальный Fallback-режим: при отсутствии ключа или сети сомелье мгновенно отвечает из встроенной базы знаний Meat Point (подбор сетов до 15 000 ₸, гид по прожаркам стейков, чайные пары, бизнес-ланч, адрес и график 24/7).
+   - Динамический контекст корзины гостя, передаваемый в `system`-промпт в реальном времени.
+   - Actionable AI: распознавание блюд в ответе сомелье и автоматический рендеринг интерактивных кнопок `+ Добавить [Блюдо] в корзину (Цена ₸)`.
 
-### 4.5 Customer Feedback & Review Registry (Plain JavaScript — `js/feedback.js`)
-- **Verified Customer Review Feed:** Displays genuine customer reviews with star ratings (1–5), verified visit badges, and review date formatting.
-- **Live Metrics Dashboard:** Automatically recalculates average rating score and total review counts when new reviews are submitted or removed.
-- **Review Submission & Character Counter:** Interactive review form enforcing minimum message length (minimum 35 characters for negative reviews to ensure constructive feedback).
-- **Inline Review Editing & Removal:** Full CRUD capabilities within client session allowing users to edit or delete their submitted reviews.
+5. **`js/ui-effects.js`**
+   - 60 FPS Particle Canvas (теплые мерцающие угли).
+   - IntersectionObserver анимация скролла.
+   - Анимированные числовые счетчики (рейтинг 4.4, 780+ отзывов, 24/7, 4 290 ₸).
+   - Тост-уведомления (Toast Notification System).
 
-### 4.6 Home, About & Contacts (jQuery — `js/kamza-jquery.js`)
-- **Interactive Highlight Explorer:** Built with jQuery selectors, traversal (`.closest()`, `.find()`, `.siblings()`), and animated card expansion (`.slideToggle()`).
-- **Smooth Elevation Transitions:** Modern micro-interactions elevating active cards by `-4px` with smooth CSS transitions triggered via jQuery.
-- **Interactive Lunch Calculator:** Computes banquet and business lunch estimates with dynamic guest count multipliers and beverage options.
-- **Inquiry Form Handling:** Validates contact forms with jQuery effect transitions (`.fadeIn()`, `.slideDown()`) and displays formatted summary cards upon submission.
-
----
-
-## 5. Extensions Added for the Endterm
-
-In compliance with the grading guideline requiring documentation of what was extended since previous assignments:
-
-| Module / Feature | Baseline State | Endterm Extension & Enhancement |
-| :--- | :--- | :--- |
-| **`js/main.js`** | Static utility helper functions. | Added live status indicators (24/7 kitchen, business lunch window, evening music), interactive promo generator with copy support, and enhanced global search dropdown styling. |
-| **`js/kamza-jquery.js`** | Basic jQuery toggle functionality. | Implemented card elevation micro-interactions, accordion transitions using `.find()` / `.siblings()`, banquet quote calculator, and VIP password animated disclosure box. |
-| **`js/menu.js`** | Basic dish rendering. | Added dietary badges (`Halal`, `Vegetarian`), item quantity counters, instant order calculation with automatic 15% discount for orders over 15,000 KZT, and comprehensive pre-order modal confirmation. |
-| **`js/events.js`** | Simple event list. | Implemented weekend day-of-week validation, seat zone surcharge calculator, ticket availability tracker, and VIP access code toggle with password visibility switch. |
-| **`js/booking.js`** | Basic table form. | Added interactive table explorer with capacity filtering, deposit calculation logic for large groups, hall policies panel, and smooth title hover micro-interactions. |
-| **`js/feedback.js`** | Static review list. | Added dynamic metrics aggregator (average score, star distribution), conditional character counter requiring 35+ chars for 1–2 star reviews, inline edit mode, and review deletion handler. |
-| **Title Micro-Interactions** | Default static headers. | Added JavaScript `mouseenter` and `mouseleave` event listeners to interactive page headers (e.g., `#welcome-heading`, booking titles) that smoothly morph brand accent colors. |
+6. **`js/main.js`**
+   - Координатор навигации, мобильного меню, индикации активных страниц, модального окна команды SE-2532 и глобальных горячих клавиш (Escape).
 
 ---
 
-## 6. Verification & Quality Assurance
+## 3. Страницы проекта
 
-All requirements from the course specification have been verified:
-
-1. **CSS Freeze Verification:**
-   ```powershell
-   git diff midterm -- css/
-   # Output: 0 lines changed (strictly clean)
-   ```
-2. **JavaScript Syntax Verification:**
-   All scripts in `js/` compile without syntax errors.
-3. **Cross-Browser DOM Compatibility:**
-   All user inputs are safely escaped using `textContent` to prevent XSS vulnerabilities; no raw `innerHTML` is used for user-provided data.
-4. **Accessible Forms & Feedback:**
-   All inputs feature associated `<label>` tags, `.invalid-feedback` error containers, and `aria-invalid` / `aria-describedby` attributes for assistive technology support.
-5. **Simulated Server Logic:**
-   All generated confirmations explicitly notify the visitor that the transaction is a front-end client demonstration and no real payment or reservation charge was incurred.
+- **`index.html`** — Главная страница с живым фоном искр, преимуществами, рейтингом 2ГИС, хитами меню, зонами зала и карточкой AI-сомелье.
+- **`menu.html`** — Полный каталог блюд с живым поиском, табами категорий, сортировкой по цене, модалкой выбора прожарки и корзиной.
+- **`booking.html`** — Умное бронирование столиков с визуальным выбором зон, предзаказом блюд и виджетом активных броней.
+- **`about.html`** — История заведения, стандарты 100% Halal, открытый огонь, фотогалерея залов и профили команды AITU SE-2532.
+- **`events.html`** — Живая музыка на уикендах (пятничный джаз и субботние анатолийские мелодии) и бронь столиков.
+- **`feedback.html`** — Реальные отзывы из 2ГИС (рейтинг 4.4), интерактивная форма добавления нового отзыва с оценкой и сохранением в `localStorage`.
+- **`contacts.html`** — Адрес на пр. Ұлы Дала, 45, схемы проезда на авто и автобусах №47 и №54, калькулятор банкетов и прямая связь в WhatsApp.
 
 ---
 
-## 7. How to Run the Project Locally
+## 4. Запуск проекта
 
-### Option A: Using Python (Recommended)
-From the project root directory, run:
-```bash
-python -m http.server 8000
-```
-Open your browser and navigate to: `http://localhost:8000/`
-
-### Option B: Using VS Code Live Server
-1. Open the project folder in Visual Studio Code / WebStorm.
-2. Right-click `index.html` and select **"Open with Live Server"**.
-
-### Option C: Direct Browser Launch
-Double-click `index.html` in your file explorer to open it directly in Google Chrome, Mozilla Firefox, or Microsoft Edge.
-
----
-
-## 8. AI Policy Disclosure & Academic Integrity
-
-As required by university policy, AI assistance (Google Antigravity) was utilized solely for code review, debugging, syntax validation, documentation formatting, and architectural guidance. All business rules, Turkish cuisine domain modeling, validation logic, and event structures were conceived, tailored, and verified specifically for the Meat Point restaurant web application. Full conversation records are preserved in accordance with course requirements.
+1. Откройте файл `index.html` в корне проекта или в папке `WEB-project/index.html` в любом современном браузере (или через WebStorm / VS Code Live Server).
+2. Для демонстрации работы DeepSeek API:
+   - Нажмите на плавающий виджет 🥩 «AI Сомелье» в правом нижнем углу.
+   - Кликните на шестеренку ⚙️ в шапке чата.
+   - Вставьте ваш API-ключ DeepSeek (`sk-...`) и нажмите «Сохранить».
+   - Либо просто задайте любой вопрос без ключа: включится автономный локальный движок сомелье Meat Point!

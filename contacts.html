@@ -1,265 +1,359 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Contact Meat Point Astana. Make a reservation, check our working hours, or leave your feedback.">
-    <meta name="author" content="Kamza Asset">
-    <title>Contact Us | Meat Point Restaurant</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Контакты и схема проезда Meat Point Astana. г. Астана, проспект Ұлы Дала, 45. Круглосуточно 24/7. Телефоны, парковка, расчет банкетов.">
+  <meta name="author" content="Kamza Asset, Tangzharyk (Astana IT University, SE-2532)">
+  <title>Контакты и схема проезда | Meat Point Astana 24/7</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/base.css">
-    <link rel="stylesheet" href="css/kamza.css">
+  <!-- Google Fonts: Cormorant Garamond & Manrope -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Editorial Gastronomic Design System -->
   <link rel="stylesheet" href="css/luxury-theme.css">
-
-    <style>
-
-        .custom-navbar { background-color: #fffdf8 !important; }
-        .custom-navbar .navbar-brand { color: var(--accent, #dc3545) !important; }
-
-        #nav-toggle { display: none; }
-        .nav-toggle-label {
-            display: none;
-            cursor: pointer;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            padding: 0.25rem 0.75rem;
-            border-radius: 0.375rem;
-        }
-        .nav-toggle-label span {
-            display: block;
-            width: 1.5em;
-            height: 1.5em;
-            background: transparent url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.55%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") center/100% no-repeat;
-        }
-
-        @media (max-width: 991.98px) {
-            .nav-toggle-label { display: block; }
-            .css-collapse {
-                display: none;
-                width: 100%;
-                background-color: #fffdf8;
-                border-radius: 8px;
-                margin-top: 10px;
-            }
-            #nav-toggle:checked ~ .css-collapse { display: block; }
-
-            .navbar-nav .nav-link {
-                padding: 16px 20px !important;
-                color: #ffffff !important;
-                font-weight: 500;
-                font-size: 1.1rem;
-            }
-            .navbar-nav .nav-link:hover { background-color: rgba(255, 255, 255, 0.05); }
-            .navbar-nav .nav-link.active {
-                background-color: #c81e2b !important;
-                border-radius: 8px;
-            }
-        }
-
-        @media (min-width: 992px) {
-            .css-collapse {
-                display: flex !important;
-                flex-basis: auto;
-                flex-grow: 1;
-                align-items: center;
-            }
-            .navbar-nav { flex-direction: row; }
-            .navbar-nav .nav-link {
-                padding-right: 0.5rem;
-                padding-left: 0.5rem;
-                color: #ffffff !important;
-            }
-            .navbar-nav .nav-link.active {
-                color: var(--accent, #dc3545) !important;
-                border-bottom: 2px solid var(--accent, #dc3545) !important;
-            }
-        }
-    </style>
 </head>
-<body class="bg-light">
+<body class="theme-light">
 
-<header class="site-header sticky-top shadow-sm">
-    <nav class="navbar custom-navbar py-3">
-        <div class="container d-flex flex-wrap align-items-center justify-content-between">
-            <a class="navbar-brand fw-bold m-0" href="index.html">Meat Point</a>
+<!-- Header & Navigation -->
+<header class="sticky-top">
+  <nav class="navbar navbar-expand-lg mp-navbar py-3">
+    <div class="container d-flex align-items-center justify-content-between">
+      <a class="navbar-brand mp-brand m-0" href="index.html">
+        <span>Meat Point</span>
+        <span class="mp-brand-sub">Astana &bull; 24/7 Halal</span>
+      </a>
 
-            <input type="checkbox" id="nav-toggle">
-            <label for="nav-toggle" class="nav-toggle-label m-0">
-                <span></span>
-            </label>
+      <div class="d-flex align-items-center gap-2 d-lg-none">
+        <button type="button" class="btn btn-sm btn-editorial-outline theme-toggle-btn" aria-label="Сменить тему">
+          <span class="theme-toggle-label small">DARK THEME</span>
+        </button>
+        <button type="button" class="btn btn-sm btn-editorial-primary cart-nav-btn" aria-label="Корзина">
+          <span>КОРЗИНА</span> (<span class="cart-badge-count">0</span>)
+        </button>
+        <button class="navbar-toggler border-0 p-1" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Меню">
+          <span class="small fw-bold">MENU</span>
+        </button>
+      </div>
 
-            <div class="css-collapse">
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 nav-list d-flex justify-content-end w-100">
-                    <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
-                    <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
-                    <li class="nav-item"><a href="contacts.html" class="nav-link active" aria-current="page">Contact</a></li>
-                    <li class="nav-item"><a href="menu.html" class="nav-link">Menu</a></li>
-                    <li class="nav-item"><a href="events.html" class="nav-link">Events</a></li>
-                    <li class="nav-item"><a href="booking.html" class="nav-link">Booking</a></li>
-                    <li class="nav-item"><a href="feedback.html" class="nav-link">Reviews</a></li>
-                </ul>
-            </div>
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a href="index.html" class="nav-link mp-nav-link">Главная</a></li>
+          <li class="nav-item"><a href="menu.html" class="nav-link mp-nav-link">Меню и заказ</a></li>
+          <li class="nav-item"><a href="booking.html" class="nav-link mp-nav-link">Бронирование столика</a></li>
+          <li class="nav-item"><a href="about.html" class="nav-link mp-nav-link">О ресторане</a></li>
+          <li class="nav-item"><a href="events.html" class="nav-link mp-nav-link">Живая музыка</a></li>
+          <li class="nav-item"><a href="feedback.html" class="nav-link mp-nav-link">Отзывы 2ГИС</a></li>
+          <li class="nav-item"><a href="contacts.html" class="nav-link mp-nav-link active" aria-current="page">Контакты</a></li>
+        </ul>
+
+        <div class="d-none d-lg-flex align-items-center gap-2">
+          <button type="button" class="btn btn-editorial-outline theme-toggle-btn px-3 py-2">
+            <span class="theme-toggle-label small">DARK THEME</span>
+          </button>
+          <button type="button" class="btn btn-editorial-primary cart-trigger-btn px-3 py-2 d-flex align-items-center gap-2">
+            <span>КОРЗИНА</span>
+            <span class="cart-badge-count badge bg-dark text-light" style="display: none;">0</span>
+            <span class="cart-badge-total tabular-nums d-none d-xl-inline">0 ₸</span>
+          </button>
         </div>
-    </nav>
+      </div>
+    </div>
+  </nav>
 </header>
 
-<main class="container my-5">
-    <article class="hero-section mb-5 bg-white p-4 p-md-5 rounded shadow-sm border-start border-danger border-5" id="contact-intro">
-        <h2 class="display-6 text-danger mb-4">Get in Touch with Us</h2>
-        <p class="lead">Getting in touch with <span class="fw-bold">Meat Point Astana</span> is incredibly easy and convenient. Whether you want to ask a question about our menu, clarify the availability of our summer terrace, or simply leave your <em class="text-secondary">valuable feedback</em>, we are always here to help.</p>
-        <p>If you are planning to visit us in person, finding our building is very straightforward. We are located in the modern <strong>EXPO district</strong>. Please refer to the table below for our exact working hours, although we proudly operate <mark class="bg-warning px-2 rounded">around the clock</mark>.</p>
-        <p class="text-muted small">Note: Special conditions apply for booking large corporate banquets and birthdays.</p>
-    </article>
+<main class="container my-5 flex-grow-1">
+  <!-- Contacts Header -->
+  <section class="text-center mb-5">
+    <div class="small text-uppercase letter-spacing-1 text-muted mb-2">Район EXPO & Ботанический сад</div>
+    <h1 class="display-4 fw-bold mb-2">Контакты и расположение</h1>
+    <p class="text-muted max-w-700 mx-auto" style="font-size: 0.95rem;">
+      Ресторан Meat Point расположен в столичном районе Есиль на проспекте Ұлы Дала, дом 45. Работаем круглосуточно.
+    </p>
+  </section>
 
-    <section id="hours-and-location" class="mb-5">
-        <h2 class="h2 text-danger mb-4">Working Hours &amp; Location</h2>
+  <!-- 4 Data Strips (Editorial Split) -->
+  <div class="row g-4 mb-5">
+    <div class="col-12 col-md-6 col-lg-3">
+      <div class="p-4 bg-card border-warm h-100">
+        <div class="small text-uppercase letter-spacing-1 text-muted mb-1">01. Адрес</div>
+        <h4 class="h6 fw-bold mb-2">г. Астана, пр. Ұлы Дала, 45</h4>
+        <p class="small text-muted mb-3">Ориентиры: Ботанический сад, комплекс EXPO, Mega Silk Way.</p>
+        <a href="https://2gis.kz/astana/firm/70000001027751110" target="_blank" class="small text-terracotta fw-bold">
+          Открыть в 2ГИС &rarr;
+        </a>
+      </div>
+    </div>
 
-        <div class="table-responsive shadow-sm rounded mb-5">
-            <table class="table table-bordered table-striped table-hover mb-0 bg-white text-center align-middle">
-                <caption class="p-2 bg-light text-muted">Meat Point Official Schedule</caption>
-                <thead class="table-dark">
-                <tr>
-                    <th scope="col" class="py-3">Days of the Week</th>
-                    <th scope="col" class="py-3">Opening Hours</th>
-                    <th scope="col" class="py-3">Kitchen Status</th>
-                </tr>
-                </thead>
-                <tbody class="table-group-divider">
-                <tr>
-                    <th scope="row" class="text-start px-3">Monday - Sunday</th>
-                    <td class="fw-bold text-success">24/7 (Round the clock)</td>
-                    <td>Fully Operational</td>
-                </tr>
-                <tr>
-                    <th scope="row" class="text-start px-3">Business Lunch</th>
-                    <td>12:00 - 15:00 (Weekdays)</td>
-                    <td><span class="badge bg-danger">Special Menu</span></td>
-                </tr>
-                </tbody>
-            </table>
+    <div class="col-12 col-md-6 col-lg-3">
+      <div class="p-4 bg-card border-warm h-100">
+        <div class="small text-uppercase letter-spacing-1 text-muted mb-1">02. Режим работы</div>
+        <h4 class="h6 fw-bold mb-2">Круглосуточно (24/7)</h4>
+        <p class="small text-muted mb-2">Кухня, открытый мангал и доставка работают без выходных.</p>
+        <span class="small text-muted">Бизнес-ланч: будни 12:00–15:00</span>
+      </div>
+    </div>
+
+    <div class="col-12 col-md-6 col-lg-3">
+      <div class="p-4 bg-card border-warm h-100">
+        <div class="small text-uppercase letter-spacing-1 text-muted mb-1">03. Телефонная связь</div>
+        <h4 class="h6 fw-bold mb-1">
+          <a href="tel:+77784221100" class="text-dark fw-bold">+7 (778) 422-11-00</a>
+        </h4>
+        <div class="small text-muted mb-2">
+          <a href="tel:+77750380002" class="text-muted">+7 (775) 038-00-02</a>
         </div>
+        <span class="small text-muted">Бронирование и банкеты</span>
+      </div>
+    </div>
 
-        <div class="row align-items-center g-4">
-            <div class="col-12 col-lg-6">
-                <h3 class="h4 text-dark mb-3">How to Reach Us</h3>
+    <div class="col-12 col-md-6 col-lg-3">
+      <div class="p-4 bg-card border-warm h-100">
+        <div class="small text-uppercase letter-spacing-1 text-muted mb-1">04. Мессенджеры</div>
+        <h4 class="h6 fw-bold mb-2">Прямая связь WhatsApp</h4>
+        <p class="small text-muted mb-3">Быстрый ответ дежурного администратора 24/7.</p>
+        <a href="https://wa.me/77784221100" target="_blank" class="btn btn-sm btn-whatsapp w-100">
+          Чат WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
 
-                <div class="row bg-white p-3 rounded shadow-sm g-3">
-                    <div class="col-12 col-sm-6 border-end">
-                        <h5 class="text-danger fs-6">By Public Transport</h5>
-                        <ul class="list-unstyled mb-0 text-secondary">
-                            <li>Bus 47 (Stop: Uly Dala)</li>
-                            <li>Bus 54 (Stop: Bot. Garden)</li>
-                        </ul>
-                    </div>
-                    <div class="col-12 col-sm-6">
-                        <h5 class="text-danger fs-6">By Car</h5>
-                        <p class="mb-0 text-secondary small">We offer a spacious free parking lot right in front of the main entrance.</p>
-                    </div>
-                </div>
+  <!-- Map and Routes Section -->
+  <section class="row g-4 mb-5 align-items-center border-hairline-bottom pb-5">
+    <div class="col-12 col-lg-6">
+      <div class="p-4 bg-card border-warm">
+        <h3 class="display-6 fw-bold mb-3">Схема проезда и парковка</h3>
+        <ul class="editorial-num-list mb-4">
+          <li class="editorial-num-item">
+            <span class="editorial-num">01</span>
+            <div>
+              <strong class="d-block text-uppercase small">Общественный транспорт</strong>
+              <span class="small text-muted">Автобус №47 (остановка «Проспект Ұлы Дала»), автобус №54 (остановка «Ботанический сад»). Пешком 2–3 минуты.</span>
             </div>
-
-            <div class="col-12 col-lg-6">
-                <figure class="figure w-100 m-0">
-                    <img src="images/meatloc.png" alt="Map showing location" class="figure-img img-fluid rounded shadow w-100 object-fit-cover">
-                    <figcaption class="figure-caption text-end">Our location on Uly Dala Avenue</figcaption>
-                </figure>
+          </li>
+          <li class="editorial-num-item">
+            <span class="editorial-num">02</span>
+            <div>
+              <strong class="d-block text-uppercase small">Личный автомобиль</strong>
+              <span class="small text-muted">Удобный заезд с проспекта Мангилик Ел и улицы Туркестан. Перед входом оборудована собственная бесплатная парковка для гостей.</span>
             </div>
+          </li>
+        </ul>
+
+        <div class="d-flex flex-wrap gap-2">
+          <a href="https://2gis.kz/astana/firm/70000001027751110" target="_blank" class="btn btn-editorial-outline">
+            Маршрут в 2ГИС
+          </a>
+          <a href="https://yandex.kz/maps/?text=Meat+Point+Астана+Улы+Дала+45" target="_blank" class="btn btn-editorial-outline">
+            Яндекс Карты
+          </a>
         </div>
-    </section>
+      </div>
+    </div>
 
-    <section id="reservation" class="bg-white p-4 p-md-5 rounded shadow-sm mb-5">
-        <h2 class="h2 text-danger mb-3">Banquet &amp; Event Inquiries</h2>
-        <p class="lead text-secondary mb-4">Planning a private celebration, corporate dining, wedding reception, or have general inquiries? Send us your event specifications and our team will prepare a custom proposal.</p>
+    <div class="col-12 col-lg-6">
+      <div class="border border-warm p-2 bg-card">
+        <img src="images/meatloc.png" alt="Схема расположения ресторана на карте Астаны" class="img-fluid w-100 object-fit-cover" style="min-height: 340px;">
+      </div>
+    </div>
+  </section>
 
-        <div class="alert alert-info d-flex align-items-center justify-content-between flex-wrap gap-2 mb-4 p-3 rounded-3 shadow-sm">
-            <span><strong class="text-danger">Looking for everyday table reservations (1–8 guests)?</strong> Please use our dedicated table booking system.</span>
-            <a href="booking.html" class="btn btn-sm btn-danger rounded-pill px-3">Go to Table Booking &rarr;</a>
+  <!-- Banquet Calculator Form (NO 3 SaaS Pricing Tiers, Pure Interactive Calculator) -->
+  <section class="p-4 p-md-5 bg-card border-warm" id="banquet-inquiry-section">
+    <div class="max-w-700 mx-auto text-center mb-4">
+      <div class="small text-uppercase letter-spacing-1 text-muted mb-2">Корпоративные и семейные события</div>
+      <h3 class="display-6 fw-bold mb-2">Расчет и бронирование банкета</h3>
+      <p class="small text-muted mb-0">
+        Укажите число гостей и формат события. Калькулятор определит рекомендованный депозит (от 7 000 ₸ на персону).
+      </p>
+    </div>
+
+    <form id="banquet-inquiry-form" class="max-w-700 mx-auto" novalidate>
+      <div class="row g-3 mb-3">
+        <div class="col-12 col-md-6">
+          <label class="form-label text-muted small text-uppercase">Имя представителя:</label>
+          <input type="text" id="banquet-name" class="form-control mp-input" placeholder="Имя" required>
         </div>
+        <div class="col-12 col-md-6">
+          <label class="form-label text-muted small text-uppercase">Телефон (WhatsApp):</label>
+          <input type="tel" id="banquet-phone" class="form-control mp-input" placeholder="+7 778 000 00 00" required>
+        </div>
+        <div class="col-12 col-md-4">
+          <label class="form-label text-muted small text-uppercase">Число гостей:</label>
+          <input type="number" id="banquet-guests" class="form-control mp-input" value="10" min="4" max="80" required>
+        </div>
+        <div class="col-12 col-md-4">
+          <label class="form-label text-muted small text-uppercase">Дата визита:</label>
+          <input type="date" id="banquet-date" class="form-control mp-input" required>
+        </div>
+        <div class="col-12 col-md-4">
+          <label class="form-label text-muted small text-uppercase">Формат:</label>
+          <select id="banquet-type" class="form-select mp-input">
+            <option value="corporate">Корпоративный ужин</option>
+            <option value="birthday">День рождения</option>
+            <option value="family">Семейное торжество</option>
+            <option value="business">Деловая встреча</option>
+          </select>
+        </div>
+        <div class="col-12">
+          <label class="form-label text-muted small text-uppercase">Пожелания по меню и посадке:</label>
+          <textarea id="banquet-notes" class="form-control mp-input" rows="3" placeholder="Специфика подачи, предпочтения по стейкам и напиткам"></textarea>
+        </div>
+      </div>
 
-        <form action="submit_handler.php" method="POST" class="needs-validation">
-            <fieldset class="border p-4 rounded bg-light">
-                <legend class="float-none w-auto px-2 h5 text-danger fw-bold">Inquiry Details &amp; Event Preferences</legend>
+      <div class="p-3 bg-elevated border-warm mb-4 d-flex justify-content-between align-items-center">
+        <div class="small">
+          <span class="text-muted text-uppercase">Базовый расчет:</span>
+          <div class="fw-bold">7 000 ₸ / персона</div>
+        </div>
+        <div class="text-end small">
+          <span class="text-muted text-uppercase">Ориентировочный бюджет:</span>
+          <div class="fw-bold fs-5 tabular-nums text-terracotta" id="banquet-calc-total">70 000 ₸</div>
+        </div>
+      </div>
 
-                <div class="row g-3 mb-3">
-                    <div class="col-md-4">
-                        <label for="client_name" class="form-label">Full Name:</label>
-                        <input type="text" id="client_name" name="client_name" class="form-control" required placeholder="e.g. Kamza Asset">
-                    </div>
-                    <div class="col-md-4">
-                        <label for="client_email" class="form-label">Email Address:</label>
-                        <input type="email" id="client_email" name="client_email" class="form-control" required placeholder="mail@example.com">
-                    </div>
-                    <div class="col-md-4">
-                        <label for="client_phone" class="form-label">Phone Number:</label>
-                        <input type="tel" id="client_phone" name="client_phone" class="form-control" required placeholder="+7 778 000 00 00">
-                    </div>
-                </div>
-
-                <div class="row g-3 mb-3">
-                    <div class="col-md-4">
-                        <label for="guest_count" class="form-label">Number of Guests:</label>
-                        <input type="number" id="guest_count" name="guest_count" class="form-control" min="1" max="50">
-                    </div>
-                    <div class="col-md-4">
-                        <label for="visit_date" class="form-label">Date of Visit:</label>
-                        <input type="date" id="visit_date" name="visit_date" class="form-control" required>
-                    </div>
-                    <div class="col-md-4">
-                        <label for="visit_reason" class="form-label">Occasion:</label>
-                        <select id="visit_reason" name="visit_reason" class="form-select">
-                            <option value="casual">Casual Dining</option>
-                            <option value="birthday">Birthday Party</option>
-                            <option value="business">Business Meeting</option>
-                            <option value="date">Romantic Dinner</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="mb-3">
-                    <p class="form-label d-block">Seating Preference:</p>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" id="seat_indoor" name="seating" value="indoor" checked>
-                        <label class="form-check-label" for="seat_indoor">Indoor Hall</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" id="seat_terrace" name="seating" value="terrace">
-                        <label class="form-check-label" for="seat_terrace">Summer Terrace</label>
-                    </div>
-                </div>
-
-                <div class="mb-3">
-                    <label for="client_message" class="form-label">Special Requests or Message:</label>
-                    <textarea id="client_message" name="client_message" class="form-control" rows="4" placeholder="Let us know if you have any allergies..."></textarea>
-                </div>
-
-                <div class="form-check mb-4">
-                    <input class="form-check-input" type="checkbox" id="newsletter" name="newsletter">
-                    <label class="form-check-label text-muted small" for="newsletter">
-                        Subscribe to our monthly newsletter for discounts.
-                    </label>
-                </div>
-
-                <div class="d-flex gap-2 flex-wrap">
-                    <button type="submit" class="btn btn-danger btn-lg shadow-sm px-4">Submit Request</button>
-                    <button type="reset" class="btn btn-outline-secondary disabled" aria-disabled="true">Reset Form</button>
-                </div>
-            </fieldset>
-        </form>
-    </section>
+      <div class="text-center">
+        <button type="submit" class="btn btn-editorial-primary px-5 py-3">
+          Отправить заявку банкетному менеджеру
+        </button>
+      </div>
+    </form>
+  </section>
 </main>
 
-<footer class="container-fluid bg-dark text-white text-center py-4">
-    <div class="container">
-        <h2 class="h4 text-danger mb-3">Contact Info</h2>
-        <p class="mb-1">Address: Uly Dala street 45, Astana</p>
-        <p class="mb-1">Phone number: <a href="tel:+77784221100" class="text-white text-decoration-none">+7 (778) 422-11-00</a></p>
-        <p class="mb-3">Email: <a href="mailto:info@meatpoint.kz" class="text-white text-decoration-none">info@meatpoint.kz</a></p>
-        <p class="small text-white-50 mb-0">&copy; 2026 Meat Point. All rights reserved.</p>
+<!-- Footer -->
+<footer class="mp-footer pt-5 pb-4 text-muted">
+  <div class="container">
+    <div class="row g-4 mb-4">
+      <div class="col-12 col-md-4">
+        <div class="mp-brand mb-2">
+          <span>Meat Point</span>
+          <span class="mp-brand-sub">Astana &bull; 24/7 Halal</span>
+        </div>
+        <p class="small mb-3">
+          Турецкий мясной ресторан и стейк-хаус на проспекте Ұлы Дала, 45.
+        </p>
+        <div class="small">
+          <div>г. Астана, проспект Ұлы Дала, 45</div>
+          <div>График: Круглосуточно (24/7, без выходных)</div>
+        </div>
+      </div>
+      <div class="col-6 col-md-2">
+        <div class="mp-footer-heading">Разделы</div>
+        <ul class="list-unstyled small mb-0 d-flex flex-column gap-2">
+          <li><a href="index.html">Главная</a></li>
+          <li><a href="menu.html">Меню</a></li>
+          <li><a href="booking.html">Бронирование</a></li>
+          <li><a href="about.html">О нас</a></li>
+          <li><a href="contacts.html">Контакты</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="mp-footer-heading">Контакты</div>
+        <ul class="list-unstyled small mb-0 d-flex flex-column gap-2">
+          <li><a href="tel:+77784221100" class="fw-bold mp-tel-link">+7 (778) 422-11-00</a></li>
+          <li><a href="tel:+77750380002">+7 (775) 038-00-02</a></li>
+          <li><a href="https://wa.me/77784221100" target="_blank">WhatsApp: +7 778 422 1100</a></li>
+        </ul>
+      </div>
+      <div class="col-12 col-md-3">
+        <div class="mp-footer-heading">Команда AITU</div>
+        <p class="small mb-2">Группа SE-2532: Kamza Asset, Tangzharyk.</p>
+        <button type="button" class="btn btn-sm btn-editorial-outline open-team-modal-btn w-100">
+          Справка о разработчиках
+        </button>
+      </div>
     </div>
+    <div class="pt-3 border-hairline-top d-flex flex-wrap justify-content-between align-items-center small">
+      <div>&copy; 2026 Meat Point Astana. 100% Halal.</div>
+      <div class="d-flex gap-3">
+        <a href="https://2gis.kz/astana/firm/70000001027751110" target="_blank">2ГИС Астана</a>
+        <a href="#" class="open-team-modal-btn">О проекте SE-2532</a>
+      </div>
+    </div>
+  </div>
 </footer>
 
-<script src="https://code.jquery.com/jquery-3.7.1.min.js" defer></script>
-<script src="js/main.js" defer></script>
-<script src="js/kamza-jquery.js" defer></script>
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/menu-data.js"></script>
+<script src="js/cart.js"></script>
+<script src="js/booking.js"></script>
+<script src="js/ai-concierge.js"></script>
+<script src="js/ui-effects.js"></script>
+<script src="js/main.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const guestsInput = document.getElementById('banquet-guests');
+    const calcDisplay = document.getElementById('banquet-calc-total');
+    const form = document.getElementById('banquet-inquiry-form');
+    const dateInput = document.getElementById('banquet-date');
+
+    if (dateInput) {
+      dateInput.min = new Date().toISOString().slice(0, 10);
+      dateInput.value = new Date().toISOString().slice(0, 10);
+    }
+
+    function updateBanquetCalc() {
+      const guests = Math.max(1, parseInt(guestsInput.value, 10) || 10);
+      const estTotal = guests * 7000;
+      if (calcDisplay) {
+        calcDisplay.textContent = new Intl.NumberFormat('ru-RU').format(estTotal) + ' ₸';
+      }
+    }
+
+    if (guestsInput) guestsInput.addEventListener('input', updateBanquetCalc);
+
+    if (form) {
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        const name = document.getElementById('banquet-name').value.trim();
+        const phone = document.getElementById('banquet-phone').value.trim();
+        const guests = guestsInput.value;
+        const date = dateInput.value;
+        const type = document.getElementById('banquet-type').value;
+        const notes = document.getElementById('banquet-notes').value.trim();
+
+        if (!name || !phone) {
+          if (window.MeatPointCart) window.MeatPointCart.showToast('Заполните имя и телефон', 'warning');
+          return;
+        }
+
+        const inquiry = {
+          id: 'INQ-' + Date.now(),
+          name: name,
+          phone: phone,
+          guests: guests,
+          date: date,
+          type: type,
+          notes: notes,
+          createdAt: new Date().toISOString()
+        };
+
+        try {
+          const list = JSON.parse(localStorage.getItem('meatpoint_banquet_inquiries') || '[]');
+          list.push(inquiry);
+          localStorage.setItem('meatpoint_banquet_inquiries', JSON.stringify(list));
+        } catch (err) {
+          console.warn(err);
+        }
+
+        if (window.MeatPointCart) {
+          window.MeatPointCart.showToast('Заявка на расчет принята');
+        }
+
+        const text = encodeURIComponent(`Заявка на расчет стола Meat Point:\nГостей: ${guests}\nДата: ${date}\nИмя: ${name}\nТелефон: ${phone}\nФормат: ${type}\nПожелания: ${notes}`);
+        window.open(`https://wa.me/77784221100?text=${text}`, '_blank');
+
+        form.reset();
+        updateBanquetCalc();
+      });
+    }
+  });
+</script>
 </body>
 </html>

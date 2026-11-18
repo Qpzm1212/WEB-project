@@ -1,432 +1,446 @@
-"use strict";
-(function () {
-    "use strict";
-    const form = document.getElementById("restaurant-booking-form");
-    if (!form || !window.meatPoint) {
-        return;
-    }
-    const createElement = window.meatPoint.createElement;
-    const formatMoney = window.meatPoint.formatMoney;
-    const normalizeText = window.meatPoint.normalizeText;
-    const restaurantTables = [
-        {
-            id: "TBL-M1",
-            name: "Window Panorama Booth",
-            hall: "main",
-            hallLabel: "Main Hall",
-            capacity: 4,
-            minGuests: 1,
-            depositPerGuest: 0,
-            feature: "View of Uly Dala Avenue, cozy velvet seating"
-        },
-        {
-            id: "TBL-M2",
-            name: "Open Fire Grill Table",
-            hall: "main",
-            hallLabel: "Main Hall",
-            capacity: 6,
-            minGuests: 2,
-            depositPerGuest: 0,
-            feature: "Direct view of the Turkish mangal & chef station"
-        },
-        {
-            id: "TBL-M3",
-            name: "Family Ottoman Sofa",
-            hall: "main",
-            hallLabel: "Main Hall",
-            capacity: 8,
-            minGuests: 4,
-            depositPerGuest: 0,
-            feature: "Spacious corner sofa ideal for family dinners"
-        },
-        {
-            id: "TBL-M4",
-            name: "Quiet Tea Alcove",
-            hall: "main",
-            hallLabel: "Main Hall",
-            capacity: 2,
-            minGuests: 1,
-            depositPerGuest: 0,
-            feature: "Intimate table for two near the Turkish tea samovar"
-        },
-        {
-            id: "TBL-M5",
-            name: "Grand Banquet Row",
-            hall: "main",
-            hallLabel: "Main Hall",
-            capacity: 24,
-            minGuests: 10,
-            depositPerGuest: 3500,
-            feature: "Long celebratory table for 10–24 guests in Main Hall"
-        },
-        {
-            id: "TBL-M6",
-            name: "Acoustic Stage Lounge",
-            hall: "main",
-            hallLabel: "Main Hall",
-            capacity: 12,
-            minGuests: 6,
-            depositPerGuest: 3500,
-            feature: "Best acoustics for Friday & Saturday live music"
-        },
-        {
-            id: "TBL-V1",
-            name: "VIP Bosphorus Suite",
-            hall: "vip",
-            hallLabel: "VIP Room",
-            capacity: 10,
-            minGuests: 4,
-            depositPerGuest: 5000,
-            feature: "Private soundproof room, dedicated waiter, smart screen"
-        },
-        {
-            id: "TBL-V2",
-            name: "VIP Sultan Royal Hall",
-            hall: "vip",
-            hallLabel: "VIP Room",
-            capacity: 15,
-            minGuests: 6,
-            depositPerGuest: 5000,
-            feature: "Premium 15-seat private hall with custom banquet menu"
-        }
-    ];
-    const nameInput = document.getElementById("client-name");
-    const phoneInput = document.getElementById("client-phone");
-    const guestsInput = document.getElementById("guest-count");
-    const dateInput = document.getElementById("booking-date");
-    const timeInput = document.getElementById("booking-time");
-    const hallInputs = Array.from(form.querySelectorAll('input[name="hall"]'));
-    let selectedTableId = "";
-    function filterTables(query, hallFilter, minCapacity) {
-        const cleanQuery = normalizeText(query);
-        const cleanHall = hallFilter || "all";
-        const requiredSeats = Number(minCapacity) > 0 ? Number(minCapacity) : 0;
-        const results = [];
-        for (let i = 0; i < restaurantTables.length; i += 1) {
-            const table = restaurantTables[i];
-            const searchable = normalizeText(`${table.name} ${table.hallLabel} ${table.feature}`);
-            const matchesQuery = cleanQuery === "" || searchable.includes(cleanQuery);
-            const matchesHall = cleanHall === "all" || table.hall === cleanHall;
-            const matchesCapacity = requiredSeats === 0 || table.capacity >= requiredSeats;
-            if (matchesQuery && matchesHall && matchesCapacity) {
-                results.push(table);
-            }
-        }
-        return results;
-    }
-    function sortTables(tablesList, sortBy) {
-        const copy = tablesList.slice();
-        copy.sort(function (a, b) {
-            if (sortBy === "capacity-asc") {
-                return a.capacity - b.capacity;
-            }
-            if (sortBy === "capacity-desc") {
-                return b.capacity - a.capacity;
-            }
-            if (sortBy === "deposit-asc") {
-                return a.depositPerGuest - b.depositPerGuest;
-            }
-            return a.id.localeCompare(b.id);
-        });
-        return copy;
-    }
-    function createTableCard(tableItem) {
-        const col = createElement("div", "col-12 col-md-6 col-lg-3");
-        const isSelected = tableItem.id === selectedTableId;
-        const card = createElement("div", `card h-100 border-0 shadow-sm rounded-4 overflow-hidden ${isSelected ? "border-danger border-2 shadow" : ""}`);
-        card.style.transition = "transform 0.25s ease, box-shadow 0.25s ease";
-        card.addEventListener("mouseenter", function () {
-            card.style.transform = "translateY(-4px)";
-            card.classList.add("shadow");
-        });
-        card.addEventListener("mouseleave", function () {
-            card.style.transform = "";
-            card.classList.remove("shadow");
-        });
+/**
+ * Meat Point Astana: Table Reservation System
+ * Architectural Geometry, Hairline Borders, Zero Emojis
+ */
 
-        const body = createElement("div", "card-body d-flex flex-column p-3");
-        const topRow = createElement("div", "d-flex justify-content-between align-items-start mb-2");
-        const title = createElement("h3", "h6 card-title fw-bold mb-0", tableItem.name);
-        const badgeClass = tableItem.hall === "vip" ? "badge text-bg-danger rounded-pill px-2 py-1 shadow-sm" : "badge text-bg-dark rounded-pill px-2 py-1 shadow-sm";
-        const badge = createElement("span", badgeClass, tableItem.hallLabel);
-        topRow.append(title, badge);
-        const featureText = createElement("p", "card-text small text-muted flex-grow-1", tableItem.feature);
-        const metaList = createElement("ul", "list-unstyled small mb-3");
-        const capItem = createElement("li", "", `👥 Capacity: ${tableItem.minGuests}–${tableItem.capacity} guests`);
-        const depLabel = tableItem.depositPerGuest > 0
-            ? `${formatMoney(tableItem.depositPerGuest)} / guest`
-            : "0 ₸ (No deposit under 10 guests)";
-        const depItem = createElement("li", "fw-semibold text-danger", `💳 Deposit: ${depLabel}`);
-        metaList.append(capItem, depItem);
-        const selectBtn = createElement(
-            "button",
-            "btn btn-sm rounded-pill w-100 fw-semibold shadow-sm",
-            isSelected ? "✓ Selected for Booking" : "Select This Table"
-        );
-        selectBtn.classList.add(isSelected ? "btn-danger" : "btn-outline-danger");
-        selectBtn.type = "button";
-        selectBtn.dataset.tableId = tableItem.id;
-        body.append(topRow, featureText, metaList, selectBtn);
-        card.append(body);
-        col.append(card);
-        return col;
+(function (window, document) {
+  'use strict';
+
+  const STORAGE_KEY = 'meatpoint_user_bookings_v2';
+
+  const HALL_ZONES = [
+    {
+      id: 'zone-grill',
+      name: 'Основной зал у открытого мангала',
+      capacity: 'до 80 гостей',
+      badge: 'Открытый мангал',
+      description: 'Вид на открытую кухню и жаровню на березовых углях. Живая музыка по пятницам и субботам.',
+      image: 'images/meatpointhall.png',
+      requiresDeposit: false
+    },
+    {
+      id: 'zone-family',
+      name: 'Уютная семейная зона',
+      capacity: 'до 30 гостей',
+      badge: 'Семейная зона',
+      description: 'Мягкие диваны, приглушенный теплый свет, детские кресла и умеренная фоновая музыка.',
+      image: 'images/interior.png',
+      requiresDeposit: false
+    },
+    {
+      id: 'zone-vip',
+      name: 'VIP-кабинка',
+      capacity: 'до 15 гостей',
+      badge: 'Приватная зона',
+      description: 'Изолированное пространство с отдельным обслуживанием, персональной аудиосистемой и климат-контролем.',
+      image: 'images/meatpointout.png',
+      requiresDeposit: true,
+      depositAmount: 50000
+    },
+    {
+      id: 'zone-window',
+      name: 'Панорамные столы у окна',
+      capacity: 'до 20 гостей',
+      badge: 'Панорамный вид',
+      description: 'Столы вдоль широких окон с видом на вечерний проспект Ұлы Дала и архитектурный ансамбль EXPO.',
+      image: 'images/meatloc.png',
+      requiresDeposit: false
     }
-    const bookingSection = document.getElementById("booking-form-section");
-    const explorerSection = createElement("section", "mb-5 p-4 bg-white border-0 rounded-4 shadow-sm");
-    explorerSection.id = "table-explorer-section";
-    const explorerHeader = createElement("div", "d-flex flex-wrap justify-content-between align-items-center mb-3");
-    const explorerTitle = createElement("h2", "h4 text-danger mb-0", "Interactive Table & Zone Explorer");
-    const randomTableBtn = createElement("button", "btn btn-sm btn-outline-danger rounded-pill px-3 shadow-sm", "🎲 Recommend Random Table");
-    randomTableBtn.type = "button";
-    explorerHeader.append(explorerTitle, randomTableBtn);
-    const filterRow = createElement("div", "row g-2 mb-3");
-    const searchCol = createElement("div", "col-12 col-md-4");
-    const searchInput = createElement("input", "form-control rounded-3");
-    searchInput.type = "search";
-    searchInput.placeholder = "Search by zone or feature...";
-    searchInput.setAttribute("aria-label", "Search tables");
-    searchCol.append(searchInput);
-    const hallCol = createElement("div", "col-6 col-md-3");
-    const hallSelect = createElement("select", "form-select rounded-3");
-    hallSelect.setAttribute("aria-label", "Filter by hall");
-    [
-        { value: "all", label: "All Halls (Main & VIP)" },
-        { value: "main", label: "Main Hall Only" },
-        { value: "vip", label: "VIP Room Only" }
-    ].forEach(function (opt) {
-        const option = createElement("option", "", opt.label);
-        option.value = opt.value;
-        hallSelect.append(option);
-    });
-    hallCol.append(hallSelect);
-    const capCol = createElement("div", "col-6 col-md-2");
-    const capInput = createElement("input", "form-control");
-    capInput.type = "number";
-    capInput.min = "1";
-    capInput.max = "80";
-    capInput.placeholder = "Min guests";
-    capInput.setAttribute("aria-label", "Minimum guest capacity");
-    capCol.append(capInput);
-    const sortCol = createElement("div", "col-6 col-md-2");
-    const sortSelect = createElement("select", "form-select rounded-3");
-    sortSelect.setAttribute("aria-label", "Sort tables");
-    [
-        { value: "default", label: "Default Order" },
-        { value: "capacity-asc", label: "Capacity: Small to Large" },
-        { value: "capacity-desc", label: "Capacity: Large to Small" },
-        { value: "deposit-asc", label: "Deposit: Low to High" }
-    ].forEach(function (opt) {
-        const option = createElement("option", "", opt.label);
-        option.value = opt.value;
-        sortSelect.append(option);
-    });
-    sortCol.append(sortSelect);
-    const resetCol = createElement("div", "col-6 col-md-1 d-grid");
-    const resetFilterBtn = createElement("button", "btn btn-outline-secondary rounded-3 shadow-sm", "Reset");
-    resetFilterBtn.type = "button";
-    resetCol.append(resetFilterBtn);
-    filterRow.append(searchCol, hallCol, capCol, sortCol, resetCol);
-    const filterStatus = createElement("p", "small text-muted mb-3");
-    filterStatus.setAttribute("aria-live", "polite");
-    const tableGrid = createElement("div", "row g-3");
-    explorerSection.append(explorerHeader, filterRow, filterStatus, tableGrid);
-    if (bookingSection) {
-        bookingSection.before(explorerSection);
+  ];
+
+  function getBookings() {
+    try {
+      const data = localStorage.getItem(STORAGE_KEY);
+      return data ? JSON.parse(data) : [];
+    } catch (e) {
+      console.warn('Failed to parse bookings from storage', e);
+      return [];
     }
-    function renderTableExplorer() {
-        const filtered = filterTables(searchInput.value, hallSelect.value, capInput.value);
-        const sorted = sortTables(filtered, sortSelect.value);
-        tableGrid.replaceChildren();
-        filterStatus.textContent = `Showing ${sorted.length} of ${restaurantTables.length} tables/zones.`;
-        if (sorted.length === 0) {
-            const emptyCol = createElement("div", "col-12");
-            const emptyAlert = createElement(
-                "div",
-                "alert alert-warning mb-0",
-                "No tables match your filter criteria. Try lowering the guest count or clicking Reset."
-            );
-            emptyCol.append(emptyAlert);
-            tableGrid.append(emptyCol);
-            return;
-        }
-        for (let i = 0; i < sorted.length; i += 1) {
-            tableGrid.append(createTableCard(sorted[i]));
-        }
+  }
+
+  function saveBookings(list) {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(list));
+    } catch (e) {
+      console.warn('Failed to save bookings', e);
     }
-    const summary = createElement("section", "mt-4 p-4 bg-white border-0 rounded-4 shadow-sm border-start border-4 border-danger");
-    const summaryTitle = createElement("h3", "h5 text-danger mb-2", "Live Booking & Deposit Calculator");
-    const summaryText = createElement(
-        "p",
-        "mb-2",
-        "Choose a hall, guest count, date, and time to calculate tables and required deposit."
-    );
-    const quoteList = createElement("ul", "list-group list-group-flush mb-2 small");
-    const confirmation = createElement("div", "alert alert-success mt-3 mb-0 d-none");
-    summary.setAttribute("aria-live", "polite");
-    summary.append(summaryTitle, summaryText, quoteList, confirmation);
-    form.after(summary);
-    function updateSummary() {
-        const selectedHallInput = form.querySelector('input[name="hall"]:checked');
-        const hallValue = selectedHallInput ? selectedHallInput.value : "main";
-        const guestCount = Number(guestsInput.value) || 0;
-        const quote = window.meatPointBooking
-            ? window.meatPointBooking.calculateBookingQuote(hallValue, guestCount)
-            : {
-                hallName: hallValue === "vip" ? "VIP Hall" : "Main Hall",
-                guests: guestCount,
-                tablesNeeded: Math.ceil(guestCount / 4),
-                baseDeposit: 0,
-                serviceFee: 0,
-                totalPrepayment: 0
-            };
-        const bookingDate = dateInput.value || "Date not selected";
-        const bookingTime = timeInput.value || "Time not selected";
-        const selectedTable = restaurantTables.find(function (item) {
-            return item.id === selectedTableId;
-        });
-        const tableLabel = selectedTable ? ` · Table: ${selectedTable.name}` : "";
-        summaryText.textContent =
-            `${quote.hallName}${tableLabel} · ${quote.guests || "0"} guest(s) · ${bookingDate} at ${bookingTime}.`;
-        quoteList.replaceChildren();
-        const items = [
-            `Estimated Tables / Suites Reserved: ${quote.tablesNeeded || 0}`,
-            `Advance Deposit Required: ${formatMoney(quote.baseDeposit)}`,
-            `Estimated 10% Service Charge on Deposit: ${formatMoney(quote.serviceFee)}`,
-            `Total Advance Prepayment Due: ${formatMoney(quote.totalPrepayment)}`
-        ];
-        for (let i = 0; i < items.length; i += 1) {
-            const li = createElement(
-                "li",
-                i === items.length - 1 ? "list-group-item fw-bold text-danger px-0" : "list-group-item px-0",
-                items[i]
-            );
-            quoteList.append(li);
-        }
+    renderActiveBookingsWidget();
+  }
+
+  function addBooking(bookingData) {
+    const list = getBookings();
+    list.unshift(bookingData);
+    saveBookings(list);
+  }
+
+  function cancelBooking(bookingId) {
+    if (!confirm('Отменить бронирование столика?')) return;
+    const list = getBookings().filter(function (b) { return b.id !== bookingId; });
+    saveBookings(list);
+    if (window.MeatPointCart) {
+      window.MeatPointCart.showToast('Бронирование отменено', 'warning');
     }
-    searchInput.addEventListener("input", renderTableExplorer);
-    hallSelect.addEventListener("change", renderTableExplorer);
-    capInput.addEventListener("input", renderTableExplorer);
-    sortSelect.addEventListener("change", renderTableExplorer);
-    resetFilterBtn.addEventListener("click", function () {
-        searchInput.value = "";
-        hallSelect.value = "all";
-        capInput.value = "";
-        sortSelect.value = "default";
-        selectedTableId = "";
-        renderTableExplorer();
-        updateSummary();
-    });
-    randomTableBtn.addEventListener("click", function () {
-        const randomIndex = Math.floor(Math.random() * restaurantTables.length);
-        const chosen = restaurantTables[randomIndex];
-        selectedTableId = chosen.id;
-        const targetRadio = form.querySelector(`input[name="hall"][value="${chosen.hall}"]`);
-        if (targetRadio) {
-            targetRadio.checked = true;
-            if (window.meatPointBooking) {
-                window.meatPointBooking.updateHallCapacityHelp();
-            }
-        }
-        if (!guestsInput.value || Number(guestsInput.value) > chosen.capacity) {
-            guestsInput.value = String(Math.min(chosen.capacity, Math.max(2, chosen.minGuests)));
-        }
-        renderTableExplorer();
-        updateSummary();
-    });
-    tableGrid.addEventListener("click", function (event) {
-        const btn = event.target.closest("button[data-table-id]");
-        if (!btn) {
-            return;
-        }
-        const chosen = restaurantTables.find(function (t) {
-            return t.id === btn.dataset.tableId;
-        });
-        if (!chosen) {
-            return;
-        }
-        selectedTableId = chosen.id;
-        const targetRadio = form.querySelector(`input[name="hall"][value="${chosen.hall}"]`);
-        if (targetRadio) {
-            targetRadio.checked = true;
-            if (window.meatPointBooking) {
-                window.meatPointBooking.updateHallCapacityHelp();
-            }
-        }
-        if (!guestsInput.value || Number(guestsInput.value) > chosen.capacity) {
-            guestsInput.value = String(Math.max(2, chosen.minGuests));
-            if (window.meatPointBooking) {
-                window.meatPointBooking.validateInput(guestsInput);
-            }
-        }
-        confirmation.classList.add("d-none");
-        renderTableExplorer();
-        updateSummary();
-        form.scrollIntoView({ behavior: "smooth", block: "center" });
-    });
-    [nameInput, phoneInput, guestsInput, dateInput, timeInput].forEach(function (input) {
-        if (!input) {
-            return;
-        }
-        ["input", "change"].forEach(function (eventName) {
-            input.addEventListener(eventName, function () {
-                confirmation.classList.add("d-none");
-                updateSummary();
-            });
-        });
-    });
-    hallInputs.forEach(function (input) {
-        input.addEventListener("change", function () {
-            confirmation.classList.add("d-none");
-            updateSummary();
-        });
-    });
-    form.addEventListener("submit", function (event) {
-        event.preventDefault();
-        const isValid = window.meatPointBooking
-            ? window.meatPointBooking.validateAllBookingFields()
-            : !form.querySelector(".is-invalid");
-        const firstInvalidField = form.querySelector(".is-invalid");
-        if (!isValid || firstInvalidField) {
-            if (firstInvalidField) {
-                firstInvalidField.focus();
-            }
-            confirmation.classList.add("d-none");
-            return;
-        }
-        const selectedHallInput = form.querySelector('input[name="hall"]:checked');
-        const hallValue = selectedHallInput ? selectedHallInput.value : "main";
-        const quote = window.meatPointBooking.calculateBookingQuote(hallValue, guestsInput.value);
-        const selectedTable = restaurantTables.find(function (item) {
-            return item.id === selectedTableId;
-        });
-        const tableNote = selectedTable ? ` (${selectedTable.name})` : "";
-        const refCode = window.meatPoint.createDemoReference("MP");
-        confirmation.textContent =
-            `Demonstration booking request ${refCode} confirmed for ${nameInput.value.trim()} (${phoneInput.value.trim()}): ` +
-            `${quote.hallName}${tableNote}, ${quote.guests} guest(s), ${quote.tablesNeeded} table(s), ` +
-            `${dateInput.value} at ${timeInput.value}. Required advance prepayment: ${formatMoney(quote.totalPrepayment)}. ` +
-            "Note: This is a front-end demonstration and no real data was sent to a server.";
-        confirmation.classList.remove("d-none");
-    });
-    form.addEventListener("reset", function () {
-        window.setTimeout(function () {
-            selectedTableId = "";
-            confirmation.classList.add("d-none");
-            renderTableExplorer();
-            updateSummary();
-        }, 0);
-    });
-    const welcomeTitle = document.querySelector("h1.text-danger");
-    if (welcomeTitle) {
-        welcomeTitle.style.cursor = "pointer";
-        welcomeTitle.style.transition = "color 0.3s ease";
-        welcomeTitle.addEventListener("mouseenter", function () {
-            welcomeTitle.style.color = "#b01221";
-        });
-        welcomeTitle.addEventListener("mouseleave", function () {
-            welcomeTitle.style.color = "";
-        });
+  }
+
+  function initBookingForm() {
+    const formContainer = document.getElementById('interactive-booking-app');
+    if (!formContainer) return;
+
+    renderBookingApp(formContainer);
+    renderActiveBookingsWidget();
+  }
+
+  function renderBookingApp(container) {
+    const today = new Date().toISOString().slice(0, 10);
+    const zonesHtml = HALL_ZONES.map(function (z, idx) {
+      const isChecked = idx === 0 ? 'checked' : '';
+      return `
+        <label class="mp-zone-card ${isChecked ? 'active' : ''}" data-zone-id="${z.id}">
+          <input type="radio" name="selected_zone" value="${z.id}" ${isChecked} class="d-none">
+          <div class="mp-zone-thumb" style="background-image: url('${z.image}')">
+            <span class="mp-zone-badge">${z.badge}</span>
+          </div>
+          <div class="mp-zone-content">
+            <h5 class="mp-zone-title">${z.name}</h5>
+            <div class="small text-muted mb-1">${z.capacity} ${z.requiresDeposit ? '&bull; Депозит 50 000 ₸' : '&bull; Без депозита'}</div>
+            <p class="small text-muted mb-0">${z.description}</p>
+          </div>
+        </label>
+      `;
+    }).join('');
+
+    const timeSlots = [];
+    for (let h = 0; h < 24; h++) {
+      const hourStr = (h < 10 ? '0' : '') + h;
+      timeSlots.push(`${hourStr}:00`);
+      timeSlots.push(`${hourStr}:30`);
     }
-    renderTableExplorer();
-    updateSummary();
-}());
+
+    const timeOptionsHtml = timeSlots.map(function (t) {
+      const isSelected = t === '19:00' ? 'selected' : '';
+      return `<option value="${t}" ${isSelected}>${t} (Круглосуточно 24/7)</option>`;
+    }).join('');
+
+    const guestCounts = [1, 2, 3, 4, 5, 6, 8, 10, 12, 15, '20+'];
+    const guestChipsHtml = guestCounts.map(function (g, idx) {
+      const isChecked = idx === 1 ? 'active' : '';
+      return `
+        <button type="button" class="mp-chip-btn ${isChecked}" data-guests="${g}">
+          ${g} ${g === 1 ? 'персона' : 'персон'}
+        </button>
+      `;
+    }).join('');
+
+    container.innerHTML = `
+      <form id="mp-interactive-booking-form" class="p-4 p-md-5 bg-card border-warm" novalidate>
+        <div class="mb-4">
+          <div class="small text-uppercase letter-spacing-1 fw-bold text-muted mb-3">01. Выбор зоны зала Meat Point:</div>
+          <div class="mp-zones-grid">
+            ${zonesHtml}
+          </div>
+        </div>
+
+        <div class="mb-4">
+          <div class="small text-uppercase letter-spacing-1 fw-bold text-muted mb-3">02. Дата, время визита и число гостей:</div>
+          <div class="row g-3">
+            <div class="col-12 col-md-4">
+              <label class="form-label text-muted small text-uppercase">Дата визита:</label>
+              <input type="date" id="booking-input-date" class="form-control mp-input" min="${today}" value="${today}" required>
+            </div>
+            <div class="col-12 col-md-4">
+              <label class="form-label text-muted small text-uppercase">Время (Круглосуточно 24/7):</label>
+              <select id="booking-input-time" class="form-select mp-input" required>
+                ${timeOptionsHtml}
+              </select>
+            </div>
+            <div class="col-12 col-md-4">
+              <label class="form-label text-muted small text-uppercase">Число гостей:</label>
+              <div class="d-flex flex-wrap gap-1">
+                ${guestChipsHtml}
+              </div>
+              <input type="hidden" id="booking-input-guests" value="2">
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-4">
+          <div class="small text-uppercase letter-spacing-1 fw-bold text-muted mb-3">03. Контактные данные:</div>
+          <div class="row g-3">
+            <div class="col-12 col-md-6">
+              <label class="form-label text-muted small text-uppercase">Имя гостя:</label>
+              <input type="text" id="booking-input-name" class="form-control mp-input" placeholder="Имя" required>
+            </div>
+            <div class="col-12 col-md-6">
+              <label class="form-label text-muted small text-uppercase">Телефон (WhatsApp):</label>
+              <input type="tel" id="booking-input-phone" class="form-control mp-input" placeholder="+7 778 000 00 00" required>
+            </div>
+            <div class="col-12">
+              <label class="form-label text-muted small text-uppercase">Комментарий или повод визита:</label>
+              <input type="text" id="booking-input-notes" class="form-control mp-input" placeholder="День рождения, деловой обед, детское кресло">
+            </div>
+          </div>
+        </div>
+
+        <div class="p-3 bg-elevated border-warm mb-4" id="booking-preorder-box">
+          <div class="form-check form-switch d-flex align-items-center gap-3">
+            <input class="form-check-input" type="checkbox" id="attach-cart-checkbox">
+            <label class="form-check-label" for="attach-cart-checkbox">
+              <strong>Прикрепить предзаказ блюд из корзины</strong>
+              <div class="small text-muted" id="preorder-cart-status">Стол будет сервирован горячими блюдами к указанному времени</div>
+            </label>
+          </div>
+        </div>
+
+        <div class="text-center pt-2">
+          <button type="submit" class="btn btn-editorial-primary px-5 py-3">
+            Забронировать стол
+          </button>
+          <div class="small text-muted mt-2">
+            Удержание бронирования 15 минут &bull; Бесплатная отмена &bull; пр. Ұлы Дала, 45
+          </div>
+        </div>
+      </form>
+    `;
+
+    container.querySelectorAll('.mp-zone-card').forEach(function (card) {
+      card.addEventListener('click', function () {
+        container.querySelectorAll('.mp-zone-card').forEach(function (c) {
+          c.classList.remove('active');
+          c.querySelector('input').checked = false;
+        });
+        card.classList.add('active');
+        card.querySelector('input').checked = true;
+      });
+    });
+
+    container.querySelectorAll('.mp-chip-btn').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        container.querySelectorAll('.mp-chip-btn').forEach(function (b) { b.classList.remove('active'); });
+        btn.classList.add('active');
+        const count = btn.getAttribute('data-guests');
+        const input = document.getElementById('booking-input-guests');
+        if (input) input.value = count;
+      });
+    });
+
+    function updateCartIndicator() {
+      const checkbox = document.getElementById('attach-cart-checkbox');
+      const statusEl = document.getElementById('preorder-cart-status');
+      if (!checkbox || !statusEl) return;
+
+      if (window.MeatPointCart) {
+        const totals = window.MeatPointCart.getTotals();
+        if (totals.count > 0) {
+          statusEl.innerHTML = `В корзине <strong>${totals.count}</strong> поз. на сумму <strong>${window.MeatPointMenu.formatPrice(totals.total)}</strong>`;
+          checkbox.checked = true;
+        } else {
+          statusEl.textContent = 'В корзине пока нет блюд. Вы можете выбрать позиции в меню.';
+          checkbox.checked = false;
+        }
+      }
+    }
+    updateCartIndicator();
+    window.addEventListener('meatpoint:cart-updated', updateCartIndicator);
+
+    const form = document.getElementById('mp-interactive-booking-form');
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const name = document.getElementById('booking-input-name').value.trim();
+      const phone = document.getElementById('booking-input-phone').value.trim();
+      const date = document.getElementById('booking-input-date').value;
+      const time = document.getElementById('booking-input-time').value;
+      const guests = document.getElementById('booking-input-guests').value;
+      const notes = document.getElementById('booking-input-notes').value.trim();
+      const selectedZoneEl = container.querySelector('input[name="selected_zone"]:checked');
+      const zoneId = selectedZoneEl ? selectedZoneEl.value : 'zone-grill';
+      const zoneObj = HALL_ZONES.find(function (z) { return z.id === zoneId; }) || HALL_ZONES[0];
+
+      if (!name) {
+        if (window.MeatPointCart) window.MeatPointCart.showToast('Укажите имя для бронирования', 'warning');
+        document.getElementById('booking-input-name').focus();
+        return;
+      }
+      if (!phone || phone.length < 6) {
+        if (window.MeatPointCart) window.MeatPointCart.showToast('Укажите номер телефона', 'warning');
+        document.getElementById('booking-input-phone').focus();
+        return;
+      }
+
+      const attachCart = document.getElementById('attach-cart-checkbox').checked;
+      let preorderedItems = [];
+      let preorderTotal = 0;
+
+      if (attachCart && window.MeatPointCart) {
+        const cartState = window.MeatPointCart.getState();
+        preorderedItems = [].concat(cartState.items);
+        preorderTotal = window.MeatPointCart.getTotals().total;
+      }
+
+      const bookingId = 'BK-' + Math.floor(10000 + Math.random() * 90000);
+      const newBooking = {
+        id: bookingId,
+        createdAt: new Date().toISOString(),
+        guestName: name,
+        guestPhone: phone,
+        date: date,
+        time: time,
+        guests: guests,
+        zoneId: zoneId,
+        zoneName: zoneObj.name,
+        notes: notes,
+        hasPreorder: preorderedItems.length > 0,
+        preorderedItems: preorderedItems,
+        preorderTotal: preorderTotal,
+        status: 'confirmed'
+      };
+
+      addBooking(newBooking);
+
+      if (window.MeatPointCart) {
+        window.MeatPointCart.showToast(`Столик забронирован: ${bookingId}`);
+      }
+
+      openBookingSuccessModal(newBooking);
+    });
+  }
+
+  function renderActiveBookingsWidget() {
+    const container = document.getElementById('my-bookings-container');
+    if (!container) return;
+
+    const list = getBookings();
+    if (list.length === 0) {
+      container.innerHTML = `
+        <div class="p-4 bg-card border-warm text-center">
+          <h5 class="h6 text-muted mb-1 text-uppercase letter-spacing-1">Активные бронирования</h5>
+          <p class="small text-muted mb-0">У вас пока нет оформленных броней. Заполните форму ниже для резерва стола.</p>
+        </div>
+      `;
+      return;
+    }
+
+    const cardsHtml = list.map(function (b) {
+      const formattedDate = new Date(b.date).toLocaleDateString('ru-RU', { day: 'numeric', month: 'long', year: 'numeric' });
+      return `
+        <div class="p-3 p-md-4 mb-3 bg-card border-warm" data-booking-id="${b.id}">
+          <div class="d-flex flex-wrap justify-content-between align-items-baseline gap-2 mb-2 pb-2 border-bottom border-warm">
+            <div>
+              <span class="text-terracotta fw-bold me-2">БРОНЬ #${b.id}</span>
+              <span class="text-muted small">${b.zoneName}</span>
+            </div>
+            <div class="small text-uppercase text-muted">Подтверждено</div>
+          </div>
+
+          <div class="row g-2 my-2 small">
+            <div class="col-6 col-md-3">
+              <div class="text-muted text-uppercase" style="font-size: 0.7rem;">Дата:</div>
+              <div class="fw-bold">${formattedDate}</div>
+            </div>
+            <div class="col-6 col-md-3">
+              <div class="text-muted text-uppercase" style="font-size: 0.7rem;">Время:</div>
+              <div class="fw-bold">${b.time} (24/7)</div>
+            </div>
+            <div class="col-6 col-md-3">
+              <div class="text-muted text-uppercase" style="font-size: 0.7rem;">Гостей:</div>
+              <div class="fw-bold">${b.guests} чел.</div>
+            </div>
+            <div class="col-6 col-md-3">
+              <div class="text-muted text-uppercase" style="font-size: 0.7rem;">Гость:</div>
+              <div class="fw-bold">${b.guestName}</div>
+            </div>
+          </div>
+
+          ${b.hasPreorder ? `
+            <div class="p-2 bg-elevated border-warm small my-2">
+              Предзаказ: ${b.preorderedItems.length} позиций на сумму ${window.MeatPointMenu.formatPrice(b.preorderTotal)}. Стол сервируют к приходу.
+            </div>
+          ` : ''}
+
+          <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mt-3 pt-2 border-top border-warm">
+            <div class="small text-muted">
+              Адрес: пр. Ұлы Дала, 45
+            </div>
+            <div class="d-flex gap-2">
+              <a href="https://wa.me/77784221100?text=${encodeURIComponent(`Здравствуйте! Я по поводу брони столика #${b.id} на имя ${b.guestName} (${b.date} в ${b.time}).`)}" target="_blank" class="btn btn-sm btn-editorial-outline">
+                WhatsApp
+              </a>
+              <button type="button" class="btn btn-sm btn-editorial-outline mp-cancel-booking-btn" data-id="${b.id}">
+                Отменить
+              </button>
+            </div>
+          </div>
+        </div>
+      `;
+    }).join('');
+
+    container.innerHTML = `
+      <div class="mb-4">
+        <h3 class="h5 text-uppercase letter-spacing-1 text-muted mb-3">Мои бронирования (${list.length})</h3>
+        ${cardsHtml}
+      </div>
+    `;
+
+    container.querySelectorAll('.mp-cancel-booking-btn').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        cancelBooking(this.getAttribute('data-id'));
+      });
+    });
+  }
+
+  function openBookingSuccessModal(booking) {
+    let modal = document.getElementById('booking-success-modal');
+    if (!modal) {
+      modal = document.createElement('div');
+      modal.id = 'booking-success-modal';
+      modal.className = 'mp-modal-backdrop';
+      document.body.appendChild(modal);
+    }
+
+    modal.innerHTML = `
+      <div class="mp-modal-dialog">
+        <div class="mp-modal-header">
+          <div>
+            <h3 class="mp-modal-title">Столик забронирован</h3>
+            <p class="mp-modal-subtitle">Номер бронирования: ${booking.id}</p>
+          </div>
+          <button type="button" class="mp-modal-close" aria-label="Закрыть">&times;</button>
+        </div>
+        <div class="mp-modal-body">
+          <div class="p-3 bg-elevated border-warm small">
+            <p class="mb-1"><strong>Гость:</strong> ${booking.guestName} (${booking.guestPhone})</p>
+            <p class="mb-1"><strong>Зона зала:</strong> ${booking.zoneName}</p>
+            <p class="mb-1"><strong>Дата и время:</strong> ${booking.date} в ${booking.time}</p>
+            <p class="mb-1"><strong>Число персон:</strong> ${booking.guests}</p>
+            ${booking.hasPreorder ? `<p class="mb-1 text-terracotta"><strong>Предзаказ:</strong> ${booking.preorderedItems.length} блюд на сумму ${window.MeatPointMenu.formatPrice(booking.preorderTotal)}</p>` : ''}
+            <div class="border-top border-warm my-2 pt-2 text-muted">
+              Адрес: г. Астана, проспект Ұлы Дала, 45. Бронь сохраняется 15 минут от указанного времени.
+            </div>
+          </div>
+        </div>
+        <div class="mp-modal-footer">
+          <a href="https://wa.me/77784221100?text=${encodeURIComponent(`Здравствуйте! Я оформил бронь столика #${booking.id} в Meat Point на ${booking.date} в ${booking.time} (${booking.guests} чел.). Имя: ${booking.guestName}`)}" target="_blank" class="btn btn-whatsapp w-100 mb-2">
+            Сохранить в WhatsApp
+          </a>
+          <button type="button" class="btn btn-editorial-primary w-100" id="booking-modal-ok">Закрыть</button>
+        </div>
+      </div>
+    `;
+
+    modal.classList.add('open');
+    const closeBtn = modal.querySelector('.mp-modal-close');
+    const okBtn = modal.querySelector('#booking-modal-ok');
+    function closeModal() { modal.classList.remove('open'); }
+    closeBtn.onclick = closeModal;
+    okBtn.onclick = closeModal;
+  }
+
+  document.addEventListener('DOMContentLoaded', initBookingForm);
+
+  window.MeatPointBooking = {
+    getBookings: getBookings,
+    cancelBooking: cancelBooking,
+    refreshWidget: renderActiveBookingsWidget
+  };
+
+})(window, document);

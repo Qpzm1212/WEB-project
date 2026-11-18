@@ -1,180 +1,195 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Table booking at the halal restaurant Meat Point in Astana.">
-    <meta name="author" content="Tangzharyk">
-    <title>Table Booking | Meat Point</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Онлайн-бронирование столика в ресторане Meat Point Astana. Выбор зоны зала, времени визита 24/7, прикрепление предзаказа блюд.">
+  <meta name="author" content="Tangzharyk, Kamza Asset (Astana IT University, SE-2532)">
+  <title>Бронирование столика | Meat Point Astana 24/7</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/base.css">
-    <link rel="stylesheet" href="css/tangzharyk.css">
+  <!-- Google Fonts: Cormorant Garamond & Manrope -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Editorial Gastronomic Design System -->
   <link rel="stylesheet" href="css/luxury-theme.css">
 </head>
-<body class="d-flex flex-column min-vh-100">
+<body class="theme-light">
 
-<header>
+<!-- Header & Navigation -->
+<header class="sticky-top">
+  <nav class="navbar navbar-expand-lg mp-navbar py-3">
+    <div class="container d-flex align-items-center justify-content-between">
+      <a class="navbar-brand mp-brand m-0" href="index.html">
+        <span>Meat Point</span>
+        <span class="mp-brand-sub">Astana &bull; 24/7 Halal</span>
+      </a>
 
-    <nav class="navbar navbar-expand-lg custom-navbar">
-        <div class="container">
-            <a class="navbar-brand" href="index.html">Meat Point</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="mainNav">
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="contacts.html">Contact</a></li>
-                    <li class="nav-item"><a class="nav-link" href="menu.html">Menu</a></li>
-                    <li class="nav-item"><a class="nav-link" href="events.html">Events</a></li>
-                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="booking.html">Booking</a></li>
-                    <li class="nav-item"><a class="nav-link" href="feedback.html">Reviews</a></li>
-                </ul>
-            </div>
+      <div class="d-flex align-items-center gap-2 d-lg-none">
+        <button type="button" class="btn btn-sm btn-editorial-outline theme-toggle-btn" aria-label="Сменить тему">
+          <span class="theme-toggle-label small">DARK THEME</span>
+        </button>
+        <button type="button" class="btn btn-sm btn-editorial-primary cart-nav-btn" aria-label="Корзина">
+          <span>КОРЗИНА</span> (<span class="cart-badge-count">0</span>)
+        </button>
+        <button class="navbar-toggler border-0 p-1" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Меню">
+          <span class="small fw-bold">MENU</span>
+        </button>
+      </div>
+
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a href="index.html" class="nav-link mp-nav-link">Главная</a></li>
+          <li class="nav-item"><a href="menu.html" class="nav-link mp-nav-link">Меню и заказ</a></li>
+          <li class="nav-item"><a href="booking.html" class="nav-link mp-nav-link active" aria-current="page">Бронирование столика</a></li>
+          <li class="nav-item"><a href="about.html" class="nav-link mp-nav-link">О ресторане</a></li>
+          <li class="nav-item"><a href="events.html" class="nav-link mp-nav-link">Живая музыка</a></li>
+          <li class="nav-item"><a href="feedback.html" class="nav-link mp-nav-link">Отзывы 2ГИС</a></li>
+          <li class="nav-item"><a href="contacts.html" class="nav-link mp-nav-link">Контакты</a></li>
+        </ul>
+
+        <div class="d-none d-lg-flex align-items-center gap-2">
+          <button type="button" class="btn btn-editorial-outline theme-toggle-btn px-3 py-2">
+            <span class="theme-toggle-label small">DARK THEME</span>
+          </button>
+          <button type="button" class="btn btn-editorial-primary cart-trigger-btn px-3 py-2 d-flex align-items-center gap-2">
+            <span>КОРЗИНА</span>
+            <span class="cart-badge-count badge bg-dark text-light" style="display: none;">0</span>
+            <span class="cart-badge-total tabular-nums d-none d-xl-inline">0 ₸</span>
+          </button>
         </div>
-    </nav>
+      </div>
+    </div>
+  </nav>
 </header>
 
-<main class="container mt-5 mb-5 flex-grow-1">
-    <section class="text-center mb-5">
-        <h1 class="display-5 text-danger mb-3">Welcome to Meat Point</h1>
-        <p class="lead">Welcome to the official booking page of the halal restaurant Meat Point in Astana. <span class="d-none d-md-inline">We have the perfect table for you.</span></p>
-        <p class="text-muted small">We strongly recommend booking tables for the weekend at least 24 hours in advance.</p>
-    </section>
+<main class="container my-5 flex-grow-1">
+  <!-- Booking Header -->
+  <section class="text-center mb-5">
+    <div class="small text-uppercase letter-spacing-1 text-muted mb-2">Круглосуточно 24/7 &bull; пр. Ұлы Дала, 45</div>
+    <h1 class="display-4 fw-bold mb-2">Бронирование столика</h1>
+    <p class="text-muted max-w-700 mx-auto" style="font-size: 0.95rem;">
+      Выберите зону зала, время визита и число персон. Дополнительно можно прикрепить предзаказ блюд из корзины: стол сервируют ровно к вашему приходу.
+    </p>
+  </section>
 
-    <div class="row justify-content-center mb-5">
-        <div class="col-lg-10">
-            <div class="row align-items-center bg-light p-4 p-lg-5 rounded-4 shadow-sm border">
-                <div class="col-md-6 mb-4 mb-md-0">
-                    <span class="badge bg-danger-subtle text-danger fw-semibold px-3 py-2 rounded-pill mb-2">Guest Policy</span>
-                    <h2 class="h3 text-danger mb-2">Reservation Guidelines &amp; Policies</h2>
-                    <p class="text-secondary small mb-3">To ensure a seamless Turkish culinary experience, please review our table reservation policy before booking.</p>
-                    <ul class="list-unstyled mb-4">
-                        <li class="mb-2 d-flex align-items-start">
-                            <span class="text-danger me-2">&#10004;&#65039;</span>
-                            <span class="small"><strong>Instant Call Confirmation:</strong> Our hostess contacts you within 15 minutes to verify party size and special seating requests.</span>
-                        </li>
-                        <li class="mb-2 d-flex align-items-start">
-                            <span class="text-danger me-2">&#10004;&#65039;</span>
-                            <span class="small"><strong>15-Minute Grace Period:</strong> Reserved tables are held for 15 minutes past the booking time before release to walk-in guests.</span>
-                        </li>
-                        <li class="mb-2 d-flex align-items-start">
-                            <span class="text-danger me-2">&#10004;&#65039;</span>
-                            <span class="small"><strong>Group Deposit (10+ Guests):</strong> Parties of 10 or more require an advance deposit of 3,500 &#8376; per guest to guarantee banquet seating.</span>
-                        </li>
-                        <li class="mb-2 d-flex align-items-start">
-                            <span class="text-danger me-2">&#10004;&#65039;</span>
-                            <span class="small"><strong>VIP Room Amenities:</strong> Private hall features dedicated service, acoustic music controls, and personalized banquet menus.</span>
-                        </li>
-                        <li class="mb-2 d-flex align-items-start">
-                            <span class="text-danger me-2">&#10004;&#65039;</span>
-                            <span class="small"><strong>100% Certified Halal:</strong> Premium local beef and lamb prepared fresh daily on open wood-fired charcoal grills.</span>
-                        </li>
-                        <li class="d-flex align-items-start">
-                            <span class="text-danger me-2">&#10004;&#65039;</span>
-                            <span class="small"><strong>Special Occasions:</strong> Celebrating a birthday or anniversary? Mention it in advance for complimentary tea ceremony and dessert.</span>
-                        </li>
-                    </ul>
-                    <div class="p-3 bg-white rounded-3 border-start border-3 border-danger shadow-sm">
-                        <div class="d-flex align-items-center justify-content-between flex-wrap gap-2">
-                            <div>
-                                <div class="fw-bold small text-dark">Urgent or Same-Day Booking?</div>
-                                <div class="small text-muted">For bookings within the next 2 hours:</div>
-                            </div>
-                            <a href="tel:+77784221100" class="btn btn-sm btn-outline-danger rounded-pill fw-bold text-decoration-none px-3">+7 (778) 422-11-00</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 text-center">
-                    <img src="images/meatpointhall.png" class="img-fluid rounded-4 border shadow-sm" alt="Meat Point dining hall interior">
-                    <p class="text-muted small mt-2 mb-0 fst-italic">Interior of Meat Point Main Dining Hall (Astana)</p>
-                </div>
+  <!-- Active Bookings Widget (Stored in localStorage) -->
+  <section class="mb-5" id="my-bookings-container">
+    <!-- Populated by booking.js -->
+  </section>
+
+  <!-- Interactive Booking Form Container -->
+  <section class="mb-5" id="interactive-booking-app">
+    <!-- Rendered by booking.js -->
+  </section>
+
+  <!-- Guidelines & Policies (Editorial Numbered Format) -->
+  <section class="p-4 p-md-5 bg-card border-warm">
+    <div class="row g-4 align-items-center">
+      <div class="col-12 col-lg-7">
+        <h3 class="display-6 fw-bold mb-3">Правила резервирования</h3>
+        <ul class="editorial-num-list">
+          <li class="editorial-num-item">
+            <span class="editorial-num">01</span>
+            <div>
+              <strong class="d-block text-uppercase small">Удержание стола 15 минут</strong>
+              <span class="small text-muted">Если вы опаздываете, предупредите хостес по телефону, и мы продлим время брони.</span>
             </div>
-        </div>
-    </div>
-
-    <div class="mb-5">
-        <h2 class="text-center mb-4">Hall Information</h2>
-        <div class="table-responsive">
-            <table class="table table-striped table-bordered table-hover">
-                <thead class="table-dark">
-                    <tr><th scope="col">Hall Type</th><th scope="col">Capacity</th><th scope="col">Deposit</th></tr>
-                </thead>
-                <tbody>
-                    <tr><th scope="row">Main Hall</th><td>80 people</td><td>Not required</td></tr>
-                    <tr><th scope="row">VIP Room</th><td>15 people</td><td>Required</td></tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-
-    <section id="booking-form-section">
-        <h2 class="h2 text-danger text-center mb-4">Table Reservation Form</h2>
-        <form id="restaurant-booking-form" action="#" method="POST" class="bg-light p-4 rounded shadow-sm border" novalidate>
-            <div class="row g-3">
-                <div class="col-12 col-md-6">
-                    <label for="client-name" class="form-label">Your Name:</label>
-                    <input type="text" class="form-control" id="client-name" name="name" required aria-describedby="client-name-error" placeholder="e.g. Tangzharyk Asset">
-                    <div class="invalid-feedback" id="client-name-error">Please enter your name.</div>
-                </div>
-                <div class="col-12 col-md-6">
-                    <label for="client-phone" class="form-label">Phone Number:</label>
-                    <input type="tel" class="form-control" id="client-phone" name="phone" required aria-describedby="client-phone-error" placeholder="+7 778 422 11 00">
-                    <div class="invalid-feedback" id="client-phone-error">Please enter your phone number.</div>
-                </div>
-                <div class="col-12 col-md-6">
-                    <label for="guest-count" class="form-label">Number of Guests:</label>
-                    <input type="number" class="form-control" id="guest-count" name="guests" min="1" max="80" required aria-describedby="guest-count-help guest-count-error" placeholder="2">
-                    <div class="form-text" id="guest-count-help">Main Hall accommodates up to 80 guests.</div>
-                    <div class="invalid-feedback" id="guest-count-error">Please enter a guest count.</div>
-                </div>
-                <div class="col-12 col-md-6">
-                    <label for="booking-date" class="form-label">Visit Date:</label>
-                    <input type="date" class="form-control" id="booking-date" name="date" required aria-describedby="booking-date-error">
-                    <div class="invalid-feedback" id="booking-date-error">Please choose today or a future date.</div>
-                </div>
-                <div class="col-12 col-md-6">
-                    <label for="booking-time" class="form-label">Visit Time:</label>
-                    <input type="time" class="form-control" id="booking-time" name="time" required aria-describedby="booking-time-error">
-                    <div class="invalid-feedback" id="booking-time-error">Please choose a visit time.</div>
-                </div>
-                <div class="col-12 col-md-6">
-                    <label class="form-label d-block">Select Dining Hall:</label>
-                    <div class="pt-2">
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="hall" id="hall-main" value="main" checked aria-describedby="hall-error">
-                            <label class="form-check-label" for="hall-main">Main Hall</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="hall" id="hall-vip" value="vip" aria-describedby="hall-error">
-                            <label class="form-check-label" for="hall-vip">VIP Hall (Deposit required)</label>
-                        </div>
-                    </div>
-                    <div class="invalid-feedback" id="hall-error">Please choose a hall.</div>
-                </div>
-                <div class="col-12 text-center d-flex flex-wrap justify-content-center gap-2 mt-4">
-                    <button type="submit" class="btn btn-danger btn-lg rounded-pill px-4 shadow-sm">Book Now</button>
-                    <button type="reset" class="btn btn-outline-secondary btn-lg rounded-pill px-4">Clear Form</button>
-                </div>
+          </li>
+          <li class="editorial-num-item">
+            <span class="editorial-num">02</span>
+            <div>
+              <strong class="d-block text-uppercase small">VIP-кабинка (до 15 гостей)</strong>
+              <span class="small text-muted">Депозит 50 000 ₸ при резерве отдельного кабинета с персональным официантом. Сумма полностью идет в счет заказа.</span>
             </div>
-        </form>
-    </section>
+          </li>
+          <li class="editorial-num-item">
+            <span class="editorial-num">03</span>
+            <div>
+              <strong class="d-block text-uppercase small">Специальные поводы</strong>
+              <span class="small text-muted">При праздновании дня рождения укажите повод в комментарии: гостям подается чайная церемония и десерт от шефа.</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="col-12 col-lg-5">
+        <div class="p-4 bg-elevated border-warm">
+          <div class="small text-uppercase fw-bold text-muted mb-1">Срочный резерв</div>
+          <h4 class="h5 fw-bold mb-2">Бронь на ближайшие 2 часа</h4>
+          <p class="small text-muted mb-3">Свяжитесь напрямую с администратором по телефону или через WhatsApp:</p>
+          <a href="tel:+77784221100" class="btn btn-editorial-outline w-100 mb-2">+7 (778) 422-11-00</a>
+          <a href="https://wa.me/77784221100?text=Здравствуйте!%20Хочу%20забронировать%20столик%20в%20Meat%20Point" target="_blank" class="btn btn-whatsapp w-100">
+            Сообщение в WhatsApp
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
 </main>
 
-<footer class="bg-dark text-white text-center py-4 mt-auto">
-    <div class="container">
-        <div class="row g-2 justify-content-center align-items-center">
-            <div class="col-12 col-md-4">Uly Dala street 45, Astana</div>
-            <div class="col-12 col-md-4"><a class="link-light" href="tel:+77784221100">+7 (778) 422-11-00</a></div>
-            <div class="col-12 col-md-4"><a class="link-light" href="mailto:info@meatpoint.kz">info@meatpoint.kz</a></div>
+<!-- Footer -->
+<footer class="mp-footer pt-5 pb-4 text-muted">
+  <div class="container">
+    <div class="row g-4 mb-4">
+      <div class="col-12 col-md-4">
+        <div class="mp-brand mb-2">
+          <span>Meat Point</span>
+          <span class="mp-brand-sub">Astana &bull; 24/7 Halal</span>
         </div>
-        <p class="mb-0 mt-3 small text-secondary">&copy; 2026 Meat Point. All rights reserved.</p>
+        <p class="small mb-3">
+          Турецкий мясной ресторан и стейк-хаус на проспекте Ұлы Дала, 45.
+        </p>
+        <div class="small">
+          <div>г. Астана, проспект Ұлы Дала, 45</div>
+          <div>График: Круглосуточно (24/7, без выходных)</div>
+        </div>
+      </div>
+      <div class="col-6 col-md-2">
+        <div class="mp-footer-heading">Разделы</div>
+        <ul class="list-unstyled small mb-0 d-flex flex-column gap-2">
+          <li><a href="index.html">Главная</a></li>
+          <li><a href="menu.html">Меню</a></li>
+          <li><a href="booking.html">Бронирование</a></li>
+          <li><a href="about.html">О нас</a></li>
+          <li><a href="contacts.html">Контакты</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="mp-footer-heading">Контакты</div>
+        <ul class="list-unstyled small mb-0 d-flex flex-column gap-2">
+          <li><a href="tel:+77784221100" class="fw-bold mp-tel-link">+7 (778) 422-11-00</a></li>
+          <li><a href="tel:+77750380002">+7 (775) 038-00-02</a></li>
+          <li><a href="https://wa.me/77784221100" target="_blank">WhatsApp: +7 778 422 1100</a></li>
+        </ul>
+      </div>
+      <div class="col-12 col-md-3">
+        <div class="mp-footer-heading">Команда AITU</div>
+        <p class="small mb-2">Группа SE-2532: Kamza Asset, Tangzharyk.</p>
+        <button type="button" class="btn btn-sm btn-editorial-outline open-team-modal-btn w-100">
+          Справка о разработчиках
+        </button>
+      </div>
     </div>
+    <div class="pt-3 border-hairline-top d-flex flex-wrap justify-content-between align-items-center small">
+      <div>&copy; 2026 Meat Point Astana. 100% Halal.</div>
+      <div class="d-flex gap-3">
+        <a href="https://2gis.kz/astana/firm/70000001027751110" target="_blank">2ГИС Астана</a>
+        <a href="#" class="open-team-modal-btn">О проекте SE-2532</a>
+      </div>
+    </div>
+  </div>
 </footer>
-<script src="js/tako.js" defer></script>
-<script src="js/main.js" defer></script>
-<script src="js/booking.js" defer></script>
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/menu-data.js"></script>
+<script src="js/cart.js"></script>
+<script src="js/booking.js"></script>
+<script src="js/ai-concierge.js"></script>
+<script src="js/ui-effects.js"></script>
+<script src="js/main.js"></script>
 </body>
 </html>
